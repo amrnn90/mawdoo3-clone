@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
+@section('title', "تصنيف: {$category->name} - موضوع")
+
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-3">
                 <div class="list-group">
                     <h4>Popular Categories</h4>
-                    @foreach ($popularCategories as $category)
+                    @foreach ($popularCategories as $c)
                         <div class="list-group-item">
-                            <a href="#">{{ $category->name }}</a>
+                            <a href="{{ route('posts.index', $c) }}">{{ $c->name }}</a>
                         </div>
                     @endforeach
                 </div>

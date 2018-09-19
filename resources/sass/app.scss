@@ -1,16 +1,45 @@
+// Required
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/grid";
 
 // Fonts
 // @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
-
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-
-
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// @import url('https://fontlibrary.org/face/droid-arabic-kufi');
+@font-face {
+  font-family: 'DroidArabicKufiRegular';
+  src: url('/fonts/DroidArabicKufiRegular.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
+
+@import "~mathsass/dist/math";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+@import "abstracts/variables";
+
+@import "spritesheets/catsprite";
+
+@import "base/base";
+@import "base/animations";
+@import "base/utilities";
+@import "base/typography";
+
+@import "components/btn";
+@import "components/form";
+@import "components/composition";
+@import "components/feature-box";
+@import "components/story";
+@import "components/bg-video";
+@import "components/popup";
+@import "components/hero";
+@import "components/search-form";
+@import "components/categories-grid";
+
+// @import "layout/grid";
+@import "layout/navigation";
+@import "layout/header";
+@import "layout/footer";
+
+@import "pages/homepage";
 

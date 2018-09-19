@@ -22,9 +22,9 @@ class PostsController extends Controller
      */
     public function index($category_id)
     {   $category = Category::findOrFail($category_id);
-        $posts = Post::where('category_id', $category_id)->latest()->get();
+        $posts = $category->posts()->latest()->get();
         
-        return view('posts.index')->with(compact('posts'));
+        return view('posts.index')->with(compact('posts', 'category'));
     }
 
     /**

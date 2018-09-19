@@ -18,7 +18,7 @@ class Post extends Model
         parent::boot();
 
         static::creating(function ($post) {
-            $post->user_id = auth()->id();
+            $post->user_id = $post->user_id ?? auth()->id();
             $post->category_id = $post->category_id ?? Category::first()->id;
         });
     }
@@ -46,6 +46,11 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function subcategory() 
+    {
+        return $this->belongsTo(Category::class, 'subcategory_id');
     }
 
     public function visitorsAlsoRead($take = 12)

@@ -1,0 +1,101 @@
+.categories-grid {
+    column-count: 3;
+    column-gap: 30px;
+
+    &__block-header {
+        display: flex;
+        align-items: center;
+        padding: 1.4rem 1.2rem;
+        text-decoration: none;
+    }
+
+    &__block-body {
+        padding: 1.4rem 1.2rem;
+    }
+
+
+    &__category-name {
+        color: #555;
+        font-size: 30px;
+        font-weight: 400;
+    }
+
+    &__subcategory-name {
+        color: #444;
+        font-size: 21px;
+        text-decoration: none;
+        margin-bottom: .8rem;
+        display: block;
+    }
+
+
+    &__block {
+        margin-bottom: 30px;
+        width: 100%;
+        display: inline-block;
+        background: white;
+        box-shadow: 0 2px 6px rgba(0,0,0,.3);
+
+        .categories-grid__category-icon {
+            margin-left: 1.3rem;
+            @extend .catsprite;
+        }
+    }
+
+    
+
+
+    $categories: (
+        aalom-alard: #C1C04E,
+        alaanay-balthat: #672994,
+        aladb: #DEBF48,
+        alasr: #FF4239,
+        alhml-oalolad: #F90063,
+        alhya-oalmjtmaa: #862393,
+        alzoaj-oalhb: #FF0033,
+        eslam: #47C289,
+        fn-althy: #FDBB42,
+        fnon: #EBF64C,
+        hkm-oakoal: #FDBB42,
+        hol-alaaalm: #00C2A1,
+        hyoanat-onbatat: #A3C051,
+        kss-ohkayat: #A40F93,
+        mal-oaaamal: #42419D,
+        ozn-orshak: #CFEF5F,
+        ryad: #7EC156,
+        sh: #009EB2,
+        soeal-ojoab: #00C1BB,
+        taalym: #58599E,
+        tghthy: #00C455,
+        tkny: #477AA9,
+        tsly-oalaaab: #FF963F,
+        unknown: #A9A9A9
+    );
+
+    @each $category, $color in $categories {
+        &__block--#{$category} {
+
+            .categories-grid__block-header {
+                border-bottom: 3px solid $color;
+                .categories-grid__category-icon { 
+                    color: $color;
+                    @extend .catsprite-#{$category};
+                }
+                &:hover {
+                    background: $color;
+                    .categories-grid__category-icon { 
+                        @extend .catsprite-#{$category}-hover;
+                    }
+                    .categories-grid__category-name {
+                        color: white;
+                    }
+                }
+            }
+
+            .categories-grid__subcategory-name:hover {
+                color: $color;
+            }
+        }
+    }
+
+}

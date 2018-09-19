@@ -1,0 +1,24 @@
+.homepage {
+  .section {
+    padding: 6rem 0;
+  }
+
+  .section-title-wrapper {
+    text-align: center;
+    position: relative;
+    height: 2px;
+    background-color: #aaa;
+    margin-bottom: 4rem;
+    .section-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #333;
+      background: white;
+      line-height: 100%;;
+      padding: 0 20px;
+    }
+
+  }
+}

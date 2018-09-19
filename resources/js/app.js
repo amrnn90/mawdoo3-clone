@@ -6,7 +6,8 @@
  */
 
 require('./bootstrap');
-const Barba = require('barba.js');
+require('./barba');
+
 
 window.Vue = require('vue');
 
@@ -19,13 +20,8 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-let app = new Vue({
+window.app = new Vue({
     el: '#app', 
 });
 
-Barba.Pjax.start();
 
-Barba.Dispatcher.on('transitionCompleted', function() {
-    app.$destroy();
-    app = new Vue({ el: '#app' });
-});

@@ -1,0 +1,33 @@
+.search-form {
+    position: relative;
+
+    &__input {
+        border: none;
+        padding: 1rem 6rem 1rem 2rem;
+        width: 100%;
+        font-size: 1.8rem;
+        color: #333;
+
+        &:focus {
+            outline: none;
+        }
+
+        &:focus + .search-form__icon {
+            opacity: 1;
+        }
+    }
+
+    &__icon {
+        font-size: 4rem;
+        color: #f66;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 1rem;
+        opacity: .6;
+        transition: opacity .3s ease;
+        pointer-events: none;
+    }
+
+
+}

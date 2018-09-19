@@ -20,11 +20,13 @@ class CreatePostsTable extends Migration
             $table->text('content');
             $table->string('image')->nullable();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('category_id')->nullable();
+            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('subcategory_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('subcategory_id')->references('id')->on('categories')->onDelete('set null');
         });
     }
 

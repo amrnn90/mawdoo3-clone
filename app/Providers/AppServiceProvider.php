@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('*', function($view) {
-            $categories = Category::all();
+            $categories = Category::getCategoriesWithSub();
             $popularCategories = Category::popular()->take(7)->get();
 
             $view->with(compact('categories', 'popularCategories'));

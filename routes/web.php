@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', function() { return view('index'); })->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/posts/create', 'PostsController@create')->name('posts.create');
 Route::get('/posts/edit/{post}', 'PostsController@edit')->name('posts.edit');

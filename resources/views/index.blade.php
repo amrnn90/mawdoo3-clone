@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
+@section('title', 'موضوع، أكبر موقع عربي بالعالم')
+
 @section('content')
-    <div class="container">
-        <div class="mb-5">
-            <h1>Welcome</h1>
-            <a href="{{ route('posts.create') }}">Create Post</a>
-        </div>
-        <div class="jumbotron">
-            <h2 class="mb-4">Categories</h2>
-            <div class="row">
-                @foreach ($categories as $category)
-                    <div class="col-3">
-                        <a href="{{ route('posts.index', $category) }}">{{ $category->name }}</a>
-                    </div>
-                @endforeach
-            </div>
-            <example-component></example-component>
+    <div class="homepage">
+        @include('includes.hero', ['posts' => $latestPosts])
+    
+        <div class="container">
+            <section class="section section-categories">
+                <div class="section-title-wrapper">
+                    <h2 class="section-title">
+                        تصنيفات موضوع
+                    </h2>
+                </div>
+                @include('includes.categories-grid', ['categories' => $categories])
+            </section>
         </div>
     </div>
 @endsection

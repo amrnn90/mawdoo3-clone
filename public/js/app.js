@@ -13879,7 +13879,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(44);
+module.exports = __webpack_require__(45);
 
 
 /***/ }),
@@ -13894,9 +13894,9 @@ module.exports = __webpack_require__(44);
  */
 
 __webpack_require__(13);
-var Barba = __webpack_require__(36);
+__webpack_require__(36);
 
-window.Vue = __webpack_require__(37);
+window.Vue = __webpack_require__(38);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13904,17 +13904,10 @@ window.Vue = __webpack_require__(37);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(40));
+Vue.component('example-component', __webpack_require__(41));
 
-var app = new Vue({
+window.app = new Vue({
   el: '#app'
-});
-
-Barba.Pjax.start();
-
-Barba.Dispatcher.on('transitionCompleted', function () {
-  app.$destroy();
-  app = new Vue({ el: '#app' });
 });
 
 /***/ }),
@@ -13996,7 +13989,7 @@ if (token) {
   var undefined;
 
   /** Used as the semantic version number. */
-  var VERSION = '4.17.10';
+  var VERSION = '4.17.11';
 
   /** Used as the size to enable large array optimizations. */
   var LARGE_ARRAY_SIZE = 200;
@@ -14260,7 +14253,7 @@ if (token) {
   var reHasUnicode = RegExp('[' + rsZWJ + rsAstralRange  + rsComboRange + rsVarRange + ']');
 
   /** Used to detect strings that need a more robust regexp to match words. */
-  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2,}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
+  var reHasUnicodeWord = /[a-z][A-Z]|[A-Z]{2}[a-z]|[0-9][a-zA-Z]|[a-zA-Z][0-9]|[^a-zA-Z0-9 ]/;
 
   /** Used to assign default `context` object properties. */
   var contextProps = [
@@ -15206,20 +15199,6 @@ if (token) {
       }
     }
     return result;
-  }
-
-  /**
-   * Gets the value at `key`, unless `key` is "__proto__".
-   *
-   * @private
-   * @param {Object} object The object to query.
-   * @param {string} key The key of the property to get.
-   * @returns {*} Returns the property value.
-   */
-  function safeGet(object, key) {
-    return key == '__proto__'
-      ? undefined
-      : object[key];
   }
 
   /**
@@ -17679,7 +17658,7 @@ if (token) {
           if (isArguments(objValue)) {
             newValue = toPlainObject(objValue);
           }
-          else if (!isObject(objValue) || (srcIndex && isFunction(objValue))) {
+          else if (!isObject(objValue) || isFunction(objValue)) {
             newValue = initCloneObject(srcValue);
           }
         }
@@ -20600,6 +20579,22 @@ if (token) {
         array[length] = isIndex(index, arrLength) ? oldArray[index] : undefined;
       }
       return array;
+    }
+
+    /**
+     * Gets the value at `key`, unless `key` is "__proto__".
+     *
+     * @private
+     * @param {Object} object The object to query.
+     * @param {string} key The key of the property to get.
+     * @returns {*} Returns the property value.
+     */
+    function safeGet(object, key) {
+      if (key == '__proto__') {
+        return;
+      }
+
+      return object[key];
     }
 
     /**
@@ -35959,6 +35954,74 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 36 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_barba_js__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_barba_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_barba_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history__ = __webpack_require__(50);
+
+
+
+var history = new __WEBPACK_IMPORTED_MODULE_1__history__["a" /* default */]();
+
+window.history.scrollRestoration = 'auto';
+
+__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.goTo = function (url) {
+    history.goTo(url);
+    this.onStateChange();
+};
+
+__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Dispatcher.on('transitionCompleted', function () {
+    if (window.app && window.Vue) {
+        window.app.$destroy();
+        window.app = new window.Vue({ el: '#app' });
+    }
+});
+
+__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.start();
+
+function getScrollPosition() {
+    var doc = document.documentElement;
+    var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+
+    return top;
+}
+
+var HideShowTransition = __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.BaseTransition.extend({
+    start: function start() {
+        this.newContainerLoading.then(this.finish.bind(this));
+    },
+
+    finish: function finish() {
+        if (history.direction() == 'back') {
+            setTimeout(function () {
+                window.scrollTo(null, history.get('scrollY'));
+            });
+        }
+        this.done();
+    }
+});
+
+__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.getTransition = function () {
+    // store scroll position to previous state
+    // to make it accessible in the transition
+    // and react to it if necessary
+    history.setPrev('scrollY', window.scrollY);
+
+    // console.log(history.direction());
+
+    if (history.direction() === 'forward') {
+        return HideShowTransition;
+    } else {
+        return HideShowTransition;
+    }
+};
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -37673,7 +37736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 //# sourceMappingURL=barba.js.map
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48636,10 +48699,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(38).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48695,7 +48758,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(39);
+__webpack_require__(40);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48709,7 +48772,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48902,15 +48965,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(41)
+var normalizeComponent = __webpack_require__(42)
 /* script */
-var __vue_script__ = __webpack_require__(42)
+var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(43)
+var __vue_template__ = __webpack_require__(44)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48949,7 +49012,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -49058,7 +49121,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49101,7 +49164,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49148,10 +49211,108 @@ if (false) {
 }
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _set = _.set;
+var _get = _.get;
+
+var History = function () {
+  function History() {
+    var _this = this;
+
+    _classCallCheck(this, History);
+
+    this.forward = 'forward';
+    this.back = 'back';
+
+    if (window.history.state === null) {
+      var state = sessionStorage.getItem('history') || 0;
+      window.history.replaceState(parseInt(state), null, window.location);
+    }
+
+    this.prevState = 0;
+    this.state = window.history.state;
+
+    window.addEventListener('popstate', function (event) {
+      sessionStorage.setItem('history', event.state);
+      _this.prevState = _this.state;
+      _this.state = event.state;
+    });
+  }
+
+  _createClass(History, [{
+    key: 'goTo',
+    value: function goTo(url) {
+      this.prevState = this.state;
+      this.state = window.history.state + 1;
+      window.history.pushState(this.state, null, url);
+    }
+  }, {
+    key: 'direction',
+    value: function direction() {
+      return this.state <= this.prevState ? this.back : this.forward;
+    }
+  }, {
+    key: 'setSessionData',
+    value: function setSessionData() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      sessionStorage.setItem('historyData', JSON.stringify(data));
+    }
+  }, {
+    key: 'getSessionData',
+    value: function getSessionData() {
+      var data = sessionStorage.getItem('historyData') || null;
+      if (data === null) return {};
+      return JSON.parse(data);
+    }
+  }, {
+    key: 'set',
+    value: function set(key, value) {
+      this.setSessionData(_set(this.getSessionData(), this.state + '.' + key, value));
+    }
+  }, {
+    key: 'setPrev',
+    value: function setPrev(key, value) {
+      this.setSessionData(_set(this.getSessionData(), this.prevState + '.' + key, value));
+    }
+  }, {
+    key: 'get',
+    value: function get(key) {
+      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      return _get(this.getSessionData(), this.state + '.' + key, defaultValue);
+    }
+  }, {
+    key: 'getPrev',
+    value: function getPrev(key) {
+      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      return _get(this.getSessionData(), this.prevState + '.' + key, defaultValue);
+    }
+  }]);
+
+  return History;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (History);
+;
 
 /***/ })
 /******/ ]);

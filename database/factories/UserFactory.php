@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,33 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Category::class, function (Faker $faker) {
+    return [
+        'name' => $faker->unique->realText(10),
+    ];
+});
+
+$factory->define(App\Post::class, function (Faker $faker) {
+    $users = App\User::limit(50)->get();
+
+    // $image = $faker->image(Storage::path('public/posts'), 640, 480, null, false);
+    // $image = Storage::url('public/posts/' . $image);
+
+    $images = Storage::allFiles('public/posts');
+    $image = Storage::url($images[rand(0, count($images)-1)]);
+
+    $categories = App\Category::getCategoriesWithSub();
+    $category = $categories->random();
+
+    return [
+        'title' => $faker->realText(50),
+        'content' => $faker->realText(300),
+        'image' => $image,
+        'category_id' => $category->id,
+        'subcategory_id' => $category->subcategories->random()->id,
+        'user_id' => $users->random()->id,
+    ];
+});
+
