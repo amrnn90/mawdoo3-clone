@@ -22,6 +22,7 @@ export default class History {
   }
 
   goTo(url) {
+
     this.prevState = this.state;
     this.state = window.history.state + 1;
     window.history.pushState(this.state, null, url);

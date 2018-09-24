@@ -1,0 +1,18 @@
+.withsidebar {
+    display: flex;
+    padding: 5rem 0;
+    &__main {
+        // background: darkgray;
+        flex: 1 1 70%;
+        padding-left: 8rem;
+        // padding: 4rem;
+    }
+
+    &__sidebar {
+        // background: silver;
+        flex: 1 1 30%;
+        // padding-right: 8rem;
+        // padding: 4rem;
+    }
+
+}

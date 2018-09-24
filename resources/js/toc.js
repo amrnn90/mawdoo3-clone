@@ -1,0 +1,67 @@
+import ResizeSensor from './resize-sensor';
+import tocbot from 'tocbot';
+import StickySidebar from 'sticky-sidebar';
+
+window.ResizeSensor = ResizeSensor;
+
+let sidebar;
+
+export default {
+    onEnter: function () {
+
+        // The new Container is ready and attached to the DOM.
+    },
+    onEnterCompleted: function () {
+
+        // The Transition has just finished.
+        const els = document.querySelectorAll('h1, h2, h3');
+        Array.prototype.forEach.call(els, (el) => {
+            if (!el.id) {
+                let str = el.innerText.replace(/\s+/, '_');
+                let tempStr = str;
+                let suffix = 0;
+
+                while (document.getElementById(tempStr)) {
+                    suffix += 1;
+                    tempStr = str + '_' + suffix;
+                }
+
+                el.id = tempStr;
+            }
+        });
+
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.tocbot',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.post__content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3',
+
+            // positionFixedSelector: '.tocbot',
+
+        });
+
+
+        sidebar = new StickySidebar('.tocbot', {topSpacing: 100});
+
+        // function fixedHeader() {
+        //     $('.tocbot').width($(".post__toc").width());
+        //     // $("#header-filler").height($("#header-fixed").outerHeight());
+        // }
+
+        // $(window).resize(function () {
+        //     fixedHeader();
+        // });
+
+        // fixedHeader();
+    },
+    onLeave: function () {
+
+        // A new Transition toward a new page has just started.
+        sidebar.destroy();
+    },
+    onLeaveCompleted: function () {
+        // The Container has just been removed from the DOM.
+    }
+};

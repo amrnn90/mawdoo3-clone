@@ -20,10 +20,10 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($category_id)
-    {   $category = Category::findOrFail($category_id);
-        $posts = $category->posts()->latest()->get();
-        
+    public function index(Category $category)
+    {   
+        $posts = $category->posts()->latest()->paginate(12);
+
         return view('posts.index')->with(compact('posts', 'category'));
     }
 

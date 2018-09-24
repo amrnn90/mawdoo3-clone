@@ -2,8 +2,11 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-
 @import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/utilities";
+
+@import '~tocbot/src/scss/tocbot-core';
+@import '~tocbot/src/scss/tocbot-default-theme';
 
 // Fonts
 // @import url('https://fonts.googleapis.com/css?family=Nunito');
@@ -34,12 +37,21 @@
 @import "components/popup";
 @import "components/hero";
 @import "components/search-form";
+
+@import "components/img-holder";
 @import "components/categories-grid";
+@import "components/posts-grid";
+@import "components/post-preview";
+@import "components/post";
+@import "components/tabs";
+@import "components/sidebar-section";
+@import "components/breadcrumb";
 
 // @import "layout/grid";
-@import "layout/navigation";
+// @import "layout/navigation";
 @import "layout/header";
 @import "layout/footer";
+@import "layout/withsidebar";
 
 @import "pages/homepage";
 

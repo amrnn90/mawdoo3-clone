@@ -24,15 +24,23 @@
 </head>
 <body>
     <div id="app">
+        @include('includes.header')
         <div id="barba-wrapper">
-            @include('includes.header')
-
-            <main class="py-4 barba-container">
+            <div class="py-4 barba-container" data-namespace="page">
                 @yield('content')
-            </main>
+            </div>
         </div>
+        @include('includes.footer')
     </div>
 
+
+    
+    <script type="text/javascript">
+        var addthis_config = addthis_config||{};
+        addthis_config.lang = 'ar'; //show in Spanish regardless of browser settings;
+    </script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b909d4eed106f4a"></script>
+    
     @yield('scripts')
 </body>
 </html>

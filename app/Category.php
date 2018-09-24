@@ -3,10 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Sluggable;
 
 class Category extends Model
 {
+    use Sluggable;
+
     protected $withCount = ['catPosts', 'subPosts'];
+
+    protected $slugField = 'name';
 
     public function scopePopular($query, $take = 7)
     {
@@ -66,5 +71,9 @@ class Category extends Model
     public static function getCategoriesWithSub() 
     {
         return static::whereNull('parent_id')->with('subcategories')->get();
+    }
+
+    public function getRouteKeyName() {
+        return 'slug';
     }
 }

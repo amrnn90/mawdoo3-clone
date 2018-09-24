@@ -7,7 +7,7 @@ trait Sluggable
     public static function bootSluggable()
     {
         static::creating(function($model) {
-            $slug_field = $model->slug_field ?? 'title';
+            $slug_field = $model->slugField ?? 'title';
             $model->slug = static::generateSlug($model->{$slug_field});
         });
 

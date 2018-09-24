@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var isBuffer = __webpack_require__(19);
 
 /*global toString:true*/
@@ -424,10 +424,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(7);
+    adapter = __webpack_require__(8);
   }
   return adapter;
 }
@@ -502,7 +502,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7)))
 
 /***/ }),
 /* 3 */
@@ -13420,6 +13420,12 @@ return jQuery;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(18);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -13435,7 +13441,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -13625,7 +13631,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13636,7 +13642,7 @@ var settle = __webpack_require__(22);
 var buildURL = __webpack_require__(24);
 var parseHeaders = __webpack_require__(25);
 var isURLSameOrigin = __webpack_require__(26);
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(27);
 
 module.exports = function xhrAdapter(config) {
@@ -13812,7 +13818,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13837,7 +13843,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13849,7 +13855,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13875,15 +13881,15 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(12);
-module.exports = __webpack_require__(45);
+__webpack_require__(13);
+module.exports = __webpack_require__(57);
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -13893,29 +13899,20 @@ module.exports = __webpack_require__(45);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(13);
-__webpack_require__(36);
+__webpack_require__(14);
+var barba = __webpack_require__(36).default;
 
-window.Vue = __webpack_require__(38);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', __webpack_require__(41));
-
-window.app = new Vue({
-  el: '#app'
+$(function () {
+    barba.register([__webpack_require__(39).default, __webpack_require__(47).default, __webpack_require__(49).default, __webpack_require__(64).default]);
+    barba.start();
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(14);
+window._ = __webpack_require__(15);
 window.Popper = __webpack_require__(3).default;
 
 /**
@@ -13927,7 +13924,7 @@ window.Popper = __webpack_require__(3).default;
 try {
   window.$ = window.jQuery = __webpack_require__(4);
 
-  __webpack_require__(16);
+  __webpack_require__(17);
 } catch (e) {}
 
 /**
@@ -13936,7 +13933,7 @@ try {
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(17);
+window.axios = __webpack_require__(5);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -13972,7 +13969,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31084,10 +31081,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(15)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)(module)))
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31115,7 +31112,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35065,12 +35062,6 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(18);
-
-/***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -35078,7 +35069,7 @@ module.exports = __webpack_require__(18);
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(5);
+var bind = __webpack_require__(6);
 var Axios = __webpack_require__(20);
 var defaults = __webpack_require__(2);
 
@@ -35113,9 +35104,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(10);
+axios.Cancel = __webpack_require__(11);
 axios.CancelToken = __webpack_require__(34);
-axios.isCancel = __webpack_require__(9);
+axios.isCancel = __webpack_require__(10);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -35268,7 +35259,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(8);
+var createError = __webpack_require__(9);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -35701,7 +35692,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(31);
-var isCancel = __webpack_require__(9);
+var isCancel = __webpack_require__(10);
 var defaults = __webpack_require__(2);
 var isAbsoluteURL = __webpack_require__(32);
 var combineURLs = __webpack_require__(33);
@@ -35861,7 +35852,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(10);
+var Cancel = __webpack_require__(11);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -35960,7 +35951,7 @@ module.exports = function spread(callback) {
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_barba_js__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_barba_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_barba_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history__ = __webpack_require__(38);
 
 
 
@@ -35973,22 +35964,14 @@ __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.goTo = function (url) {
     this.onStateChange();
 };
 
-__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Dispatcher.on('transitionCompleted', function () {
-    if (window.app && window.Vue) {
-        window.app.$destroy();
-        window.app = new window.Vue({ el: '#app' });
-    }
-});
+// function getScrollPosition() {
+//     var doc = document.documentElement;
+//     var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+//     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
 
-__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.start();
+//     return top;
+// }
 
-function getScrollPosition() {
-    var doc = document.documentElement;
-    var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
-    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-
-    return top;
-}
 
 var HideShowTransition = __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.BaseTransition.extend({
     start: function start() {
@@ -35996,11 +35979,13 @@ var HideShowTransition = __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.BaseTr
     },
 
     finish: function finish() {
-        if (history.direction() == 'back') {
-            setTimeout(function () {
+        setTimeout(function () {
+            if (history.direction() == 'back') {
                 window.scrollTo(null, history.get('scrollY'));
-            });
-        }
+            } else {
+                window.scrollTo(null, 0);
+            }
+        });
         this.done();
     }
 });
@@ -36011,14 +35996,48 @@ __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.getTransition = function (
     // and react to it if necessary
     history.setPrev('scrollY', window.scrollY);
 
-    // console.log(history.direction());
-
     if (history.direction() === 'forward') {
         return HideShowTransition;
     } else {
         return HideShowTransition;
     }
 };
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    register: function register() {
+        var callbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+        var page = __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.BaseView.extend({
+            namespace: 'page',
+            onEnter: function onEnter() {
+                callbacks.forEach(function (c) {
+                    return c.onEnter && c.onEnter();
+                });
+            },
+            onEnterCompleted: function onEnterCompleted() {
+                callbacks.forEach(function (c) {
+                    return c.onEnterCompleted && c.onEnterCompleted();
+                });
+            },
+            onLeave: function onLeave() {
+                callbacks.forEach(function (c) {
+                    return c.onLeave && c.onLeave();
+                });
+            },
+            onLeaveCompleted: function onLeaveCompleted() {
+                callbacks.forEach(function (c) {
+                    return c.onLeaveCompleted && c.onLeaveCompleted();
+                });
+            }
+
+        });
+
+        page.init();
+    },
+    start: function start() {
+        __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.start();
+    }
+});
 
 /***/ }),
 /* 37 */
@@ -37737,6 +37756,130 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var _set = _.set;
+var _get = _.get;
+
+var History = function () {
+  function History() {
+    var _this = this;
+
+    _classCallCheck(this, History);
+
+    this.forward = 'forward';
+    this.back = 'back';
+
+    if (window.history.state === null) {
+      var state = sessionStorage.getItem('history') || 0;
+      window.history.replaceState(parseInt(state), null, window.location);
+    }
+
+    this.prevState = 0;
+    this.state = window.history.state;
+
+    window.addEventListener('popstate', function (event) {
+      sessionStorage.setItem('history', event.state);
+      _this.prevState = _this.state;
+      _this.state = event.state;
+    });
+  }
+
+  _createClass(History, [{
+    key: 'goTo',
+    value: function goTo(url) {
+
+      this.prevState = this.state;
+      this.state = window.history.state + 1;
+      window.history.pushState(this.state, null, url);
+    }
+  }, {
+    key: 'direction',
+    value: function direction() {
+      return this.state <= this.prevState ? this.back : this.forward;
+    }
+  }, {
+    key: 'setSessionData',
+    value: function setSessionData() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      sessionStorage.setItem('historyData', JSON.stringify(data));
+    }
+  }, {
+    key: 'getSessionData',
+    value: function getSessionData() {
+      var data = sessionStorage.getItem('historyData') || null;
+      if (data === null) return {};
+      return JSON.parse(data);
+    }
+  }, {
+    key: 'set',
+    value: function set(key, value) {
+      this.setSessionData(_set(this.getSessionData(), this.state + '.' + key, value));
+    }
+  }, {
+    key: 'setPrev',
+    value: function setPrev(key, value) {
+      this.setSessionData(_set(this.getSessionData(), this.prevState + '.' + key, value));
+    }
+  }, {
+    key: 'get',
+    value: function get(key) {
+      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      return _get(this.getSessionData(), this.state + '.' + key, defaultValue);
+    }
+  }, {
+    key: 'getPrev',
+    value: function getPrev(key) {
+      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      return _get(this.getSessionData(), this.prevState + '.' + key, defaultValue);
+    }
+  }]);
+
+  return History;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (History);
+;
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var Vue = __webpack_require__(40);
+
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+Vue.component('example-component', __webpack_require__(43));
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    onEnterCompleted: function onEnterCompleted() {
+        if (window.app && window.app.$destroy) {
+            // console.log('destroy');
+            window.app.$destroy();
+        }
+        // console.log('create');
+        window.app = new Vue({
+            el: '#app'
+        });
+    }
+});
+
+/***/ }),
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48699,10 +48842,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(39).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(41).setImmediate))
 
 /***/ }),
-/* 39 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -48758,7 +48901,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(40);
+__webpack_require__(42);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -48772,7 +48915,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 40 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -48962,18 +49105,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(42)
+var normalizeComponent = __webpack_require__(44)
 /* script */
-var __vue_script__ = __webpack_require__(43)
+var __vue_script__ = __webpack_require__(45)
 /* template */
-var __vue_template__ = __webpack_require__(44)
+var __vue_template__ = __webpack_require__(46)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49012,7 +49155,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -49121,7 +49264,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49164,7 +49307,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49211,108 +49354,2047 @@ if (false) {
 }
 
 /***/ }),
-/* 45 */
+/* 47 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Loader__ = __webpack_require__(48);
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    onEnter: function onEnter() {
+        // The new Container is ready and attached to the DOM.
+    },
+    onEnterCompleted: function onEnterCompleted() {
+        // The Transition has just finished.
+        new __WEBPACK_IMPORTED_MODULE_0__Loader__["a" /* default */]({
+            containerEl: document.querySelector('.posts-grid'),
+            items: '.posts-grid__item',
+            more: 'li.active + li > a',
+            buttonEl: document.querySelector('.load-more')
+        });
+    },
+    onLeave: function onLeave() {
+        // A new Transition toward a new page has just started.
+    },
+    onLeaveCompleted: function onLeaveCompleted() {
+        // The Container has just been removed from the DOM.
+    }
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Loader = function () {
+  function Loader(options) {
+    _classCallCheck(this, Loader);
+
+    this.options = Object.assign({}, {
+      containerEl: null,
+      items: '.infinite-item',
+      more: '.infinite-more-link',
+      buttonEl: null,
+      replace: false,
+      // loadingClass: 'infinite-loading',
+      noMoreClass: 'no-more-items'
+      // onBeforePageLoad: () => {},
+      // onAfterPageLoad: () => {},
+    }, options);
+
+    this.initEvents();
+    this.nextUrl = this.getNextUrl();
+    this.checkIfNoMore();
+  }
+
+  _createClass(Loader, [{
+    key: 'initEvents',
+    value: function initEvents() {
+      var _this = this;
+
+      if (this.options.buttonEl) {
+        this.options.buttonEl.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          _this.load();
+        });
+      }
+    }
+  }, {
+    key: 'getNextUrl',
+    value: function getNextUrl() {
+      var html = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+
+      html = html || document;
+      var moreEl = html.querySelector(this.options.more);
+
+      if (moreEl) {
+        return moreEl.getAttribute('href');
+      }
+      return null;
+    }
+  }, {
+    key: 'load',
+    value: function load() {
+      var _this2 = this;
+
+      var nextUrl = this.nextUrl;
+      if (!nextUrl) return;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(nextUrl).then(function (_ref) {
+        var data = _ref.data;
+
+        var temp = document.createElement('html');
+        temp.innerHTML = data;
+
+        if (_this2.options.replace) {
+          // TODO: should scroll to container?
+          var oldItems = _this2.options.containerEl.querySelectorAll(_this2.options.items);
+          Array.prototype.forEach.call(oldItems, function (item) {
+            item.remove();
+          });
+        }
+
+        var items = temp.querySelectorAll(_this2.options.items);
+        Array.prototype.forEach.call(items, function (item) {
+          _this2.options.containerEl.appendChild(item);
+        });
+
+        _this2.nextUrl = _this2.getNextUrl(temp);
+        _this2.checkIfNoMore();
+      });
+    }
+  }, {
+    key: 'checkIfNoMore',
+    value: function checkIfNoMore() {
+      if (this.options.buttonEl) {
+        var method = this.nextUrl ? 'remove' : 'add';
+        this.options.buttonEl.classList[method](this.options.noMoreClass);
+        this.options.containerEl.classList[method](this.options.noMoreClass);
+      }
+    }
+  }]);
+
+  return Loader;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Loader);
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__resize_sensor__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_tocbot__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__ = __webpack_require__(56);
+
+
+
+
+window.ResizeSensor = __WEBPACK_IMPORTED_MODULE_0__resize_sensor___default.a;
+
+var sidebar = void 0;
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    onEnter: function onEnter() {
+
+        // The new Container is ready and attached to the DOM.
+    },
+    onEnterCompleted: function onEnterCompleted() {
+
+        // The Transition has just finished.
+        var els = document.querySelectorAll('h1, h2, h3');
+        Array.prototype.forEach.call(els, function (el) {
+            if (!el.id) {
+                var str = el.innerText.replace(/\s+/, '_');
+                var tempStr = str;
+                var suffix = 0;
+
+                while (document.getElementById(tempStr)) {
+                    suffix += 1;
+                    tempStr = str + '_' + suffix;
+                }
+
+                el.id = tempStr;
+            }
+        });
+
+        __WEBPACK_IMPORTED_MODULE_1_tocbot___default.a.init({
+            // Where to render the table of contents.
+            tocSelector: '.tocbot',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.post__content',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3'
+
+            // positionFixedSelector: '.tocbot',
+
+        });
+
+        sidebar = new __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__["a" /* default */]('.tocbot', { topSpacing: 100 });
+
+        // function fixedHeader() {
+        //     $('.tocbot').width($(".post__toc").width());
+        //     // $("#header-filler").height($("#header-fixed").outerHeight());
+        // }
+
+        // $(window).resize(function () {
+        //     fixedHeader();
+        // });
+
+        // fixedHeader();
+    },
+    onLeave: function onLeave() {
+
+        // A new Transition toward a new page has just started.
+        sidebar.destroy();
+    },
+    onLeaveCompleted: function onLeaveCompleted() {
+        // The Container has just been removed from the DOM.
+    }
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;
+
+
+/**
+ * Copyright Marc J. Schmidt. See the LICENSE file at the top-level
+ * directory of this distribution and at
+ * https://github.com/marcj/css-element-queries/blob/master/LICENSE.
+ */
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+(function (root, factory) {
+    if (true) {
+        !(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+    } else if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object") {
+        module.exports = factory();
+    } else {
+        root.ResizeSensor = factory();
+    }
+})(typeof window !== 'undefined' ? window : this, function () {
+
+    // Make sure it does not throw in a SSR (Server Side Rendering) situation
+    if (typeof window === "undefined") {
+        return null;
+    }
+    // Only used for the dirty checking, so the event callback count is limited to max 1 call per fps per sensor.
+    // In combination with the event based resize sensor this saves cpu time, because the sensor is too fast and
+    // would generate too many unnecessary events.
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || function (fn) {
+        return window.setTimeout(fn, 20);
+    };
+
+    /**
+     * Iterate over each of the provided element(s).
+     *
+     * @param {HTMLElement|HTMLElement[]} elements
+     * @param {Function}                  callback
+     */
+    function forEachElement(elements, callback) {
+        var elementsType = Object.prototype.toString.call(elements);
+        var isCollectionTyped = '[object Array]' === elementsType || '[object NodeList]' === elementsType || '[object HTMLCollection]' === elementsType || '[object Object]' === elementsType || 'undefined' !== typeof jQuery && elements instanceof jQuery //jquery
+        || 'undefined' !== typeof Elements && elements instanceof Elements //mootools
+        ;
+        var i = 0,
+            j = elements.length;
+        if (isCollectionTyped) {
+            for (; i < j; i++) {
+                callback(elements[i]);
+            }
+        } else {
+            callback(elements);
+        }
+    }
+
+    /**
+    * Get element size
+    * @param {HTMLElement} element
+    * @returns {Object} {width, height}
+    */
+    function getElementSize(element) {
+        if (!element.getBoundingClientRect) {
+            return {
+                width: element.offsetWidth,
+                height: element.offsetHeight
+            };
+        }
+
+        var rect = element.getBoundingClientRect();
+        return {
+            width: Math.round(rect.width),
+            height: Math.round(rect.height)
+        };
+    }
+
+    /**
+     * Class for dimension change detection.
+     *
+     * @param {Element|Element[]|Elements|jQuery} element
+     * @param {Function} callback
+     *
+     * @constructor
+     */
+    var ResizeSensor = function ResizeSensor(element, callback) {
+
+        var observer;
+
+        /**
+         *
+         * @constructor
+         */
+        function EventQueue() {
+            var q = [];
+            this.add = function (ev) {
+                q.push(ev);
+            };
+
+            var i, j;
+            this.call = function (sizeInfo) {
+                for (i = 0, j = q.length; i < j; i++) {
+                    q[i].call(this, sizeInfo);
+                }
+            };
+
+            this.remove = function (ev) {
+                var newQueue = [];
+                for (i = 0, j = q.length; i < j; i++) {
+                    if (q[i] !== ev) newQueue.push(q[i]);
+                }
+                q = newQueue;
+            };
+
+            this.length = function () {
+                return q.length;
+            };
+        }
+
+        /**
+         *
+         * @param {HTMLElement} element
+         * @param {Function}    resized
+         */
+        function attachResizeEvent(element, resized) {
+            if (!element) return;
+            if (element.resizedAttached) {
+                element.resizedAttached.add(resized);
+                return;
+            }
+
+            element.resizedAttached = new EventQueue();
+            element.resizedAttached.add(resized);
+
+            element.resizeSensor = document.createElement('div');
+            element.resizeSensor.dir = 'ltr';
+            element.resizeSensor.className = 'resize-sensor';
+            var style = 'position: absolute; left: -10px; top: -10px; right: 0; bottom: 0; overflow: hidden; z-index: -1; visibility: hidden; max-width: 100%';
+            var styleChild = 'position: absolute; left: 0; top: 0; transition: 0s;';
+
+            element.resizeSensor.style.cssText = style;
+            element.resizeSensor.innerHTML = '<div class="resize-sensor-expand" style="' + style + '">' + '<div style="' + styleChild + '"></div>' + '</div>' + '<div class="resize-sensor-shrink" style="' + style + '">' + '<div style="' + styleChild + ' width: 200%; height: 200%"></div>' + '</div>';
+            element.appendChild(element.resizeSensor);
+
+            var computedStyle = window.getComputedStyle(element);
+            var position = computedStyle ? computedStyle.getPropertyValue('position') : null;
+            if ('absolute' !== position && 'relative' !== position && 'fixed' !== position) {
+                element.style.position = 'relative';
+            }
+
+            var expand = element.resizeSensor.childNodes[0];
+            var expandChild = expand.childNodes[0];
+            var shrink = element.resizeSensor.childNodes[1];
+
+            var dirty, rafId;
+            var size = getElementSize(element);
+            var lastWidth = size.width;
+            var lastHeight = size.height;
+            var initialHiddenCheck = true,
+                resetRAF_id;
+
+            var resetExpandShrink = function resetExpandShrink() {
+                expandChild.style.width = '100000px';
+                expandChild.style.height = '100000px';
+
+                expand.scrollLeft = 100000;
+                expand.scrollTop = 100000;
+
+                shrink.scrollLeft = 100000;
+                shrink.scrollTop = 100000;
+            };
+
+            var reset = function reset() {
+                // Check if element is hidden
+                if (initialHiddenCheck) {
+                    if (!expand.scrollTop && !expand.scrollLeft) {
+
+                        // reset
+                        resetExpandShrink();
+
+                        // Check in next frame
+                        if (!resetRAF_id) {
+                            resetRAF_id = requestAnimationFrame(function () {
+                                resetRAF_id = 0;
+
+                                reset();
+                            });
+                        }
+
+                        return;
+                    } else {
+                        // Stop checking
+                        initialHiddenCheck = false;
+                    }
+                }
+
+                resetExpandShrink();
+            };
+            element.resizeSensor.resetSensor = reset;
+
+            var onResized = function onResized() {
+                rafId = 0;
+
+                if (!dirty) return;
+
+                lastWidth = size.width;
+                lastHeight = size.height;
+
+                if (element.resizedAttached) {
+                    element.resizedAttached.call(size);
+                }
+            };
+
+            var onScroll = function onScroll() {
+                size = getElementSize(element);
+                dirty = size.width !== lastWidth || size.height !== lastHeight;
+
+                if (dirty && !rafId) {
+                    rafId = requestAnimationFrame(onResized);
+                }
+
+                reset();
+            };
+
+            var addEvent = function addEvent(el, name, cb) {
+                if (el.attachEvent) {
+                    el.attachEvent('on' + name, cb);
+                } else {
+                    el.addEventListener(name, cb);
+                }
+            };
+
+            addEvent(expand, 'scroll', onScroll);
+            addEvent(shrink, 'scroll', onScroll);
+
+            // Fix for custom Elements
+            requestAnimationFrame(reset);
+        }
+
+        if (typeof ResizeObserver !== "undefined") {
+            observer = new ResizeObserver(function (element) {
+                forEachElement(element, function (elem) {
+                    callback.call(this, {
+                        width: elem.contentRect.width,
+                        height: elem.contentRect.height
+                    });
+                });
+            });
+            if (element !== undefined) {
+                forEachElement(element, function (elem) {
+                    observer.observe(elem);
+                });
+            }
+        } else {
+            forEachElement(element, function (elem) {
+                attachResizeEvent(elem, callback);
+            });
+        }
+
+        this.detach = function (ev) {
+            if (typeof ResizeObserver != "undefined") {
+                forEachElement(element, function (elem) {
+                    observer.unobserve(elem);
+                });
+            } else {
+                ResizeSensor.detach(element, ev);
+            }
+        };
+
+        this.reset = function () {
+            element.resizeSensor.resetSensor();
+        };
+    };
+
+    ResizeSensor.reset = function (element, ev) {
+        forEachElement(element, function (elem) {
+            elem.resizeSensor.resetSensor();
+        });
+    };
+
+    ResizeSensor.detach = function (element, ev) {
+        forEachElement(element, function (elem) {
+            if (!elem) return;
+            if (elem.resizedAttached && typeof ev === "function") {
+                elem.resizedAttached.remove(ev);
+                if (elem.resizedAttached.length()) return;
+            }
+            if (elem.resizeSensor) {
+                if (elem.contains(elem.resizeSensor)) {
+                    elem.removeChild(elem.resizeSensor);
+                }
+                delete elem.resizeSensor;
+                delete elem.resizedAttached;
+            }
+        });
+    };
+
+    return ResizeSensor;
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+ * Tocbot
+ * Tocbot creates a toble of contents based on HTML headings on a page,
+ * this allows users to easily jump to different sections of the document.
+ * Tocbot was inspired by tocify (http://gregfranko.com/jquery.tocify.js/).
+ * The main differences are that it works natively without any need for jquery or jquery UI).
+ *
+ * @author Tim Scanlin
+ */
+
+/* globals define */
+
+(function (root, factory) {
+  if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory(root)),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+  } else if (typeof exports === 'object') {
+    module.exports = factory(root)
+  } else {
+    root.tocbot = factory(root)
+  }
+})(typeof global !== 'undefined' ? global : this.window || this.global, function (root) {
+  'use strict'
+
+  // Default options.
+  var defaultOptions = __webpack_require__(52)
+  // Object to store current options.
+  var options = {}
+  // Object for public APIs.
+  var tocbot = {}
+
+  var BuildHtml = __webpack_require__(53)
+  var ParseContent = __webpack_require__(54)
+  // Keep these variables at top scope once options are passed in.
+  var buildHtml
+  var parseContent
+
+  // Just return if its not a browser.
+  if (typeof window === 'undefined') {
+    return
+  }
+  var supports = !!root.document.querySelector && !!root.addEventListener // Feature test
+  var headingsArray
+
+  // From: https://github.com/Raynos/xtend
+  var hasOwnProperty = Object.prototype.hasOwnProperty
+  function extend () {
+    var target = {}
+    for (var i = 0; i < arguments.length; i++) {
+      var source = arguments[i]
+      for (var key in source) {
+        if (hasOwnProperty.call(source, key)) {
+          target[key] = source[key]
+        }
+      }
+    }
+    return target
+  }
+
+  // From: https://remysharp.com/2010/07/21/throttling-function-calls
+  function throttle (fn, threshhold, scope) {
+    threshhold || (threshhold = 250)
+    var last
+    var deferTimer
+    return function () {
+      var context = scope || this
+      var now = +new Date()
+      var args = arguments
+      if (last && now < last + threshhold) {
+        // hold on to it
+        clearTimeout(deferTimer)
+        deferTimer = setTimeout(function () {
+          last = now
+          fn.apply(context, args)
+        }, threshhold)
+      } else {
+        last = now
+        fn.apply(context, args)
+      }
+    }
+  }
+
+  /**
+   * Destroy tocbot.
+   */
+  tocbot.destroy = function () {
+    // Clear HTML.
+    try {
+      document.querySelector(options.tocSelector).innerHTML = ''
+    } catch (e) {
+      console.warn('Element not found: ' + options.tocSelector); // eslint-disable-line
+    }
+
+    // Remove event listeners.
+    document.removeEventListener('scroll', this._scrollListener, false)
+    document.removeEventListener('resize', this._scrollListener, false)
+    if (buildHtml) {
+      document.removeEventListener('click', this._clickListener, false)
+    }
+  }
+
+  /**
+   * Initialize tocbot.
+   * @param {object} customOptions
+   */
+  tocbot.init = function (customOptions) {
+    // feature test
+    if (!supports) {
+      return
+    }
+
+    // Merge defaults with user options.
+    // Set to options variable at the top.
+    options = extend(defaultOptions, customOptions || {})
+    this.options = options
+    this.state = {}
+
+    // Init smooth scroll if enabled (default).
+    if (options.scrollSmooth) {
+      options.duration = options.scrollSmoothDuration
+      tocbot.scrollSmooth = __webpack_require__(55).initSmoothScrolling(options)
+    }
+
+    // Pass options to these modules.
+    buildHtml = BuildHtml(options)
+    parseContent = ParseContent(options)
+
+    // For testing purposes.
+    this._buildHtml = buildHtml
+    this._parseContent = parseContent
+
+    // Destroy it if it exists first.
+    tocbot.destroy()
+
+    // Get headings array.
+    headingsArray = parseContent.selectHeadings(options.contentSelector, options.headingSelector)
+    // Return if no headings are found.
+    if (headingsArray === null) {
+      return
+    }
+
+    // Build nested headings array.
+    var nestedHeadingsObj = parseContent.nestHeadingsArray(headingsArray)
+    var nestedHeadings = nestedHeadingsObj.nest
+
+    // Render.
+    buildHtml.render(options.tocSelector, nestedHeadings)
+
+    // Update Sidebar and bind listeners.
+    this._scrollListener = throttle(function (e) {
+      buildHtml.updateToc(headingsArray)
+      var isTop = e && e.target && e.target.scrollingElement && e.target.scrollingElement.scrollTop === 0
+      if ((e && (e.eventPhase === 0 || e.currentTarget === null)) || isTop) {
+        buildHtml.enableTocAnimation()
+        buildHtml.updateToc(headingsArray)
+        if (options.scrollEndCallback) {
+          options.scrollEndCallback(e)
+        }
+      }
+    }, options.throttleTimeout)
+    this._scrollListener()
+    document.addEventListener('scroll', this._scrollListener, false)
+    document.addEventListener('resize', this._scrollListener, false)
+
+    // Bind click listeners to disable animation.
+    this._clickListener = throttle(function (event) {
+      if (options.scrollSmooth) {
+        buildHtml.disableTocAnimation(event)
+      }
+      buildHtml.updateToc(headingsArray)
+    }, options.throttleTimeout)
+    document.addEventListener('click', this._clickListener, false)
+
+    return this
+  }
+
+  /**
+   * Refresh tocbot.
+   */
+  tocbot.refresh = function (customOptions) {
+    tocbot.destroy()
+    tocbot.init(customOptions || this.options)
+  }
+
+  // Make tocbot available globally.
+  root.tocbot = tocbot
+
+  return tocbot
+})
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  // Where to render the table of contents.
+  tocSelector: '.js-toc',
+  // Where to grab the headings to build the table of contents.
+  contentSelector: '.js-toc-content',
+  // Which headings to grab inside of the contentSelector element.
+  headingSelector: 'h1, h2, h3',
+  // Headings that match the ignoreSelector will be skipped.
+  ignoreSelector: '.js-toc-ignore',
+  // Main class to add to links.
+  linkClass: 'toc-link',
+  // Extra classes to add to links.
+  extraLinkClasses: '',
+  // Class to add to active links,
+  // the link corresponding to the top most heading on the page.
+  activeLinkClass: 'is-active-link',
+  // Main class to add to lists.
+  listClass: 'toc-list',
+  // Extra classes to add to lists.
+  extraListClasses: '',
+  // Class that gets added when a list should be collapsed.
+  isCollapsedClass: 'is-collapsed',
+  // Class that gets added when a list should be able
+  // to be collapsed but isn't necessarily collpased.
+  collapsibleClass: 'is-collapsible',
+  // Class to add to list items.
+  listItemClass: 'toc-list-item',
+  // Class to add to active list items.
+  activeListItemClass: 'is-active-li',
+  // How many heading levels should not be collpased.
+  // For example, number 6 will show everything since
+  // there are only 6 heading levels and number 0 will collpase them all.
+  // The sections that are hidden will open
+  // and close as you scroll to headings within them.
+  collapseDepth: 0,
+  // Smooth scrolling enabled.
+  scrollSmooth: true,
+  // Smooth scroll duration.
+  scrollSmoothDuration: 420,
+  // Callback for scroll end.
+  scrollEndCallback: function (e) {},
+  // Headings offset between the headings and the top of the document (this is meant for minor adjustments).
+  headingsOffset: 1,
+  // Timeout between events firing to make sure it's
+  // not too rapid (for performance reasons).
+  throttleTimeout: 50,
+  // Element to add the positionFixedClass to.
+  positionFixedSelector: null,
+  // Fixed position class to add to make sidebar fixed after scrolling
+  // down past the fixedSidebarOffset.
+  positionFixedClass: 'is-position-fixed',
+  // fixedSidebarOffset can be any number but by default is set
+  // to auto which sets the fixedSidebarOffset to the sidebar
+  // element's offsetTop from the top of the document on init.
+  fixedSidebarOffset: 'auto',
+  // includeHtml can be set to true to include the HTML markup from the
+  // heading node instead of just including the textContent.
+  includeHtml: false,
+  // onclick function to apply to all links in toc. will be called with
+  // the event as the first parameter, and this can be used to stop,
+  // propagation, prevent default or perform action
+  onClick: false,
+  // orderedList can be set to false to generate unordered lists (ul)
+  // instead of ordered lists (ol)
+  orderedList: true
+}
+
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+/**
+ * This file is responsible for building the DOM and updating DOM state.
+ *
+ * @author Tim Scanlin
+ */
+
+module.exports = function (options) {
+  var forEach = [].forEach
+  var some = [].some
+  var body = document.body
+  var currentlyHighlighting = true
+  var SPACE_CHAR = ' '
+
+  /**
+   * Create link and list elements.
+   * @param {Object} d
+   * @param {HTMLElement} container
+   * @return {HTMLElement}
+   */
+  function createEl (d, container) {
+    var link = container.appendChild(createLink(d))
+    if (d.children.length) {
+      var list = createList(d.isCollapsed)
+      d.children.forEach(function (child) {
+        createEl(child, list)
+      })
+      link.appendChild(list)
+    }
+  }
+
+  /**
+   * Render nested heading array data into a given selector.
+   * @param {String} selector
+   * @param {Array} data
+   * @return {HTMLElement}
+   */
+  function render (selector, data) {
+    var collapsed = false
+    var container = createList(collapsed)
+
+    data.forEach(function (d) {
+      createEl(d, container)
+    })
+
+    var parent = document.querySelector(selector)
+
+    // Return if no parent is found.
+    if (parent === null) {
+      return
+    }
+
+    // Remove existing child if it exists.
+    if (parent.firstChild) {
+      parent.removeChild(parent.firstChild)
+    }
+
+    // Just return the parent and don't append the list if no links are found.
+    if (data.length === 0) {
+      return parent
+    }
+
+    // Append the Elements that have been created
+    return parent.appendChild(container)
+  }
+
+  /**
+   * Create link element.
+   * @param {Object} data
+   * @return {HTMLElement}
+   */
+  function createLink (data) {
+    var item = document.createElement('li')
+    var a = document.createElement('a')
+    if (options.listItemClass) {
+      item.setAttribute('class', options.listItemClass)
+    }
+
+    if (options.onClick) {
+      a.onclick = options.onClick
+    }
+
+    if (options.includeHtml && data.childNodes.length) {
+      forEach.call(data.childNodes, function (node) {
+        a.appendChild(node.cloneNode(true))
+      })
+    } else {
+      // Default behavior.
+      a.textContent = data.textContent
+    }
+    a.setAttribute('href', '#' + data.id)
+    a.setAttribute('class', options.linkClass +
+      SPACE_CHAR + 'node-name--' + data.nodeName +
+      SPACE_CHAR + options.extraLinkClasses)
+    item.appendChild(a)
+    return item
+  }
+
+  /**
+   * Create list element.
+   * @param {Boolean} isCollapsed
+   * @return {HTMLElement}
+   */
+  function createList (isCollapsed) {
+    var listElement = (options.orderedList) ? 'ol' : 'ul'
+    var list = document.createElement(listElement)
+    var classes = options.listClass +
+      SPACE_CHAR + options.extraListClasses
+    if (isCollapsed) {
+      classes += SPACE_CHAR + options.collapsibleClass
+      classes += SPACE_CHAR + options.isCollapsedClass
+    }
+    list.setAttribute('class', classes)
+    return list
+  }
+
+  /**
+   * Update fixed sidebar class.
+   * @return {HTMLElement}
+   */
+  function updateFixedSidebarClass () {
+    var top = document.documentElement.scrollTop || body.scrollTop
+    var posFixedEl = document.querySelector(options.positionFixedSelector)
+
+    if (options.fixedSidebarOffset === 'auto') {
+      options.fixedSidebarOffset = document.querySelector(options.tocSelector).offsetTop
+    }
+
+    if (top > options.fixedSidebarOffset) {
+      if (posFixedEl.className.indexOf(options.positionFixedClass) === -1) {
+        posFixedEl.className += SPACE_CHAR + options.positionFixedClass
+      }
+    } else {
+      posFixedEl.className = posFixedEl.className.split(SPACE_CHAR + options.positionFixedClass).join('')
+    }
+  }
+
+  /**
+   * Update TOC highlighting and collpased groupings.
+   */
+  function updateToc (headingsArray) {
+    var top = document.documentElement.scrollTop || body.scrollTop
+
+    // Add fixed class at offset
+    if (options.positionFixedSelector) {
+      updateFixedSidebarClass()
+    }
+
+    // Get the top most heading currently visible on the page so we know what to highlight.
+    var headings = headingsArray
+    var topHeader
+    // Using some instead of each so that we can escape early.
+    if (currentlyHighlighting &&
+      document.querySelector(options.tocSelector) !== null &&
+      headings.length > 0) {
+      some.call(headings, function (heading, i) {
+        if (heading.offsetTop > top + options.headingsOffset + 10) {
+          // Don't allow negative index value.
+          var index = (i === 0) ? i : i - 1
+          topHeader = headings[index]
+          return true
+        } else if (i === headings.length - 1) {
+          // This allows scrolling for the last heading on the page.
+          topHeader = headings[headings.length - 1]
+          return true
+        }
+      })
+
+      // Remove the active class from the other tocLinks.
+      var tocLinks = document.querySelector(options.tocSelector)
+        .querySelectorAll('.' + options.linkClass)
+      forEach.call(tocLinks, function (tocLink) {
+        tocLink.className = tocLink.className.split(SPACE_CHAR + options.activeLinkClass).join('')
+      })
+      var tocLis = document.querySelector(options.tocSelector)
+        .querySelectorAll('.' + options.listItemClass)
+      forEach.call(tocLis, function (tocLi) {
+        tocLi.className = tocLi.className.split(SPACE_CHAR + options.activeListItemClass).join('')
+      })
+
+      // Add the active class to the active tocLink.
+      var activeTocLink = document.querySelector(options.tocSelector)
+        .querySelector('.' + options.linkClass +
+          '.node-name--' + topHeader.nodeName +
+          '[href="#' + topHeader.id + '"]')
+      if (activeTocLink.className.indexOf(options.activeLinkClass) === -1) {
+        activeTocLink.className += SPACE_CHAR + options.activeLinkClass
+      }
+      var li = activeTocLink.parentNode
+      if (li && li.className.indexOf(options.activeListItemClass) === -1) {
+        li.className += SPACE_CHAR + options.activeListItemClass
+      }
+
+      var tocLists = document.querySelector(options.tocSelector)
+        .querySelectorAll('.' + options.listClass + '.' + options.collapsibleClass)
+
+      // Collapse the other collapsible lists.
+      forEach.call(tocLists, function (list) {
+        if (list.className.indexOf(options.isCollapsedClass) === -1) {
+          list.className += SPACE_CHAR + options.isCollapsedClass
+        }
+      })
+
+      // Expand the active link's collapsible list and its sibling if applicable.
+      if (activeTocLink.nextSibling && activeTocLink.nextSibling.className.indexOf(options.isCollapsedClass) !== -1) {
+        activeTocLink.nextSibling.className = activeTocLink.nextSibling.className.split(SPACE_CHAR + options.isCollapsedClass).join('')
+      }
+      removeCollapsedFromParents(activeTocLink.parentNode.parentNode)
+    }
+  }
+
+  /**
+   * Remove collpased class from parent elements.
+   * @param {HTMLElement} element
+   * @return {HTMLElement}
+   */
+  function removeCollapsedFromParents (element) {
+    if (element.className.indexOf(options.collapsibleClass) !== -1 && element.className.indexOf(options.isCollapsedClass) !== -1) {
+      element.className = element.className.split(SPACE_CHAR + options.isCollapsedClass).join('')
+      return removeCollapsedFromParents(element.parentNode.parentNode)
+    }
+    return element
+  }
+
+  /**
+   * Disable TOC Animation when a link is clicked.
+   * @param {Event} event
+   */
+  function disableTocAnimation (event) {
+    var target = event.target || event.srcElement
+    if (typeof target.className !== 'string' || target.className.indexOf(options.linkClass) === -1) {
+      return
+    }
+    // Bind to tocLink clicks to temporarily disable highlighting
+    // while smoothScroll is animating.
+    currentlyHighlighting = false
+  }
+
+  /**
+   * Enable TOC Animation.
+   */
+  function enableTocAnimation () {
+    currentlyHighlighting = true
+  }
+
+  return {
+    enableTocAnimation: enableTocAnimation,
+    disableTocAnimation: disableTocAnimation,
+    render: render,
+    updateToc: updateToc
+  }
+}
+
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports) {
+
+/**
+ * This file is responsible for parsing the content from the DOM and making
+ * sure data is nested properly.
+ *
+ * @author Tim Scanlin
+ */
+
+module.exports = function parseContent (options) {
+  var reduce = [].reduce
+
+  /**
+   * Get the last item in an array and return a reference to it.
+   * @param {Array} array
+   * @return {Object}
+   */
+  function getLastItem (array) {
+    return array[array.length - 1]
+  }
+
+  /**
+   * Get heading level for a heading dom node.
+   * @param {HTMLElement} heading
+   * @return {Number}
+   */
+  function getHeadingLevel (heading) {
+    return +heading.nodeName.split('H').join('')
+  }
+
+  /**
+   * Get important properties from a heading element and store in a plain object.
+   * @param {HTMLElement} heading
+   * @return {Object}
+   */
+  function getHeadingObject (heading) {
+    var obj = {
+      id: heading.id,
+      children: [],
+      nodeName: heading.nodeName,
+      headingLevel: getHeadingLevel(heading),
+      textContent: heading.textContent.trim()
+    }
+
+    if (options.includeHtml) {
+      obj.childNodes = heading.childNodes
+    }
+
+    return obj
+  }
+
+  /**
+   * Add a node to the nested array.
+   * @param {Object} node
+   * @param {Array} nest
+   * @return {Array}
+   */
+  function addNode (node, nest) {
+    var obj = getHeadingObject(node)
+    var level = getHeadingLevel(node)
+    var array = nest
+    var lastItem = getLastItem(array)
+    var lastItemLevel = lastItem
+      ? lastItem.headingLevel
+      : 0
+    var counter = level - lastItemLevel
+
+    while (counter > 0) {
+      lastItem = getLastItem(array)
+      if (lastItem && lastItem.children !== undefined) {
+        array = lastItem.children
+      }
+      counter--
+    }
+
+    if (level >= options.collapseDepth) {
+      obj.isCollapsed = true
+    }
+
+    array.push(obj)
+    return array
+  }
+
+  /**
+   * Select headings in content area, exclude any selector in options.ignoreSelector
+   * @param {String} contentSelector
+   * @param {Array} headingSelector
+   * @return {Array}
+   */
+  function selectHeadings (contentSelector, headingSelector) {
+    var selectors = headingSelector
+    if (options.ignoreSelector) {
+      selectors = headingSelector.split(',')
+        .map(function mapSelectors (selector) {
+          return selector.trim() + ':not(' + options.ignoreSelector + ')'
+        })
+    }
+    try {
+      return document.querySelector(contentSelector)
+        .querySelectorAll(selectors)
+    } catch (e) {
+      console.warn('Element not found: ' + contentSelector); // eslint-disable-line
+      return null
+    }
+  }
+
+  /**
+   * Nest headings array into nested arrays with 'children' property.
+   * @param {Array} headingsArray
+   * @return {Object}
+   */
+  function nestHeadingsArray (headingsArray) {
+    return reduce.call(headingsArray, function reducer (prev, curr) {
+      var currentHeading = getHeadingObject(curr)
+
+      addNode(currentHeading, prev.nest)
+      return prev
+    }, {
+      nest: []
+    })
+  }
+
+  return {
+    nestHeadingsArray: nestHeadingsArray,
+    selectHeadings: selectHeadings
+  }
+}
+
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports) {
+
+/* globals location, requestAnimationFrame */
+
+exports.initSmoothScrolling = initSmoothScrolling
+
+function initSmoothScrolling (options) {
+  if (isCssSmoothSCrollSupported()) { }
+
+  var duration = options.duration
+
+  var pageUrl = location.hash
+    ? stripHash(location.href)
+    : location.href
+
+  delegatedLinkHijacking()
+
+  function delegatedLinkHijacking () {
+    document.body.addEventListener('click', onClick, false)
+
+    function onClick (e) {
+      if (
+        !isInPageLink(e.target) ||
+        e.target.className.indexOf('no-smooth-scroll') > -1 ||
+        (e.target.href.charAt(e.target.href.length - 2) === '#' &&
+        e.target.href.charAt(e.target.href.length - 1) === '!') ||
+        e.target.className.indexOf(options.linkClass) === -1) {
+        return
+      }
+
+      // Don't prevent default or hash doesn't change.
+      // e.preventDefault()
+
+      jump(e.target.hash, {
+        duration: duration,
+        callback: function () {
+          setFocus(e.target.hash)
+        }
+      })
+    }
+  }
+
+  function isInPageLink (n) {
+    return n.tagName.toLowerCase() === 'a' &&
+      (n.hash.length > 0 || n.href.charAt(n.href.length - 1) === '#') &&
+      (stripHash(n.href) === pageUrl || stripHash(n.href) + '#' === pageUrl)
+  }
+
+  function stripHash (url) {
+    return url.slice(0, url.lastIndexOf('#'))
+  }
+
+  function isCssSmoothSCrollSupported () {
+    return 'scrollBehavior' in document.documentElement.style
+  }
+
+  // Adapted from:
+  // https://www.nczonline.net/blog/2013/01/15/fixing-skip-to-content-links/
+  function setFocus (hash) {
+    var element = document.getElementById(hash.substring(1))
+
+    if (element) {
+      if (!/^(?:a|select|input|button|textarea)$/i.test(element.tagName)) {
+        element.tabIndex = -1
+      }
+
+      element.focus()
+    }
+  }
+}
+
+function jump (target, options) {
+  var start = window.pageYOffset
+  var opt = {
+    duration: options.duration,
+    offset: options.offset || 0,
+    callback: options.callback,
+    easing: options.easing || easeInOutQuad
+  }
+  // This makes ids that start with a number work: ('[id="' + decodeURI(target).split('#').join('') + '"]')
+  // DecodeURI for nonASCII hashes, they was encoded, but id was not encoded, it lead to not finding the tgt element by id.
+  // And this is for IE: document.body.scrollTop
+  var tgt = document.querySelector('[id="' + decodeURI(target).split('#').join('') + '"]')
+  var distance = typeof target === 'string'
+    ? opt.offset + (
+      target
+      ? (tgt && tgt.getBoundingClientRect().top) || 0 // handle non-existent links better.
+      : -(document.documentElement.scrollTop || document.body.scrollTop))
+    : target
+  var duration = typeof opt.duration === 'function'
+    ? opt.duration(distance)
+    : opt.duration
+  var timeStart
+  var timeElapsed
+
+  requestAnimationFrame(function (time) { timeStart = time; loop(time) })
+  function loop (time) {
+    timeElapsed = time - timeStart
+
+    window.scrollTo(0, opt.easing(timeElapsed, start, distance, duration))
+
+    if (timeElapsed < duration) { requestAnimationFrame(loop) } else { end() }
+  }
+
+  function end () {
+    window.scrollTo(0, start + distance)
+
+    if (typeof opt.callback === 'function') { opt.callback() }
+  }
+
+  // Robert Penner's easeInOutQuad - http://robertpenner.com/easing/
+  function easeInOutQuad (t, b, c, d) {
+    t /= d / 2
+    if (t < 1) return c / 2 * t * t + b
+    t--
+    return -c / 2 * (t * (t - 2) - 1) + b
+  }
+}
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/**
+ * Sticky Sidebar JavaScript Plugin.
+ * @version 3.3.1
+ * @author Ahmed Bouhuolia <a.bouhuolia@gmail.com>
+ * @license The MIT License (MIT)
+ */
+const StickySidebar = (() => {
+  
+    // ---------------------------------
+    // # Define Constants
+    // ---------------------------------
+    //
+    const EVENT_KEY = '.stickySidebar';
+    const VERSION   = '3.3.1';
+  
+    const DEFAULTS = {
+      
+      /**
+       * Additional top spacing of the element when it becomes sticky.
+       * @type {Numeric|Function}
+       */
+      topSpacing: 0,
+  
+      /**
+       * Additional bottom spacing of the element when it becomes sticky.
+       * @type {Numeric|Function}
+       */
+      bottomSpacing: 0,
+  
+      /**
+       * Container sidebar selector to know what the beginning and end of sticky element.
+       * @type {String|False}
+       */
+      containerSelector: false,
+  
+      /**
+       * Inner wrapper selector.
+       * @type {String}
+       */
+      innerWrapperSelector: '.inner-wrapper-sticky',
+  
+      /**
+       * The name of CSS class to apply to elements when they have become stuck.
+       * @type {String|False}
+       */
+      stickyClass: 'is-affixed',
+  
+      /**
+       * Detect when sidebar and its container change height so re-calculate their dimensions.
+       * @type {Boolean}
+       */
+      resizeSensor: true,
+  
+      /**
+       * The sidebar returns to its normal position if its width below this value.
+       * @type {Numeric}
+       */
+      minWidth: false
+    };
+  
+    // ---------------------------------
+    // # Class Definition
+    // ---------------------------------
+    //
+    /**
+     * Sticky Sidebar Class.
+     * @public
+     */
+    class StickySidebar{
+  
+      /**
+       * Sticky Sidebar Constructor.
+       * @constructor
+       * @param {HTMLElement|String} sidebar - The sidebar element or sidebar selector.
+       * @param {Object} options - The options of sticky sidebar.
+       */
+      constructor(sidebar, options = {}){
+        this.options = StickySidebar.extend(DEFAULTS, options);
+  
+        // Sidebar element query if there's no one, throw error.
+        this.sidebar = ('string' === typeof sidebar ) ? document.querySelector(sidebar) : sidebar;
+        if( 'undefined' === typeof this.sidebar )
+          throw new Error("There is no specific sidebar element.");
+  
+        this.sidebarInner = false;
+        this.container = this.sidebar.parentElement;
+  
+        // Current Affix Type of sidebar element.
+        this.affixedType = 'STATIC';
+        this.direction = 'down';
+        this.support = {
+          transform:   false,
+          transform3d: false
+        };
+  
+        this._initialized = false;
+        this._reStyle = false;
+        this._breakpoint = false;
+        this._resizeListeners = [];
+        
+        // Dimensions of sidebar, container and screen viewport.
+        this.dimensions = {
+          translateY: 0,
+          topSpacing: 0,
+          lastTopSpacing: 0,
+          bottomSpacing: 0,
+          lastBottomSpacing: 0,
+          sidebarHeight: 0,
+          sidebarWidth: 0,
+          containerTop: 0,
+          containerHeight: 0,
+          viewportHeight: 0,
+          viewportTop: 0, 
+          lastViewportTop: 0,
+        };
+  
+        // Bind event handlers for referencability.
+        ['handleEvent'].forEach( (method) => {
+          this[method] = this[method].bind(this);
+        });
+  
+        // Initialize sticky sidebar for first time.
+        this.initialize();
+      }
+  
+      /**
+       * Initializes the sticky sidebar by adding inner wrapper, define its container, 
+       * min-width breakpoint, calculating dimensions, adding helper classes and inline style.
+       * @private
+       */
+      initialize(){
+        this._setSupportFeatures();
+  
+        // Get sticky sidebar inner wrapper, if not found, will create one.
+        if( this.options.innerWrapperSelector ){
+          this.sidebarInner = this.sidebar.querySelector(this.options.innerWrapperSelector);
+  
+          if( null === this.sidebarInner )
+            this.sidebarInner = false;
+        }
+        
+        if( ! this.sidebarInner ){
+          let wrapper = document.createElement('div');
+          wrapper.setAttribute('class', 'inner-wrapper-sticky');
+          this.sidebar.appendChild(wrapper);
+  
+          while( this.sidebar.firstChild != wrapper )
+            wrapper.appendChild(this.sidebar.firstChild);
+  
+          this.sidebarInner = this.sidebar.querySelector('.inner-wrapper-sticky');
+        }
+  
+        // Container wrapper of the sidebar.
+        if( this.options.containerSelector ){
+          let containers = document.querySelectorAll(this.options.containerSelector);
+          containers = Array.prototype.slice.call(containers);
+  
+          containers.forEach((container, item) => {
+            if( ! container.contains(this.sidebar) ) return;
+            this.container = container;
+          });
+  
+          if( ! containers.length )
+            throw new Error("The container does not contains on the sidebar.");
+        }
+        
+        // If top/bottom spacing is not function parse value to integer.
+        if( 'function' !== typeof this.options.topSpacing )
+          this.options.topSpacing = parseInt(this.options.topSpacing) || 0;
+  
+        if( 'function' !== typeof this.options.bottomSpacing )
+          this.options.bottomSpacing = parseInt(this.options.bottomSpacing) || 0;
+            
+        // Breakdown sticky sidebar if screen width below `options.minWidth`.
+        this._widthBreakpoint();
+  
+        // Calculate dimensions of sidebar, container and viewport.
+        this.calcDimensions();
+  
+        // Affix sidebar in proper position.
+        this.stickyPosition();
+  
+        // Bind all events.
+        this.bindEvents();
+        
+        // Inform other properties the sticky sidebar is initialized.
+        this._initialized = true;
+      }
+  
+      /**
+       * Bind all events of sticky sidebar plugin.
+       * @protected
+       */
+      bindEvents(){
+        window.addEventListener('resize', this, {passive: true, capture: false});
+        window.addEventListener('scroll', this, {passive: true, capture: false});
+  
+        this.sidebar.addEventListener('update' + EVENT_KEY, this);
+  
+        if( this.options.resizeSensor && 'undefined' !== typeof ResizeSensor ){
+          new ResizeSensor(this.sidebarInner, this.handleEvent);
+          new ResizeSensor(this.container, this.handleEvent);
+        }
+      }
+  
+      /**
+       * Handles all events of the plugin.
+       * @param {Object} event - Event object passed from listener.
+       */
+      handleEvent(event){
+        this.updateSticky(event);
+      }
+  
+      /**
+       * Calculates dimensions of sidebar, container and screen viewpoint
+       * @public
+       */
+      calcDimensions(){
+        if( this._breakpoint ) return;
+        var dims = this.dimensions;
+  
+        // Container of sticky sidebar dimensions.
+        dims.containerTop    = StickySidebar.offsetRelative(this.container).top;
+        dims.containerHeight = this.container.clientHeight;
+        dims.containerBottom = dims.containerTop + dims.containerHeight;
+  
+        // Sidebar dimensions.
+        dims.sidebarHeight = this.sidebarInner.offsetHeight;
+        dims.sidebarWidth  = this.sidebar.offsetWidth;
+        
+        // Screen viewport dimensions.
+        dims.viewportHeight = window.innerHeight;
+  
+        this._calcDimensionsWithScroll();
+      }
+  
+      /**
+       * Some dimensions values need to be up-to-date when scrolling the page.
+       * @private
+       */
+      _calcDimensionsWithScroll(){
+        var dims = this.dimensions;
+  
+        dims.sidebarLeft = StickySidebar.offsetRelative(this.sidebar).left;
+  
+        dims.viewportTop    = document.documentElement.scrollTop || document.body.scrollTop;
+        dims.viewportBottom = dims.viewportTop + dims.viewportHeight;
+        dims.viewportLeft   = document.documentElement.scrollLeft || document.body.scrollLeft;
+  
+        dims.topSpacing    = this.options.topSpacing;
+        dims.bottomSpacing = this.options.bottomSpacing;
+  
+        if( 'function' === typeof dims.topSpacing )
+            dims.topSpacing = parseInt(dims.topSpacing(this.sidebar)) || 0;
+  
+        if( 'function' === typeof dims.bottomSpacing )
+            dims.bottomSpacing = parseInt(dims.bottomSpacing(this.sidebar)) || 0;
+        
+        if( 'VIEWPORT-TOP' === this.affixedType ){
+          // Adjust translate Y in the case decrease top spacing value.
+          if( dims.topSpacing < dims.lastTopSpacing ){
+            dims.translateY += dims.lastTopSpacing - dims.topSpacing;
+            this._reStyle = true; 
+          }
+        
+        } else if( 'VIEWPORT-BOTTOM' === this.affixedType ){
+          // Adjust translate Y in the case decrease bottom spacing value.
+          if( dims.bottomSpacing < dims.lastBottomSpacing ){
+            dims.translateY += dims.lastBottomSpacing - dims.bottomSpacing;
+            this._reStyle = true;
+          }
+        }
+        
+        dims.lastTopSpacing    = dims.topSpacing;
+        dims.lastBottomSpacing = dims.bottomSpacing;
+      }
+      
+      /**
+       * Determine whether the sidebar is bigger than viewport.
+       * @public
+       * @return {Boolean}
+       */
+      isSidebarFitsViewport(){
+        return this.dimensions.sidebarHeight < this.dimensions.viewportHeight;
+      }
+  
+      /**
+       * Observe browser scrolling direction top and down.
+       */
+      observeScrollDir(){
+        var dims = this.dimensions;
+        if( dims.lastViewportTop === dims.viewportTop ) return;
+  
+        var furthest = 'down' === this.direction ? Math.min : Math.max;
+        
+        // If the browser is scrolling not in the same direction.
+        if( dims.viewportTop === furthest(dims.viewportTop, dims.lastViewportTop) )
+          this.direction = 'down' === this.direction ?  'up' : 'down';
+      }
+  
+      /**
+       * Gets affix type of sidebar according to current scrollTop and scrollLeft.
+       * Holds all logical affix of the sidebar when scrolling up and down and when sidebar 
+       * is bigger than viewport and vice versa.
+       * @public
+       * @return {String|False} - Proper affix type.
+       */
+      getAffixType(){
+        var dims = this.dimensions, affixType = false;
+  
+        this._calcDimensionsWithScroll();
+  
+        var sidebarBottom = dims.sidebarHeight + dims.containerTop;
+        var colliderTop = dims.viewportTop + dims.topSpacing;
+        var colliderBottom = dims.viewportBottom - dims.bottomSpacing;
+  
+        // When browser is scrolling top.
+        if( 'up' === this.direction ){
+          if( colliderTop <= dims.containerTop ){
+            dims.translateY = 0;
+            affixType = 'STATIC';
+  
+          } else if( colliderTop <= dims.translateY + dims.containerTop ){
+            dims.translateY = colliderTop - dims.containerTop;
+            affixType = 'VIEWPORT-TOP';
+  
+          } else if( ! this.isSidebarFitsViewport() && dims.containerTop <= colliderTop ){
+            affixType = 'VIEWPORT-UNBOTTOM';
+          }
+        // When browser is scrolling up.
+        } else {
+          // When sidebar element is not bigger than screen viewport.
+          if( this.isSidebarFitsViewport() ){
+  
+            if( dims.sidebarHeight + colliderTop >= dims.containerBottom ){
+              dims.translateY = dims.containerBottom - sidebarBottom;
+              affixType = 'CONTAINER-BOTTOM'; 
+  
+            } else if( colliderTop >= dims.containerTop ){
+              dims.translateY = colliderTop - dims.containerTop;
+              affixType = 'VIEWPORT-TOP';
+            }
+          // When sidebar element is bigger than screen viewport.
+          } else {
+      
+            if( dims.containerBottom <= colliderBottom ){
+              dims.translateY = dims.containerBottom - sidebarBottom; 
+              affixType = 'CONTAINER-BOTTOM';    
+  
+            } else if( sidebarBottom + dims.translateY <= colliderBottom ){
+              dims.translateY = colliderBottom - sidebarBottom;
+              affixType = 'VIEWPORT-BOTTOM';
+            
+            } else if( dims.containerTop + dims.translateY <= colliderTop ){
+              affixType = 'VIEWPORT-UNBOTTOM';
+            }
+          }
+        }
+  
+        // Make sure the translate Y is not bigger than container height.
+        dims.translateY = Math.max(0, dims.translateY);
+        dims.translateY = Math.min(dims.containerHeight, dims.translateY);
+  
+        dims.lastViewportTop = dims.viewportTop;
+        return affixType;
+      }
+  
+      /**
+       * Gets inline style of sticky sidebar wrapper and inner wrapper according 
+       * to its affix type.
+       * @private
+       * @param {String} affixType - Affix type of sticky sidebar.
+       * @return {Object}
+       */
+      _getStyle(affixType){
+        if( 'undefined' === typeof affixType ) return;
+  
+        var style = {inner: {}, outer: {}};
+        var dims = this.dimensions;
+  
+        switch( affixType ){
+          case 'VIEWPORT-TOP':
+            style.inner = {position: 'fixed', top: dims.topSpacing,
+                  left: dims.sidebarLeft - dims.viewportLeft, width: dims.sidebarWidth};
+            break;
+          case 'VIEWPORT-BOTTOM':
+            style.inner = {position: 'fixed', top: 'auto', left: dims.sidebarLeft,
+                  bottom: dims.bottomSpacing, width: dims.sidebarWidth};
+            break;
+          case 'CONTAINER-BOTTOM':
+          case 'VIEWPORT-UNBOTTOM':
+            let translate = this._getTranslate(0, dims.translateY + 'px');
+            
+            if( translate )
+              style.inner = {transform: translate};
+            else 
+              style.inner = {position: 'absolute', top: dims.translateY, width: dims.sidebarWidth};
+            break;
+        }
+        
+        switch( affixType ){
+          case 'VIEWPORT-TOP':
+          case 'VIEWPORT-BOTTOM':
+          case 'VIEWPORT-UNBOTTOM':
+          case 'CONTAINER-BOTTOM':
+            style.outer = {height: dims.sidebarHeight, position: 'relative'};
+            break;
+        }
+  
+        style.outer = StickySidebar.extend({height: '', position: ''}, style.outer);
+        style.inner = StickySidebar.extend({position: 'relative', top: '', left: '',
+            bottom: '', width: '',  transform: this._getTranslate()}, style.inner);
+  
+        return style;
+      }
+     
+      /**
+       * Cause the sidebar to be sticky according to affix type by adding inline
+       * style, adding helper class and trigger events.
+       * @function
+       * @protected
+       * @param {string} force - Update sticky sidebar position by force.
+       */
+      stickyPosition(force){
+        if( this._breakpoint ) return;
+  
+        force = this._reStyle || force || false;
+        
+        var offsetTop = this.options.topSpacing;
+        var offsetBottom = this.options.bottomSpacing;
+  
+        var affixType = this.getAffixType();
+        var style = this._getStyle(affixType);
+        
+        if( (this.affixedType != affixType || force) && affixType ){
+          let affixEvent = 'affix.' + affixType.toLowerCase().replace('viewport-', '') + EVENT_KEY;
+          StickySidebar.eventTrigger(this.sidebar, affixEvent);
+  
+          if( 'STATIC' === affixType )
+            StickySidebar.removeClass(this.sidebar, this.options.stickyClass);
+          else
+            StickySidebar.addClass(this.sidebar, this.options.stickyClass);
+          
+          for( let key in style.outer ){
+            let _unit = ('number' === typeof style.outer[key]) ? 'px' : '';
+            this.sidebar.style[key] = style.outer[key];
+          }
+  
+          for( let key in style.inner ){
+            let _unit = ('number' === typeof style.inner[key]) ? 'px' : '';
+            this.sidebarInner.style[key] = style.inner[key] + _unit;
+          }
+          
+          let affixedEvent = 'affixed.'+ affixType.toLowerCase().replace('viewport-', '') + EVENT_KEY;
+          StickySidebar.eventTrigger(this.sidebar, affixedEvent);
+        } else {
+          if( this._initialized ) this.sidebarInner.style.left = style.inner.left;
+        }
+  
+        this.affixedType = affixType;
+      }
+  
+      /**
+       * Breakdown sticky sidebar when window width is below `options.minWidth` value.
+       * @protected
+       */
+      _widthBreakpoint(){
+  
+        if( window.innerWidth <= this.options.minWidth ){
+          this._breakpoint = true;
+          this.affixedType = 'STATIC';
+  
+          this.sidebar.removeAttribute('style');
+          StickySidebar.removeClass(this.sidebar, this.options.stickyClass);
+          this.sidebarInner.removeAttribute('style');
+        } else {
+          this._breakpoint = false;
+        }
+      }
+  
+      /**
+       * Switches between functions stack for each event type, if there's no 
+       * event, it will re-initialize sticky sidebar.
+       * @public
+       */
+      updateSticky(event = {}){
+        if( this._running ) return;
+        this._running = true;
+  
+        ((eventType) => {
+
+          requestAnimationFrame(() => {
+            switch( eventType ){
+              // When browser is scrolling and re-calculate just dimensions
+              // within scroll. 
+              case 'scroll':
+                this._calcDimensionsWithScroll();
+                this.observeScrollDir();
+                this.stickyPosition();
+                break;
+  
+              // When browser is resizing or there's no event, observe width
+              // breakpoint and re-calculate dimensions.
+              case 'resize':
+              default: 
+                this._widthBreakpoint();
+                this.calcDimensions();
+                this.stickyPosition(true);
+                break;
+            }
+            this._running = false;
+          });
+        })(event.type);
+      }
+  
+      /**
+       * Set browser support features to the public property.
+       * @private
+       */
+      _setSupportFeatures(){
+        var support = this.support;
+  
+        support.transform = StickySidebar.supportTransform();
+        support.transform3d = StickySidebar.supportTransform(true);
+      }
+  
+      /**
+       * Get translate value, if the browser supports transfrom3d, it will adopt it.
+       * and the same with translate. if browser doesn't support both return false.
+       * @param {Number} y - Value of Y-axis.
+       * @param {Number} x - Value of X-axis.
+       * @param {Number} z - Value of Z-axis.
+       * @return {String|False}
+       */
+      _getTranslate(y = 0, x = 0, z = 0){
+        if( this.support.transform3d ) return 'translate3d(' + y +', '+ x +', '+ z +')';
+        else if( this.support.translate ) return 'translate('+ y +', '+ x +')';
+        else return false;
+      }
+  
+      /**
+       * Destroy sticky sidebar plugin.
+       * @public
+       */
+      destroy(){
+        window.removeEventListener('resize', this, {caption: false});
+        window.removeEventListener('scroll', this, {caption: false});
+  
+        this.sidebar.classList.remove(this.options.stickyClass);
+        this.sidebar.style.minHeight = '';
+  
+        this.sidebar.removeEventListener('update' + EVENT_KEY, this);
+  
+        var styleReset = {inner: {}, outer: {}};
+  
+        styleReset.inner = {position: '', top: '', left: '', bottom: '', width: '',  transform: ''};
+        styleReset.outer = {height: '', position: ''};
+  
+        for( let key in styleReset.outer )
+          this.sidebar.style[key] = styleReset.outer[key];
+  
+        for( let key in styleReset.inner )
+          this.sidebarInner.style[key] = styleReset.inner[key];
+  
+        if( this.options.resizeSensor && 'undefined' !== typeof ResizeSensor ){
+          ResizeSensor.detach(this.sidebarInner, this.handleEvent);
+          ResizeSensor.detach(this.container, this.handleEvent);
+        }
+      }
+  
+      /**
+       * Determine if the browser supports CSS transform feature.
+       * @function
+       * @static
+       * @param {Boolean} transform3d - Detect transform with translate3d.
+       * @return {String}
+       */
+      static supportTransform(transform3d){
+        var result = false,
+            property = (transform3d) ? 'perspective' : 'transform',
+            upper = property.charAt(0).toUpperCase() + property.slice(1),
+            prefixes = ['Webkit', 'Moz', 'O', 'ms'],
+            support = document.createElement('support'),
+            style = support.style;
+  
+        (property + ' ' + prefixes.join(upper + ' ') + upper).split(' ').forEach(function(property, i) {
+          if (style[property] !== undefined) {
+            result = property;
+            return false;
+          }
+        });
+        return result;
+      }
+  
+      /**
+       * Trigger custom event.
+       * @static
+       * @param {DOMObject} element - Target element on the DOM.
+       * @param {String} eventName - Event name.
+       * @param {Object} data - 
+       */
+      static eventTrigger(element, eventName, data){
+        try{
+          var event = new CustomEvent(eventName, {detail: data});
+        } catch(e){
+          var event = document.createEvent('CustomEvent');
+          event.initCustomEvent(eventName, true, true, data);
+        }
+        element.dispatchEvent(event);
+      }
+  
+      /**
+       * Extend options object with defaults.
+       * @function
+       * @static
+       */
+      static extend(defaults, options){
+        var results = {};
+        for( let key in defaults ){
+          if( 'undefined' !== typeof options[key] ) results[key] = options[key];
+          else results[key] = defaults[key];
+        }
+        return results;
+      }
+  
+      /**
+       * Get current coordinates left and top of specific element.
+       * @static
+       */
+      static offsetRelative(element){
+        var result = {left: 0, top: 0};
+
+        do{
+          let offsetTop = element.offsetTop;
+          let offsetLeft = element.offsetLeft;
+  
+          if( ! isNaN(offsetTop) )
+            result.top += offsetTop;
+  
+          if( ! isNaN(offsetLeft) )
+            result.left += offsetLeft;
+
+          element = ( 'BODY' === element.tagName ) ?
+                      element.parentElement : element.offsetParent;
+        } while(element)
+        return result;
+      }
+  
+      /**
+       * Add specific class name to specific element.
+       * @static 
+       * @param {ObjectDOM} element 
+       * @param {String} className 
+       */
+      static addClass(element, className){
+        if( ! StickySidebar.hasClass(element, className) ){
+          if (element.classList)
+            element.classList.add(className);
+          else
+            element.className += ' ' + className;
+        }
+      }
+      
+      /**
+       * Remove specific class name to specific element
+       * @static
+       * @param {ObjectDOM} element 
+       * @param {String} className 
+       */
+      static removeClass(element, className){
+        if( StickySidebar.hasClass(element, className) ){
+          if (element.classList)
+            element.classList.remove(className);
+          else
+            element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+        }
+      }
+
+      /**
+       * Determine weather the element has specific class name.
+       * @static
+       * @param {ObjectDOM} element 
+       * @param {String} className 
+       */
+      static hasClass(element, className){
+        if (element.classList)
+          return element.classList.contains(className);
+        else
+          return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
+      }
+    }
+  
+    return StickySidebar;
+  })();
+  
+  /* harmony default export */ __webpack_exports__["a"] = (StickySidebar);
+  
+  // Global
+  // -------------------------
+  window.StickySidebar = StickySidebar;
+
+/***/ }),
+/* 57 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var _set = _.set;
-var _get = _.get;
-
-var History = function () {
-  function History() {
-    var _this = this;
-
-    _classCallCheck(this, History);
-
-    this.forward = 'forward';
-    this.back = 'back';
-
-    if (window.history.state === null) {
-      var state = sessionStorage.getItem('history') || 0;
-      window.history.replaceState(parseInt(state), null, window.location);
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+    onEnter: function onEnter() {
+        // The new Container is ready and attached to the DOM.
+    },
+    onEnterCompleted: function onEnterCompleted() {
+        // The Transition has just finished.
+        if (window.addthis && window.addthis.layers && window.addthis.layers.refresh) {
+            addthis.layers.refresh();
+        }
+    },
+    onLeave: function onLeave() {
+        // A new Transition toward a new page has just started.
+    },
+    onLeaveCompleted: function onLeaveCompleted() {
+        // The Container has just been removed from the DOM.
     }
-
-    this.prevState = 0;
-    this.state = window.history.state;
-
-    window.addEventListener('popstate', function (event) {
-      sessionStorage.setItem('history', event.state);
-      _this.prevState = _this.state;
-      _this.state = event.state;
-    });
-  }
-
-  _createClass(History, [{
-    key: 'goTo',
-    value: function goTo(url) {
-      this.prevState = this.state;
-      this.state = window.history.state + 1;
-      window.history.pushState(this.state, null, url);
-    }
-  }, {
-    key: 'direction',
-    value: function direction() {
-      return this.state <= this.prevState ? this.back : this.forward;
-    }
-  }, {
-    key: 'setSessionData',
-    value: function setSessionData() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      sessionStorage.setItem('historyData', JSON.stringify(data));
-    }
-  }, {
-    key: 'getSessionData',
-    value: function getSessionData() {
-      var data = sessionStorage.getItem('historyData') || null;
-      if (data === null) return {};
-      return JSON.parse(data);
-    }
-  }, {
-    key: 'set',
-    value: function set(key, value) {
-      this.setSessionData(_set(this.getSessionData(), this.state + '.' + key, value));
-    }
-  }, {
-    key: 'setPrev',
-    value: function setPrev(key, value) {
-      this.setSessionData(_set(this.getSessionData(), this.prevState + '.' + key, value));
-    }
-  }, {
-    key: 'get',
-    value: function get(key) {
-      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      return _get(this.getSessionData(), this.state + '.' + key, defaultValue);
-    }
-  }, {
-    key: 'getPrev',
-    value: function getPrev(key) {
-      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      return _get(this.getSessionData(), this.prevState + '.' + key, defaultValue);
-    }
-  }]);
-
-  return History;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (History);
-;
+});
 
 /***/ })
 /******/ ]);

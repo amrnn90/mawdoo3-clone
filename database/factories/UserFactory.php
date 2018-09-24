@@ -47,7 +47,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'content' => $faker->realText(300),
         'image' => $image,
         'category_id' => $category->id,
-        'subcategory_id' => $category->subcategories->random()->id,
+        'subcategory_id' => $category->subcategories->count() ? $category->subcategories->random()->id : null,
         'user_id' => $users->random()->id,
     ];
 });

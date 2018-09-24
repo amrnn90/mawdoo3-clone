@@ -11,7 +11,7 @@ class Post extends Model
     use Viewable;
 
     protected $guarded = [];
-    protected $slug_field = 'title';
+    protected $slugField = 'title';
 
     public static function boot()
     {

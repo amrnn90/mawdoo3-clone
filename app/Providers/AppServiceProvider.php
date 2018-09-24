@@ -14,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        setlocale(LC_TIME, 'ar_AE.utf8');
+        \Carbon\Carbon::setLocale(config('app.locale'));
+
         view()->composer('*', function($view) {
             $categories = Category::getCategoriesWithSub();
             $popularCategories = Category::popular()->take(7)->get();

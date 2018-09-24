@@ -3,7 +3,7 @@
 @section('title', 'موضوع، أكبر موقع عربي بالعالم')
 
 @section('content')
-    <div class="homepage">
+    <main class="homepage">
         @include('includes.hero', ['posts' => $latestPosts])
     
         <div class="container">
@@ -16,5 +16,5 @@
                 @include('includes.categories-grid', ['categories' => $categories])
             </section>
         </div>
-    </div>
+    </main>
 @endsection

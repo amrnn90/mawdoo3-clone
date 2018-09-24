@@ -11,25 +11,16 @@ Barba.Pjax.goTo = function (url) {
     this.onStateChange();
 };
 
-Barba.Dispatcher.on('transitionCompleted', function () {
-    if (window.app && window.Vue) {
-        window.app.$destroy();
-        window.app = new window.Vue({ el: '#app' });
-    }
 
 
-});
 
-Barba.Pjax.start();
+// function getScrollPosition() {
+//     var doc = document.documentElement;
+//     var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
+//     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
 
-
-function getScrollPosition() {
-    var doc = document.documentElement;
-    var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
-    var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-
-    return top;
-}
+//     return top;
+// }
 
 
 var HideShowTransition = Barba.BaseTransition.extend({
@@ -38,11 +29,13 @@ var HideShowTransition = Barba.BaseTransition.extend({
     },
 
     finish: function () {
-        if (history.direction() == 'back') {
-            setTimeout(() => {
+        setTimeout(() => {
+            if (history.    direction() == 'back') {
                 window.scrollTo(null, history.get('scrollY'));
-            });
-        }
+            } else {
+                window.scrollTo(null, 0);
+            }
+        });
         this.done();
     }
 });
@@ -54,11 +47,36 @@ Barba.Pjax.getTransition = function () {
     // and react to it if necessary
     history.setPrev('scrollY', window.scrollY);
 
-    // console.log(history.direction());
-
     if (history.direction() === 'forward') {
         return HideShowTransition;
     } else {
         return HideShowTransition;
     }
 };
+
+
+export default {
+    register: (callbacks = []) => {
+        const page = Barba.BaseView.extend({
+            namespace: 'page',
+            onEnter: function() {
+                callbacks.forEach(c => c.onEnter && c.onEnter());
+            },
+            onEnterCompleted: function() {
+                callbacks.forEach(c => c.onEnterCompleted && c.onEnterCompleted());
+            },
+            onLeave: function() {
+                callbacks.forEach(c => c.onLeave && c.onLeave());
+            },
+            onLeaveCompleted: function() {
+                callbacks.forEach(c => c.onLeaveCompleted && c.onLeaveCompleted());
+            },
+
+        });
+
+        page.init();
+    },
+    start: function() {
+        Barba.Pjax.start();
+    }
+}
