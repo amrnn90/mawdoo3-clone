@@ -5,13 +5,13 @@ namespace App;
 class PostFilter {
     static protected $fields = ['latest'];
 
-    static public function filter($builder = null) 
+    static public function filter($params, $builder = null) 
     {
         $builder = $builder ?? Post::query();
 
         foreach (static::$fields as $field) {
-            if (request()->has($field)) {
-                $value = request()->get($field);
+            if (array_key_exists($field, $params)) {
+                $value = $params[$field];
                 static::$field($builder, $value);
             }
         }

@@ -25,7 +25,7 @@
 <body>
     <div id="app">
         @include('includes.header')
-        <div id="barba-wrapper">
+        <div id="swup">
             <div class="py-4 barba-container" data-namespace="page">
                 @yield('content')
             </div>

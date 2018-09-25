@@ -10,10 +10,6 @@ export default {
     onEnter: function () {
 
         // The new Container is ready and attached to the DOM.
-    },
-    onEnterCompleted: function () {
-
-        // The Transition has just finished.
         if (document.querySelector('.tocbot')) {
             const content = document.querySelector('.post__content');
             const els = content.querySelectorAll('h1, h2, h3');
@@ -47,6 +43,11 @@ export default {
     
             sidebar = new StickySidebar('.tocbot', {topSpacing: 100});
         }
+    },
+    onEnterCompleted: function () {
+
+        // The Transition has just finished.
+
     },
     onLeave: function () {
 

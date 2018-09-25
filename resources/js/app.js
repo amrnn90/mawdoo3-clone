@@ -6,16 +6,16 @@
  */
 
 require('./bootstrap');
-const barba = require('./barba').default;
+// const barba = require('./barba').default;
+const swup = require('./swup').default;
 
 $(function() {
-    barba.register([
+    swup.register([
         require('./vue').default,
         require('./load-more-posts').default,
         require('./toc').default,
         require('./addthis').default
     ]);
-    barba.start();
-})
+});
 
 

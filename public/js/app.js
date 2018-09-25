@@ -13900,11 +13900,11 @@ module.exports = __webpack_require__(58);
  */
 
 __webpack_require__(14);
-var barba = __webpack_require__(36).default;
+// const barba = require('./barba').default;
+var swup = __webpack_require__(64).default;
 
 $(function () {
-    barba.register([__webpack_require__(39).default, __webpack_require__(47).default, __webpack_require__(49).default, __webpack_require__(57).default]);
-    barba.start();
+    swup.register([__webpack_require__(39).default, __webpack_require__(47).default, __webpack_require__(49).default, __webpack_require__(57).default]);
 });
 
 /***/ }),
@@ -35944,1912 +35944,9 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 36 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_barba_js__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_barba_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_barba_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__history__ = __webpack_require__(38);
-
-
-
-var history = new __WEBPACK_IMPORTED_MODULE_1__history__["a" /* default */]();
-
-window.history.scrollRestoration = 'auto';
-
-__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.goTo = function (url) {
-    history.goTo(url);
-    this.onStateChange();
-};
-
-// function getScrollPosition() {
-//     var doc = document.documentElement;
-//     var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
-//     var top = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
-
-//     return top;
-// }
-
-
-var HideShowTransition = __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.BaseTransition.extend({
-    start: function start() {
-        this.newContainerLoading.then(this.finish.bind(this));
-    },
-
-    finish: function finish() {
-        setTimeout(function () {
-            if (history.direction() == 'back') {
-                window.scrollTo(null, history.get('scrollY'));
-            } else {
-                window.scrollTo(null, 0);
-            }
-        });
-        this.done();
-    }
-});
-
-__WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.getTransition = function () {
-    // store scroll position to previous state
-    // to make it accessible in the transition
-    // and react to it if necessary
-    history.setPrev('scrollY', window.scrollY);
-
-    if (history.direction() === 'forward') {
-        return HideShowTransition;
-    } else {
-        return HideShowTransition;
-    }
-};
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    register: function register() {
-        var callbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-        var page = __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.BaseView.extend({
-            namespace: 'page',
-            onEnter: function onEnter() {
-                callbacks.forEach(function (c) {
-                    return c.onEnter && c.onEnter();
-                });
-            },
-            onEnterCompleted: function onEnterCompleted() {
-                callbacks.forEach(function (c) {
-                    return c.onEnterCompleted && c.onEnterCompleted();
-                });
-            },
-            onLeave: function onLeave() {
-                callbacks.forEach(function (c) {
-                    return c.onLeave && c.onLeave();
-                });
-            },
-            onLeaveCompleted: function onLeaveCompleted() {
-                callbacks.forEach(function (c) {
-                    return c.onLeaveCompleted && c.onLeaveCompleted();
-                });
-            }
-
-        });
-
-        page.init();
-    },
-    start: function start() {
-        __WEBPACK_IMPORTED_MODULE_0_barba_js___default.a.Pjax.start();
-    }
-});
-
-/***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(true)
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define("Barba", [], factory);
-	else if(typeof exports === 'object')
-		exports["Barba"] = factory();
-	else
-		root["Barba"] = factory();
-})(this, function() {
-return /******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
-/******/ 			return installedModules[moduleId].exports;
-/******/
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost:8080/dist";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ function(module, exports, __webpack_require__) {
-
-	//Promise polyfill https://github.com/taylorhakes/promise-polyfill
-	
-	if (typeof Promise !== 'function') {
-	 window.Promise = __webpack_require__(1);
-	}
-	
-	var Barba = {
-	  version: '1.0.0',
-	  BaseTransition: __webpack_require__(4),
-	  BaseView: __webpack_require__(6),
-	  BaseCache: __webpack_require__(8),
-	  Dispatcher: __webpack_require__(7),
-	  HistoryManager: __webpack_require__(9),
-	  Pjax: __webpack_require__(10),
-	  Prefetch: __webpack_require__(13),
-	  Utils: __webpack_require__(5)
-	};
-	
-	module.exports = Barba;
-
-
-/***/ },
-/* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(setImmediate) {(function (root) {
-	
-	  // Store setTimeout reference so promise-polyfill will be unaffected by
-	  // other code modifying setTimeout (like sinon.useFakeTimers())
-	  var setTimeoutFunc = setTimeout;
-	
-	  function noop() {
-	  }
-	
-	  // Use polyfill for setImmediate for performance gains
-	  var asap = (typeof setImmediate === 'function' && setImmediate) ||
-	    function (fn) {
-	      setTimeoutFunc(fn, 0);
-	    };
-	
-	  var onUnhandledRejection = function onUnhandledRejection(err) {
-	    if (typeof console !== 'undefined' && console) {
-	      console.warn('Possible Unhandled Promise Rejection:', err); // eslint-disable-line no-console
-	    }
-	  };
-	
-	  // Polyfill for Function.prototype.bind
-	  function bind(fn, thisArg) {
-	    return function () {
-	      fn.apply(thisArg, arguments);
-	    };
-	  }
-	
-	  function Promise(fn) {
-	    if (typeof this !== 'object') throw new TypeError('Promises must be constructed via new');
-	    if (typeof fn !== 'function') throw new TypeError('not a function');
-	    this._state = 0;
-	    this._handled = false;
-	    this._value = undefined;
-	    this._deferreds = [];
-	
-	    doResolve(fn, this);
-	  }
-	
-	  function handle(self, deferred) {
-	    while (self._state === 3) {
-	      self = self._value;
-	    }
-	    if (self._state === 0) {
-	      self._deferreds.push(deferred);
-	      return;
-	    }
-	    self._handled = true;
-	    asap(function () {
-	      var cb = self._state === 1 ? deferred.onFulfilled : deferred.onRejected;
-	      if (cb === null) {
-	        (self._state === 1 ? resolve : reject)(deferred.promise, self._value);
-	        return;
-	      }
-	      var ret;
-	      try {
-	        ret = cb(self._value);
-	      } catch (e) {
-	        reject(deferred.promise, e);
-	        return;
-	      }
-	      resolve(deferred.promise, ret);
-	    });
-	  }
-	
-	  function resolve(self, newValue) {
-	    try {
-	      // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
-	      if (newValue === self) throw new TypeError('A promise cannot be resolved with itself.');
-	      if (newValue && (typeof newValue === 'object' || typeof newValue === 'function')) {
-	        var then = newValue.then;
-	        if (newValue instanceof Promise) {
-	          self._state = 3;
-	          self._value = newValue;
-	          finale(self);
-	          return;
-	        } else if (typeof then === 'function') {
-	          doResolve(bind(then, newValue), self);
-	          return;
-	        }
-	      }
-	      self._state = 1;
-	      self._value = newValue;
-	      finale(self);
-	    } catch (e) {
-	      reject(self, e);
-	    }
-	  }
-	
-	  function reject(self, newValue) {
-	    self._state = 2;
-	    self._value = newValue;
-	    finale(self);
-	  }
-	
-	  function finale(self) {
-	    if (self._state === 2 && self._deferreds.length === 0) {
-	      asap(function() {
-	        if (!self._handled) {
-	          onUnhandledRejection(self._value);
-	        }
-	      });
-	    }
-	
-	    for (var i = 0, len = self._deferreds.length; i < len; i++) {
-	      handle(self, self._deferreds[i]);
-	    }
-	    self._deferreds = null;
-	  }
-	
-	  function Handler(onFulfilled, onRejected, promise) {
-	    this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
-	    this.onRejected = typeof onRejected === 'function' ? onRejected : null;
-	    this.promise = promise;
-	  }
-	
-	  /**
-	   * Take a potentially misbehaving resolver function and make sure
-	   * onFulfilled and onRejected are only called once.
-	   *
-	   * Makes no guarantees about asynchrony.
-	   */
-	  function doResolve(fn, self) {
-	    var done = false;
-	    try {
-	      fn(function (value) {
-	        if (done) return;
-	        done = true;
-	        resolve(self, value);
-	      }, function (reason) {
-	        if (done) return;
-	        done = true;
-	        reject(self, reason);
-	      });
-	    } catch (ex) {
-	      if (done) return;
-	      done = true;
-	      reject(self, ex);
-	    }
-	  }
-	
-	  Promise.prototype['catch'] = function (onRejected) {
-	    return this.then(null, onRejected);
-	  };
-	
-	  Promise.prototype.then = function (onFulfilled, onRejected) {
-	    var prom = new (this.constructor)(noop);
-	
-	    handle(this, new Handler(onFulfilled, onRejected, prom));
-	    return prom;
-	  };
-	
-	  Promise.all = function (arr) {
-	    var args = Array.prototype.slice.call(arr);
-	
-	    return new Promise(function (resolve, reject) {
-	      if (args.length === 0) return resolve([]);
-	      var remaining = args.length;
-	
-	      function res(i, val) {
-	        try {
-	          if (val && (typeof val === 'object' || typeof val === 'function')) {
-	            var then = val.then;
-	            if (typeof then === 'function') {
-	              then.call(val, function (val) {
-	                res(i, val);
-	              }, reject);
-	              return;
-	            }
-	          }
-	          args[i] = val;
-	          if (--remaining === 0) {
-	            resolve(args);
-	          }
-	        } catch (ex) {
-	          reject(ex);
-	        }
-	      }
-	
-	      for (var i = 0; i < args.length; i++) {
-	        res(i, args[i]);
-	      }
-	    });
-	  };
-	
-	  Promise.resolve = function (value) {
-	    if (value && typeof value === 'object' && value.constructor === Promise) {
-	      return value;
-	    }
-	
-	    return new Promise(function (resolve) {
-	      resolve(value);
-	    });
-	  };
-	
-	  Promise.reject = function (value) {
-	    return new Promise(function (resolve, reject) {
-	      reject(value);
-	    });
-	  };
-	
-	  Promise.race = function (values) {
-	    return new Promise(function (resolve, reject) {
-	      for (var i = 0, len = values.length; i < len; i++) {
-	        values[i].then(resolve, reject);
-	      }
-	    });
-	  };
-	
-	  /**
-	   * Set the immediate function to execute callbacks
-	   * @param fn {function} Function to execute
-	   * @private
-	   */
-	  Promise._setImmediateFn = function _setImmediateFn(fn) {
-	    asap = fn;
-	  };
-	
-	  Promise._setUnhandledRejectionFn = function _setUnhandledRejectionFn(fn) {
-	    onUnhandledRejection = fn;
-	  };
-	
-	  if (typeof module !== 'undefined' && module.exports) {
-	    module.exports = Promise;
-	  } else if (!root.Promise) {
-	    root.Promise = Promise;
-	  }
-	
-	})(this);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).setImmediate))
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(setImmediate, clearImmediate) {var nextTick = __webpack_require__(3).nextTick;
-	var apply = Function.prototype.apply;
-	var slice = Array.prototype.slice;
-	var immediateIds = {};
-	var nextImmediateId = 0;
-	
-	// DOM APIs, for completeness
-	
-	exports.setTimeout = function() {
-	  return new Timeout(apply.call(setTimeout, window, arguments), clearTimeout);
-	};
-	exports.setInterval = function() {
-	  return new Timeout(apply.call(setInterval, window, arguments), clearInterval);
-	};
-	exports.clearTimeout =
-	exports.clearInterval = function(timeout) { timeout.close(); };
-	
-	function Timeout(id, clearFn) {
-	  this._id = id;
-	  this._clearFn = clearFn;
-	}
-	Timeout.prototype.unref = Timeout.prototype.ref = function() {};
-	Timeout.prototype.close = function() {
-	  this._clearFn.call(window, this._id);
-	};
-	
-	// Does not start the time, just sets up the members needed.
-	exports.enroll = function(item, msecs) {
-	  clearTimeout(item._idleTimeoutId);
-	  item._idleTimeout = msecs;
-	};
-	
-	exports.unenroll = function(item) {
-	  clearTimeout(item._idleTimeoutId);
-	  item._idleTimeout = -1;
-	};
-	
-	exports._unrefActive = exports.active = function(item) {
-	  clearTimeout(item._idleTimeoutId);
-	
-	  var msecs = item._idleTimeout;
-	  if (msecs >= 0) {
-	    item._idleTimeoutId = setTimeout(function onTimeout() {
-	      if (item._onTimeout)
-	        item._onTimeout();
-	    }, msecs);
-	  }
-	};
-	
-	// That's not how node.js implements it but the exposed api is the same.
-	exports.setImmediate = typeof setImmediate === "function" ? setImmediate : function(fn) {
-	  var id = nextImmediateId++;
-	  var args = arguments.length < 2 ? false : slice.call(arguments, 1);
-	
-	  immediateIds[id] = true;
-	
-	  nextTick(function onNextTick() {
-	    if (immediateIds[id]) {
-	      // fn.call() is faster so we optimize for the common use-case
-	      // @see http://jsperf.com/call-apply-segu
-	      if (args) {
-	        fn.apply(null, args);
-	      } else {
-	        fn.call(null);
-	      }
-	      // Prevent ids from leaking
-	      exports.clearImmediate(id);
-	    }
-	  });
-	
-	  return id;
-	};
-	
-	exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate : function(id) {
-	  delete immediateIds[id];
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2).setImmediate, __webpack_require__(2).clearImmediate))
-
-/***/ },
-/* 3 */
-/***/ function(module, exports) {
-
-	// shim for using process in browser
-	
-	var process = module.exports = {};
-	
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
-	
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-	
-	(function () {
-	  try {
-	    cachedSetTimeout = setTimeout;
-	  } catch (e) {
-	    cachedSetTimeout = function () {
-	      throw new Error('setTimeout is not defined');
-	    }
-	  }
-	  try {
-	    cachedClearTimeout = clearTimeout;
-	  } catch (e) {
-	    cachedClearTimeout = function () {
-	      throw new Error('clearTimeout is not defined');
-	    }
-	  }
-	} ())
-	var queue = [];
-	var draining = false;
-	var currentQueue;
-	var queueIndex = -1;
-	
-	function cleanUpNextTick() {
-	    if (!draining || !currentQueue) {
-	        return;
-	    }
-	    draining = false;
-	    if (currentQueue.length) {
-	        queue = currentQueue.concat(queue);
-	    } else {
-	        queueIndex = -1;
-	    }
-	    if (queue.length) {
-	        drainQueue();
-	    }
-	}
-	
-	function drainQueue() {
-	    if (draining) {
-	        return;
-	    }
-	    var timeout = cachedSetTimeout(cleanUpNextTick);
-	    draining = true;
-	
-	    var len = queue.length;
-	    while(len) {
-	        currentQueue = queue;
-	        queue = [];
-	        while (++queueIndex < len) {
-	            if (currentQueue) {
-	                currentQueue[queueIndex].run();
-	            }
-	        }
-	        queueIndex = -1;
-	        len = queue.length;
-	    }
-	    currentQueue = null;
-	    draining = false;
-	    cachedClearTimeout(timeout);
-	}
-	
-	process.nextTick = function (fun) {
-	    var args = new Array(arguments.length - 1);
-	    if (arguments.length > 1) {
-	        for (var i = 1; i < arguments.length; i++) {
-	            args[i - 1] = arguments[i];
-	        }
-	    }
-	    queue.push(new Item(fun, args));
-	    if (queue.length === 1 && !draining) {
-	        cachedSetTimeout(drainQueue, 0);
-	    }
-	};
-	
-	// v8 likes predictible objects
-	function Item(fun, array) {
-	    this.fun = fun;
-	    this.array = array;
-	}
-	Item.prototype.run = function () {
-	    this.fun.apply(null, this.array);
-	};
-	process.title = 'browser';
-	process.browser = true;
-	process.env = {};
-	process.argv = [];
-	process.version = ''; // empty string to avoid regexp issues
-	process.versions = {};
-	
-	function noop() {}
-	
-	process.on = noop;
-	process.addListener = noop;
-	process.once = noop;
-	process.off = noop;
-	process.removeListener = noop;
-	process.removeAllListeners = noop;
-	process.emit = noop;
-	
-	process.binding = function (name) {
-	    throw new Error('process.binding is not supported');
-	};
-	
-	process.cwd = function () { return '/' };
-	process.chdir = function (dir) {
-	    throw new Error('process.chdir is not supported');
-	};
-	process.umask = function() { return 0; };
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Utils = __webpack_require__(5);
-	
-	/**
-	 * BaseTransition to extend
-	 *
-	 * @namespace Barba.BaseTransition
-	 * @type {Object}
-	 */
-	var BaseTransition = {
-	  /**
-	   * @memberOf Barba.BaseTransition
-	   * @type {HTMLElement}
-	   */
-	  oldContainer: undefined,
-	
-	  /**
-	   * @memberOf Barba.BaseTransition
-	   * @type {HTMLElement}
-	   */
-	  newContainer: undefined,
-	
-	  /**
-	   * @memberOf Barba.BaseTransition
-	   * @type {Promise}
-	   */
-	  newContainerLoading: undefined,
-	
-	  /**
-	   * Helper to extend the object
-	   *
-	   * @memberOf Barba.BaseTransition
-	   * @param  {Object} newObject
-	   * @return {Object} newInheritObject
-	   */
-	  extend: function(obj){
-	    return Utils.extend(this, obj);
-	  },
-	
-	  /**
-	   * This function is called from Pjax module to initialize
-	   * the transition.
-	   *
-	   * @memberOf Barba.BaseTransition
-	   * @private
-	   * @param  {HTMLElement} oldContainer
-	   * @param  {Promise} newContainer
-	   * @return {Promise}
-	   */
-	  init: function(oldContainer, newContainer) {
-	    var _this = this;
-	
-	    this.oldContainer = oldContainer;
-	    this._newContainerPromise = newContainer;
-	
-	    this.deferred = Utils.deferred();
-	    this.newContainerReady = Utils.deferred();
-	    this.newContainerLoading = this.newContainerReady.promise;
-	
-	    this.start();
-	
-	    this._newContainerPromise.then(function(newContainer) {
-	      _this.newContainer = newContainer;
-	      _this.newContainerReady.resolve();
-	    });
-	
-	    return this.deferred.promise;
-	  },
-	
-	  /**
-	   * This function needs to be called as soon the Transition is finished
-	   *
-	   * @memberOf Barba.BaseTransition
-	   */
-	  done: function() {
-	    this.oldContainer.parentNode.removeChild(this.oldContainer);
-	    this.newContainer.style.visibility = 'visible';
-	    this.deferred.resolve();
-	  },
-	
-	  /**
-	   * Constructor for your Transition
-	   *
-	   * @memberOf Barba.BaseTransition
-	   * @abstract
-	   */
-	  start: function() {},
-	};
-	
-	module.exports = BaseTransition;
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	/**
-	 * Just an object with some helpful functions
-	 *
-	 * @type {Object}
-	 * @namespace Barba.Utils
-	 */
-	var Utils = {
-	  /**
-	   * Return the current url
-	   *
-	   * @memberOf Barba.Utils
-	   * @return {String} currentUrl
-	   */
-	  getCurrentUrl: function() {
-	    return window.location.protocol + '//' +
-	           window.location.host +
-	           window.location.pathname +
-	           window.location.search;
-	  },
-	
-	  /**
-	   * Given an url, return it without the hash
-	   *
-	   * @memberOf Barba.Utils
-	   * @private
-	   * @param  {String} url
-	   * @return {String} newCleanUrl
-	   */
-	  cleanLink: function(url) {
-	    return url.replace(/#.*/, '');
-	  },
-	
-	  /**
-	   * Time in millisecond after the xhr request goes in timeout
-	   *
-	   * @memberOf Barba.Utils
-	   * @type {Number}
-	   * @default
-	   */
-	  xhrTimeout: 5000,
-	
-	  /**
-	   * Start an XMLHttpRequest() and return a Promise
-	   *
-	   * @memberOf Barba.Utils
-	   * @param  {String} url
-	   * @return {Promise}
-	   */
-	  xhr: function(url) {
-	    var deferred = this.deferred();
-	    var req = new XMLHttpRequest();
-	
-	    req.onreadystatechange = function() {
-	      if (req.readyState === 4) {
-	        if (req.status === 200) {
-	          return deferred.resolve(req.responseText);
-	        } else {
-	          return deferred.reject(new Error('xhr: HTTP code is not 200'));
-	        }
-	      }
-	    };
-	
-	    req.ontimeout = function() {
-	      return deferred.reject(new Error('xhr: Timeout exceeded'));
-	    };
-	
-	    req.open('GET', url);
-	    req.timeout = this.xhrTimeout;
-	    req.setRequestHeader('x-barba', 'yes');
-	    req.send();
-	
-	    return deferred.promise;
-	  },
-	
-	  /**
-	   * Get obj and props and return a new object with the property merged
-	   *
-	   * @memberOf Barba.Utils
-	   * @param  {object} obj
-	   * @param  {object} props
-	   * @return {object}
-	   */
-	  extend: function(obj, props) {
-	    var newObj = Object.create(obj);
-	
-	    for(var prop in props) {
-	      if(props.hasOwnProperty(prop)) {
-	        newObj[prop] = props[prop];
-	      }
-	    }
-	
-	    return newObj;
-	  },
-	
-	  /**
-	   * Return a new "Deferred" object
-	   * https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Deferred
-	   *
-	   * @memberOf Barba.Utils
-	   * @return {Deferred}
-	   */
-	  deferred: function() {
-	    return new function() {
-	      this.resolve = null;
-	      this.reject = null;
-	
-	      this.promise = new Promise(function(resolve, reject) {
-	        this.resolve = resolve;
-	        this.reject = reject;
-	      }.bind(this));
-	    };
-	  },
-	
-	  /**
-	   * Return the port number normalized, eventually you can pass a string to be normalized.
-	   *
-	   * @memberOf Barba.Utils
-	   * @private
-	   * @param  {String} p
-	   * @return {Int} port
-	   */
-	  getPort: function(p) {
-	    var port = typeof p !== 'undefined' ? p : window.location.port;
-	    var protocol = window.location.protocol;
-	
-	    if (port != '')
-	      return parseInt(port);
-	
-	    if (protocol === 'http:')
-	      return 80;
-	
-	    if (protocol === 'https:')
-	      return 443;
-	  }
-	};
-	
-	module.exports = Utils;
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Dispatcher = __webpack_require__(7);
-	var Utils = __webpack_require__(5);
-	
-	/**
-	 * BaseView to be extended
-	 *
-	 * @namespace Barba.BaseView
-	 * @type {Object}
-	 */
-	var BaseView  = {
-	  /**
-	   * Namespace of the view.
-	   * (need to be associated with the data-namespace of the container)
-	   *
-	   * @memberOf Barba.BaseView
-	   * @type {String}
-	   */
-	  namespace: null,
-	
-	  /**
-	   * Helper to extend the object
-	   *
-	   * @memberOf Barba.BaseView
-	   * @param  {Object} newObject
-	   * @return {Object} newInheritObject
-	   */
-	  extend: function(obj){
-	    return Utils.extend(this, obj);
-	  },
-	
-	  /**
-	   * Init the view.
-	   * P.S. Is suggested to init the view before starting Barba.Pjax.start(),
-	   * in this way .onEnter() and .onEnterCompleted() will be fired for the current
-	   * container when the page is loaded.
-	   *
-	   * @memberOf Barba.BaseView
-	   */
-	  init: function() {
-	    var _this = this;
-	
-	    Dispatcher.on('initStateChange',
-	      function(newStatus, oldStatus) {
-	        if (oldStatus && oldStatus.namespace === _this.namespace)
-	          _this.onLeave();
-	      }
-	    );
-	
-	    Dispatcher.on('newPageReady',
-	      function(newStatus, oldStatus, container) {
-	        _this.container = container;
-	
-	        if (newStatus.namespace === _this.namespace)
-	          _this.onEnter();
-	      }
-	    );
-	
-	    Dispatcher.on('transitionCompleted',
-	      function(newStatus, oldStatus) {
-	        if (newStatus.namespace === _this.namespace)
-	          _this.onEnterCompleted();
-	
-	        if (oldStatus && oldStatus.namespace === _this.namespace)
-	          _this.onLeaveCompleted();
-	      }
-	    );
-	  },
-	
-	 /**
-	  * This function will be fired when the container
-	  * is ready and attached to the DOM.
-	  *
-	  * @memberOf Barba.BaseView
-	  * @abstract
-	  */
-	  onEnter: function() {},
-	
-	  /**
-	   * This function will be fired when the transition
-	   * to this container has just finished.
-	   *
-	   * @memberOf Barba.BaseView
-	   * @abstract
-	   */
-	  onEnterCompleted: function() {},
-	
-	  /**
-	   * This function will be fired when the transition
-	   * to a new container has just started.
-	   *
-	   * @memberOf Barba.BaseView
-	   * @abstract
-	   */
-	  onLeave: function() {},
-	
-	  /**
-	   * This function will be fired when the container
-	   * has just been removed from the DOM.
-	   *
-	   * @memberOf Barba.BaseView
-	   * @abstract
-	   */
-	  onLeaveCompleted: function() {}
-	}
-	
-	module.exports = BaseView;
-
-
-/***/ },
-/* 7 */
-/***/ function(module, exports) {
-
-	/**
-	 * Little Dispatcher inspired by MicroEvent.js
-	 *
-	 * @namespace Barba.Dispatcher
-	 * @type {Object}
-	 */
-	var Dispatcher = {
-	  /**
-	   * Object that keeps all the events
-	   *
-	   * @memberOf Barba.Dispatcher
-	   * @readOnly
-	   * @type {Object}
-	   */
-	  events: {},
-	
-	  /**
-	   * Bind a callback to an event
-	   *
-	   * @memberOf Barba.Dispatcher
-	   * @param  {String} eventName
-	   * @param  {Function} function
-	   */
-	  on: function(e, f) {
-	    this.events[e] = this.events[e] || [];
-	    this.events[e].push(f);
-	  },
-	
-	  /**
-	   * Unbind event
-	   *
-	   * @memberOf Barba.Dispatcher
-	   * @param  {String} eventName
-	   * @param  {Function} function
-	   */
-	  off: function(e, f) {
-	    if(e in this.events === false)
-	      return;
-	
-	    this.events[e].splice(this.events[e].indexOf(f), 1);
-	  },
-	
-	  /**
-	   * Fire the event running all the event associated to it
-	   *
-	   * @memberOf Barba.Dispatcher
-	   * @param  {String} eventName
-	   * @param  {...*} args
-	   */
-	  trigger: function(e) {//e, ...args
-	    if (e in this.events === false)
-	      return;
-	
-	    for(var i = 0; i < this.events[e].length; i++){
-	      this.events[e][i].apply(this, Array.prototype.slice.call(arguments, 1));
-	    }
-	  }
-	};
-	
-	module.exports = Dispatcher;
-
-
-/***/ },
-/* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Utils = __webpack_require__(5);
-	
-	/**
-	 * BaseCache it's a simple static cache
-	 *
-	 * @namespace Barba.BaseCache
-	 * @type {Object}
-	 */
-	var BaseCache = {
-	  /**
-	   * The Object that keeps all the key value information
-	   *
-	   * @memberOf Barba.BaseCache
-	   * @type {Object}
-	   */
-	  data: {},
-	
-	  /**
-	   * Helper to extend this object
-	   *
-	   * @memberOf Barba.BaseCache
-	   * @private
-	   * @param  {Object} newObject
-	   * @return {Object} newInheritObject
-	   */
-	  extend: function(obj) {
-	    return Utils.extend(this, obj);
-	  },
-	
-	  /**
-	   * Set a key and value data, mainly Barba is going to save promises
-	   *
-	   * @memberOf Barba.BaseCache
-	   * @param {String} key
-	   * @param {*} value
-	   */
-	  set: function(key, val) {
-	    this.data[key] = val;
-	  },
-	
-	  /**
-	   * Retrieve the data using the key
-	   *
-	   * @memberOf Barba.BaseCache
-	   * @param  {String} key
-	   * @return {*}
-	   */
-	  get: function(key) {
-	    return this.data[key];
-	  },
-	
-	  /**
-	   * Flush the cache
-	   *
-	   * @memberOf Barba.BaseCache
-	   */
-	  reset: function() {
-	    this.data = {};
-	  }
-	};
-	
-	module.exports = BaseCache;
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports) {
-
-	/**
-	 * HistoryManager helps to keep track of the navigation
-	 *
-	 * @namespace Barba.HistoryManager
-	 * @type {Object}
-	 */
-	var HistoryManager = {
-	  /**
-	   * Keep track of the status in historic order
-	   *
-	   * @memberOf Barba.HistoryManager
-	   * @readOnly
-	   * @type {Array}
-	   */
-	  history: [],
-	
-	  /**
-	   * Add a new set of url and namespace
-	   *
-	   * @memberOf Barba.HistoryManager
-	   * @param {String} url
-	   * @param {String} namespace
-	   * @private
-	   */
-	  add: function(url, namespace) {
-	    if (!namespace)
-	      namespace = undefined;
-	
-	    this.history.push({
-	      url: url,
-	      namespace: namespace
-	    });
-	  },
-	
-	  /**
-	   * Return information about the current status
-	   *
-	   * @memberOf Barba.HistoryManager
-	   * @return {Object}
-	   */
-	  currentStatus: function() {
-	    return this.history[this.history.length - 1];
-	  },
-	
-	  /**
-	   * Return information about the previous status
-	   *
-	   * @memberOf Barba.HistoryManager
-	   * @return {Object}
-	   */
-	  prevStatus: function() {
-	    var history = this.history;
-	
-	    if (history.length < 2)
-	      return null;
-	
-	    return history[history.length - 2];
-	  }
-	};
-	
-	module.exports = HistoryManager;
-
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Utils = __webpack_require__(5);
-	var Dispatcher = __webpack_require__(7);
-	var HideShowTransition = __webpack_require__(11);
-	var BaseCache = __webpack_require__(8);
-	
-	var HistoryManager = __webpack_require__(9);
-	var Dom = __webpack_require__(12);
-	
-	/**
-	 * Pjax is a static object with main function
-	 *
-	 * @namespace Barba.Pjax
-	 * @borrows Dom as Dom
-	 * @type {Object}
-	 */
-	var Pjax = {
-	  Dom: Dom,
-	  History: HistoryManager,
-	  Cache: BaseCache,
-	
-	  /**
-	   * Indicate wether or not use the cache
-	   *
-	   * @memberOf Barba.Pjax
-	   * @type {Boolean}
-	   * @default
-	   */
-	  cacheEnabled: true,
-	
-	  /**
-	   * Indicate if there is an animation in progress
-	   *
-	   * @memberOf Barba.Pjax
-	   * @readOnly
-	   * @type {Boolean}
-	   */
-	  transitionProgress: false,
-	
-	  /**
-	   * Class name used to ignore links
-	   *
-	   * @memberOf Barba.Pjax
-	   * @type {String}
-	   * @default
-	   */
-	  ignoreClassLink: 'no-barba',
-	
-	  /**
-	   * Function to be called to start Pjax
-	   *
-	   * @memberOf Barba.Pjax
-	   */
-	  start: function() {
-	    this.init();
-	  },
-	
-	  /**
-	   * Init the events
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   */
-	  init: function() {
-	    var container = this.Dom.getContainer();
-	    var wrapper = this.Dom.getWrapper();
-	
-	    wrapper.setAttribute('aria-live', 'polite');
-	
-	    this.History.add(
-	      this.getCurrentUrl(),
-	      this.Dom.getNamespace(container)
-	    );
-	
-	    //Fire for the current view.
-	    Dispatcher.trigger('initStateChange', this.History.currentStatus());
-	    Dispatcher.trigger('newPageReady',
-	      this.History.currentStatus(),
-	      {},
-	      container,
-	      this.Dom.currentHTML
-	    );
-	    Dispatcher.trigger('transitionCompleted', this.History.currentStatus());
-	
-	    this.bindEvents();
-	  },
-	
-	  /**
-	   * Attach the eventlisteners
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   */
-	  bindEvents: function() {
-	    document.addEventListener('click',
-	      this.onLinkClick.bind(this)
-	    );
-	
-	    window.addEventListener('popstate',
-	      this.onStateChange.bind(this)
-	    );
-	  },
-	
-	  /**
-	   * Return the currentURL cleaned
-	   *
-	   * @memberOf Barba.Pjax
-	   * @return {String} currentUrl
-	   */
-	  getCurrentUrl: function() {
-	    return Utils.cleanLink(
-	      Utils.getCurrentUrl()
-	    );
-	  },
-	
-	  /**
-	   * Change the URL with pushstate and trigger the state change
-	   *
-	   * @memberOf Barba.Pjax
-	   * @param {String} newUrl
-	   */
-	  goTo: function(url) {
-	    window.history.pushState(null, null, url);
-	    this.onStateChange();
-	  },
-	
-	  /**
-	   * Force the browser to go to a certain url
-	   *
-	   * @memberOf Barba.Pjax
-	   * @param {String} url
-	   * @private
-	   */
-	  forceGoTo: function(url) {
-	    window.location = url;
-	  },
-	
-	  /**
-	   * Load an url, will start an xhr request or load from the cache
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   * @param  {String} url
-	   * @return {Promise}
-	   */
-	  load: function(url) {
-	    var deferred = Utils.deferred();
-	    var _this = this;
-	    var xhr;
-	
-	    xhr = this.Cache.get(url);
-	
-	    if (!xhr) {
-	      xhr = Utils.xhr(url);
-	      this.Cache.set(url, xhr);
-	    }
-	
-	    xhr.then(
-	      function(data) {
-	        var container = _this.Dom.parseResponse(data);
-	
-	        _this.Dom.putContainer(container);
-	
-	        if (!_this.cacheEnabled)
-	          _this.Cache.reset();
-	
-	        deferred.resolve(container);
-	      },
-	      function() {
-	        //Something went wrong (timeout, 404, 505...)
-	        _this.forceGoTo(url);
-	
-	        deferred.reject();
-	      }
-	    );
-	
-	    return deferred.promise;
-	  },
-	
-	  /**
-	   * Get the .href parameter out of an element
-	   * and handle special cases (like xlink:href)
-	   *
-	   * @private
-	   * @memberOf Barba.Pjax
-	   * @param  {HTMLElement} el
-	   * @return {String} href
-	   */
-	  getHref: function(el) {
-	    if (!el) {
-	      return undefined;
-	    }
-	
-	    if (el.getAttribute && typeof el.getAttribute('xlink:href') === 'string') {
-	      return el.getAttribute('xlink:href');
-	    }
-	
-	    if (typeof el.href === 'string') {
-	      return el.href;
-	    }
-	
-	    return undefined;
-	  },
-	
-	  /**
-	   * Callback called from click event
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   * @param {MouseEvent} evt
-	   */
-	  onLinkClick: function(evt) {
-	    var el = evt.target;
-	
-	    //Go up in the nodelist until we
-	    //find something with an href
-	    while (el && !this.getHref(el)) {
-	      el = el.parentNode;
-	    }
-	
-	    if (this.preventCheck(evt, el)) {
-	      evt.stopPropagation();
-	      evt.preventDefault();
-	
-	      Dispatcher.trigger('linkClicked', el, evt);
-	
-	      var href = this.getHref(el);
-	      this.goTo(href);
-	    }
-	  },
-	
-	  /**
-	   * Determine if the link should be followed
-	   *
-	   * @memberOf Barba.Pjax
-	   * @param  {MouseEvent} evt
-	   * @param  {HTMLElement} element
-	   * @return {Boolean}
-	   */
-	  preventCheck: function(evt, element) {
-	    if (!window.history.pushState)
-	      return false;
-	
-	    var href = this.getHref(element);
-	
-	    //User
-	    if (!element || !href)
-	      return false;
-	
-	    //Middle click, cmd click, and ctrl click
-	    if (evt.which > 1 || evt.metaKey || evt.ctrlKey || evt.shiftKey || evt.altKey)
-	      return false;
-	
-	    //Ignore target with _blank target
-	    if (element.target && element.target === '_blank')
-	      return false;
-	
-	    //Check if it's the same domain
-	    if (window.location.protocol !== element.protocol || window.location.hostname !== element.hostname)
-	      return false;
-	
-	    //Check if the port is the same
-	    if (Utils.getPort() !== Utils.getPort(element.port))
-	      return false;
-	
-	    //Ignore case when a hash is being tacked on the current URL
-	    if (href.indexOf('#') > -1)
-	      return false;
-	
-	    //Ignore case where there is download attribute
-	    if (element.getAttribute && typeof element.getAttribute('download') === 'string')
-	      return false;
-	
-	    //In case you're trying to load the same page
-	    if (Utils.cleanLink(href) == Utils.cleanLink(location.href))
-	      return false;
-	
-	    if (element.classList.contains(this.ignoreClassLink))
-	      return false;
-	
-	    return true;
-	  },
-	
-	  /**
-	   * Return a transition object
-	   *
-	   * @memberOf Barba.Pjax
-	   * @return {Barba.Transition} Transition object
-	   */
-	  getTransition: function() {
-	    //User customizable
-	    return HideShowTransition;
-	  },
-	
-	  /**
-	   * Method called after a 'popstate' or from .goTo()
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   */
-	  onStateChange: function() {
-	    var newUrl = this.getCurrentUrl();
-	
-	    if (this.transitionProgress)
-	      this.forceGoTo(newUrl);
-	
-	    if (this.History.currentStatus().url === newUrl)
-	      return false;
-	
-	    this.History.add(newUrl);
-	
-	    var newContainer = this.load(newUrl);
-	    var transition = Object.create(this.getTransition());
-	
-	    this.transitionProgress = true;
-	
-	    Dispatcher.trigger('initStateChange',
-	      this.History.currentStatus(),
-	      this.History.prevStatus()
-	    );
-	
-	    var transitionInstance = transition.init(
-	      this.Dom.getContainer(),
-	      newContainer
-	    );
-	
-	    newContainer.then(
-	      this.onNewContainerLoaded.bind(this)
-	    );
-	
-	    transitionInstance.then(
-	      this.onTransitionEnd.bind(this)
-	    );
-	  },
-	
-	  /**
-	   * Function called as soon the new container is ready
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   * @param {HTMLElement} container
-	   */
-	  onNewContainerLoaded: function(container) {
-	    var currentStatus = this.History.currentStatus();
-	    currentStatus.namespace = this.Dom.getNamespace(container);
-	
-	    Dispatcher.trigger('newPageReady',
-	      this.History.currentStatus(),
-	      this.History.prevStatus(),
-	      container,
-	      this.Dom.currentHTML
-	    );
-	  },
-	
-	  /**
-	   * Function called as soon the transition is finished
-	   *
-	   * @memberOf Barba.Pjax
-	   * @private
-	   */
-	  onTransitionEnd: function() {
-	    this.transitionProgress = false;
-	
-	    Dispatcher.trigger('transitionCompleted',
-	      this.History.currentStatus(),
-	      this.History.prevStatus()
-	    );
-	  }
-	};
-	
-	module.exports = Pjax;
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var BaseTransition = __webpack_require__(4);
-	
-	/**
-	 * Basic Transition object, wait for the new Container to be ready,
-	 * scroll top, and finish the transition (removing the old container and displaying the new one)
-	 *
-	 * @private
-	 * @namespace Barba.HideShowTransition
-	 * @augments Barba.BaseTransition
-	 */
-	var HideShowTransition = BaseTransition.extend({
-	  start: function() {
-	    this.newContainerLoading.then(this.finish.bind(this));
-	  },
-	
-	  finish: function() {
-	    document.body.scrollTop = 0;
-	    this.done();
-	  }
-	});
-	
-	module.exports = HideShowTransition;
-
-
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	/**
-	 * Object that is going to deal with DOM parsing/manipulation
-	 *
-	 * @namespace Barba.Pjax.Dom
-	 * @type {Object}
-	 */
-	var Dom = {
-	  /**
-	   * The name of the data attribute on the container
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @type {String}
-	   * @default
-	   */
-	  dataNamespace: 'namespace',
-	
-	  /**
-	   * Id of the main wrapper
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @type {String}
-	   * @default
-	   */
-	  wrapperId: 'barba-wrapper',
-	
-	  /**
-	   * Class name used to identify the containers
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @type {String}
-	   * @default
-	   */
-	  containerClass: 'barba-container',
-	
-	  /**
-	   * Full HTML String of the current page.
-	   * By default is the innerHTML of the initial loaded page.
-	   *
-	   * Each time a new page is loaded, the value is the response of the xhr call.
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @type {String}
-	   */
-	  currentHTML: document.documentElement.innerHTML,
-	
-	  /**
-	   * Parse the responseText obtained from the xhr call
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @private
-	   * @param  {String} responseText
-	   * @return {HTMLElement}
-	   */
-	  parseResponse: function(responseText) {
-	    this.currentHTML = responseText;
-	
-	    var wrapper = document.createElement('div');
-	    wrapper.innerHTML = responseText;
-	
-	    var titleEl = wrapper.querySelector('title');
-	
-	    if (titleEl)
-	      document.title = titleEl.textContent;
-	
-	    return this.getContainer(wrapper);
-	  },
-	
-	  /**
-	   * Get the main barba wrapper by the ID `wrapperId`
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @return {HTMLElement} element
-	   */
-	  getWrapper: function() {
-	    var wrapper = document.getElementById(this.wrapperId);
-	
-	    if (!wrapper)
-	      throw new Error('Barba.js: wrapper not found!');
-	
-	    return wrapper;
-	  },
-	
-	  /**
-	   * Get the container on the current DOM,
-	   * or from an HTMLElement passed via argument
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @private
-	   * @param  {HTMLElement} element
-	   * @return {HTMLElement}
-	   */
-	  getContainer: function(element) {
-	    if (!element)
-	      element = document.body;
-	
-	    if (!element)
-	      throw new Error('Barba.js: DOM not ready!');
-	
-	    var container = this.parseContainer(element);
-	
-	    if (container && container.jquery)
-	      container = container[0];
-	
-	    if (!container)
-	      throw new Error('Barba.js: no container found');
-	
-	    return container;
-	  },
-	
-	  /**
-	   * Get the namespace of the container
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @private
-	   * @param  {HTMLElement} element
-	   * @return {String}
-	   */
-	  getNamespace: function(element) {
-	    if (element && element.dataset) {
-	      return element.dataset[this.dataNamespace];
-	    } else if (element) {
-	      return element.getAttribute('data-' + this.dataNamespace);
-	    }
-	
-	    return null;
-	  },
-	
-	  /**
-	   * Put the container on the page
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @private
-	   * @param  {HTMLElement} element
-	   */
-	  putContainer: function(element) {
-	    element.style.visibility = 'hidden';
-	
-	    var wrapper = this.getWrapper();
-	    wrapper.appendChild(element);
-	  },
-	
-	  /**
-	   * Get container selector
-	   *
-	   * @memberOf Barba.Pjax.Dom
-	   * @private
-	   * @param  {HTMLElement} element
-	   * @return {HTMLElement} element
-	   */
-	  parseContainer: function(element) {
-	    return element.querySelector('.' + this.containerClass);
-	  }
-	};
-	
-	module.exports = Dom;
-
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Utils = __webpack_require__(5);
-	var Pjax = __webpack_require__(10);
-	
-	/**
-	 * Prefetch
-	 *
-	 * @namespace Barba.Prefetch
-	 * @type {Object}
-	 */
-	var Prefetch = {
-	  /**
-	   * Class name used to ignore prefetch on links
-	   *
-	   * @memberOf Barba.Prefetch
-	   * @type {String}
-	   * @default
-	   */
-	  ignoreClassLink: 'no-barba-prefetch',
-	
-	  /**
-	   * Init the event listener on mouseover and touchstart
-	   * for the prefetch
-	   *
-	   * @memberOf Barba.Prefetch
-	   */
-	  init: function() {
-	    if (!window.history.pushState) {
-	      return false;
-	    }
-	
-	    document.body.addEventListener('mouseover', this.onLinkEnter.bind(this));
-	    document.body.addEventListener('touchstart', this.onLinkEnter.bind(this));
-	  },
-	
-	  /**
-	   * Callback for the mousehover/touchstart
-	   *
-	   * @memberOf Barba.Prefetch
-	   * @private
-	   * @param  {Object} evt
-	   */
-	  onLinkEnter: function(evt) {
-	    var el = evt.target;
-	
-	    while (el && !Pjax.getHref(el)) {
-	      el = el.parentNode;
-	    }
-	
-	    if (!el || el.classList.contains(this.ignoreClassLink)) {
-	      return;
-	    }
-	
-	    var url = Pjax.getHref(el);
-	
-	    //Check if the link is elegible for Pjax
-	    if (Pjax.preventCheck(evt, el) && !Pjax.Cache.get(url)) {
-	      var xhr = Utils.xhr(url);
-	      Pjax.Cache.set(url, xhr);
-	    }
-	  }
-	};
-	
-	module.exports = Prefetch;
-
-
-/***/ }
-/******/ ])
-});
-;
-//# sourceMappingURL=barba.js.map
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var _set = _.set;
-var _get = _.get;
-
-var History = function () {
-  function History() {
-    var _this = this;
-
-    _classCallCheck(this, History);
-
-    this.forward = 'forward';
-    this.back = 'back';
-
-    if (window.history.state === null) {
-      var state = sessionStorage.getItem('history') || 0;
-      window.history.replaceState(parseInt(state), null, window.location);
-    }
-
-    this.prevState = 0;
-    this.state = window.history.state;
-
-    window.addEventListener('popstate', function (event) {
-      sessionStorage.setItem('history', event.state);
-      _this.prevState = _this.state;
-      _this.state = event.state;
-    });
-  }
-
-  _createClass(History, [{
-    key: 'goTo',
-    value: function goTo(url) {
-
-      this.prevState = this.state;
-      this.state = window.history.state + 1;
-      window.history.pushState(this.state, null, url);
-    }
-  }, {
-    key: 'direction',
-    value: function direction() {
-      return this.state <= this.prevState ? this.back : this.forward;
-    }
-  }, {
-    key: 'setSessionData',
-    value: function setSessionData() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      sessionStorage.setItem('historyData', JSON.stringify(data));
-    }
-  }, {
-    key: 'getSessionData',
-    value: function getSessionData() {
-      var data = sessionStorage.getItem('historyData') || null;
-      if (data === null) return {};
-      return JSON.parse(data);
-    }
-  }, {
-    key: 'set',
-    value: function set(key, value) {
-      this.setSessionData(_set(this.getSessionData(), this.state + '.' + key, value));
-    }
-  }, {
-    key: 'setPrev',
-    value: function setPrev(key, value) {
-      this.setSessionData(_set(this.getSessionData(), this.prevState + '.' + key, value));
-    }
-  }, {
-    key: 'get',
-    value: function get(key) {
-      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      return _get(this.getSessionData(), this.state + '.' + key, defaultValue);
-    }
-  }, {
-    key: 'getPrev',
-    value: function getPrev(key) {
-      var defaultValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      return _get(this.getSessionData(), this.prevState + '.' + key, defaultValue);
-    }
-  }]);
-
-  return History;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (History);
-;
-
-/***/ }),
+/* 36 */,
+/* 37 */,
+/* 38 */,
 /* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -37866,7 +35963,7 @@ var Vue = __webpack_require__(40);
 Vue.component('example-component', __webpack_require__(43));
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    onEnterCompleted: function onEnterCompleted() {
+    onEnter: function onEnter() {
         if (window.app && window.app.$destroy) {
             // console.log('destroy');
             window.app.$destroy();
@@ -49365,15 +47462,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     onEnter: function onEnter() {
         // The new Container is ready and attached to the DOM.
-    },
-    onEnterCompleted: function onEnterCompleted() {
-        // The Transition has just finished.
         new __WEBPACK_IMPORTED_MODULE_0__Loader__["a" /* default */]({
             containerEl: document.querySelector('.posts-grid'),
             items: '.posts-grid__item',
             more: 'li.active + li > a',
             buttonEl: document.querySelector('.load-more')
         });
+    },
+    onEnterCompleted: function onEnterCompleted() {
+        // The Transition has just finished.
+
     },
     onLeave: function onLeave() {
         // A new Transition toward a new page has just started.
@@ -49513,10 +47611,6 @@ var sidebar = void 0;
     onEnter: function onEnter() {
 
         // The new Container is ready and attached to the DOM.
-    },
-    onEnterCompleted: function onEnterCompleted() {
-
-        // The Transition has just finished.
         if (document.querySelector('.tocbot')) {
             var content = document.querySelector('.post__content');
             var els = content.querySelectorAll('h1, h2, h3');
@@ -49549,6 +47643,11 @@ var sidebar = void 0;
 
             sidebar = new __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__["a" /* default */]('.tocbot', { topSpacing: 100 });
         }
+    },
+    onEnterCompleted: function onEnterCompleted() {
+
+        // The Transition has just finished.
+
     },
     onLeave: function onLeave() {
 
@@ -51363,12 +49462,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     onEnter: function onEnter() {
         // The new Container is ready and attached to the DOM.
-    },
-    onEnterCompleted: function onEnterCompleted() {
-        // The Transition has just finished.
         if (window.addthis && window.addthis.layers && window.addthis.layers.refresh) {
             addthis.layers.refresh();
         }
+    },
+    onEnterCompleted: function onEnterCompleted() {
+        // The Transition has just finished.
+
     },
     onLeave: function onLeave() {
         // A new Transition toward a new page has just started.
@@ -51383,6 +49483,1427 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Link = function () {
+    function Link() {
+        _classCallCheck(this, Link);
+
+        this.link = document.createElement("a");
+    }
+
+    _createClass(Link, [{
+        key: 'setPath',
+        value: function setPath(href) {
+            this.link.href = href;
+        }
+    }, {
+        key: 'getPath',
+        value: function getPath() {
+            var path = this.link.pathname;
+            if (path[0] != '/') {
+                path = '/' + path;
+            }
+            return path;
+        }
+    }, {
+        key: 'getAddress',
+        value: function getAddress() {
+            var path = this.link.pathname + this.link.search;
+            if (path[0] != '/') {
+                path = '/' + path;
+            }
+            return path;
+        }
+    }, {
+        key: 'getHash',
+        value: function getHash() {
+            return this.link.hash;
+        }
+    }]);
+
+    return Link;
+}();
+
+exports.default = Link;
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_swup__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_swup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_swup__);
+
+
+var swup = new __WEBPACK_IMPORTED_MODULE_0_swup___default.a({
+    LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup]):not(.toc-link)',
+    doScrollingRightAway: true,
+    animateScroll: true,
+    scrollFriction: .3,
+    scrollAcceleration: .04
+    // scroll: false
+});
+
+var callbacks = [];
+
+document.addEventListener('swup:willReplaceContent', function (event) {
+    callbacks.forEach(function (c) {
+        return c.onLeave && c.onLeave();
+    });
+});
+
+// document.addEventListener('swup:pageLoaded', event => {
+//     console.log('pageView');
+//     callbacks.forEach(c => c.onEnter && c.onEnter());
+// });
+
+document.addEventListener('swup:contentReplaced', function (event) {
+    console.log('contentReplaced');
+    callbacks.forEach(function (c) {
+        return c.onEnter && c.onEnter();
+    });
+});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    register: function register() {
+        var _callbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+        callbacks = _callbacks;
+
+        callbacks.forEach(function (c) {
+            return c.onEnter && c.onEnter();
+        });
+    }
+});
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+// helpers
+
+
+// modules
+
+
+var _delegate = __webpack_require__(66);
+
+var _delegate2 = _interopRequireDefault(_delegate);
+
+var _Cache = __webpack_require__(68);
+
+var _Cache2 = _interopRequireDefault(_Cache);
+
+var _Link = __webpack_require__(63);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+var _transitionEnd = __webpack_require__(69);
+
+var _transitionEnd2 = _interopRequireDefault(_transitionEnd);
+
+var _request = __webpack_require__(70);
+
+var _request2 = _interopRequireDefault(_request);
+
+var _getDataFromHtml = __webpack_require__(71);
+
+var _getDataFromHtml2 = _interopRequireDefault(_getDataFromHtml);
+
+var _loadPage = __webpack_require__(72);
+
+var _loadPage2 = _interopRequireDefault(_loadPage);
+
+var _renderPage = __webpack_require__(73);
+
+var _renderPage2 = _interopRequireDefault(_renderPage);
+
+var _goBack = __webpack_require__(74);
+
+var _goBack2 = _interopRequireDefault(_goBack);
+
+var _createState = __webpack_require__(75);
+
+var _createState2 = _interopRequireDefault(_createState);
+
+var _triggerEvent = __webpack_require__(76);
+
+var _triggerEvent2 = _interopRequireDefault(_triggerEvent);
+
+var _getUrl = __webpack_require__(77);
+
+var _getUrl2 = _interopRequireDefault(_getUrl);
+
+var _scrollTo = __webpack_require__(78);
+
+var _scrollTo2 = _interopRequireDefault(_scrollTo);
+
+var _classify = __webpack_require__(79);
+
+var _classify2 = _interopRequireDefault(_classify);
+
+var _doScrolling = __webpack_require__(80);
+
+var _doScrolling2 = _interopRequireDefault(_doScrolling);
+
+var _markSwupElements = __webpack_require__(81);
+
+var _markSwupElements2 = _interopRequireDefault(_markSwupElements);
+
+var _updateTransition = __webpack_require__(82);
+
+var _updateTransition2 = _interopRequireDefault(_updateTransition);
+
+var _preloadPages = __webpack_require__(83);
+
+var _preloadPages2 = _interopRequireDefault(_preloadPages);
+
+var _usePlugin = __webpack_require__(84);
+
+var _usePlugin2 = _interopRequireDefault(_usePlugin);
+
+var _log = __webpack_require__(85);
+
+var _log2 = _interopRequireDefault(_log);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Swup = function () {
+    function Swup(setOptions) {
+        _classCallCheck(this, Swup);
+
+        // default options
+        var defaults = {
+            cache: true,
+            animationSelector: '[class*="transition-"]',
+            elements: ['#swup'],
+            pageClassPrefix: '',
+            debugMode: false,
+            scroll: true,
+
+            doScrollingRightAway: false,
+            animateScroll: true,
+            scrollFriction: .3,
+            scrollAcceleration: .04,
+
+            preload: true,
+            support: true,
+            plugins: [],
+
+            skipPopStateHandling: function skipPopStateHandling(event) {
+                if (event.state && event.state.source == "swup") {
+                    return false;
+                }
+                return true;
+            },
+
+            LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
+            FORM_SELECTOR: 'form[data-swup-form]'
+
+            /**
+             * current transition object
+             */
+        };this.transition = {};
+
+        var options = _extends({}, defaults, setOptions);
+
+        /**
+         * helper variables
+         */
+        // mobile detection variable
+        this.mobile = false;
+        // id of element to scroll to after render
+        this.scrollToElement = null;
+        // promise used for preload, so no new loading of the same page starts while page is loading
+        this.preloadPromise = null;
+        // save options
+        this.options = options;
+        // plugins array
+        this.plugins = [];
+
+        /**
+         * make modules accessible in instance
+         */
+        this.getUrl = _getUrl2.default;
+        this.cache = new _Cache2.default();
+        this.link = new _Link2.default();
+        this.transitionEndEvent = (0, _transitionEnd2.default)();
+        this.getDataFromHtml = _getDataFromHtml2.default;
+        this.getPage = _request2.default;
+        this.scrollTo = _scrollTo2.default;
+        this.loadPage = _loadPage2.default;
+        this.renderPage = _renderPage2.default;
+        this.goBack = _goBack2.default;
+        this.createState = _createState2.default;
+        this.triggerEvent = _triggerEvent2.default;
+        this.classify = _classify2.default;
+        this.doScrolling = _doScrolling2.default;
+        this.markSwupElements = _markSwupElements2.default;
+        this.updateTransition = _updateTransition2.default;
+        this.preloadPages = _preloadPages2.default;
+        this.usePlugin = _usePlugin2.default;
+        this.log = _log2.default;
+        this.enable = this.enable;
+        this.destroy = this.destroy;
+
+        /**
+         * detect mobile devices
+         */
+        if (window.innerWidth <= 767) {
+            this.mobile = true;
+        }
+
+        // attach instance to window in debug mode
+        if (this.options.debugMode) {
+            window.swup = this;
+        }
+
+        this.getUrl();
+        this.enable();
+    }
+
+    _createClass(Swup, [{
+        key: 'enable',
+        value: function enable() {
+            var _this = this;
+
+            /**
+             * support check
+             */
+            if (this.options.support) {
+                // check pushState support
+                if (!('pushState' in window.history)) {
+                    console.warn('pushState is not supported');
+                    return;
+                }
+                // check transitionEnd support
+                if ((0, _transitionEnd2.default)()) {
+                    this.transitionEndEvent = (0, _transitionEnd2.default)();
+                } else {
+                    console.warn('transitionEnd detection is not supported');
+                    return;
+                }
+                // check Promise support
+                if (typeof Promise === "undefined" || Promise.toString().indexOf("[native code]") === -1) {
+                    console.warn('Promise is not supported');
+                    return;
+                }
+            }
+
+            // variable to keep event listeners from "delegate"
+            this.delegatedListeners = {};
+
+            /**
+             * link click handler
+             */
+            this.delegatedListeners.click = (0, _delegate2.default)(document, this.options.LINK_SELECTOR, 'click', this.linkClickHandler.bind(this));
+
+            /**
+             * link mouseover handler (preload)
+             */
+            this.delegatedListeners.mouseover = (0, _delegate2.default)(document.body, this.options.LINK_SELECTOR, 'mouseover', this.linkMouseoverHandler.bind(this));
+
+            /**
+             * form submit handler
+             */
+            this.delegatedListeners.formSubmit = (0, _delegate2.default)(document, this.options.FORM_SELECTOR, 'submit', this.formSubmitHandler.bind(this));
+
+            /**
+             * popstate handler
+             */
+            window.addEventListener('popstate', this.popStateHandler.bind(this));
+
+            /**
+             * initial save to cache
+             */
+            var page = this.getDataFromHtml(document.documentElement.outerHTML);
+            page.url = this.currentUrl;
+            if (this.options.cache) {
+                this.cache.cacheUrl(page, this.options.debugMode);
+            }
+
+            /**
+             * mark swup blocks in html
+             */
+            this.markSwupElements(document.documentElement);
+
+            /**
+             * enable plugins from options
+             */
+            this.options.plugins.forEach(function (item) {
+                return _this.usePlugin(item);
+            });
+
+            /**
+             * modify initial history record
+             */
+            window.history.replaceState(Object.assign({}, window.history.state, {
+                url: window.location.href,
+                random: Math.random(),
+                source: "swup"
+            }), document.title, window.location.href);
+
+            /**
+             * trigger enabled event
+             */
+            this.triggerEvent('enabled');
+            document.documentElement.classList.add('swup-enabled');
+
+            /**
+             * trigger page view event
+             */
+            this.triggerEvent('pageView');
+
+            /**
+             * preload pages if possible
+             */
+            this.preloadPages();
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            // remove delegated listeners
+            this.delegatedListeners.click.destroy();
+            this.delegatedListeners.mouseover.destroy();
+
+            // remove popstate listener
+            window.removeEventListener('popstate', this.popStateHandler.bind(this));
+
+            // empty cache
+            this.cache.empty();
+
+            // remove swup data atributes from blocks
+            document.querySelectorAll('[data-swup]').forEach(function (element) {
+                delete element.dataset.swup;
+            });
+
+            this.triggerEvent('disabled');
+            document.documentElement.classList.remove('swup-enabled');
+        }
+    }, {
+        key: 'linkClickHandler',
+        value: function linkClickHandler(event) {
+            // no control key pressed
+            if (!event.metaKey) {
+                this.triggerEvent('clickLink');
+                var link = new _Link2.default();
+                event.preventDefault();
+                link.setPath(event.delegateTarget.href);
+                if (link.getAddress() == this.currentUrl || link.getAddress() == '') {
+                    if (link.getHash() != '') {
+                        this.triggerEvent('samePageWithHash');
+                        var element = document.querySelector(link.getHash());
+                        if (element != null) {
+                            if (this.options.scroll) {
+                                var top = element.getBoundingClientRect().top + window.pageYOffset;
+                                this.scrollTo(document.body, top);
+                            }
+                            history.replaceState(undefined, undefined, link.getHash());
+                        } else {
+                            console.warn('Element for offset not found (' + link.getHash() + ')');
+                        }
+                    } else {
+                        this.triggerEvent('samePage');
+                        if (this.options.scroll) {
+                            this.scrollTo(document.body, 0, 1);
+                        }
+                    }
+                } else {
+                    if (link.getHash() != '') {
+                        this.scrollToElement = link.getHash();
+                    }
+                    // custom class fro dynamic pages
+                    var swupClass = event.delegateTarget.dataset.swupClass;
+                    if (swupClass != null) {
+                        this.updateTransition(window.location.pathname, link.getAddress(), event.delegateTarget.dataset.swupClass);
+                        document.documentElement.classList.add('to-' + swupClass);
+                    } else {
+                        this.updateTransition(window.location.pathname, link.getAddress());
+                    }
+                    this.loadPage({ url: link.getAddress() }, false);
+                }
+            } else {
+                this.triggerEvent('openPageInNewTab');
+            }
+        }
+    }, {
+        key: 'linkMouseoverHandler',
+        value: function linkMouseoverHandler(event) {
+            var _this2 = this;
+
+            this.triggerEvent('hoverLink');
+            if (this.options.preload) {
+                var link = new _Link2.default();
+                link.setPath(event.delegateTarget.href);
+                if (link.getAddress() != this.currentUrl && !this.cache.exists(link.getAddress()) && this.preloadPromise == null) {
+                    this.preloadPromise = new Promise(function (resolve, reject) {
+                        _this2.getPage({ url: link.getAddress() }, function (response, request) {
+                            if (request.status === 500) {
+                                _this2.triggerEvent('serverError');
+                                reject(link.getAddress());
+                                return;
+                            } else {
+                                // get json data
+                                var page = _this2.getDataFromHtml(response);
+                                if (page != null) {
+                                    page.url = link.getAddress();
+                                    _this2.cache.cacheUrl(page, _this2.options.debugMode);
+                                    _this2.triggerEvent('pagePreloaded');
+                                } else {
+                                    reject(link.getAddress());
+                                    return;
+                                }
+                            }
+                            resolve();
+                            _this2.preloadPromise = null;
+                        });
+                    });
+                    this.preloadPromise.route = link.getAddress();
+                }
+            }
+        }
+    }, {
+        key: 'formSubmitHandler',
+        value: function formSubmitHandler(event) {
+            // no control key pressed
+            if (!event.metaKey) {
+                this.triggerEvent('submitForm');
+                event.preventDefault();
+                var form = event.target;
+                var formData = new FormData(form);
+
+                var link = new _Link2.default();
+                link.setPath(form.action);
+
+                if (link.getHash() != '') {
+                    this.scrollToElement = link.getHash();
+                }
+
+                if (form.method.toLowerCase() != "get") {
+                    // remove page from cache
+                    this.cache.remove(link.getAddress());
+
+                    // send data
+                    this.loadPage({
+                        url: link.getAddress(),
+                        method: form.method,
+                        data: formData
+                    });
+                } else {
+                    // create base url
+                    var url = link.getAddress() || window.location.href;
+                    var inputs = form.querySelectorAll('input');
+                    if (url.indexOf('?') == -1) {
+                        url += "?";
+                    } else {
+                        url += "&";
+                    }
+
+                    // add form data to url
+                    inputs.forEach(function (input) {
+                        if (input.type == "checkbox" || input.type == "radio") {
+                            if (input.checked) {
+                                url += encodeURIComponent(input.name) + "=" + encodeURIComponent(input.value) + "&";
+                            }
+                        } else {
+                            url += encodeURIComponent(input.name) + "=" + encodeURIComponent(input.value) + "&";
+                        }
+                    });
+
+                    // remove last "&"
+                    url = url.slice(0, -1);
+
+                    // remove page from cache
+                    this.cache.remove(url);
+
+                    // send data
+                    this.loadPage({
+                        url: url
+                    });
+                }
+            } else {
+                this.triggerEvent('openFormSubmitInNewTab');
+            }
+        }
+    }, {
+        key: 'popStateHandler',
+        value: function popStateHandler(event) {
+            var link = new _Link2.default();
+            if (this.options.skipPopStateHandling(event)) return;
+            link.setPath(event.state ? event.state.url : window.location.pathname);
+            if (link.getHash() != '') {
+                this.scrollToElement = link.getHash();
+            } else {
+                event.preventDefault();
+            }
+            this.triggerEvent('popState');
+            this.loadPage({ url: link.getAddress() }, event);
+        }
+    }]);
+
+    return Swup;
+}();
+
+exports.default = Swup;
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var closest = __webpack_require__(67);
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function _delegate(element, selector, type, callback, useCapture) {
+    var listenerFn = listener.apply(this, arguments);
+
+    element.addEventListener(type, listenerFn, useCapture);
+
+    return {
+        destroy: function() {
+            element.removeEventListener(type, listenerFn, useCapture);
+        }
+    }
+}
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element|String|Array} [elements]
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(elements, selector, type, callback, useCapture) {
+    // Handle the regular Element usage
+    if (typeof elements.addEventListener === 'function') {
+        return _delegate.apply(null, arguments);
+    }
+
+    // Handle Element-less usage, it defaults to global delegation
+    if (typeof type === 'function') {
+        // Use `document` as the first parameter, then apply arguments
+        // This is a short way to .unshift `arguments` without running into deoptimizations
+        return _delegate.bind(null, document).apply(null, arguments);
+    }
+
+    // Handle Selector-based usage
+    if (typeof elements === 'string') {
+        elements = document.querySelectorAll(elements);
+    }
+
+    // Handle Array-like based usage
+    return Array.prototype.map.call(elements, function (element) {
+        return _delegate(element, selector, type, callback, useCapture);
+    });
+}
+
+/**
+ * Finds closest match and invokes callback.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Function}
+ */
+function listener(element, selector, type, callback) {
+    return function(e) {
+        e.delegateTarget = closest(e.target, selector);
+
+        if (e.delegateTarget) {
+            callback.call(element, e);
+        }
+    }
+}
+
+module.exports = delegate;
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports) {
+
+var DOCUMENT_NODE_TYPE = 9;
+
+/**
+ * A polyfill for Element.matches()
+ */
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
+    var proto = Element.prototype;
+
+    proto.matches = proto.matchesSelector ||
+                    proto.mozMatchesSelector ||
+                    proto.msMatchesSelector ||
+                    proto.oMatchesSelector ||
+                    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest (element, selector) {
+    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
+        if (typeof element.matches === 'function' &&
+            element.matches(selector)) {
+          return element;
+        }
+        element = element.parentNode;
+    }
+}
+
+module.exports = closest;
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Cache = function () {
+    function Cache() {
+        _classCallCheck(this, Cache);
+
+        this.pages = {};
+        this.count = 0;
+        this.last = null;
+    }
+
+    _createClass(Cache, [{
+        key: 'cacheUrl',
+        value: function cacheUrl(page, displayCache) {
+            this.count++;
+            if (page.url in this.pages === false) {
+                this.pages[page.url] = page;
+            }
+            this.last = this.pages[page.url];
+            if (displayCache) {
+                this.displayCache();
+            }
+        }
+    }, {
+        key: 'getPage',
+        value: function getPage(url) {
+            return this.pages[url];
+        }
+    }, {
+        key: 'displayCache',
+        value: function displayCache() {
+            console.groupCollapsed('Cache (' + Object.keys(this.pages).length + ')');
+            for (var key in this.pages) {
+                console.log(this.pages[key]);
+            }
+            console.groupEnd();
+        }
+    }, {
+        key: 'exists',
+        value: function exists(url) {
+            if (url in this.pages) return true;
+            return false;
+        }
+    }, {
+        key: 'empty',
+        value: function empty(showLog) {
+            this.pages = {};
+            this.count = 0;
+            this.last = null;
+            if (showLog) {
+                console.log('Cache cleared');
+            }
+        }
+    }, {
+        key: 'remove',
+        value: function remove(url) {
+            delete this.pages[url];
+        }
+    }]);
+
+    return Cache;
+}();
+
+exports.default = Cache;
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function transitionEnd() {
+    var el = document.createElement('div');
+
+    var transEndEventNames = {
+        WebkitTransition: 'webkitTransitionEnd',
+        MozTransition: 'transitionend',
+        OTransition: 'oTransitionEnd otransitionend',
+        transition: 'transitionend'
+    };
+
+    for (var name in transEndEventNames) {
+        if (el.style[name] !== undefined) {
+            return transEndEventNames[name];
+        }
+    }
+
+    return false;
+};
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+module.exports = function (options) {
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    var defaults = {
+        url: window.location.pathname + window.location.search,
+        method: "GET",
+        data: null
+    };
+
+    var data = _extends({}, defaults, options);
+
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status !== 500) {
+                callback(request.responseText, request);
+            } else {
+                callback(null, request);
+            }
+        }
+    };
+
+    request.open(data.method, data.url, true);
+    request.setRequestHeader("X-Requested-With", "swup");
+    request.send(data.data);
+    return request;
+};
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (html) {
+    var _this = this;
+
+    var content = html.replace('<body', '<div id="swupBody"').replace('</body>', '</div>');
+    var fakeDom = document.createElement('div');
+    fakeDom.innerHTML = content;
+    var blocks = [];
+
+    for (var i = 0; i < this.options.elements.length; i++) {
+        if (fakeDom.querySelector(this.options.elements[i]) == null) {
+            console.warn('Element ' + this.options.elements[i] + ' is not found in cached page.');
+            return null;
+        } else {
+            [].forEach.call(document.body.querySelectorAll(this.options.elements[i]), function (item, index) {
+                fakeDom.querySelectorAll(_this.options.elements[i])[index].dataset.swup = blocks.length;
+                blocks.push(fakeDom.querySelectorAll(_this.options.elements[i])[index].outerHTML);
+            });
+        }
+    }
+
+    var json = {
+        title: fakeDom.querySelector('title').innerText,
+        pageClass: fakeDom.querySelector('#swupBody').className,
+        originalContent: html,
+        blocks: blocks
+    };
+    return json;
+};
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var forEach = Array.prototype.forEach;
+
+
+module.exports = function (data, popstate) {
+    var _this = this;
+
+    var finalPage = null;
+
+    // scrolling
+    if (this.options.doScrollingRightAway && !this.scrollToElement) {
+        this.doScrolling(popstate);
+    }
+
+    var animationPromises = [];
+
+    if (!popstate) {
+        // start animation
+        document.documentElement.classList.add('is-changing');
+        document.documentElement.classList.add('is-leaving');
+        document.documentElement.classList.add('is-animating');
+        document.documentElement.classList.add('to-' + this.classify(data.url));
+
+        // detect animation end
+        var animatedElements = document.querySelectorAll(this.options.animationSelector);
+        forEach.call(animatedElements, function (element) {
+            var promise = new Promise(function (resolve) {
+                element.addEventListener(_this.transitionEndEvent, function (event) {
+                    if (element == event.target) {
+                        resolve();
+                    }
+                });
+            });
+            animationPromises.push(promise);
+        });
+
+        Promise.all(animationPromises).then(function () {
+            _this.triggerEvent('animationOutDone');
+        });
+
+        // create pop element with or without anchor
+        if (this.scrollToElement != null) {
+            var pop = data.url + this.scrollToElement;
+        } else {
+            var pop = data.url;
+        }
+        this.createState(pop);
+    } else {
+        // proceed without animating
+        this.triggerEvent('animationSkipped');
+    }
+
+    if (this.cache.exists(data.url)) {
+        var xhrPromise = new Promise(function (resolve) {
+            resolve();
+        });
+        this.triggerEvent('pageRetrievedFromCache');
+    } else {
+        if (!this.preloadPromise || this.preloadPromise.route != data.url) {
+            var xhrPromise = new Promise(function (resolve, reject) {
+                _this.getPage(data, function (response, request) {
+                    if (request.status === 500) {
+                        _this.triggerEvent('serverError');
+                        reject(data.url);
+                        return;
+                    } else {
+                        // get json data
+                        var page = _this.getDataFromHtml(response);
+                        if (page != null) {
+                            page.url = data.url;
+                        } else {
+                            reject(data.url);
+                            return;
+                        }
+                        // render page
+                        _this.cache.cacheUrl(page, _this.options.debugMode);
+                        _this.triggerEvent('pageLoaded');
+                    }
+                    resolve();
+                });
+            });
+        } else {
+            var xhrPromise = this.preloadPromise;
+        }
+    }
+
+    Promise.all(animationPromises.concat([xhrPromise])).then(function () {
+        finalPage = _this.cache.getPage(data.url);
+        _this.renderPage(finalPage, popstate);
+        _this.preloadPromise = null;
+    }).catch(function (errorUrl) {
+        // rewrite the skipPopStateHandling function to redirect manually when the history.go is processed
+        _this.options.skipPopStateHandling = function () {
+            window.location = errorUrl;
+            return true;
+        };
+
+        // go back to the actual page were still at
+        window.history.go(-1);
+    });
+};
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var forEach = Array.prototype.forEach;
+
+
+module.exports = function (page, popstate) {
+    var _this = this;
+
+    document.documentElement.classList.remove('is-leaving');
+
+    // only add for non-popstate transitions
+    if (!popstate) {
+        document.documentElement.classList.add('is-rendering');
+    }
+
+    this.triggerEvent('willReplaceContent');
+
+    // replace blocks
+    for (var i = 0; i < page.blocks.length; i++) {
+        document.body.querySelector('[data-swup="' + i + '"]').outerHTML = page.blocks[i];
+    }
+
+    // set title
+    document.title = page.title;
+
+    this.triggerEvent('contentReplaced');
+    this.triggerEvent('pageView');
+    if (!this.options.cache) {
+        this.cache.empty(this.options.debugMode);
+    }
+    setTimeout(function () {
+        document.documentElement.classList.remove('is-animating');
+    }, 10);
+
+    // handle classes after render
+    if (this.options.pageClassPrefix !== false) {
+        document.body.className.split(' ').forEach(function (className) {
+            // empty string for page class
+            if (className != "" && className.includes(_this.options.pageClassPrefix)) {
+                document.body.classList.remove(className);
+            }
+        });
+    }
+
+    // empty string for page class
+    if (page.pageClass != "") {
+        page.pageClass.split(' ').forEach(function (className) {
+            if (className != "" && className.includes(_this.options.pageClassPrefix)) {
+                document.body.classList.add(className);
+            }
+        });
+    }
+
+    // scrolling
+    if (!this.options.doScrollingRightAway || this.scrollToElement) {
+        this.doScrolling(popstate);
+    }
+
+    // detect animation end
+    var animatedElements = document.querySelectorAll(this.options.animationSelector);
+    var promises = [];
+    forEach.call(animatedElements, function (element) {
+        var promise = new Promise(function (resolve) {
+            element.addEventListener(_this.transitionEndEvent, function (event) {
+                if (element == event.target) {
+                    resolve();
+                }
+            });
+        });
+        promises.push(promise);
+    });
+
+    //preload pages if possible
+    this.preloadPages();
+
+    Promise.all(promises).then(function () {
+        _this.triggerEvent('animationInDone');
+        // remove "to-{page}" classes
+        document.documentElement.className.split(' ').forEach(function (classItem) {
+            if (new RegExp("^to-").test(classItem) || classItem === "is-changing" || classItem === "is-rendering") {
+                document.documentElement.classList.remove(classItem);
+            }
+        });
+    });
+
+    // update current url
+    this.getUrl();
+};
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (page, popstate) {
+    setTimeout(function () {
+        document.body.classList.remove('is-changing');
+        history.back();
+    }, 100);
+};
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url) {
+    window.history.pushState({
+        url: url || window.location.href.split(window.location.hostname)[1],
+        random: Math.random(),
+        source: "swup"
+    }, document.getElementsByTagName('title')[0].innerText, url || window.location.href.split(window.location.hostname)[1]);
+};
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (eventName) {
+    if (this.options.debugMode) {
+        console.log('%cswup:' + '%c' + eventName, 'color: #343434', 'color: #009ACD');
+    }
+    var event = new CustomEvent('swup:' + eventName, { detail: eventName });
+    document.dispatchEvent(event);
+};
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function () {
+    this.currentUrl = window.location.pathname + window.location.search;
+};
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (element, to) {
+    var _this = this;
+
+    var animatedScroll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.options.animateScroll;
+
+    var friction = 1 - this.options.scrollFriction;
+    var acceleration = this.options.scrollAcceleration;
+
+    var positionY = 0;
+    var velocityY = 0;
+    var targetPositionY = 0;
+    var targetPositionYWithOffset = 0;
+    var direction = 0;
+
+    var raf = null;
+
+    function getScrollTop() {
+        return document.body.scrollTop || document.documentElement.scrollTop;
+    }
+
+    var animate = function animate() {
+        var distance = update();
+        render();
+
+        if (direction === 1 && targetPositionY > positionY || direction === -1 && targetPositionY < positionY) {
+            raf = requestAnimationFrame(animate);
+        } else {
+            window.scrollTo(0, targetPositionY);
+            _this.triggerEvent('scrollDone');
+        }
+    };
+
+    function update() {
+        var distance = targetPositionYWithOffset - positionY;
+        var attraction = distance * acceleration;
+
+        applyForce(attraction);
+
+        velocityY *= friction;
+        positionY += velocityY;
+
+        return distance;
+    }
+
+    var applyForce = function applyForce(force) {
+        velocityY += force;
+    };
+
+    var render = function render() {
+        window.scrollTo(0, positionY);
+    };
+
+    window.addEventListener('mousewheel', function (event) {
+        if (raf) {
+            cancelAnimationFrame(raf);
+            raf = null;
+        }
+    }, {
+        passive: true
+    });
+
+    var scrollTo = function scrollTo(offset, callback) {
+        positionY = getScrollTop();
+        direction = positionY > offset ? -1 : 1;
+        targetPositionYWithOffset = offset + direction;
+        targetPositionY = offset;
+        velocityY = 0;
+        if (positionY != targetPositionY) {
+            animate();
+        } else {
+            _this.triggerEvent('scrollDone');
+        }
+    };
+
+    this.triggerEvent('scrollStart');
+    if (animatedScroll == 0) {
+        window.scrollTo(0, to);
+        this.triggerEvent('scrollDone');
+    } else {
+        scrollTo(to);
+    }
+};
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (text) {
+    var output = text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/\//g, '-') // Replace / with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+    if (output[0] == "/") output = output.splice(1);
+    if (output == '') output = 'homepage';
+    return output;
+};
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (popstate) {
+    if (this.options.scroll && !popstate) {
+        if (this.scrollToElement != null) {
+            var self = this;
+
+            var element = document.querySelector(self.scrollToElement);
+            if (element != null) {
+                var top = element.getBoundingClientRect().top + window.pageYOffset;
+                self.scrollTo(document.body, top);
+            } else {
+                console.warn("Element for offset not found (" + self.scrollToElement + ")");
+            }
+            self.scrollToElement = null;
+        } else {
+            this.scrollTo(document.body, 0);
+        }
+    }
+};
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (element) {
+    var _this = this;
+
+    var blocks = 0;
+
+    for (var i = 0; i < this.options.elements.length; i++) {
+        if (element.querySelector(this.options.elements[i]) == null) {
+            console.warn("Element " + this.options.elements[i] + " is not in current page.");
+        } else {
+            [].forEach.call(document.body.querySelectorAll(this.options.elements[i]), function (item, index) {
+                element.querySelectorAll(_this.options.elements[i])[index].dataset.swup = blocks;
+                blocks++;
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (from, to, custom) {
+
+    // homepage case
+    if (from == "/") {
+        from = "/homepage";
+    }
+    if (to == "/") {
+        to = "/homepage";
+    }
+
+    // transition routes
+    this.transition = {
+        from: from.replace('/', ''),
+        to: to.replace('/', '')
+    };
+
+    if (custom) {
+        this.transition.custom = custom;
+    }
+};
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Link = __webpack_require__(63);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = function (eventName) {
+    var _this = this;
+
+    if (this.options.preload) {
+        var preload = function preload(pathname) {
+            var link = new _Link2.default();
+            link.setPath(pathname);
+            if (link.getAddress() != _this.currentUrl && !_this.cache.exists(link.getAddress()) && _this.preloadPromise == null) {
+                _this.getPage({ url: link.getAddress() }, function (response) {
+                    if (response === null) {
+                        console.warn('Server error.');
+                        _this.triggerEvent('serverError');
+                    } else {
+                        // get json data
+                        var page = _this.getDataFromHtml(response);
+                        page.url = link.getAddress();
+                        _this.cache.cacheUrl(page, _this.options.debugMode);
+                        _this.triggerEvent('pagePreloaded');
+                    }
+                });
+            }
+        };
+
+        document.querySelectorAll('[data-swup-preload]').forEach(function (element) {
+            preload(element.href);
+        });
+    }
+};
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (plugin, options) {
+    var _this = this;
+
+    options = Object.assign({}, plugin.options, options);
+
+    plugin.options = options;
+
+    var getCurrentPageHtml = function getCurrentPageHtml() {
+        var page = _this.cache.getPage(window.location.pathname + window.location.search);
+        var html = document.createElement('html');
+        html.innerHTML = page.originalContent;
+        return html;
+    };
+
+    this.plugins.push(plugin);
+    plugin.exec(options, this, getCurrentPageHtml);
+    return this.plugins;
+};
+
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (str) {
+    if (this.options.debugMode) {
+        console.log(str + '%c', 'color: #009ACD');
+    }
+};
 
 /***/ })
 /******/ ]);

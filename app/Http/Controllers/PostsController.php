@@ -24,13 +24,11 @@ class PostsController extends Controller
      */
     public function index(Request $request)
     {
-        if (!($request->has('latest') or $request->has('mostViewed'))) {
-            return redirect()->route(
-                'posts.index',
-                array_merge($request->query(), ['latest' => 1])
-            );
+        $params = $request->query();
+        if (!(isset($params['latest']) or isset($params['mostViewed']))) {
+            $params['latest'] = 1;
         }
-        $posts = PostFilter::filter()->paginate(12);
+        $posts = PostFilter::filter($params)->paginate(12);
 
         return view('posts.index')->with(compact('posts', 'category'));
     }

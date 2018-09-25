@@ -30,6 +30,7 @@
         "pjax": "^0.2.7",
         "sharer.js": "^0.3.3",
         "sticky-sidebar": "^3.3.1",
+        "swup": "^1.2.1",
         "tocbot": "^4.4.0",
         "waypoints": "^4.0.1"
     }

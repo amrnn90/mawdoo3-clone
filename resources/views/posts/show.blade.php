@@ -42,7 +42,7 @@
             </div>
     
             <div class="post__content-wrapper">
-                <div class="post__toc">
+                <div class="post__toc" data-no-swup>
                     <div class="tocbot"></div>
                 </div>
                 <div class="post__content">

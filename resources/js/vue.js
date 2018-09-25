@@ -10,7 +10,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 
 export default {
-    onEnterCompleted: () => {
+    onEnter: () => {
         if (window.app && window.app.$destroy) {
             // console.log('destroy');
             window.app.$destroy();

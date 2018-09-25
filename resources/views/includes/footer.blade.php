@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer" id="footer">
     <div class="footer__wrapper container">
         <div class="footer__social">
             <div class="footer__social-icons">
