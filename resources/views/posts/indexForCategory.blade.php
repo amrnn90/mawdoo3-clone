@@ -1,11 +1,11 @@
 @extends('layouts.withsidebar')
 
-@section('title', "")
+@section('title', "تصنيف: {$category->name} - موضوع")
 
 @section('main-content')
     <div class="tabs">
         <div class="tabs__tab tabs__tab--active">
-            أحدث المواضيع
+            {{ $category->name }}
         </div>
     </div>
     
@@ -31,6 +31,17 @@
 @endsection
 
 @section('sidebar')
+    @if ($category->subcategories()->exists())
+        <div class="sidebar-section">
+            <h4 class="sidebar-section__header">
+                تصنيفات فرعية
+            </h4>
+            @foreach ($category->subcategories as $c)
+                <a href="{{ route('posts.indexForCategory', $c) }}" class="sidebar-section__link">{{ $c->name }}</a>
+            @endforeach
+        </div>
+    @endif
+
     <div class="sidebar-section">
         <h4 class="sidebar-section__header">
             أهم التصنيفات

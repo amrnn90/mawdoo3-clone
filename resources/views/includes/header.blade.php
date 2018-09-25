@@ -9,7 +9,7 @@
 
         <div class="page-header__nav-items">
             <a href="{{ route('home') }}" class="page-header__nav-item">التصنيفات</a>
-            <a href="" class="page-header__nav-item">تصفح المواضيع</a>
+            <a href="{{ route('posts.index') }}" class="page-header__nav-item">تصفح المواضيع</a>
             @auth
                 <a href="{{ route('posts.create') }}" class="page-header__nav-item">أكتب موضوع</a>
                 <a href="javascript:" onclick="event.preventDefault();document.getElementById('logout-form').submit()" class="page-header__nav-item no-barba">تسجيل الخروج</a>

@@ -9,9 +9,9 @@ Breadcrumbs::for('home', function ($trail) {
 Breadcrumbs::for('category', function ($trail, $category) {
     $trail->parent('home');
     if ($category->parent) {
-        $trail->push($category->parent->name, route('posts.index', $category->parent));
+        $trail->push($category->parent->name, route('posts.indexForCategory', $category->parent));
     }
-    $trail->push($category->name, route('posts.index', $category));
+    $trail->push($category->name, route('posts.indexForCategory', $category));
 });
 
 // Home > [Category] > [Post]

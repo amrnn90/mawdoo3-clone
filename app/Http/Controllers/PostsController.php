@@ -7,12 +7,14 @@ use App\Http\Requests\PostForm;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\Category;
+use App\PostFilter;
+
 
 class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('auth')->except(['indexForCategory', 'index', 'show']);
     }
 
     /**
@@ -20,11 +22,24 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
-    {   
-        $posts = $category->posts()->latest()->paginate(12);
+    public function index(Request $request)
+    {
+        if (!($request->has('latest') or $request->has('mostViewed'))) {
+            return redirect()->route(
+                'posts.index',
+                array_merge($request->query(), ['latest' => 1])
+            );
+        }
+        $posts = PostFilter::filter()->paginate(12);
 
         return view('posts.index')->with(compact('posts', 'category'));
+    }
+
+    public function indexForCategory(Category $category)
+    {
+        $posts = $category->posts()->latest()->paginate(12);
+
+        return view('posts.indexForCategory')->with(compact('posts', 'category'));
     }
 
     /**

@@ -13885,7 +13885,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(57);
+module.exports = __webpack_require__(58);
 
 
 /***/ }),
@@ -13903,7 +13903,7 @@ __webpack_require__(14);
 var barba = __webpack_require__(36).default;
 
 $(function () {
-    barba.register([__webpack_require__(39).default, __webpack_require__(47).default, __webpack_require__(49).default, __webpack_require__(64).default]);
+    barba.register([__webpack_require__(39).default, __webpack_require__(47).default, __webpack_require__(49).default, __webpack_require__(57).default]);
     barba.start();
 });
 
@@ -49517,51 +49517,45 @@ var sidebar = void 0;
     onEnterCompleted: function onEnterCompleted() {
 
         // The Transition has just finished.
-        var els = document.querySelectorAll('h1, h2, h3');
-        Array.prototype.forEach.call(els, function (el) {
-            if (!el.id) {
-                var str = el.innerText.replace(/\s+/, '_');
-                var tempStr = str;
-                var suffix = 0;
+        if (document.querySelector('.tocbot')) {
+            var content = document.querySelector('.post__content');
+            var els = content.querySelectorAll('h1, h2, h3');
+            Array.prototype.forEach.call(els, function (el) {
+                if (!el.id) {
+                    var str = el.innerText.replace(/\s+/, '_');
+                    var tempStr = str;
+                    var suffix = 0;
 
-                while (document.getElementById(tempStr)) {
-                    suffix += 1;
-                    tempStr = str + '_' + suffix;
+                    while (document.getElementById(tempStr)) {
+                        suffix += 1;
+                        tempStr = str + '_' + suffix;
+                    }
+
+                    el.id = tempStr;
                 }
+            });
 
-                el.id = tempStr;
-            }
-        });
+            __WEBPACK_IMPORTED_MODULE_1_tocbot___default.a.init({
+                // Where to render the table of contents.
+                tocSelector: '.tocbot',
+                // Where to grab the headings to build the table of contents.
+                contentSelector: '.post__content',
+                // Which headings to grab inside of the contentSelector element.
+                headingSelector: 'h1, h2, h3'
 
-        __WEBPACK_IMPORTED_MODULE_1_tocbot___default.a.init({
-            // Where to render the table of contents.
-            tocSelector: '.tocbot',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.post__content',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3'
+                // positionFixedSelector: '.tocbot',
 
-            // positionFixedSelector: '.tocbot',
+            });
 
-        });
-
-        sidebar = new __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__["a" /* default */]('.tocbot', { topSpacing: 100 });
-
-        // function fixedHeader() {
-        //     $('.tocbot').width($(".post__toc").width());
-        //     // $("#header-filler").height($("#header-fixed").outerHeight());
-        // }
-
-        // $(window).resize(function () {
-        //     fixedHeader();
-        // });
-
-        // fixedHeader();
+            sidebar = new __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__["a" /* default */]('.tocbot', { topSpacing: 100 });
+        }
     },
     onLeave: function onLeave() {
 
         // A new Transition toward a new page has just started.
-        sidebar.destroy();
+        if (sidebar && sidebar.destroy) {
+            sidebar.destroy();
+        }
     },
     onLeaveCompleted: function onLeaveCompleted() {
         // The Container has just been removed from the DOM.
@@ -51362,18 +51356,6 @@ const StickySidebar = (() => {
 
 /***/ }),
 /* 57 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51395,6 +51377,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         // The Container has just been removed from the DOM.
     }
 });
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
