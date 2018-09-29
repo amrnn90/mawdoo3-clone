@@ -3,7 +3,7 @@
 namespace App;
 
 class PostFilter {
-    static protected $fields = ['latest'];
+    static protected $fields = ['latest', 'mostViewed'];
 
     static public function filter($params, $builder = null) 
     {
@@ -22,6 +22,12 @@ class PostFilter {
     static public function latest($builder, $value) {
         if ($value) {
             $builder->latest();
+        }
+    }
+
+    static public function mostViewed($builder, $value) {
+        if ($value) {
+            $builder->mostViewed();
         }
     }
 

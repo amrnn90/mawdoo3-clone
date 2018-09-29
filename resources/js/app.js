@@ -7,14 +7,19 @@
 
 require('./bootstrap');
 // const barba = require('./barba').default;
+require('./load-more-posts');
+
+
+
 const swup = require('./swup').default;
 
 $(function() {
     swup.register([
         require('./vue').default,
-        require('./load-more-posts').default,
         require('./toc').default,
-        require('./addthis').default
+        require('./addthis').default,
+        require('./tabs-loader').default,
+        require('./filepond').default
     ]);
 });
 

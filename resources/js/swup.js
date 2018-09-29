@@ -22,7 +22,6 @@ document.addEventListener('swup:willReplaceContent', event => {
 // });
 
 document.addEventListener('swup:contentReplaced', event => {
-    console.log('contentReplaced');
     callbacks.forEach(c => c.onEnter && c.onEnter());
 });
 

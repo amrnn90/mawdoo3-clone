@@ -13,10 +13,28 @@
         margin-left: 1rem;
         border-radius: 5px 5px 0 0;
 
+        .tabs__tab-link {
+            &:link, &:visited {
+                color: $color-primary;
+                pointer-events: all;
+            }
+        }
+
         &--active {
             border-bottom: 1px solid #fff;
+
+            .tabs__tab-link {
+                &:link, &:visited {
+                    color: #777;
+                    pointer-events: none;
+                }
+            }
+        
         }
     }
+    
+
+
 
     
 }

@@ -1,23 +1,26 @@
 import Loader from './Loader';
 
-export default {
-    onEnter: function() {
-        // The new Container is ready and attached to the DOM.
-        new Loader({
-            containerEl: document.querySelector('.posts-grid'),
-            items: '.posts-grid__item',
-            more: 'li.active + li > a',
-            buttonEl: document.querySelector('.load-more'),
-        });
+new Loader([
+    {
+        container: '.posts-grid',
+        // items: '.posts-grid__item',
+        paginate: {
+            target: 'li.active + li > a',
+            noMoreClass: 'no-more-items',
+        },
+        trigger: '.load-more',
+        replace: false,
     },
-    onEnterCompleted: function() {
-        // The Transition has just finished.
-  
-    },
-    onLeave: function() {
-        // A new Transition toward a new page has just started.
-    },
-    onLeaveCompleted: function() {
-        // The Container has just been removed from the DOM.
+    {
+        container: '.posts-list',
+        trigger: '.tabs__tab-link',
+        replace: true,
+        afterLoad: ({el, url}) => {
+            const tabs = document.querySelectorAll('.tabs__tab');
+            Array.prototype.forEach.call(tabs, tab => {
+                tab.classList.remove('tabs__tab--active');
+            });
+            el.parentElement.classList.add('tabs__tab--active');
+        }
     }
-};
+]);

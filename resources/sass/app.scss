@@ -4,9 +4,12 @@
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/forms";
 
 @import '~tocbot/src/scss/tocbot-core';
 @import '~tocbot/src/scss/tocbot-default-theme';
+
+@import '~filepond/dist/filepond.min.css';
 
 // Fonts
 // @import url('https://fonts.googleapis.com/css?family=Nunito');

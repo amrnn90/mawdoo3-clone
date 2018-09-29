@@ -1,18 +1,14 @@
 import axios from 'axios';
 
-class Loader {
+class LoaderPaginate {
   constructor(options) {
     for (let i=0; i < options.length; i++) {
       options[i] = Object.assign({}, {
         trigger: null,
         container: null,
-        paginate: {
-          target: null,
-          noMoreClass: "no-more-items",
-        },
+        target: null,
+        noMoreClass: "no-more-items",
         replace: false,
-        updateUrl: true,
-        updateTitle: true,
         afterLoad: () => {},
       }, options[i]);
     }
@@ -22,7 +18,6 @@ class Loader {
   }
 
   initEvents() {
-
     window.addEventListener('click', (e) => {
       this.options.forEach(option => {
         if (e.target.matches(option.trigger)) {
@@ -34,21 +29,18 @@ class Loader {
   }
 
   getNextUrl(option, html = null) {
-    if (option.paginate && option.paginate.target) {
-      html = html || document;
-      const moreEl = html.querySelector(option.paginate.target);
-  
-      if (moreEl) {
-        return moreEl.getAttribute('href');
-      }
-    } else if (option.currentEl) {
-      return option.currentEl.getAttribute('href');
+    html = html || document;
+    const moreEl = html.querySelector(option.target);
+
+    if (moreEl) {
+    return moreEl.getAttribute('href');
     }
+
     return null;
   }
 
   load(option) {
-    const nextUrl = option.currentEl.getAttribute('data-next-url') || this.getNextUrl(option);
+    const nextUrl = option.nextUrl;
     if (!nextUrl) return;
 
     axios.get(nextUrl)
@@ -63,21 +55,10 @@ class Loader {
           document.querySelector(option.container).insertAdjacentHTML('beforeend', temp.querySelector(option.container).innerHTML);
         }
         
-        option.currentEl.setAttribute('data-next-url', this.getNextUrl(option, temp) || '');
-
+        option.nextUrl = this.getNextUrl(option, temp);
         this.checkIfNoMore(option);
 
-        if (option.updateTitle) {
-          const newTitle = temp.querySelector('title').innerText;
-          document.querySelector('title').innerText = newTitle;
-        }
-
-        if (option.updateUrl) {
-          const state = Object.assign({}, history.state, {url: nextUrl});
-          history.replaceState(state, '', nextUrl);
-        }
-
-        option.afterLoad({el: option.currentEl, url: nextUrl});
+        option.afterLoad(Object.assign({},option));
 
         option.currentEl = null;
       });
@@ -85,8 +66,9 @@ class Loader {
 
   checkIfNoMore(option) {
     if (option.paginate && option.paginate.target) {
-      const method = option.currentEl.getAttribute('data-next-url') ? 'remove' : 'add';
-      option.currentEl.classList[method](option.paginate.noMoreClass);
+      const method = option.nextUrl ? 'remove' : 'add';
+      const triggerEl = document.querySelector(option.trigger);
+      triggerEl.classList[method](option.paginate.noMoreClass);
     }
   }
 

@@ -10,15 +10,15 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 
 
 export default {
-    onEnter: () => {
-        if (window.app && window.app.$destroy) {
-            // console.log('destroy');
-            window.app.$destroy();
-        }    
-        // console.log('create');
+    onEnter: () => {    
         window.app = new Vue({
             el: '#app', 
         });
+    },
+    onLeave: () => {
+        if (window.app && window.app.$destroy) {
+            window.app.$destroy();
+        }
     }
 }
 

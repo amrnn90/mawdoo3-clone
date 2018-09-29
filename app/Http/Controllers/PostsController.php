@@ -28,7 +28,7 @@ class PostsController extends Controller
         if (!(isset($params['latest']) or isset($params['mostViewed']))) {
             $params['latest'] = 1;
         }
-        $posts = PostFilter::filter($params)->paginate(12);
+        $posts = PostFilter::filter($params)->paginate(12)->appends(request()->except(['page','_token']));;
 
         return view('posts.index')->with(compact('posts', 'category'));
     }
