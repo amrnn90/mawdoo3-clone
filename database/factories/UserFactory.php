@@ -37,7 +37,8 @@ $factory->define(App\Post::class, function (Faker $faker) {
     // $image = Storage::url('public/posts/' . $image);
 
     $images = Storage::allFiles('public/posts');
-    $image = Storage::url($images[rand(0, count($images)-1)]);
+    // $image = Storage::path($images[rand(0, count($images)-1)]);
+    $image = $images[rand(0, count($images)-1)];
 
     $categories = App\Category::getCategoriesWithSub();
     $category = $categories->random();

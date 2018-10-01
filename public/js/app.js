@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(6);
-var isBuffer = __webpack_require__(19);
+var isBuffer = __webpack_require__(20);
 
 /*global toString:true*/
 
@@ -408,7 +408,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(21);
+var normalizeHeaderName = __webpack_require__(22);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -13420,7 +13420,7 @@ return jQuery;
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(18);
+module.exports = __webpack_require__(19);
 
 /***/ }),
 /* 6 */
@@ -13638,12 +13638,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(22);
-var buildURL = __webpack_require__(24);
-var parseHeaders = __webpack_require__(25);
-var isURLSameOrigin = __webpack_require__(26);
+var settle = __webpack_require__(23);
+var buildURL = __webpack_require__(25);
+var parseHeaders = __webpack_require__(26);
+var isURLSameOrigin = __webpack_require__(27);
 var createError = __webpack_require__(9);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(27);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -13740,7 +13740,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(28);
+      var cookies = __webpack_require__(29);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -13824,7 +13824,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(23);
+var enhanceError = __webpack_require__(24);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -13884,12 +13884,69 @@ module.exports = Cancel;
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(13);
-module.exports = __webpack_require__(58);
+"use strict";
 
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Link = function () {
+    function Link() {
+        _classCallCheck(this, Link);
+
+        this.link = document.createElement("a");
+    }
+
+    _createClass(Link, [{
+        key: 'setPath',
+        value: function setPath(href) {
+            this.link.href = href;
+        }
+    }, {
+        key: 'getPath',
+        value: function getPath() {
+            var path = this.link.pathname;
+            if (path[0] != '/') {
+                path = '/' + path;
+            }
+            return path;
+        }
+    }, {
+        key: 'getAddress',
+        value: function getAddress() {
+            var path = this.link.pathname + this.link.search;
+            if (path[0] != '/') {
+                path = '/' + path;
+            }
+            return path;
+        }
+    }, {
+        key: 'getHash',
+        value: function getHash() {
+            return this.link.hash;
+        }
+    }]);
+
+    return Link;
+}();
+
+exports.default = Link;
 
 /***/ }),
 /* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(14);
+module.exports = __webpack_require__(83);
+
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -13899,22 +13956,22 @@ module.exports = __webpack_require__(58);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(14);
+__webpack_require__(15);
 // const barba = require('./barba').default;
-__webpack_require__(47);
+__webpack_require__(37);
 
-var swup = __webpack_require__(64).default;
+var swup = __webpack_require__(39).default;
 
 $(function () {
-    swup.register([__webpack_require__(39).default, __webpack_require__(49).default, __webpack_require__(57).default, __webpack_require__(86).default, __webpack_require__(87).default]);
+    swup.register([__webpack_require__(61).default, __webpack_require__(69).default, __webpack_require__(77).default, __webpack_require__(78).default, __webpack_require__(79).default]);
 });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(15);
+window._ = __webpack_require__(16);
 window.Popper = __webpack_require__(3).default;
 
 /**
@@ -13926,7 +13983,7 @@ window.Popper = __webpack_require__(3).default;
 try {
   window.$ = window.jQuery = __webpack_require__(4);
 
-  __webpack_require__(17);
+  __webpack_require__(18);
 } catch (e) {}
 
 /**
@@ -13946,6 +14003,8 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  */
 
 var token = document.head.querySelector('meta[name="csrf-token"]');
+
+window.csrf_token = token && token.content;
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
@@ -13971,7 +14030,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -31083,10 +31142,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(16)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(17)(module)))
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -31114,7 +31173,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -35064,7 +35123,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35072,7 +35131,7 @@ module.exports = function(module) {
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(6);
-var Axios = __webpack_require__(20);
+var Axios = __webpack_require__(21);
 var defaults = __webpack_require__(2);
 
 /**
@@ -35107,14 +35166,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(11);
-axios.CancelToken = __webpack_require__(34);
+axios.CancelToken = __webpack_require__(35);
 axios.isCancel = __webpack_require__(10);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(35);
+axios.spread = __webpack_require__(36);
 
 module.exports = axios;
 
@@ -35123,7 +35182,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 /*!
@@ -35150,7 +35209,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35158,8 +35217,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(2);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(29);
-var dispatchRequest = __webpack_require__(30);
+var InterceptorManager = __webpack_require__(30);
+var dispatchRequest = __webpack_require__(31);
 
 /**
  * Create a new instance of Axios
@@ -35236,7 +35295,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35255,7 +35314,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35288,7 +35347,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35316,7 +35375,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35389,7 +35448,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35449,7 +35508,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35524,7 +35583,7 @@ module.exports = (
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35567,7 +35626,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35627,7 +35686,7 @@ module.exports = (
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35686,18 +35745,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(31);
+var transformData = __webpack_require__(32);
 var isCancel = __webpack_require__(10);
 var defaults = __webpack_require__(2);
-var isAbsoluteURL = __webpack_require__(32);
-var combineURLs = __webpack_require__(33);
+var isAbsoluteURL = __webpack_require__(33);
+var combineURLs = __webpack_require__(34);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -35779,7 +35838,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35806,7 +35865,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35827,7 +35886,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35848,7 +35907,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35912,7 +35971,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -35946,15 +36005,1527 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 36 */,
-/* 37 */,
-/* 38 */,
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Loader__ = __webpack_require__(38);
+
+
+new __WEBPACK_IMPORTED_MODULE_0__Loader__["a" /* default */]([{
+    container: '.posts-grid',
+    // items: '.posts-grid__item',
+    paginate: {
+        target: 'li.active + li > a',
+        noMoreClass: 'no-more-items'
+    },
+    trigger: '.load-more',
+    replace: false
+}, {
+    container: '.posts-list',
+    trigger: '.tabs__tab-link',
+    replace: true,
+    afterLoad: function afterLoad(_ref) {
+        var el = _ref.el,
+            url = _ref.url;
+
+        var tabs = document.querySelectorAll('.tabs__tab');
+        Array.prototype.forEach.call(tabs, function (tab) {
+            tab.classList.remove('tabs__tab--active');
+        });
+        el.parentElement.classList.add('tabs__tab--active');
+    }
+}]);
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Loader = function () {
+  function Loader(options) {
+    _classCallCheck(this, Loader);
+
+    for (var i = 0; i < options.length; i++) {
+      options[i] = Object.assign({}, {
+        trigger: null,
+        container: null,
+        paginate: {
+          target: null,
+          noMoreClass: "no-more-items"
+        },
+        replace: false,
+        updateUrl: true,
+        updateTitle: true,
+        afterLoad: function afterLoad() {}
+      }, options[i]);
+    }
+    this.options = options;
+
+    this.initEvents();
+  }
+
+  _createClass(Loader, [{
+    key: 'initEvents',
+    value: function initEvents() {
+      var _this = this;
+
+      window.addEventListener('click', function (e) {
+        _this.options.forEach(function (option) {
+          if (e.target.matches(option.trigger)) {
+            option.currentEl = e.target;
+            _this.load(option);
+          }
+        });
+      });
+    }
+  }, {
+    key: 'getNextUrl',
+    value: function getNextUrl(option) {
+      var html = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+
+      if (option.paginate && option.paginate.target) {
+        html = html || document;
+        var moreEl = html.querySelector(option.paginate.target);
+
+        if (moreEl) {
+          return moreEl.getAttribute('href');
+        }
+      } else if (option.currentEl) {
+        return option.currentEl.getAttribute('href');
+      }
+      return null;
+    }
+  }, {
+    key: 'load',
+    value: function load(option) {
+      var _this2 = this;
+
+      var nextUrl = option.currentEl.getAttribute('data-next-url') || this.getNextUrl(option);
+      if (!nextUrl) return;
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(nextUrl).then(function (_ref) {
+        var data = _ref.data;
+
+        var temp = document.createElement('html');
+        temp.innerHTML = data;
+
+        if (option.replace) {
+          // TODO: should scroll to container?
+          document.querySelector(option.container).innerHTML = temp.querySelector(option.container).innerHTML;
+        } else {
+          document.querySelector(option.container).insertAdjacentHTML('beforeend', temp.querySelector(option.container).innerHTML);
+        }
+
+        option.currentEl.setAttribute('data-next-url', _this2.getNextUrl(option, temp) || '');
+
+        _this2.checkIfNoMore(option);
+
+        if (option.updateTitle) {
+          var newTitle = temp.querySelector('title').innerText;
+          document.querySelector('title').innerText = newTitle;
+        }
+
+        if (option.updateUrl) {
+          var state = Object.assign({}, history.state, { url: nextUrl });
+          history.replaceState(state, '', nextUrl);
+        }
+
+        option.afterLoad({ el: option.currentEl, url: nextUrl });
+
+        option.currentEl = null;
+      });
+    }
+  }, {
+    key: 'checkIfNoMore',
+    value: function checkIfNoMore(option) {
+      if (option.paginate && option.paginate.target) {
+        var method = option.currentEl.getAttribute('data-next-url') ? 'remove' : 'add';
+        option.currentEl.classList[method](option.paginate.noMoreClass);
+      }
+    }
+  }]);
+
+  return Loader;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Loader);
+
+/***/ }),
 /* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var Vue = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_swup__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_swup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_swup__);
+
+
+var swup = new __WEBPACK_IMPORTED_MODULE_0_swup___default.a({
+    LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup]):not(.toc-link)',
+    doScrollingRightAway: true,
+    animateScroll: true,
+    scrollFriction: .3,
+    scrollAcceleration: .04
+    // scroll: false
+});
+
+var callbacks = [];
+
+document.addEventListener('swup:willReplaceContent', function (event) {
+    callbacks.forEach(function (c) {
+        return c.onLeave && c.onLeave();
+    });
+});
+
+// document.addEventListener('swup:pageLoaded', event => {
+//     console.log('pageView');
+//     callbacks.forEach(c => c.onEnter && c.onEnter());
+// });
+
+document.addEventListener('swup:contentReplaced', function (event) {
+    callbacks.forEach(function (c) {
+        return c.onEnter && c.onEnter();
+    });
+});
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    register: function register() {
+        var _callbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+        callbacks = _callbacks;
+
+        callbacks.forEach(function (c) {
+            return c.onEnter && c.onEnter();
+        });
+    }
+});
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+// helpers
+
+
+// modules
+
+
+var _delegate = __webpack_require__(41);
+
+var _delegate2 = _interopRequireDefault(_delegate);
+
+var _Cache = __webpack_require__(43);
+
+var _Cache2 = _interopRequireDefault(_Cache);
+
+var _Link = __webpack_require__(12);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+var _transitionEnd = __webpack_require__(44);
+
+var _transitionEnd2 = _interopRequireDefault(_transitionEnd);
+
+var _request = __webpack_require__(45);
+
+var _request2 = _interopRequireDefault(_request);
+
+var _getDataFromHtml = __webpack_require__(46);
+
+var _getDataFromHtml2 = _interopRequireDefault(_getDataFromHtml);
+
+var _loadPage = __webpack_require__(47);
+
+var _loadPage2 = _interopRequireDefault(_loadPage);
+
+var _renderPage = __webpack_require__(48);
+
+var _renderPage2 = _interopRequireDefault(_renderPage);
+
+var _goBack = __webpack_require__(49);
+
+var _goBack2 = _interopRequireDefault(_goBack);
+
+var _createState = __webpack_require__(50);
+
+var _createState2 = _interopRequireDefault(_createState);
+
+var _triggerEvent = __webpack_require__(51);
+
+var _triggerEvent2 = _interopRequireDefault(_triggerEvent);
+
+var _getUrl = __webpack_require__(52);
+
+var _getUrl2 = _interopRequireDefault(_getUrl);
+
+var _scrollTo = __webpack_require__(53);
+
+var _scrollTo2 = _interopRequireDefault(_scrollTo);
+
+var _classify = __webpack_require__(54);
+
+var _classify2 = _interopRequireDefault(_classify);
+
+var _doScrolling = __webpack_require__(55);
+
+var _doScrolling2 = _interopRequireDefault(_doScrolling);
+
+var _markSwupElements = __webpack_require__(56);
+
+var _markSwupElements2 = _interopRequireDefault(_markSwupElements);
+
+var _updateTransition = __webpack_require__(57);
+
+var _updateTransition2 = _interopRequireDefault(_updateTransition);
+
+var _preloadPages = __webpack_require__(58);
+
+var _preloadPages2 = _interopRequireDefault(_preloadPages);
+
+var _usePlugin = __webpack_require__(59);
+
+var _usePlugin2 = _interopRequireDefault(_usePlugin);
+
+var _log = __webpack_require__(60);
+
+var _log2 = _interopRequireDefault(_log);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Swup = function () {
+    function Swup(setOptions) {
+        _classCallCheck(this, Swup);
+
+        // default options
+        var defaults = {
+            cache: true,
+            animationSelector: '[class*="transition-"]',
+            elements: ['#swup'],
+            pageClassPrefix: '',
+            debugMode: false,
+            scroll: true,
+
+            doScrollingRightAway: false,
+            animateScroll: true,
+            scrollFriction: .3,
+            scrollAcceleration: .04,
+
+            preload: true,
+            support: true,
+            plugins: [],
+
+            skipPopStateHandling: function skipPopStateHandling(event) {
+                if (event.state && event.state.source == "swup") {
+                    return false;
+                }
+                return true;
+            },
+
+            LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
+            FORM_SELECTOR: 'form[data-swup-form]'
+
+            /**
+             * current transition object
+             */
+        };this.transition = {};
+
+        var options = _extends({}, defaults, setOptions);
+
+        /**
+         * helper variables
+         */
+        // mobile detection variable
+        this.mobile = false;
+        // id of element to scroll to after render
+        this.scrollToElement = null;
+        // promise used for preload, so no new loading of the same page starts while page is loading
+        this.preloadPromise = null;
+        // save options
+        this.options = options;
+        // plugins array
+        this.plugins = [];
+
+        /**
+         * make modules accessible in instance
+         */
+        this.getUrl = _getUrl2.default;
+        this.cache = new _Cache2.default();
+        this.link = new _Link2.default();
+        this.transitionEndEvent = (0, _transitionEnd2.default)();
+        this.getDataFromHtml = _getDataFromHtml2.default;
+        this.getPage = _request2.default;
+        this.scrollTo = _scrollTo2.default;
+        this.loadPage = _loadPage2.default;
+        this.renderPage = _renderPage2.default;
+        this.goBack = _goBack2.default;
+        this.createState = _createState2.default;
+        this.triggerEvent = _triggerEvent2.default;
+        this.classify = _classify2.default;
+        this.doScrolling = _doScrolling2.default;
+        this.markSwupElements = _markSwupElements2.default;
+        this.updateTransition = _updateTransition2.default;
+        this.preloadPages = _preloadPages2.default;
+        this.usePlugin = _usePlugin2.default;
+        this.log = _log2.default;
+        this.enable = this.enable;
+        this.destroy = this.destroy;
+
+        /**
+         * detect mobile devices
+         */
+        if (window.innerWidth <= 767) {
+            this.mobile = true;
+        }
+
+        // attach instance to window in debug mode
+        if (this.options.debugMode) {
+            window.swup = this;
+        }
+
+        this.getUrl();
+        this.enable();
+    }
+
+    _createClass(Swup, [{
+        key: 'enable',
+        value: function enable() {
+            var _this = this;
+
+            /**
+             * support check
+             */
+            if (this.options.support) {
+                // check pushState support
+                if (!('pushState' in window.history)) {
+                    console.warn('pushState is not supported');
+                    return;
+                }
+                // check transitionEnd support
+                if ((0, _transitionEnd2.default)()) {
+                    this.transitionEndEvent = (0, _transitionEnd2.default)();
+                } else {
+                    console.warn('transitionEnd detection is not supported');
+                    return;
+                }
+                // check Promise support
+                if (typeof Promise === "undefined" || Promise.toString().indexOf("[native code]") === -1) {
+                    console.warn('Promise is not supported');
+                    return;
+                }
+            }
+
+            // variable to keep event listeners from "delegate"
+            this.delegatedListeners = {};
+
+            /**
+             * link click handler
+             */
+            this.delegatedListeners.click = (0, _delegate2.default)(document, this.options.LINK_SELECTOR, 'click', this.linkClickHandler.bind(this));
+
+            /**
+             * link mouseover handler (preload)
+             */
+            this.delegatedListeners.mouseover = (0, _delegate2.default)(document.body, this.options.LINK_SELECTOR, 'mouseover', this.linkMouseoverHandler.bind(this));
+
+            /**
+             * form submit handler
+             */
+            this.delegatedListeners.formSubmit = (0, _delegate2.default)(document, this.options.FORM_SELECTOR, 'submit', this.formSubmitHandler.bind(this));
+
+            /**
+             * popstate handler
+             */
+            window.addEventListener('popstate', this.popStateHandler.bind(this));
+
+            /**
+             * initial save to cache
+             */
+            var page = this.getDataFromHtml(document.documentElement.outerHTML);
+            page.url = this.currentUrl;
+            if (this.options.cache) {
+                this.cache.cacheUrl(page, this.options.debugMode);
+            }
+
+            /**
+             * mark swup blocks in html
+             */
+            this.markSwupElements(document.documentElement);
+
+            /**
+             * enable plugins from options
+             */
+            this.options.plugins.forEach(function (item) {
+                return _this.usePlugin(item);
+            });
+
+            /**
+             * modify initial history record
+             */
+            window.history.replaceState(Object.assign({}, window.history.state, {
+                url: window.location.href,
+                random: Math.random(),
+                source: "swup"
+            }), document.title, window.location.href);
+
+            /**
+             * trigger enabled event
+             */
+            this.triggerEvent('enabled');
+            document.documentElement.classList.add('swup-enabled');
+
+            /**
+             * trigger page view event
+             */
+            this.triggerEvent('pageView');
+
+            /**
+             * preload pages if possible
+             */
+            this.preloadPages();
+        }
+    }, {
+        key: 'destroy',
+        value: function destroy() {
+            // remove delegated listeners
+            this.delegatedListeners.click.destroy();
+            this.delegatedListeners.mouseover.destroy();
+
+            // remove popstate listener
+            window.removeEventListener('popstate', this.popStateHandler.bind(this));
+
+            // empty cache
+            this.cache.empty();
+
+            // remove swup data atributes from blocks
+            document.querySelectorAll('[data-swup]').forEach(function (element) {
+                delete element.dataset.swup;
+            });
+
+            this.triggerEvent('disabled');
+            document.documentElement.classList.remove('swup-enabled');
+        }
+    }, {
+        key: 'linkClickHandler',
+        value: function linkClickHandler(event) {
+            // no control key pressed
+            if (!event.metaKey) {
+                this.triggerEvent('clickLink');
+                var link = new _Link2.default();
+                event.preventDefault();
+                link.setPath(event.delegateTarget.href);
+                if (link.getAddress() == this.currentUrl || link.getAddress() == '') {
+                    if (link.getHash() != '') {
+                        this.triggerEvent('samePageWithHash');
+                        var element = document.querySelector(link.getHash());
+                        if (element != null) {
+                            if (this.options.scroll) {
+                                var top = element.getBoundingClientRect().top + window.pageYOffset;
+                                this.scrollTo(document.body, top);
+                            }
+                            history.replaceState(undefined, undefined, link.getHash());
+                        } else {
+                            console.warn('Element for offset not found (' + link.getHash() + ')');
+                        }
+                    } else {
+                        this.triggerEvent('samePage');
+                        if (this.options.scroll) {
+                            this.scrollTo(document.body, 0, 1);
+                        }
+                    }
+                } else {
+                    if (link.getHash() != '') {
+                        this.scrollToElement = link.getHash();
+                    }
+                    // custom class fro dynamic pages
+                    var swupClass = event.delegateTarget.dataset.swupClass;
+                    if (swupClass != null) {
+                        this.updateTransition(window.location.pathname, link.getAddress(), event.delegateTarget.dataset.swupClass);
+                        document.documentElement.classList.add('to-' + swupClass);
+                    } else {
+                        this.updateTransition(window.location.pathname, link.getAddress());
+                    }
+                    this.loadPage({ url: link.getAddress() }, false);
+                }
+            } else {
+                this.triggerEvent('openPageInNewTab');
+            }
+        }
+    }, {
+        key: 'linkMouseoverHandler',
+        value: function linkMouseoverHandler(event) {
+            var _this2 = this;
+
+            this.triggerEvent('hoverLink');
+            if (this.options.preload) {
+                var link = new _Link2.default();
+                link.setPath(event.delegateTarget.href);
+                if (link.getAddress() != this.currentUrl && !this.cache.exists(link.getAddress()) && this.preloadPromise == null) {
+                    this.preloadPromise = new Promise(function (resolve, reject) {
+                        _this2.getPage({ url: link.getAddress() }, function (response, request) {
+                            if (request.status === 500) {
+                                _this2.triggerEvent('serverError');
+                                reject(link.getAddress());
+                                return;
+                            } else {
+                                // get json data
+                                var page = _this2.getDataFromHtml(response);
+                                if (page != null) {
+                                    page.url = link.getAddress();
+                                    _this2.cache.cacheUrl(page, _this2.options.debugMode);
+                                    _this2.triggerEvent('pagePreloaded');
+                                } else {
+                                    reject(link.getAddress());
+                                    return;
+                                }
+                            }
+                            resolve();
+                            _this2.preloadPromise = null;
+                        });
+                    });
+                    this.preloadPromise.route = link.getAddress();
+                }
+            }
+        }
+    }, {
+        key: 'formSubmitHandler',
+        value: function formSubmitHandler(event) {
+            // no control key pressed
+            if (!event.metaKey) {
+                this.triggerEvent('submitForm');
+                event.preventDefault();
+                var form = event.target;
+                var formData = new FormData(form);
+
+                var link = new _Link2.default();
+                link.setPath(form.action);
+
+                if (link.getHash() != '') {
+                    this.scrollToElement = link.getHash();
+                }
+
+                if (form.method.toLowerCase() != "get") {
+                    // remove page from cache
+                    this.cache.remove(link.getAddress());
+
+                    // send data
+                    this.loadPage({
+                        url: link.getAddress(),
+                        method: form.method,
+                        data: formData
+                    });
+                } else {
+                    // create base url
+                    var url = link.getAddress() || window.location.href;
+                    var inputs = form.querySelectorAll('input');
+                    if (url.indexOf('?') == -1) {
+                        url += "?";
+                    } else {
+                        url += "&";
+                    }
+
+                    // add form data to url
+                    inputs.forEach(function (input) {
+                        if (input.type == "checkbox" || input.type == "radio") {
+                            if (input.checked) {
+                                url += encodeURIComponent(input.name) + "=" + encodeURIComponent(input.value) + "&";
+                            }
+                        } else {
+                            url += encodeURIComponent(input.name) + "=" + encodeURIComponent(input.value) + "&";
+                        }
+                    });
+
+                    // remove last "&"
+                    url = url.slice(0, -1);
+
+                    // remove page from cache
+                    this.cache.remove(url);
+
+                    // send data
+                    this.loadPage({
+                        url: url
+                    });
+                }
+            } else {
+                this.triggerEvent('openFormSubmitInNewTab');
+            }
+        }
+    }, {
+        key: 'popStateHandler',
+        value: function popStateHandler(event) {
+            var link = new _Link2.default();
+            if (this.options.skipPopStateHandling(event)) return;
+            link.setPath(event.state ? event.state.url : window.location.pathname);
+            if (link.getHash() != '') {
+                this.scrollToElement = link.getHash();
+            } else {
+                event.preventDefault();
+            }
+            this.triggerEvent('popState');
+            this.loadPage({ url: link.getAddress() }, event);
+        }
+    }]);
+
+    return Swup;
+}();
+
+exports.default = Swup;
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var closest = __webpack_require__(42);
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function _delegate(element, selector, type, callback, useCapture) {
+    var listenerFn = listener.apply(this, arguments);
+
+    element.addEventListener(type, listenerFn, useCapture);
+
+    return {
+        destroy: function() {
+            element.removeEventListener(type, listenerFn, useCapture);
+        }
+    }
+}
+
+/**
+ * Delegates event to a selector.
+ *
+ * @param {Element|String|Array} [elements]
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @param {Boolean} useCapture
+ * @return {Object}
+ */
+function delegate(elements, selector, type, callback, useCapture) {
+    // Handle the regular Element usage
+    if (typeof elements.addEventListener === 'function') {
+        return _delegate.apply(null, arguments);
+    }
+
+    // Handle Element-less usage, it defaults to global delegation
+    if (typeof type === 'function') {
+        // Use `document` as the first parameter, then apply arguments
+        // This is a short way to .unshift `arguments` without running into deoptimizations
+        return _delegate.bind(null, document).apply(null, arguments);
+    }
+
+    // Handle Selector-based usage
+    if (typeof elements === 'string') {
+        elements = document.querySelectorAll(elements);
+    }
+
+    // Handle Array-like based usage
+    return Array.prototype.map.call(elements, function (element) {
+        return _delegate(element, selector, type, callback, useCapture);
+    });
+}
+
+/**
+ * Finds closest match and invokes callback.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} callback
+ * @return {Function}
+ */
+function listener(element, selector, type, callback) {
+    return function(e) {
+        e.delegateTarget = closest(e.target, selector);
+
+        if (e.delegateTarget) {
+            callback.call(element, e);
+        }
+    }
+}
+
+module.exports = delegate;
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+var DOCUMENT_NODE_TYPE = 9;
+
+/**
+ * A polyfill for Element.matches()
+ */
+if (typeof Element !== 'undefined' && !Element.prototype.matches) {
+    var proto = Element.prototype;
+
+    proto.matches = proto.matchesSelector ||
+                    proto.mozMatchesSelector ||
+                    proto.msMatchesSelector ||
+                    proto.oMatchesSelector ||
+                    proto.webkitMatchesSelector;
+}
+
+/**
+ * Finds the closest parent that matches a selector.
+ *
+ * @param {Element} element
+ * @param {String} selector
+ * @return {Function}
+ */
+function closest (element, selector) {
+    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
+        if (typeof element.matches === 'function' &&
+            element.matches(selector)) {
+          return element;
+        }
+        element = element.parentNode;
+    }
+}
+
+module.exports = closest;
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Cache = function () {
+    function Cache() {
+        _classCallCheck(this, Cache);
+
+        this.pages = {};
+        this.count = 0;
+        this.last = null;
+    }
+
+    _createClass(Cache, [{
+        key: 'cacheUrl',
+        value: function cacheUrl(page, displayCache) {
+            this.count++;
+            if (page.url in this.pages === false) {
+                this.pages[page.url] = page;
+            }
+            this.last = this.pages[page.url];
+            if (displayCache) {
+                this.displayCache();
+            }
+        }
+    }, {
+        key: 'getPage',
+        value: function getPage(url) {
+            return this.pages[url];
+        }
+    }, {
+        key: 'displayCache',
+        value: function displayCache() {
+            console.groupCollapsed('Cache (' + Object.keys(this.pages).length + ')');
+            for (var key in this.pages) {
+                console.log(this.pages[key]);
+            }
+            console.groupEnd();
+        }
+    }, {
+        key: 'exists',
+        value: function exists(url) {
+            if (url in this.pages) return true;
+            return false;
+        }
+    }, {
+        key: 'empty',
+        value: function empty(showLog) {
+            this.pages = {};
+            this.count = 0;
+            this.last = null;
+            if (showLog) {
+                console.log('Cache cleared');
+            }
+        }
+    }, {
+        key: 'remove',
+        value: function remove(url) {
+            delete this.pages[url];
+        }
+    }]);
+
+    return Cache;
+}();
+
+exports.default = Cache;
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function transitionEnd() {
+    var el = document.createElement('div');
+
+    var transEndEventNames = {
+        WebkitTransition: 'webkitTransitionEnd',
+        MozTransition: 'transitionend',
+        OTransition: 'oTransitionEnd otransitionend',
+        transition: 'transitionend'
+    };
+
+    for (var name in transEndEventNames) {
+        if (el.style[name] !== undefined) {
+            return transEndEventNames[name];
+        }
+    }
+
+    return false;
+};
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+module.exports = function (options) {
+    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    var defaults = {
+        url: window.location.pathname + window.location.search,
+        method: "GET",
+        data: null
+    };
+
+    var data = _extends({}, defaults, options);
+
+    var request = new XMLHttpRequest();
+
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status !== 500) {
+                callback(request.responseText, request);
+            } else {
+                callback(null, request);
+            }
+        }
+    };
+
+    request.open(data.method, data.url, true);
+    request.setRequestHeader("X-Requested-With", "swup");
+    request.send(data.data);
+    return request;
+};
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (html) {
+    var _this = this;
+
+    var content = html.replace('<body', '<div id="swupBody"').replace('</body>', '</div>');
+    var fakeDom = document.createElement('div');
+    fakeDom.innerHTML = content;
+    var blocks = [];
+
+    for (var i = 0; i < this.options.elements.length; i++) {
+        if (fakeDom.querySelector(this.options.elements[i]) == null) {
+            console.warn('Element ' + this.options.elements[i] + ' is not found in cached page.');
+            return null;
+        } else {
+            [].forEach.call(document.body.querySelectorAll(this.options.elements[i]), function (item, index) {
+                fakeDom.querySelectorAll(_this.options.elements[i])[index].dataset.swup = blocks.length;
+                blocks.push(fakeDom.querySelectorAll(_this.options.elements[i])[index].outerHTML);
+            });
+        }
+    }
+
+    var json = {
+        title: fakeDom.querySelector('title').innerText,
+        pageClass: fakeDom.querySelector('#swupBody').className,
+        originalContent: html,
+        blocks: blocks
+    };
+    return json;
+};
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var forEach = Array.prototype.forEach;
+
+
+module.exports = function (data, popstate) {
+    var _this = this;
+
+    var finalPage = null;
+
+    // scrolling
+    if (this.options.doScrollingRightAway && !this.scrollToElement) {
+        this.doScrolling(popstate);
+    }
+
+    var animationPromises = [];
+
+    if (!popstate) {
+        // start animation
+        document.documentElement.classList.add('is-changing');
+        document.documentElement.classList.add('is-leaving');
+        document.documentElement.classList.add('is-animating');
+        document.documentElement.classList.add('to-' + this.classify(data.url));
+
+        // detect animation end
+        var animatedElements = document.querySelectorAll(this.options.animationSelector);
+        forEach.call(animatedElements, function (element) {
+            var promise = new Promise(function (resolve) {
+                element.addEventListener(_this.transitionEndEvent, function (event) {
+                    if (element == event.target) {
+                        resolve();
+                    }
+                });
+            });
+            animationPromises.push(promise);
+        });
+
+        Promise.all(animationPromises).then(function () {
+            _this.triggerEvent('animationOutDone');
+        });
+
+        // create pop element with or without anchor
+        if (this.scrollToElement != null) {
+            var pop = data.url + this.scrollToElement;
+        } else {
+            var pop = data.url;
+        }
+        this.createState(pop);
+    } else {
+        // proceed without animating
+        this.triggerEvent('animationSkipped');
+    }
+
+    if (this.cache.exists(data.url)) {
+        var xhrPromise = new Promise(function (resolve) {
+            resolve();
+        });
+        this.triggerEvent('pageRetrievedFromCache');
+    } else {
+        if (!this.preloadPromise || this.preloadPromise.route != data.url) {
+            var xhrPromise = new Promise(function (resolve, reject) {
+                _this.getPage(data, function (response, request) {
+                    if (request.status === 500) {
+                        _this.triggerEvent('serverError');
+                        reject(data.url);
+                        return;
+                    } else {
+                        // get json data
+                        var page = _this.getDataFromHtml(response);
+                        if (page != null) {
+                            page.url = data.url;
+                        } else {
+                            reject(data.url);
+                            return;
+                        }
+                        // render page
+                        _this.cache.cacheUrl(page, _this.options.debugMode);
+                        _this.triggerEvent('pageLoaded');
+                    }
+                    resolve();
+                });
+            });
+        } else {
+            var xhrPromise = this.preloadPromise;
+        }
+    }
+
+    Promise.all(animationPromises.concat([xhrPromise])).then(function () {
+        finalPage = _this.cache.getPage(data.url);
+        _this.renderPage(finalPage, popstate);
+        _this.preloadPromise = null;
+    }).catch(function (errorUrl) {
+        // rewrite the skipPopStateHandling function to redirect manually when the history.go is processed
+        _this.options.skipPopStateHandling = function () {
+            window.location = errorUrl;
+            return true;
+        };
+
+        // go back to the actual page were still at
+        window.history.go(-1);
+    });
+};
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var forEach = Array.prototype.forEach;
+
+
+module.exports = function (page, popstate) {
+    var _this = this;
+
+    document.documentElement.classList.remove('is-leaving');
+
+    // only add for non-popstate transitions
+    if (!popstate) {
+        document.documentElement.classList.add('is-rendering');
+    }
+
+    this.triggerEvent('willReplaceContent');
+
+    // replace blocks
+    for (var i = 0; i < page.blocks.length; i++) {
+        document.body.querySelector('[data-swup="' + i + '"]').outerHTML = page.blocks[i];
+    }
+
+    // set title
+    document.title = page.title;
+
+    this.triggerEvent('contentReplaced');
+    this.triggerEvent('pageView');
+    if (!this.options.cache) {
+        this.cache.empty(this.options.debugMode);
+    }
+    setTimeout(function () {
+        document.documentElement.classList.remove('is-animating');
+    }, 10);
+
+    // handle classes after render
+    if (this.options.pageClassPrefix !== false) {
+        document.body.className.split(' ').forEach(function (className) {
+            // empty string for page class
+            if (className != "" && className.includes(_this.options.pageClassPrefix)) {
+                document.body.classList.remove(className);
+            }
+        });
+    }
+
+    // empty string for page class
+    if (page.pageClass != "") {
+        page.pageClass.split(' ').forEach(function (className) {
+            if (className != "" && className.includes(_this.options.pageClassPrefix)) {
+                document.body.classList.add(className);
+            }
+        });
+    }
+
+    // scrolling
+    if (!this.options.doScrollingRightAway || this.scrollToElement) {
+        this.doScrolling(popstate);
+    }
+
+    // detect animation end
+    var animatedElements = document.querySelectorAll(this.options.animationSelector);
+    var promises = [];
+    forEach.call(animatedElements, function (element) {
+        var promise = new Promise(function (resolve) {
+            element.addEventListener(_this.transitionEndEvent, function (event) {
+                if (element == event.target) {
+                    resolve();
+                }
+            });
+        });
+        promises.push(promise);
+    });
+
+    //preload pages if possible
+    this.preloadPages();
+
+    Promise.all(promises).then(function () {
+        _this.triggerEvent('animationInDone');
+        // remove "to-{page}" classes
+        document.documentElement.className.split(' ').forEach(function (classItem) {
+            if (new RegExp("^to-").test(classItem) || classItem === "is-changing" || classItem === "is-rendering") {
+                document.documentElement.classList.remove(classItem);
+            }
+        });
+    });
+
+    // update current url
+    this.getUrl();
+};
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (page, popstate) {
+    setTimeout(function () {
+        document.body.classList.remove('is-changing');
+        history.back();
+    }, 100);
+};
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url) {
+    window.history.pushState({
+        url: url || window.location.href.split(window.location.hostname)[1],
+        random: Math.random(),
+        source: "swup"
+    }, document.getElementsByTagName('title')[0].innerText, url || window.location.href.split(window.location.hostname)[1]);
+};
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (eventName) {
+    if (this.options.debugMode) {
+        console.log('%cswup:' + '%c' + eventName, 'color: #343434', 'color: #009ACD');
+    }
+    var event = new CustomEvent('swup:' + eventName, { detail: eventName });
+    document.dispatchEvent(event);
+};
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function () {
+    this.currentUrl = window.location.pathname + window.location.search;
+};
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (element, to) {
+    var _this = this;
+
+    var animatedScroll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.options.animateScroll;
+
+    var friction = 1 - this.options.scrollFriction;
+    var acceleration = this.options.scrollAcceleration;
+
+    var positionY = 0;
+    var velocityY = 0;
+    var targetPositionY = 0;
+    var targetPositionYWithOffset = 0;
+    var direction = 0;
+
+    var raf = null;
+
+    function getScrollTop() {
+        return document.body.scrollTop || document.documentElement.scrollTop;
+    }
+
+    var animate = function animate() {
+        var distance = update();
+        render();
+
+        if (direction === 1 && targetPositionY > positionY || direction === -1 && targetPositionY < positionY) {
+            raf = requestAnimationFrame(animate);
+        } else {
+            window.scrollTo(0, targetPositionY);
+            _this.triggerEvent('scrollDone');
+        }
+    };
+
+    function update() {
+        var distance = targetPositionYWithOffset - positionY;
+        var attraction = distance * acceleration;
+
+        applyForce(attraction);
+
+        velocityY *= friction;
+        positionY += velocityY;
+
+        return distance;
+    }
+
+    var applyForce = function applyForce(force) {
+        velocityY += force;
+    };
+
+    var render = function render() {
+        window.scrollTo(0, positionY);
+    };
+
+    window.addEventListener('mousewheel', function (event) {
+        if (raf) {
+            cancelAnimationFrame(raf);
+            raf = null;
+        }
+    }, {
+        passive: true
+    });
+
+    var scrollTo = function scrollTo(offset, callback) {
+        positionY = getScrollTop();
+        direction = positionY > offset ? -1 : 1;
+        targetPositionYWithOffset = offset + direction;
+        targetPositionY = offset;
+        velocityY = 0;
+        if (positionY != targetPositionY) {
+            animate();
+        } else {
+            _this.triggerEvent('scrollDone');
+        }
+    };
+
+    this.triggerEvent('scrollStart');
+    if (animatedScroll == 0) {
+        window.scrollTo(0, to);
+        this.triggerEvent('scrollDone');
+    } else {
+        scrollTo(to);
+    }
+};
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (text) {
+    var output = text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
+    .replace(/\//g, '-') // Replace / with -
+    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, ''); // Trim - from end of text
+    if (output[0] == "/") output = output.splice(1);
+    if (output == '') output = 'homepage';
+    return output;
+};
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (popstate) {
+    if (this.options.scroll && !popstate) {
+        if (this.scrollToElement != null) {
+            var self = this;
+
+            var element = document.querySelector(self.scrollToElement);
+            if (element != null) {
+                var top = element.getBoundingClientRect().top + window.pageYOffset;
+                self.scrollTo(document.body, top);
+            } else {
+                console.warn("Element for offset not found (" + self.scrollToElement + ")");
+            }
+            self.scrollToElement = null;
+        } else {
+            this.scrollTo(document.body, 0);
+        }
+    }
+};
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (element) {
+    var _this = this;
+
+    var blocks = 0;
+
+    for (var i = 0; i < this.options.elements.length; i++) {
+        if (element.querySelector(this.options.elements[i]) == null) {
+            console.warn("Element " + this.options.elements[i] + " is not in current page.");
+        } else {
+            [].forEach.call(document.body.querySelectorAll(this.options.elements[i]), function (item, index) {
+                element.querySelectorAll(_this.options.elements[i])[index].dataset.swup = blocks;
+                blocks++;
+            });
+        }
+    }
+};
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (from, to, custom) {
+
+    // homepage case
+    if (from == "/") {
+        from = "/homepage";
+    }
+    if (to == "/") {
+        to = "/homepage";
+    }
+
+    // transition routes
+    this.transition = {
+        from: from.replace('/', ''),
+        to: to.replace('/', '')
+    };
+
+    if (custom) {
+        this.transition.custom = custom;
+    }
+};
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _Link = __webpack_require__(12);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+module.exports = function (eventName) {
+    var _this = this;
+
+    if (this.options.preload) {
+        var preload = function preload(pathname) {
+            var link = new _Link2.default();
+            link.setPath(pathname);
+            if (link.getAddress() != _this.currentUrl && !_this.cache.exists(link.getAddress()) && _this.preloadPromise == null) {
+                _this.getPage({ url: link.getAddress() }, function (response) {
+                    if (response === null) {
+                        console.warn('Server error.');
+                        _this.triggerEvent('serverError');
+                    } else {
+                        // get json data
+                        var page = _this.getDataFromHtml(response);
+                        page.url = link.getAddress();
+                        _this.cache.cacheUrl(page, _this.options.debugMode);
+                        _this.triggerEvent('pagePreloaded');
+                    }
+                });
+            }
+        };
+
+        document.querySelectorAll('[data-swup-preload]').forEach(function (element) {
+            preload(element.href);
+        });
+    }
+};
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (plugin, options) {
+    var _this = this;
+
+    options = Object.assign({}, plugin.options, options);
+
+    plugin.options = options;
+
+    var getCurrentPageHtml = function getCurrentPageHtml() {
+        var page = _this.cache.getPage(window.location.pathname + window.location.search);
+        var html = document.createElement('html');
+        html.innerHTML = page.originalContent;
+        return html;
+    };
+
+    this.plugins.push(plugin);
+    plugin.exec(options, this, getCurrentPageHtml);
+    return this.plugins;
+};
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (str) {
+    if (this.options.debugMode) {
+        console.log(str + '%c', 'color: #009ACD');
+    }
+};
+
+/***/ }),
+/* 61 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var Vue = __webpack_require__(62);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -35962,7 +37533,7 @@ var Vue = __webpack_require__(40);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(43));
+Vue.component('example-component', __webpack_require__(65));
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     onEnter: function onEnter() {
@@ -35978,7 +37549,7 @@ Vue.component('example-component', __webpack_require__(43));
 });
 
 /***/ }),
-/* 40 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46941,10 +48512,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(41).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(63).setImmediate))
 
 /***/ }),
-/* 41 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -47000,7 +48571,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(42);
+__webpack_require__(64);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -47014,7 +48585,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 42 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47207,15 +48778,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(7)))
 
 /***/ }),
-/* 43 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(44)
+var normalizeComponent = __webpack_require__(66)
 /* script */
-var __vue_script__ = __webpack_require__(45)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(46)
+var __vue_template__ = __webpack_require__(68)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47254,7 +48825,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 44 */
+/* 66 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -47363,7 +48934,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 45 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47406,7 +48977,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 46 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47453,172 +49024,16 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */
+/* 69 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Loader__ = __webpack_require__(48);
-
-
-new __WEBPACK_IMPORTED_MODULE_0__Loader__["a" /* default */]([{
-    container: '.posts-grid',
-    // items: '.posts-grid__item',
-    paginate: {
-        target: 'li.active + li > a',
-        noMoreClass: 'no-more-items'
-    },
-    trigger: '.load-more',
-    replace: false
-}, {
-    container: '.posts-list',
-    trigger: '.tabs__tab-link',
-    replace: true,
-    afterLoad: function afterLoad(_ref) {
-        var el = _ref.el,
-            url = _ref.url;
-
-        var tabs = document.querySelectorAll('.tabs__tab');
-        Array.prototype.forEach.call(tabs, function (tab) {
-            tab.classList.remove('tabs__tab--active');
-        });
-        el.parentElement.classList.add('tabs__tab--active');
-    }
-}]);
-
-/***/ }),
-/* 48 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var Loader = function () {
-  function Loader(options) {
-    _classCallCheck(this, Loader);
-
-    for (var i = 0; i < options.length; i++) {
-      options[i] = Object.assign({}, {
-        trigger: null,
-        container: null,
-        paginate: {
-          target: null,
-          noMoreClass: "no-more-items"
-        },
-        replace: false,
-        updateUrl: true,
-        updateTitle: true,
-        afterLoad: function afterLoad() {}
-      }, options[i]);
-    }
-    this.options = options;
-
-    this.initEvents();
-  }
-
-  _createClass(Loader, [{
-    key: 'initEvents',
-    value: function initEvents() {
-      var _this = this;
-
-      window.addEventListener('click', function (e) {
-        _this.options.forEach(function (option) {
-          if (e.target.matches(option.trigger)) {
-            option.currentEl = e.target;
-            _this.load(option);
-          }
-        });
-      });
-    }
-  }, {
-    key: 'getNextUrl',
-    value: function getNextUrl(option) {
-      var html = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-
-      if (option.paginate && option.paginate.target) {
-        html = html || document;
-        var moreEl = html.querySelector(option.paginate.target);
-
-        if (moreEl) {
-          return moreEl.getAttribute('href');
-        }
-      } else if (option.currentEl) {
-        return option.currentEl.getAttribute('href');
-      }
-      return null;
-    }
-  }, {
-    key: 'load',
-    value: function load(option) {
-      var _this2 = this;
-
-      var nextUrl = option.currentEl.getAttribute('data-next-url') || this.getNextUrl(option);
-      if (!nextUrl) return;
-
-      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(nextUrl).then(function (_ref) {
-        var data = _ref.data;
-
-        var temp = document.createElement('html');
-        temp.innerHTML = data;
-
-        if (option.replace) {
-          // TODO: should scroll to container?
-          document.querySelector(option.container).innerHTML = temp.querySelector(option.container).innerHTML;
-        } else {
-          document.querySelector(option.container).insertAdjacentHTML('beforeend', temp.querySelector(option.container).innerHTML);
-        }
-
-        option.currentEl.setAttribute('data-next-url', _this2.getNextUrl(option, temp) || '');
-
-        _this2.checkIfNoMore(option);
-
-        if (option.updateTitle) {
-          var newTitle = temp.querySelector('title').innerText;
-          document.querySelector('title').innerText = newTitle;
-        }
-
-        if (option.updateUrl) {
-          var state = Object.assign({}, history.state, { url: nextUrl });
-          history.replaceState(state, '', nextUrl);
-        }
-
-        option.afterLoad({ el: option.currentEl, url: nextUrl });
-
-        option.currentEl = null;
-      });
-    }
-  }, {
-    key: 'checkIfNoMore',
-    value: function checkIfNoMore(option) {
-      if (option.paginate && option.paginate.target) {
-        var method = option.currentEl.getAttribute('data-next-url') ? 'remove' : 'add';
-        option.currentEl.classList[method](option.paginate.noMoreClass);
-      }
-    }
-  }]);
-
-  return Loader;
-}();
-
-/* harmony default export */ __webpack_exports__["a"] = (Loader);
-
-/***/ }),
-/* 49 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__resize_sensor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_tocbot__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__ = __webpack_require__(76);
 
 
 
@@ -47682,7 +49097,7 @@ var sidebar = void 0;
 });
 
 /***/ }),
-/* 50 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -47988,7 +49403,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 51 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -48018,14 +49433,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   'use strict'
 
   // Default options.
-  var defaultOptions = __webpack_require__(52)
+  var defaultOptions = __webpack_require__(72)
   // Object to store current options.
   var options = {}
   // Object for public APIs.
   var tocbot = {}
 
-  var BuildHtml = __webpack_require__(53)
-  var ParseContent = __webpack_require__(54)
+  var BuildHtml = __webpack_require__(73)
+  var ParseContent = __webpack_require__(74)
   // Keep these variables at top scope once options are passed in.
   var buildHtml
   var parseContent
@@ -48113,7 +49528,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     // Init smooth scroll if enabled (default).
     if (options.scrollSmooth) {
       options.duration = options.scrollSmoothDuration
-      tocbot.scrollSmooth = __webpack_require__(55).initSmoothScrolling(options)
+      tocbot.scrollSmooth = __webpack_require__(75).initSmoothScrolling(options)
     }
 
     // Pass options to these modules.
@@ -48186,7 +49601,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 52 */
+/* 72 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -48258,7 +49673,7 @@ module.exports = {
 
 
 /***/ }),
-/* 53 */
+/* 73 */
 /***/ (function(module, exports) {
 
 /**
@@ -48515,7 +49930,7 @@ module.exports = function (options) {
 
 
 /***/ }),
-/* 54 */
+/* 74 */
 /***/ (function(module, exports) {
 
 /**
@@ -48646,7 +50061,7 @@ module.exports = function parseContent (options) {
 
 
 /***/ }),
-/* 55 */
+/* 75 */
 /***/ (function(module, exports) {
 
 /* globals location, requestAnimationFrame */
@@ -48768,7 +50183,7 @@ function jump (target, options) {
 
 
 /***/ }),
-/* 56 */
+/* 76 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49474,7 +50889,7 @@ const StickySidebar = (() => {
   window.StickySidebar = StickySidebar;
 
 /***/ }),
-/* 57 */
+/* 77 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -49499,1433 +50914,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Link = function () {
-    function Link() {
-        _classCallCheck(this, Link);
-
-        this.link = document.createElement("a");
-    }
-
-    _createClass(Link, [{
-        key: 'setPath',
-        value: function setPath(href) {
-            this.link.href = href;
-        }
-    }, {
-        key: 'getPath',
-        value: function getPath() {
-            var path = this.link.pathname;
-            if (path[0] != '/') {
-                path = '/' + path;
-            }
-            return path;
-        }
-    }, {
-        key: 'getAddress',
-        value: function getAddress() {
-            var path = this.link.pathname + this.link.search;
-            if (path[0] != '/') {
-                path = '/' + path;
-            }
-            return path;
-        }
-    }, {
-        key: 'getHash',
-        value: function getHash() {
-            return this.link.hash;
-        }
-    }]);
-
-    return Link;
-}();
-
-exports.default = Link;
-
-/***/ }),
-/* 64 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_swup__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_swup___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_swup__);
-
-
-var swup = new __WEBPACK_IMPORTED_MODULE_0_swup___default.a({
-    LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup]):not(.toc-link)',
-    doScrollingRightAway: true,
-    animateScroll: true,
-    scrollFriction: .3,
-    scrollAcceleration: .04
-    // scroll: false
-});
-
-var callbacks = [];
-
-document.addEventListener('swup:willReplaceContent', function (event) {
-    callbacks.forEach(function (c) {
-        return c.onLeave && c.onLeave();
-    });
-});
-
-// document.addEventListener('swup:pageLoaded', event => {
-//     console.log('pageView');
-//     callbacks.forEach(c => c.onEnter && c.onEnter());
-// });
-
-document.addEventListener('swup:contentReplaced', function (event) {
-    callbacks.forEach(function (c) {
-        return c.onEnter && c.onEnter();
-    });
-});
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    register: function register() {
-        var _callbacks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-        callbacks = _callbacks;
-
-        callbacks.forEach(function (c) {
-            return c.onEnter && c.onEnter();
-        });
-    }
-});
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-// helpers
-
-
-// modules
-
-
-var _delegate = __webpack_require__(66);
-
-var _delegate2 = _interopRequireDefault(_delegate);
-
-var _Cache = __webpack_require__(68);
-
-var _Cache2 = _interopRequireDefault(_Cache);
-
-var _Link = __webpack_require__(63);
-
-var _Link2 = _interopRequireDefault(_Link);
-
-var _transitionEnd = __webpack_require__(69);
-
-var _transitionEnd2 = _interopRequireDefault(_transitionEnd);
-
-var _request = __webpack_require__(70);
-
-var _request2 = _interopRequireDefault(_request);
-
-var _getDataFromHtml = __webpack_require__(71);
-
-var _getDataFromHtml2 = _interopRequireDefault(_getDataFromHtml);
-
-var _loadPage = __webpack_require__(72);
-
-var _loadPage2 = _interopRequireDefault(_loadPage);
-
-var _renderPage = __webpack_require__(73);
-
-var _renderPage2 = _interopRequireDefault(_renderPage);
-
-var _goBack = __webpack_require__(74);
-
-var _goBack2 = _interopRequireDefault(_goBack);
-
-var _createState = __webpack_require__(75);
-
-var _createState2 = _interopRequireDefault(_createState);
-
-var _triggerEvent = __webpack_require__(76);
-
-var _triggerEvent2 = _interopRequireDefault(_triggerEvent);
-
-var _getUrl = __webpack_require__(77);
-
-var _getUrl2 = _interopRequireDefault(_getUrl);
-
-var _scrollTo = __webpack_require__(78);
-
-var _scrollTo2 = _interopRequireDefault(_scrollTo);
-
-var _classify = __webpack_require__(79);
-
-var _classify2 = _interopRequireDefault(_classify);
-
-var _doScrolling = __webpack_require__(80);
-
-var _doScrolling2 = _interopRequireDefault(_doScrolling);
-
-var _markSwupElements = __webpack_require__(81);
-
-var _markSwupElements2 = _interopRequireDefault(_markSwupElements);
-
-var _updateTransition = __webpack_require__(82);
-
-var _updateTransition2 = _interopRequireDefault(_updateTransition);
-
-var _preloadPages = __webpack_require__(83);
-
-var _preloadPages2 = _interopRequireDefault(_preloadPages);
-
-var _usePlugin = __webpack_require__(84);
-
-var _usePlugin2 = _interopRequireDefault(_usePlugin);
-
-var _log = __webpack_require__(85);
-
-var _log2 = _interopRequireDefault(_log);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Swup = function () {
-    function Swup(setOptions) {
-        _classCallCheck(this, Swup);
-
-        // default options
-        var defaults = {
-            cache: true,
-            animationSelector: '[class*="transition-"]',
-            elements: ['#swup'],
-            pageClassPrefix: '',
-            debugMode: false,
-            scroll: true,
-
-            doScrollingRightAway: false,
-            animateScroll: true,
-            scrollFriction: .3,
-            scrollAcceleration: .04,
-
-            preload: true,
-            support: true,
-            plugins: [],
-
-            skipPopStateHandling: function skipPopStateHandling(event) {
-                if (event.state && event.state.source == "swup") {
-                    return false;
-                }
-                return true;
-            },
-
-            LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
-            FORM_SELECTOR: 'form[data-swup-form]'
-
-            /**
-             * current transition object
-             */
-        };this.transition = {};
-
-        var options = _extends({}, defaults, setOptions);
-
-        /**
-         * helper variables
-         */
-        // mobile detection variable
-        this.mobile = false;
-        // id of element to scroll to after render
-        this.scrollToElement = null;
-        // promise used for preload, so no new loading of the same page starts while page is loading
-        this.preloadPromise = null;
-        // save options
-        this.options = options;
-        // plugins array
-        this.plugins = [];
-
-        /**
-         * make modules accessible in instance
-         */
-        this.getUrl = _getUrl2.default;
-        this.cache = new _Cache2.default();
-        this.link = new _Link2.default();
-        this.transitionEndEvent = (0, _transitionEnd2.default)();
-        this.getDataFromHtml = _getDataFromHtml2.default;
-        this.getPage = _request2.default;
-        this.scrollTo = _scrollTo2.default;
-        this.loadPage = _loadPage2.default;
-        this.renderPage = _renderPage2.default;
-        this.goBack = _goBack2.default;
-        this.createState = _createState2.default;
-        this.triggerEvent = _triggerEvent2.default;
-        this.classify = _classify2.default;
-        this.doScrolling = _doScrolling2.default;
-        this.markSwupElements = _markSwupElements2.default;
-        this.updateTransition = _updateTransition2.default;
-        this.preloadPages = _preloadPages2.default;
-        this.usePlugin = _usePlugin2.default;
-        this.log = _log2.default;
-        this.enable = this.enable;
-        this.destroy = this.destroy;
-
-        /**
-         * detect mobile devices
-         */
-        if (window.innerWidth <= 767) {
-            this.mobile = true;
-        }
-
-        // attach instance to window in debug mode
-        if (this.options.debugMode) {
-            window.swup = this;
-        }
-
-        this.getUrl();
-        this.enable();
-    }
-
-    _createClass(Swup, [{
-        key: 'enable',
-        value: function enable() {
-            var _this = this;
-
-            /**
-             * support check
-             */
-            if (this.options.support) {
-                // check pushState support
-                if (!('pushState' in window.history)) {
-                    console.warn('pushState is not supported');
-                    return;
-                }
-                // check transitionEnd support
-                if ((0, _transitionEnd2.default)()) {
-                    this.transitionEndEvent = (0, _transitionEnd2.default)();
-                } else {
-                    console.warn('transitionEnd detection is not supported');
-                    return;
-                }
-                // check Promise support
-                if (typeof Promise === "undefined" || Promise.toString().indexOf("[native code]") === -1) {
-                    console.warn('Promise is not supported');
-                    return;
-                }
-            }
-
-            // variable to keep event listeners from "delegate"
-            this.delegatedListeners = {};
-
-            /**
-             * link click handler
-             */
-            this.delegatedListeners.click = (0, _delegate2.default)(document, this.options.LINK_SELECTOR, 'click', this.linkClickHandler.bind(this));
-
-            /**
-             * link mouseover handler (preload)
-             */
-            this.delegatedListeners.mouseover = (0, _delegate2.default)(document.body, this.options.LINK_SELECTOR, 'mouseover', this.linkMouseoverHandler.bind(this));
-
-            /**
-             * form submit handler
-             */
-            this.delegatedListeners.formSubmit = (0, _delegate2.default)(document, this.options.FORM_SELECTOR, 'submit', this.formSubmitHandler.bind(this));
-
-            /**
-             * popstate handler
-             */
-            window.addEventListener('popstate', this.popStateHandler.bind(this));
-
-            /**
-             * initial save to cache
-             */
-            var page = this.getDataFromHtml(document.documentElement.outerHTML);
-            page.url = this.currentUrl;
-            if (this.options.cache) {
-                this.cache.cacheUrl(page, this.options.debugMode);
-            }
-
-            /**
-             * mark swup blocks in html
-             */
-            this.markSwupElements(document.documentElement);
-
-            /**
-             * enable plugins from options
-             */
-            this.options.plugins.forEach(function (item) {
-                return _this.usePlugin(item);
-            });
-
-            /**
-             * modify initial history record
-             */
-            window.history.replaceState(Object.assign({}, window.history.state, {
-                url: window.location.href,
-                random: Math.random(),
-                source: "swup"
-            }), document.title, window.location.href);
-
-            /**
-             * trigger enabled event
-             */
-            this.triggerEvent('enabled');
-            document.documentElement.classList.add('swup-enabled');
-
-            /**
-             * trigger page view event
-             */
-            this.triggerEvent('pageView');
-
-            /**
-             * preload pages if possible
-             */
-            this.preloadPages();
-        }
-    }, {
-        key: 'destroy',
-        value: function destroy() {
-            // remove delegated listeners
-            this.delegatedListeners.click.destroy();
-            this.delegatedListeners.mouseover.destroy();
-
-            // remove popstate listener
-            window.removeEventListener('popstate', this.popStateHandler.bind(this));
-
-            // empty cache
-            this.cache.empty();
-
-            // remove swup data atributes from blocks
-            document.querySelectorAll('[data-swup]').forEach(function (element) {
-                delete element.dataset.swup;
-            });
-
-            this.triggerEvent('disabled');
-            document.documentElement.classList.remove('swup-enabled');
-        }
-    }, {
-        key: 'linkClickHandler',
-        value: function linkClickHandler(event) {
-            // no control key pressed
-            if (!event.metaKey) {
-                this.triggerEvent('clickLink');
-                var link = new _Link2.default();
-                event.preventDefault();
-                link.setPath(event.delegateTarget.href);
-                if (link.getAddress() == this.currentUrl || link.getAddress() == '') {
-                    if (link.getHash() != '') {
-                        this.triggerEvent('samePageWithHash');
-                        var element = document.querySelector(link.getHash());
-                        if (element != null) {
-                            if (this.options.scroll) {
-                                var top = element.getBoundingClientRect().top + window.pageYOffset;
-                                this.scrollTo(document.body, top);
-                            }
-                            history.replaceState(undefined, undefined, link.getHash());
-                        } else {
-                            console.warn('Element for offset not found (' + link.getHash() + ')');
-                        }
-                    } else {
-                        this.triggerEvent('samePage');
-                        if (this.options.scroll) {
-                            this.scrollTo(document.body, 0, 1);
-                        }
-                    }
-                } else {
-                    if (link.getHash() != '') {
-                        this.scrollToElement = link.getHash();
-                    }
-                    // custom class fro dynamic pages
-                    var swupClass = event.delegateTarget.dataset.swupClass;
-                    if (swupClass != null) {
-                        this.updateTransition(window.location.pathname, link.getAddress(), event.delegateTarget.dataset.swupClass);
-                        document.documentElement.classList.add('to-' + swupClass);
-                    } else {
-                        this.updateTransition(window.location.pathname, link.getAddress());
-                    }
-                    this.loadPage({ url: link.getAddress() }, false);
-                }
-            } else {
-                this.triggerEvent('openPageInNewTab');
-            }
-        }
-    }, {
-        key: 'linkMouseoverHandler',
-        value: function linkMouseoverHandler(event) {
-            var _this2 = this;
-
-            this.triggerEvent('hoverLink');
-            if (this.options.preload) {
-                var link = new _Link2.default();
-                link.setPath(event.delegateTarget.href);
-                if (link.getAddress() != this.currentUrl && !this.cache.exists(link.getAddress()) && this.preloadPromise == null) {
-                    this.preloadPromise = new Promise(function (resolve, reject) {
-                        _this2.getPage({ url: link.getAddress() }, function (response, request) {
-                            if (request.status === 500) {
-                                _this2.triggerEvent('serverError');
-                                reject(link.getAddress());
-                                return;
-                            } else {
-                                // get json data
-                                var page = _this2.getDataFromHtml(response);
-                                if (page != null) {
-                                    page.url = link.getAddress();
-                                    _this2.cache.cacheUrl(page, _this2.options.debugMode);
-                                    _this2.triggerEvent('pagePreloaded');
-                                } else {
-                                    reject(link.getAddress());
-                                    return;
-                                }
-                            }
-                            resolve();
-                            _this2.preloadPromise = null;
-                        });
-                    });
-                    this.preloadPromise.route = link.getAddress();
-                }
-            }
-        }
-    }, {
-        key: 'formSubmitHandler',
-        value: function formSubmitHandler(event) {
-            // no control key pressed
-            if (!event.metaKey) {
-                this.triggerEvent('submitForm');
-                event.preventDefault();
-                var form = event.target;
-                var formData = new FormData(form);
-
-                var link = new _Link2.default();
-                link.setPath(form.action);
-
-                if (link.getHash() != '') {
-                    this.scrollToElement = link.getHash();
-                }
-
-                if (form.method.toLowerCase() != "get") {
-                    // remove page from cache
-                    this.cache.remove(link.getAddress());
-
-                    // send data
-                    this.loadPage({
-                        url: link.getAddress(),
-                        method: form.method,
-                        data: formData
-                    });
-                } else {
-                    // create base url
-                    var url = link.getAddress() || window.location.href;
-                    var inputs = form.querySelectorAll('input');
-                    if (url.indexOf('?') == -1) {
-                        url += "?";
-                    } else {
-                        url += "&";
-                    }
-
-                    // add form data to url
-                    inputs.forEach(function (input) {
-                        if (input.type == "checkbox" || input.type == "radio") {
-                            if (input.checked) {
-                                url += encodeURIComponent(input.name) + "=" + encodeURIComponent(input.value) + "&";
-                            }
-                        } else {
-                            url += encodeURIComponent(input.name) + "=" + encodeURIComponent(input.value) + "&";
-                        }
-                    });
-
-                    // remove last "&"
-                    url = url.slice(0, -1);
-
-                    // remove page from cache
-                    this.cache.remove(url);
-
-                    // send data
-                    this.loadPage({
-                        url: url
-                    });
-                }
-            } else {
-                this.triggerEvent('openFormSubmitInNewTab');
-            }
-        }
-    }, {
-        key: 'popStateHandler',
-        value: function popStateHandler(event) {
-            var link = new _Link2.default();
-            if (this.options.skipPopStateHandling(event)) return;
-            link.setPath(event.state ? event.state.url : window.location.pathname);
-            if (link.getHash() != '') {
-                this.scrollToElement = link.getHash();
-            } else {
-                event.preventDefault();
-            }
-            this.triggerEvent('popState');
-            this.loadPage({ url: link.getAddress() }, event);
-        }
-    }]);
-
-    return Swup;
-}();
-
-exports.default = Swup;
-
-/***/ }),
-/* 66 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var closest = __webpack_require__(67);
-
-/**
- * Delegates event to a selector.
- *
- * @param {Element} element
- * @param {String} selector
- * @param {String} type
- * @param {Function} callback
- * @param {Boolean} useCapture
- * @return {Object}
- */
-function _delegate(element, selector, type, callback, useCapture) {
-    var listenerFn = listener.apply(this, arguments);
-
-    element.addEventListener(type, listenerFn, useCapture);
-
-    return {
-        destroy: function() {
-            element.removeEventListener(type, listenerFn, useCapture);
-        }
-    }
-}
-
-/**
- * Delegates event to a selector.
- *
- * @param {Element|String|Array} [elements]
- * @param {String} selector
- * @param {String} type
- * @param {Function} callback
- * @param {Boolean} useCapture
- * @return {Object}
- */
-function delegate(elements, selector, type, callback, useCapture) {
-    // Handle the regular Element usage
-    if (typeof elements.addEventListener === 'function') {
-        return _delegate.apply(null, arguments);
-    }
-
-    // Handle Element-less usage, it defaults to global delegation
-    if (typeof type === 'function') {
-        // Use `document` as the first parameter, then apply arguments
-        // This is a short way to .unshift `arguments` without running into deoptimizations
-        return _delegate.bind(null, document).apply(null, arguments);
-    }
-
-    // Handle Selector-based usage
-    if (typeof elements === 'string') {
-        elements = document.querySelectorAll(elements);
-    }
-
-    // Handle Array-like based usage
-    return Array.prototype.map.call(elements, function (element) {
-        return _delegate(element, selector, type, callback, useCapture);
-    });
-}
-
-/**
- * Finds closest match and invokes callback.
- *
- * @param {Element} element
- * @param {String} selector
- * @param {String} type
- * @param {Function} callback
- * @return {Function}
- */
-function listener(element, selector, type, callback) {
-    return function(e) {
-        e.delegateTarget = closest(e.target, selector);
-
-        if (e.delegateTarget) {
-            callback.call(element, e);
-        }
-    }
-}
-
-module.exports = delegate;
-
-
-/***/ }),
-/* 67 */
-/***/ (function(module, exports) {
-
-var DOCUMENT_NODE_TYPE = 9;
-
-/**
- * A polyfill for Element.matches()
- */
-if (typeof Element !== 'undefined' && !Element.prototype.matches) {
-    var proto = Element.prototype;
-
-    proto.matches = proto.matchesSelector ||
-                    proto.mozMatchesSelector ||
-                    proto.msMatchesSelector ||
-                    proto.oMatchesSelector ||
-                    proto.webkitMatchesSelector;
-}
-
-/**
- * Finds the closest parent that matches a selector.
- *
- * @param {Element} element
- * @param {String} selector
- * @return {Function}
- */
-function closest (element, selector) {
-    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
-        if (typeof element.matches === 'function' &&
-            element.matches(selector)) {
-          return element;
-        }
-        element = element.parentNode;
-    }
-}
-
-module.exports = closest;
-
-
-/***/ }),
-/* 68 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Cache = function () {
-    function Cache() {
-        _classCallCheck(this, Cache);
-
-        this.pages = {};
-        this.count = 0;
-        this.last = null;
-    }
-
-    _createClass(Cache, [{
-        key: 'cacheUrl',
-        value: function cacheUrl(page, displayCache) {
-            this.count++;
-            if (page.url in this.pages === false) {
-                this.pages[page.url] = page;
-            }
-            this.last = this.pages[page.url];
-            if (displayCache) {
-                this.displayCache();
-            }
-        }
-    }, {
-        key: 'getPage',
-        value: function getPage(url) {
-            return this.pages[url];
-        }
-    }, {
-        key: 'displayCache',
-        value: function displayCache() {
-            console.groupCollapsed('Cache (' + Object.keys(this.pages).length + ')');
-            for (var key in this.pages) {
-                console.log(this.pages[key]);
-            }
-            console.groupEnd();
-        }
-    }, {
-        key: 'exists',
-        value: function exists(url) {
-            if (url in this.pages) return true;
-            return false;
-        }
-    }, {
-        key: 'empty',
-        value: function empty(showLog) {
-            this.pages = {};
-            this.count = 0;
-            this.last = null;
-            if (showLog) {
-                console.log('Cache cleared');
-            }
-        }
-    }, {
-        key: 'remove',
-        value: function remove(url) {
-            delete this.pages[url];
-        }
-    }]);
-
-    return Cache;
-}();
-
-exports.default = Cache;
-
-/***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function transitionEnd() {
-    var el = document.createElement('div');
-
-    var transEndEventNames = {
-        WebkitTransition: 'webkitTransitionEnd',
-        MozTransition: 'transitionend',
-        OTransition: 'oTransitionEnd otransitionend',
-        transition: 'transitionend'
-    };
-
-    for (var name in transEndEventNames) {
-        if (el.style[name] !== undefined) {
-            return transEndEventNames[name];
-        }
-    }
-
-    return false;
-};
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-module.exports = function (options) {
-    var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-    var defaults = {
-        url: window.location.pathname + window.location.search,
-        method: "GET",
-        data: null
-    };
-
-    var data = _extends({}, defaults, options);
-
-    var request = new XMLHttpRequest();
-
-    request.onreadystatechange = function () {
-        if (request.readyState === 4) {
-            if (request.status !== 500) {
-                callback(request.responseText, request);
-            } else {
-                callback(null, request);
-            }
-        }
-    };
-
-    request.open(data.method, data.url, true);
-    request.setRequestHeader("X-Requested-With", "swup");
-    request.send(data.data);
-    return request;
-};
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (html) {
-    var _this = this;
-
-    var content = html.replace('<body', '<div id="swupBody"').replace('</body>', '</div>');
-    var fakeDom = document.createElement('div');
-    fakeDom.innerHTML = content;
-    var blocks = [];
-
-    for (var i = 0; i < this.options.elements.length; i++) {
-        if (fakeDom.querySelector(this.options.elements[i]) == null) {
-            console.warn('Element ' + this.options.elements[i] + ' is not found in cached page.');
-            return null;
-        } else {
-            [].forEach.call(document.body.querySelectorAll(this.options.elements[i]), function (item, index) {
-                fakeDom.querySelectorAll(_this.options.elements[i])[index].dataset.swup = blocks.length;
-                blocks.push(fakeDom.querySelectorAll(_this.options.elements[i])[index].outerHTML);
-            });
-        }
-    }
-
-    var json = {
-        title: fakeDom.querySelector('title').innerText,
-        pageClass: fakeDom.querySelector('#swupBody').className,
-        originalContent: html,
-        blocks: blocks
-    };
-    return json;
-};
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var forEach = Array.prototype.forEach;
-
-
-module.exports = function (data, popstate) {
-    var _this = this;
-
-    var finalPage = null;
-
-    // scrolling
-    if (this.options.doScrollingRightAway && !this.scrollToElement) {
-        this.doScrolling(popstate);
-    }
-
-    var animationPromises = [];
-
-    if (!popstate) {
-        // start animation
-        document.documentElement.classList.add('is-changing');
-        document.documentElement.classList.add('is-leaving');
-        document.documentElement.classList.add('is-animating');
-        document.documentElement.classList.add('to-' + this.classify(data.url));
-
-        // detect animation end
-        var animatedElements = document.querySelectorAll(this.options.animationSelector);
-        forEach.call(animatedElements, function (element) {
-            var promise = new Promise(function (resolve) {
-                element.addEventListener(_this.transitionEndEvent, function (event) {
-                    if (element == event.target) {
-                        resolve();
-                    }
-                });
-            });
-            animationPromises.push(promise);
-        });
-
-        Promise.all(animationPromises).then(function () {
-            _this.triggerEvent('animationOutDone');
-        });
-
-        // create pop element with or without anchor
-        if (this.scrollToElement != null) {
-            var pop = data.url + this.scrollToElement;
-        } else {
-            var pop = data.url;
-        }
-        this.createState(pop);
-    } else {
-        // proceed without animating
-        this.triggerEvent('animationSkipped');
-    }
-
-    if (this.cache.exists(data.url)) {
-        var xhrPromise = new Promise(function (resolve) {
-            resolve();
-        });
-        this.triggerEvent('pageRetrievedFromCache');
-    } else {
-        if (!this.preloadPromise || this.preloadPromise.route != data.url) {
-            var xhrPromise = new Promise(function (resolve, reject) {
-                _this.getPage(data, function (response, request) {
-                    if (request.status === 500) {
-                        _this.triggerEvent('serverError');
-                        reject(data.url);
-                        return;
-                    } else {
-                        // get json data
-                        var page = _this.getDataFromHtml(response);
-                        if (page != null) {
-                            page.url = data.url;
-                        } else {
-                            reject(data.url);
-                            return;
-                        }
-                        // render page
-                        _this.cache.cacheUrl(page, _this.options.debugMode);
-                        _this.triggerEvent('pageLoaded');
-                    }
-                    resolve();
-                });
-            });
-        } else {
-            var xhrPromise = this.preloadPromise;
-        }
-    }
-
-    Promise.all(animationPromises.concat([xhrPromise])).then(function () {
-        finalPage = _this.cache.getPage(data.url);
-        _this.renderPage(finalPage, popstate);
-        _this.preloadPromise = null;
-    }).catch(function (errorUrl) {
-        // rewrite the skipPopStateHandling function to redirect manually when the history.go is processed
-        _this.options.skipPopStateHandling = function () {
-            window.location = errorUrl;
-            return true;
-        };
-
-        // go back to the actual page were still at
-        window.history.go(-1);
-    });
-};
-
-/***/ }),
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var forEach = Array.prototype.forEach;
-
-
-module.exports = function (page, popstate) {
-    var _this = this;
-
-    document.documentElement.classList.remove('is-leaving');
-
-    // only add for non-popstate transitions
-    if (!popstate) {
-        document.documentElement.classList.add('is-rendering');
-    }
-
-    this.triggerEvent('willReplaceContent');
-
-    // replace blocks
-    for (var i = 0; i < page.blocks.length; i++) {
-        document.body.querySelector('[data-swup="' + i + '"]').outerHTML = page.blocks[i];
-    }
-
-    // set title
-    document.title = page.title;
-
-    this.triggerEvent('contentReplaced');
-    this.triggerEvent('pageView');
-    if (!this.options.cache) {
-        this.cache.empty(this.options.debugMode);
-    }
-    setTimeout(function () {
-        document.documentElement.classList.remove('is-animating');
-    }, 10);
-
-    // handle classes after render
-    if (this.options.pageClassPrefix !== false) {
-        document.body.className.split(' ').forEach(function (className) {
-            // empty string for page class
-            if (className != "" && className.includes(_this.options.pageClassPrefix)) {
-                document.body.classList.remove(className);
-            }
-        });
-    }
-
-    // empty string for page class
-    if (page.pageClass != "") {
-        page.pageClass.split(' ').forEach(function (className) {
-            if (className != "" && className.includes(_this.options.pageClassPrefix)) {
-                document.body.classList.add(className);
-            }
-        });
-    }
-
-    // scrolling
-    if (!this.options.doScrollingRightAway || this.scrollToElement) {
-        this.doScrolling(popstate);
-    }
-
-    // detect animation end
-    var animatedElements = document.querySelectorAll(this.options.animationSelector);
-    var promises = [];
-    forEach.call(animatedElements, function (element) {
-        var promise = new Promise(function (resolve) {
-            element.addEventListener(_this.transitionEndEvent, function (event) {
-                if (element == event.target) {
-                    resolve();
-                }
-            });
-        });
-        promises.push(promise);
-    });
-
-    //preload pages if possible
-    this.preloadPages();
-
-    Promise.all(promises).then(function () {
-        _this.triggerEvent('animationInDone');
-        // remove "to-{page}" classes
-        document.documentElement.className.split(' ').forEach(function (classItem) {
-            if (new RegExp("^to-").test(classItem) || classItem === "is-changing" || classItem === "is-rendering") {
-                document.documentElement.classList.remove(classItem);
-            }
-        });
-    });
-
-    // update current url
-    this.getUrl();
-};
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (page, popstate) {
-    setTimeout(function () {
-        document.body.classList.remove('is-changing');
-        history.back();
-    }, 100);
-};
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (url) {
-    window.history.pushState({
-        url: url || window.location.href.split(window.location.hostname)[1],
-        random: Math.random(),
-        source: "swup"
-    }, document.getElementsByTagName('title')[0].innerText, url || window.location.href.split(window.location.hostname)[1]);
-};
-
-/***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (eventName) {
-    if (this.options.debugMode) {
-        console.log('%cswup:' + '%c' + eventName, 'color: #343434', 'color: #009ACD');
-    }
-    var event = new CustomEvent('swup:' + eventName, { detail: eventName });
-    document.dispatchEvent(event);
-};
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function () {
-    this.currentUrl = window.location.pathname + window.location.search;
-};
-
-/***/ }),
 /* 78 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (element, to) {
-    var _this = this;
-
-    var animatedScroll = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this.options.animateScroll;
-
-    var friction = 1 - this.options.scrollFriction;
-    var acceleration = this.options.scrollAcceleration;
-
-    var positionY = 0;
-    var velocityY = 0;
-    var targetPositionY = 0;
-    var targetPositionYWithOffset = 0;
-    var direction = 0;
-
-    var raf = null;
-
-    function getScrollTop() {
-        return document.body.scrollTop || document.documentElement.scrollTop;
-    }
-
-    var animate = function animate() {
-        var distance = update();
-        render();
-
-        if (direction === 1 && targetPositionY > positionY || direction === -1 && targetPositionY < positionY) {
-            raf = requestAnimationFrame(animate);
-        } else {
-            window.scrollTo(0, targetPositionY);
-            _this.triggerEvent('scrollDone');
-        }
-    };
-
-    function update() {
-        var distance = targetPositionYWithOffset - positionY;
-        var attraction = distance * acceleration;
-
-        applyForce(attraction);
-
-        velocityY *= friction;
-        positionY += velocityY;
-
-        return distance;
-    }
-
-    var applyForce = function applyForce(force) {
-        velocityY += force;
-    };
-
-    var render = function render() {
-        window.scrollTo(0, positionY);
-    };
-
-    window.addEventListener('mousewheel', function (event) {
-        if (raf) {
-            cancelAnimationFrame(raf);
-            raf = null;
-        }
-    }, {
-        passive: true
-    });
-
-    var scrollTo = function scrollTo(offset, callback) {
-        positionY = getScrollTop();
-        direction = positionY > offset ? -1 : 1;
-        targetPositionYWithOffset = offset + direction;
-        targetPositionY = offset;
-        velocityY = 0;
-        if (positionY != targetPositionY) {
-            animate();
-        } else {
-            _this.triggerEvent('scrollDone');
-        }
-    };
-
-    this.triggerEvent('scrollStart');
-    if (animatedScroll == 0) {
-        window.scrollTo(0, to);
-        this.triggerEvent('scrollDone');
-    } else {
-        scrollTo(to);
-    }
-};
-
-/***/ }),
-/* 79 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (text) {
-    var output = text.toString().toLowerCase().replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/\//g, '-') // Replace / with -
-    .replace(/[^\w\-]+/g, '') // Remove all non-word chars
-    .replace(/\-\-+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, ''); // Trim - from end of text
-    if (output[0] == "/") output = output.splice(1);
-    if (output == '') output = 'homepage';
-    return output;
-};
-
-/***/ }),
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (popstate) {
-    if (this.options.scroll && !popstate) {
-        if (this.scrollToElement != null) {
-            var self = this;
-
-            var element = document.querySelector(self.scrollToElement);
-            if (element != null) {
-                var top = element.getBoundingClientRect().top + window.pageYOffset;
-                self.scrollTo(document.body, top);
-            } else {
-                console.warn("Element for offset not found (" + self.scrollToElement + ")");
-            }
-            self.scrollToElement = null;
-        } else {
-            this.scrollTo(document.body, 0);
-        }
-    }
-};
-
-/***/ }),
-/* 81 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (element) {
-    var _this = this;
-
-    var blocks = 0;
-
-    for (var i = 0; i < this.options.elements.length; i++) {
-        if (element.querySelector(this.options.elements[i]) == null) {
-            console.warn("Element " + this.options.elements[i] + " is not in current page.");
-        } else {
-            [].forEach.call(document.body.querySelectorAll(this.options.elements[i]), function (item, index) {
-                element.querySelectorAll(_this.options.elements[i])[index].dataset.swup = blocks;
-                blocks++;
-            });
-        }
-    }
-};
-
-/***/ }),
-/* 82 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (from, to, custom) {
-
-    // homepage case
-    if (from == "/") {
-        from = "/homepage";
-    }
-    if (to == "/") {
-        to = "/homepage";
-    }
-
-    // transition routes
-    this.transition = {
-        from: from.replace('/', ''),
-        to: to.replace('/', '')
-    };
-
-    if (custom) {
-        this.transition.custom = custom;
-    }
-};
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _Link = __webpack_require__(63);
-
-var _Link2 = _interopRequireDefault(_Link);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-module.exports = function (eventName) {
-    var _this = this;
-
-    if (this.options.preload) {
-        var preload = function preload(pathname) {
-            var link = new _Link2.default();
-            link.setPath(pathname);
-            if (link.getAddress() != _this.currentUrl && !_this.cache.exists(link.getAddress()) && _this.preloadPromise == null) {
-                _this.getPage({ url: link.getAddress() }, function (response) {
-                    if (response === null) {
-                        console.warn('Server error.');
-                        _this.triggerEvent('serverError');
-                    } else {
-                        // get json data
-                        var page = _this.getDataFromHtml(response);
-                        page.url = link.getAddress();
-                        _this.cache.cacheUrl(page, _this.options.debugMode);
-                        _this.triggerEvent('pagePreloaded');
-                    }
-                });
-            }
-        };
-
-        document.querySelectorAll('[data-swup-preload]').forEach(function (element) {
-            preload(element.href);
-        });
-    }
-};
-
-/***/ }),
-/* 84 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (plugin, options) {
-    var _this = this;
-
-    options = Object.assign({}, plugin.options, options);
-
-    plugin.options = options;
-
-    var getCurrentPageHtml = function getCurrentPageHtml() {
-        var page = _this.cache.getPage(window.location.pathname + window.location.search);
-        var html = document.createElement('html');
-        html.innerHTML = page.originalContent;
-        return html;
-    };
-
-    this.plugins.push(plugin);
-    plugin.exec(options, this, getCurrentPageHtml);
-    return this.plugins;
-};
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (str) {
-    if (this.options.debugMode) {
-        console.log(str + '%c', 'color: #009ACD');
-    }
-};
-
-/***/ }),
-/* 86 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50957,26 +50946,63 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_filepond__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_filepond__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_filepond___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_filepond__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview__ = __webpack_require__(81);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type__);
 
+
+
+
+__WEBPACK_IMPORTED_MODULE_0_filepond__["registerPlugin"](__WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview___default.a, __WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type___default.a);
+__WEBPACK_IMPORTED_MODULE_0_filepond__["setOptions"]({
+    server: {
+        url: '/uploads',
+        process: {
+            headers: {
+                'X-CSRF-TOKEN': window.csrf_token
+            }
+        },
+        revert: {
+            headers: {
+                'X-CSRF-TOKEN': window.csrf_token
+            }
+        }
+        // load: ''
+    }
+});
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     onEnter: function onEnter() {
         var inputElement = document.querySelector('input[type="file"]');
         if (inputElement) {
+            var files = [];
+            var file = void 0;
+
+            if (file = inputElement.getAttribute('data-source')) {
+                files.push({ source: file, options: { type: 'local' } });
+            }
+
             var pond = __WEBPACK_IMPORTED_MODULE_0_filepond__["create"](inputElement);
+            pond.setOptions({
+                files: files,
+                imagePreviewHeight: 170,
+                acceptedFileTypes: ['image/*']
+            });
+            // pond.registerPlugin(FilePondPluginImagePreview);
         }
     }
 });
 
 /***/ }),
-/* 88 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -59438,6 +59464,1091 @@ function signature:
   Object.defineProperty(exports, '__esModule', { value: true });
 });
 
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ * FilePondPluginImagePreview 2.0.1
+ * Licensed under MIT, https://opensource.org/licenses/MIT
+ * Please visit https://pqina.nl/filepond for details.
+ */
+(function(global, factory) {
+   true
+    ? (module.exports = factory())
+    : typeof define === 'function' && define.amd
+      ? define(factory)
+      : (global.FilePondPluginImagePreview = factory());
+})(this, function() {
+  'use strict';
+
+  // test if file is of type image and can be viewed in canvas
+  var isPreviewableImage = function isPreviewableImage(file) {
+    return /^image/.test(file.type);
+  }; // && !/svg/.test(file.type);
+
+  var asyncGenerator = (function() {
+    function AwaitValue(value) {
+      this.value = value;
+    }
+
+    function AsyncGenerator(gen) {
+      var front, back;
+
+      function send(key, arg) {
+        return new Promise(function(resolve, reject) {
+          var request = {
+            key: key,
+            arg: arg,
+            resolve: resolve,
+            reject: reject,
+            next: null
+          };
+
+          if (back) {
+            back = back.next = request;
+          } else {
+            front = back = request;
+            resume(key, arg);
+          }
+        });
+      }
+
+      function resume(key, arg) {
+        try {
+          var result = gen[key](arg);
+          var value = result.value;
+
+          if (value instanceof AwaitValue) {
+            Promise.resolve(value.value).then(
+              function(arg) {
+                resume('next', arg);
+              },
+              function(arg) {
+                resume('throw', arg);
+              }
+            );
+          } else {
+            settle(result.done ? 'return' : 'normal', result.value);
+          }
+        } catch (err) {
+          settle('throw', err);
+        }
+      }
+
+      function settle(type, value) {
+        switch (type) {
+          case 'return':
+            front.resolve({
+              value: value,
+              done: true
+            });
+            break;
+
+          case 'throw':
+            front.reject(value);
+            break;
+
+          default:
+            front.resolve({
+              value: value,
+              done: false
+            });
+            break;
+        }
+
+        front = front.next;
+
+        if (front) {
+          resume(front.key, front.arg);
+        } else {
+          back = null;
+        }
+      }
+
+      this._invoke = send;
+
+      if (typeof gen.return !== 'function') {
+        this.return = undefined;
+      }
+    }
+
+    if (typeof Symbol === 'function' && Symbol.asyncIterator) {
+      AsyncGenerator.prototype[Symbol.asyncIterator] = function() {
+        return this;
+      };
+    }
+
+    AsyncGenerator.prototype.next = function(arg) {
+      return this._invoke('next', arg);
+    };
+
+    AsyncGenerator.prototype.throw = function(arg) {
+      return this._invoke('throw', arg);
+    };
+
+    AsyncGenerator.prototype.return = function(arg) {
+      return this._invoke('return', arg);
+    };
+
+    return {
+      wrap: function(fn) {
+        return function() {
+          return new AsyncGenerator(fn.apply(this, arguments));
+        };
+      },
+      await: function(value) {
+        return new AwaitValue(value);
+      }
+    };
+  })();
+
+  var toConsumableArray = function(arr) {
+    if (Array.isArray(arr)) {
+      for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++)
+        arr2[i] = arr[i];
+
+      return arr2;
+    } else {
+      return Array.from(arr);
+    }
+  };
+
+  var transforms = {
+    1: function _() {
+      return [1, 0, 0, 1, 0, 0];
+    },
+    2: function _(width) {
+      return [-1, 0, 0, 1, width, 0];
+    },
+    3: function _(width, height) {
+      return [-1, 0, 0, -1, width, height];
+    },
+    4: function _(width, height) {
+      return [1, 0, 0, -1, 0, height];
+    },
+    5: function _() {
+      return [0, 1, 1, 0, 0, 0];
+    },
+    6: function _(width, height) {
+      return [0, 1, -1, 0, height, 0];
+    },
+    7: function _(width, height) {
+      return [0, -1, -1, 0, height, width];
+    },
+    8: function _(width) {
+      return [0, -1, 1, 0, 0, width];
+    }
+  };
+
+  var fixImageOrientation = function fixImageOrientation(
+    ctx,
+    width,
+    height,
+    orientation
+  ) {
+    // no orientation supplied
+    if (orientation === -1) {
+      return;
+    }
+
+    ctx.transform.apply(
+      ctx,
+      toConsumableArray(transforms[orientation](width, height))
+    );
+  };
+
+  // draws the preview image
+  var createPreviewImage = function createPreviewImage(
+    data,
+    width,
+    height,
+    orientation
+  ) {
+    // round
+    width = Math.round(width);
+    height = Math.round(height);
+
+    // width and height have already been swapped earlier
+    // if orientation was in range below, let's swap back to make
+    // this code a bit more readable
+    if (orientation >= 5 && orientation <= 8) {
+      var _ref = [height, width];
+      width = _ref[0];
+      height = _ref[1];
+    }
+
+    // draw image
+    var canvas = document.createElement('canvas');
+    var ctx = canvas.getContext('2d');
+
+    // if is rotated incorrectly swap width and height
+    if (orientation >= 5 && orientation <= 8) {
+      canvas.width = height;
+      canvas.height = width;
+    } else {
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    // correct image orientation
+    ctx.save();
+    fixImageOrientation(ctx, width, height, orientation);
+
+    // draw the image
+    ctx.drawImage(data, 0, 0, width, height);
+
+    // end draw image
+    ctx.restore();
+
+    // data has been transferred to canvas ( if was ImageBitmap )
+    if ('close' in data) {
+      data.close();
+    }
+
+    return canvas;
+  };
+
+  var isBitmap = function isBitmap(file) {
+    return /^image/.test(file.type) && !/svg/.test(file.type);
+  };
+
+  var IMAGE_SCALE_SPRING_PROPS = {
+    type: 'spring',
+    stiffness: 0.5,
+    damping: 0.45,
+    mass: 10
+  };
+
+  var createImageView = function createImageView(fpAPI) {
+    return fpAPI.utils.createView({
+      name: 'image-preview',
+      tag: 'div',
+      ignoreRect: true,
+      create: function create(_ref) {
+        var root = _ref.root;
+
+        root.ref.clip = document.createElement('div');
+        root.element.appendChild(root.ref.clip);
+
+        var transparencyIndicator = root.query(
+          'GET_IMAGE_PREVIEW_TRANSPARENCY_INDICATOR'
+        );
+        if (transparencyIndicator === null) {
+          return;
+        }
+
+        // grid pattern
+        if (transparencyIndicator === 'grid') {
+          root.element.dataset.transparencyIndicator = transparencyIndicator;
+        } else {
+          // basic color
+          root.element.dataset.transparencyIndicator = 'color';
+        }
+      },
+      write: fpAPI.utils.createRoute({
+        DID_IMAGE_PREVIEW_LOAD: function DID_IMAGE_PREVIEW_LOAD(_ref2) {
+          var root = _ref2.root,
+            props = _ref2.props,
+            action = _ref2.action;
+          var id = props.id;
+
+          // get item
+
+          var item = root.query('GET_ITEM', { id: props.id });
+
+          // should render background color
+          var transparencyIndicator = root.query(
+            'GET_IMAGE_PREVIEW_TRANSPARENCY_INDICATOR'
+          );
+
+          // orientation info
+          var exif = item.getMetadata('exif') || {};
+          var orientation = exif.orientation || -1;
+
+          // get width and height from action, and swap of orientation is incorrect
+          var _action$data = action.data,
+            width = _action$data.width,
+            height = _action$data.height;
+
+          if (orientation >= 5 && orientation <= 8) {
+            var _ref3 = [height, width];
+            width = _ref3[0];
+            height = _ref3[1];
+          }
+
+          // get item props
+          var crop = item.getMetadata('crop') || {
+            rect: {
+              x: 0,
+              y: 0,
+              width: 1,
+              height: 1
+            },
+            aspectRatio: height / width
+          };
+
+          // scale canvas based on pixel density
+          var pixelDensityFactor = window.devicePixelRatio;
+
+          // the max height of the preview container
+          var fixedPreviewHeight = root.query('GET_IMAGE_PREVIEW_HEIGHT');
+          var minPreviewHeight = root.query('GET_IMAGE_PREVIEW_MIN_HEIGHT');
+          var maxPreviewHeight = root.query('GET_IMAGE_PREVIEW_MAX_HEIGHT');
+
+          // calculate scaled preview image size
+          var containerWidth = root.rect.inner.width;
+          var previewImageRatio = height / width;
+          var previewWidth = containerWidth;
+          var previewHeight = containerWidth * previewImageRatio;
+
+          // calculate image preview height and width
+          var imageHeight =
+            fixedPreviewHeight !== null
+              ? fixedPreviewHeight
+              : Math.max(minPreviewHeight, Math.min(height, maxPreviewHeight));
+          var imageWidth = imageHeight / previewImageRatio;
+
+          // render scaled preview image
+          var previewImage = isBitmap(item.file)
+            ? createPreviewImage(
+                action.data,
+                imageWidth * pixelDensityFactor,
+                imageHeight * pixelDensityFactor,
+                orientation
+              )
+            : action.data;
+
+          // calculate crop container size
+          var clipHeight =
+            fixedPreviewHeight !== null
+              ? fixedPreviewHeight
+              : Math.max(
+                  minPreviewHeight,
+                  Math.min(containerWidth * crop.aspectRatio, maxPreviewHeight)
+                );
+
+          var clipWidth = clipHeight / crop.aspectRatio;
+          if (clipWidth > previewWidth) {
+            clipWidth = previewWidth;
+            clipHeight = clipWidth * crop.aspectRatio;
+          }
+
+          // calculate scalar based on if the clip rectangle has been scaled down
+          var previewScalar = clipHeight / (previewHeight * crop.rect.height);
+
+          width = previewWidth * previewScalar;
+          height = previewHeight * previewScalar;
+          var x = -crop.rect.x * previewWidth * previewScalar;
+          var y = -crop.rect.y * previewHeight * previewScalar;
+
+          // apply styles
+          root.ref.clip.style.cssText =
+            '\n                    width: ' +
+            Math.round(clipWidth) +
+            'px;\n                    height: ' +
+            Math.round(clipHeight) +
+            'px;\n                ';
+
+          // position image
+          previewImage.style.cssText =
+            '\n                    ' +
+            (transparencyIndicator !== null && transparencyIndicator !== 'grid'
+              ? 'background-color: ' + transparencyIndicator + ';'
+              : '') +
+            '\n                    width: ' +
+            Math.round(width) +
+            'px;\n                    height: ' +
+            Math.round(height) +
+            'px;\n                    transform: translate(' +
+            Math.round(x) +
+            'px, ' +
+            Math.round(y) +
+            'px) rotateZ(0.00001deg);\n                ';
+          root.ref.clip.appendChild(previewImage);
+
+          // let others know of our fabulous achievement (so the image can be faded in)
+          root.dispatch('DID_IMAGE_PREVIEW_DRAW', { id: id });
+        }
+      }),
+      mixins: {
+        styles: ['scaleX', 'scaleY', 'opacity'],
+        animations: {
+          scaleX: IMAGE_SCALE_SPRING_PROPS,
+          scaleY: IMAGE_SCALE_SPRING_PROPS,
+          opacity: { type: 'tween', duration: 750 }
+        }
+      }
+    });
+  };
+
+  /**
+   * Create gradient and mask definitions, we use these in each overlay so we can define them once
+   * Turns out this also helps Safari to render the gradient on time
+   */
+  var definitions =
+    "<radialGradient id=\"filepond--image-preview-radial-gradient\" cx=\".5\" cy=\"1.25\" r=\"1.15\">\n<stop offset='50%' stop-color='#000000'/>\n<stop offset='56%' stop-color='#0a0a0a'/>\n<stop offset='63%' stop-color='#262626'/>\n<stop offset='69%' stop-color='#4f4f4f'/>\n<stop offset='75%' stop-color='#808080'/>\n<stop offset='81%' stop-color='#b1b1b1'/>\n<stop offset='88%' stop-color='#dadada'/>\n<stop offset='94%' stop-color='#f6f6f6'/>\n<stop offset='100%' stop-color='#ffffff'/>\n</radialGradient>\n\n<mask id=\"filepond--image-preview-masking\">\n<rect x=\"0\" y=\"0\" width=\"500\" height=\"200\" fill=\"url(#filepond--image-preview-radial-gradient)\"></rect>\n</mask>";
+
+  var appendDefinitions = function appendDefinitions() {
+    if (document.readyState === 'interactive') {
+      var defs = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      defs.style.cssText = 'position:absolute;width:0;height:0';
+      defs.innerHTML = definitions;
+      document.body.appendChild(defs);
+    }
+  };
+
+  var hasNavigator = typeof navigator !== 'undefined';
+  if (hasNavigator) {
+    appendDefinitions();
+    document.addEventListener('readystatechange', appendDefinitions);
+  }
+
+  // need to know if this is IE11 so we can render the definitions with each overlay
+  var isEdgeOrIE = hasNavigator
+    ? document.documentMode || /Edge/.test(navigator.userAgent)
+    : false;
+
+  var createImageOverlayView = function createImageOverlayView(fpAPI) {
+    return fpAPI.utils.createView({
+      name: 'image-preview-overlay',
+      tag: 'div',
+      ignoreRect: true,
+      create: function create(_ref) {
+        var root = _ref.root,
+          props = _ref.props;
+
+        root.element.classList.add(
+          'filepond--image-preview-overlay-' + props.status
+        );
+        root.element.innerHTML =
+          '<svg width="500" height="200" viewBox="0 0 500 200" preserveAspectRatio="none">\n                ' +
+          (isEdgeOrIE ? '<defs>' + definitions + '</defs>' : '') +
+          '\n                <rect x="0" width="500" height="200" fill="currentColor" mask="url(#filepond--image-preview-masking)"></rect>\n            </svg>\n            ';
+      },
+      mixins: {
+        styles: ['opacity'],
+        animations: {
+          opacity: { type: 'spring', mass: 25 }
+        }
+      }
+    });
+  };
+
+  /**
+   * Bitmap Worker
+   */
+  var BitmapWorker = function BitmapWorker() {
+    // route messages
+    self.onmessage = function(e) {
+      toBitmap(e.data.message, function(response) {
+        // imageBitmap is sent back as transferable
+        self.postMessage({ id: e.data.id, message: response }, [response]);
+      });
+    };
+
+    // resize image data
+    var toBitmap = function toBitmap(options, cb) {
+      fetch(options.file)
+        .then(function(response) {
+          return response.blob();
+        })
+        .then(function(blob) {
+          return createImageBitmap(blob);
+        })
+        .then(function(imageBitmap) {
+          return cb(imageBitmap);
+        });
+    };
+  };
+
+  var getImageSize = function getImageSize(url, cb) {
+    var image = new Image();
+    image.onload = function() {
+      var width = image.naturalWidth;
+      var height = image.naturalHeight;
+      image = null;
+      cb(width, height);
+    };
+    image.src = url;
+  };
+
+  var canCreateImageBitmap = function canCreateImageBitmap(file) {
+    return 'createImageBitmap' in window && isBitmap(file);
+  };
+
+  var createImageWrapperView = function createImageWrapperView(_) {
+    // create overlay view
+    var overlay = createImageOverlayView(_);
+
+    /**
+     * Write handler for when preview container has been created
+     */
+    var didCreatePreviewContainer = function didCreatePreviewContainer(_ref) {
+      var root = _ref.root,
+        props = _ref.props;
+      var utils = _.utils;
+      var createWorker = utils.createWorker,
+        loadImage = utils.loadImage;
+      var id = props.id;
+
+      // we need to get the file data to determine the eventual image size
+
+      var item = root.query('GET_ITEM', id);
+
+      // get url to file (we'll revoke it later on when done)
+      var fileURL = URL.createObjectURL(item.file);
+
+      // fallback
+      var loadPreviewFallback = function loadPreviewFallback(
+        item,
+        width,
+        height,
+        orientation
+      ) {
+        // let's scale the image in the main thread :(
+        loadImage(fileURL).then(previewImageLoaded);
+      };
+
+      // image is now ready
+      var previewImageLoaded = function previewImageLoaded(data) {
+        // the file url is no longer needed
+        URL.revokeObjectURL(fileURL);
+
+        // the preview is now ready to be drawn
+        root.dispatch('DID_IMAGE_PREVIEW_LOAD', {
+          id: id,
+          data: data
+        });
+      };
+
+      // determine image size of this item
+      getImageSize(fileURL, function(width, height) {
+        // we can now scale the panel to the final size
+        root.dispatch('DID_IMAGE_PREVIEW_CALCULATE_SIZE', {
+          id: id,
+          width: width,
+          height: height
+        });
+
+        // if we support scaling using createImageBitmap we use a worker
+        if (canCreateImageBitmap(item.file)) {
+          // let's scale the image in a worker
+          var worker = createWorker(BitmapWorker);
+          worker.post(
+            {
+              file: fileURL
+            },
+            function(imageBitmap) {
+              // destroy worker
+              worker.terminate();
+
+              // no bitmap returned, must be something wrong,
+              // try the oldschool way
+              if (!imageBitmap) {
+                loadPreviewFallback(item);
+                return;
+              }
+
+              // yay we got our bitmap, let's continue showing the preview
+              previewImageLoaded(imageBitmap);
+            }
+          );
+        } else {
+          // create fallback preview
+          loadPreviewFallback(item);
+        }
+      });
+    };
+
+    /**
+     * Write handler for when the preview has been loaded
+     */
+    var didLoadPreview = function didLoadPreview(_ref2) {
+      var root = _ref2.root;
+
+      root.ref.overlayShadow.opacity = 1;
+    };
+
+    /**
+     * Write handler for when the preview image is ready to be animated
+     */
+    var didDrawPreview = function didDrawPreview(_ref3) {
+      var root = _ref3.root;
+      var image = root.ref.image;
+
+      // reveal image
+
+      image.scaleX = 1.0;
+      image.scaleY = 1.0;
+      image.opacity = 1;
+    };
+
+    /**
+     * Write handler for when the preview has been loaded
+     */
+    var restoreOverlay = function restoreOverlay(_ref4) {
+      var root = _ref4.root;
+
+      root.ref.overlayShadow.opacity = 1;
+      root.ref.overlayError.opacity = 0;
+      root.ref.overlaySuccess.opacity = 0;
+    };
+
+    var didThrowError = function didThrowError(_ref5) {
+      var root = _ref5.root;
+
+      root.ref.overlayShadow.opacity = 0.25;
+      root.ref.overlayError.opacity = 1;
+    };
+
+    var didCompleteProcessing = function didCompleteProcessing(_ref6) {
+      var root = _ref6.root;
+
+      root.ref.overlayShadow.opacity = 0.25;
+      root.ref.overlaySuccess.opacity = 1;
+    };
+
+    /**
+     * Constructor
+     */
+    var create = function create(_ref7) {
+      var root = _ref7.root,
+        props = _ref7.props;
+
+      // image view
+      var image = createImageView(_);
+
+      // append image presenter
+      root.ref.image = root.appendChildView(
+        root.createChildView(image, {
+          id: props.id,
+          scaleX: 1.25,
+          scaleY: 1.25,
+          opacity: 0
+        })
+      );
+
+      // image overlays
+      root.ref.overlayShadow = root.appendChildView(
+        root.createChildView(overlay, {
+          opacity: 0,
+          status: 'idle'
+        })
+      );
+
+      root.ref.overlaySuccess = root.appendChildView(
+        root.createChildView(overlay, {
+          opacity: 0,
+          status: 'success'
+        })
+      );
+
+      root.ref.overlayError = root.appendChildView(
+        root.createChildView(overlay, {
+          opacity: 0,
+          status: 'failure'
+        })
+      );
+    };
+
+    return _.utils.createView({
+      name: 'image-preview-wrapper',
+      create: create,
+      write: _.utils.createRoute({
+        // image preview stated
+        DID_IMAGE_PREVIEW_LOAD: didLoadPreview,
+        DID_IMAGE_PREVIEW_DRAW: didDrawPreview,
+        DID_IMAGE_PREVIEW_CONTAINER_CREATE: didCreatePreviewContainer,
+
+        // file states
+        DID_THROW_ITEM_LOAD_ERROR: didThrowError,
+        DID_THROW_ITEM_PROCESSING_ERROR: didThrowError,
+        DID_THROW_ITEM_INVALID: didThrowError,
+        DID_COMPLETE_ITEM_PROCESSING: didCompleteProcessing,
+        DID_START_ITEM_PROCESSING: restoreOverlay,
+        DID_REVERT_ITEM_PROCESSING: restoreOverlay
+      })
+    });
+  };
+
+  /**
+   * Image Preview Plugin
+   */
+  var plugin$1 = function(fpAPI) {
+    var addFilter = fpAPI.addFilter,
+      utils = fpAPI.utils;
+    var Type = utils.Type,
+      createRoute = utils.createRoute,
+      isFile = utils.isFile;
+
+    // imagePreviewView
+
+    var imagePreviewView = createImageWrapperView(fpAPI);
+
+    // called for each view that is created right after the 'create' method
+    addFilter('CREATE_VIEW', function(viewAPI) {
+      // get reference to created view
+      var is = viewAPI.is,
+        view = viewAPI.view,
+        query = viewAPI.query;
+
+      // only hook up to item view and only if is enabled for this cropper
+
+      if (!is('file') || !query('GET_ALLOW_IMAGE_PREVIEW')) {
+        return;
+      }
+
+      // create the image preview plugin, but only do so if the item is an image
+      var didLoadItem = function didLoadItem(_ref) {
+        var root = _ref.root,
+          props = _ref.props;
+        var id = props.id;
+
+        var item = query('GET_ITEM', id);
+
+        // item could theoretically have been removed in the mean time
+        if (!item || !isFile(item.file)) {
+          return;
+        }
+
+        // get the file object
+        var file = item.file;
+
+        // exit if this is not an image
+        if (!isPreviewableImage(file)) {
+          return;
+        }
+
+        // exit if image size is too high and no createImageBitmap support
+        // this would simply bring the browser to its knees and that is not what we want
+        var supportsCreateImageBitmap = 'createImageBitmap' in (window || {});
+        var maxPreviewFileSize = query('GET_IMAGE_PREVIEW_MAX_FILE_SIZE');
+        if (
+          !supportsCreateImageBitmap &&
+          maxPreviewFileSize &&
+          file.size > maxPreviewFileSize
+        ) {
+          return;
+        }
+
+        // set preview view
+        root.ref.imagePreview = view.appendChildView(
+          view.createChildView(imagePreviewView, { id: id })
+        );
+
+        // now ready
+        root.dispatch('DID_IMAGE_PREVIEW_CONTAINER_CREATE', { id: id });
+      };
+
+      var didCalculatePreviewSize = function didCalculatePreviewSize(_ref2) {
+        var root = _ref2.root,
+          props = _ref2.props,
+          action = _ref2.action;
+
+        // get item
+        var item = root.query('GET_ITEM', { id: props.id });
+
+        // orientation info
+        var exif = item.getMetadata('exif') || {};
+        var orientation = exif.orientation || -1;
+
+        // get width and height from action, and swap of orientation is incorrect
+        var width = action.width,
+          height = action.height;
+
+        if (orientation >= 5 && orientation <= 8) {
+          var _ref3 = [height, width];
+          width = _ref3[0];
+          height = _ref3[1];
+        }
+
+        // we need the item to get to the crop size
+        var crop = item.getMetadata('crop') || {
+          rect: {
+            x: 0,
+            y: 0,
+            width: 1,
+            height: 1
+          },
+          aspectRatio: height / width
+        };
+
+        // get height min and max
+        var fixedPreviewHeight = root.query('GET_IMAGE_PREVIEW_HEIGHT');
+        var minPreviewHeight = root.query('GET_IMAGE_PREVIEW_MIN_HEIGHT');
+        var maxPreviewHeight = root.query('GET_IMAGE_PREVIEW_MAX_HEIGHT');
+
+        // scale up width and height when we're dealing with an SVG
+        if (!isBitmap(item.file)) {
+          var scalar = 2048 / width;
+          width *= scalar;
+          height *= scalar;
+        }
+
+        // const crop width
+        height =
+          fixedPreviewHeight !== null
+            ? fixedPreviewHeight
+            : Math.max(minPreviewHeight, Math.min(height, maxPreviewHeight));
+
+        width = height / crop.aspectRatio;
+        if (width > root.rect.element.width) {
+          width = root.rect.element.width;
+          height = width * crop.aspectRatio;
+        }
+
+        // set height
+        root.ref.imagePreview.element.style.cssText =
+          'height:' + Math.round(height) + 'px';
+      };
+
+      // start writing
+      view.registerWriter(
+        createRoute({
+          DID_LOAD_ITEM: didLoadItem,
+          DID_IMAGE_PREVIEW_CALCULATE_SIZE: didCalculatePreviewSize
+        })
+      );
+    });
+
+    // expose plugin
+    return {
+      options: {
+        // Enable or disable image preview
+        allowImagePreview: [true, Type.BOOLEAN],
+
+        // Fixed preview height
+        imagePreviewHeight: [null, Type.INT],
+
+        // Min image height
+        imagePreviewMinHeight: [44, Type.INT],
+
+        // Max image height
+        imagePreviewMaxHeight: [256, Type.INT],
+
+        // Max size of preview file for when createImageBitmap is not supported
+        imagePreviewMaxFileSize: [null, Type.INT],
+
+        // Style of the transparancy indicator used behind images
+        imagePreviewTransparencyIndicator: [null, Type.STRING]
+      }
+    };
+  };
+
+  if (typeof navigator !== 'undefined' && document) {
+    // plugin has loaded
+    document.dispatchEvent(
+      new CustomEvent('FilePond:pluginloaded', { detail: plugin$1 })
+    );
+  }
+
+  return plugin$1;
+});
+
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ * FilePondPluginFileValidateType 1.1.0
+ * Licensed under MIT, https://opensource.org/licenses/MIT
+ * Please visit https://pqina.nl/filepond for details.
+ */
+(function(global, factory) {
+   true
+    ? (module.exports = factory())
+    : typeof define === 'function' && define.amd
+      ? define(factory)
+      : (global.FilePondPluginFileValidateType = factory());
+})(this, function() {
+  'use strict';
+
+  var plugin$1 = function(_ref) {
+    var addFilter = _ref.addFilter,
+      utils = _ref.utils;
+
+    // get quick reference to Type utils
+    var Type = utils.Type,
+      isString = utils.isString,
+      replaceInString = utils.replaceInString,
+      guesstimateMimeType = utils.guesstimateMimeType,
+      getExtensionFromFilename = utils.getExtensionFromFilename,
+      getFilenameFromURL = utils.getFilenameFromURL;
+
+    var mimeTypeMatchesWildCard = function mimeTypeMatchesWildCard(
+      mimeType,
+      wildcard
+    ) {
+      var mimeTypeGroup = (/^[^/]+/.exec(mimeType) || []).pop(); // image/png -> image
+      var wildcardGroup = wildcard.slice(0, -2); // image/* -> image
+      return mimeTypeGroup === wildcardGroup;
+    };
+
+    var isValidMIMEType = function isValidMIMEType(
+      acceptedTypes,
+      userInputType
+    ) {
+      return acceptedTypes.some(function(acceptedType) {
+        // accepted is wildcard mime type
+        if (/\*$/.test(acceptedType)) {
+          return mimeTypeMatchesWildCard(userInputType, acceptedType);
+        }
+
+        // is normal mime type
+        return acceptedType === userInputType;
+      });
+    };
+
+    var validateFile = function validateFile(item, acceptedFileTypes) {
+      // no types defined, everything is allowed \o/
+      if (acceptedFileTypes.length === 0) {
+        return true;
+      }
+
+      // if the item is a url we guess the mime type by the extension
+      var type = '';
+      if (isString(item)) {
+        var filename = getFilenameFromURL(item);
+        var extension = getExtensionFromFilename(filename);
+        if (extension) {
+          type = guesstimateMimeType(extension);
+        } else {
+          return true;
+        }
+      } else {
+        type = item.type;
+      }
+
+      // validate file type
+      return isValidMIMEType(acceptedFileTypes, type);
+    };
+
+    var applyMimeTypeMap = function applyMimeTypeMap(map) {
+      return function(acceptedFileType) {
+        return map[acceptedFileType] === null
+          ? false
+          : map[acceptedFileType] || acceptedFileType;
+      };
+    };
+
+    // setup attribute mapping for accept
+    addFilter('SET_ATTRIBUTE_TO_OPTION_MAP', function(map) {
+      return Object.assign(map, {
+        accept: 'acceptedFileTypes'
+      });
+    });
+
+    // filtering if an item is allowed in hopper
+    addFilter('ALLOW_HOPPER_ITEM', function(file, _ref2) {
+      var query = _ref2.query;
+
+      // if we are not doing file type validation exit
+      if (!query('GET_ALLOW_FILE_TYPE_VALIDATION')) {
+        return true;
+      }
+
+      // we validate the file against the accepted file types
+      return validateFile(file, query('GET_ACCEPTED_FILE_TYPES'));
+    });
+
+    // called for each file that is loaded
+    // right before it is set to the item state
+    // should return a promise
+    addFilter('LOAD_FILE', function(file, _ref3) {
+      var query = _ref3.query;
+      return new Promise(function(resolve, reject) {
+        var allowFileTypeValidation = query('GET_ALLOW_FILE_TYPE_VALIDATION');
+        if (!allowFileTypeValidation) {
+          resolve(file);
+          return;
+        }
+
+        var acceptedFileTypes = query('GET_ACCEPTED_FILE_TYPES');
+
+        // if invalid, exit here
+        if (!validateFile(file, acceptedFileTypes)) {
+          var acceptedFileTypesMapped = acceptedFileTypes
+            .map(
+              applyMimeTypeMap(
+                query('GET_FILE_VALIDATE_TYPE_LABEL_EXPECTED_TYPES_MAP')
+              )
+            )
+            .filter(function(label) {
+              return label !== false;
+            });
+
+          reject({
+            status: {
+              main: query('GET_LABEL_FILE_TYPE_NOT_ALLOWED'),
+              sub: replaceInString(
+                query('GET_FILE_VALIDATE_TYPE_LABEL_EXPECTED_TYPES'),
+                {
+                  allTypes: acceptedFileTypesMapped.join(', '),
+                  allButLastType: acceptedFileTypesMapped
+                    .slice(0, -1)
+                    .join(', '),
+                  lastType:
+                    acceptedFileTypesMapped[acceptedFileTypesMapped.length - 1]
+                }
+              )
+            }
+          });
+          return;
+        }
+
+        // all fine
+        resolve(file);
+      });
+    });
+
+    // expose plugin
+    return {
+      // default options
+      options: {
+        // Enable or disable file type validation
+        allowFileTypeValidation: [true, Type.BOOLEAN],
+
+        // What file types to accept
+        acceptedFileTypes: [[], Type.ARRAY],
+        // - must be comma separated
+        // - mime types: image/png, image/jpeg, image/gif
+        // - extensions: .png, .jpg, .jpeg ( not enabled yet )
+        // - wildcards: image/*
+
+        // label to show when a type is not allowed
+        labelFileTypeNotAllowed: ['File is of invalid type', Type.STRING],
+
+        // nicer label
+        fileValidateTypeLabelExpectedTypes: [
+          'Expects {allButLastType} or {lastType}',
+          Type.STRING
+        ],
+
+        // map mime types to extensions
+        fileValidateTypeLabelExpectedTypesMap: [{}, Type.OBJECT]
+      }
+    };
+  };
+
+  if (typeof navigator !== 'undefined' && document) {
+    // plugin has loaded
+    document.dispatchEvent(
+      new CustomEvent('FilePond:pluginloaded', { detail: plugin$1 })
+    );
+  }
+
+  return plugin$1;
+});
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -11,7 +11,7 @@
                     @foreach ($leftPosts as $p)
                         <a href="{{ route('posts.show', $p) }}" class="hero__grid-item">
                             <div class="img-wrapper">
-                                <img src="{{ asset($p->image) }}" alt="">
+                                <img src="{{ asset($p->thumb) }}" alt="">
                             </div>
                             <h4 class="hero__post-title">
                                 {{ $p->title }}
@@ -37,7 +37,7 @@
                     @foreach ($rightPosts as $p)
                         <a href="{{ route('posts.show', $p) }}" class="hero__grid-item">
                             <div class="img-wrapper">
-                                <img src="{{ asset($p->image) }}" alt="">
+                                <img src="{{ asset($p->thumb) }}" alt="">
                             </div>
                             <h4 class="hero__post-title">
                                 {{ $p->title }}

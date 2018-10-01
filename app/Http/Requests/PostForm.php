@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\IsMediaImage;
 
 class PostForm extends FormRequest
 {
@@ -26,7 +27,7 @@ class PostForm extends FormRequest
         return [
             'title' => 'required',
             'content' => 'required',
-            'image' => 'image',
+            'image' => ['required', new IsMediaImage],
         ];
     }
 }

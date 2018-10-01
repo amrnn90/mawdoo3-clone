@@ -80,7 +80,7 @@
                         <div class="posts-grid__item">
                             <div class="post-preview">
                                 <a href="{{ route('posts.show', $p) }}">
-                                    <img src="{{ asset($p->image) }}" alt="{{ $p->title }}" class="post-preview__image">
+                                    <img src="{{ asset($p->thumb) }}" alt="{{ $p->title }}" class="post-preview__image">
                                     <div class="post-preview__title">{{ $p->title }}</div>
                                 </a>
                             </div>
@@ -100,7 +100,7 @@
                     <div class="posts-grid__item">
                         <div class="post-preview post-preview--tight">
                             <a href="{{ route('posts.show', $p) }}">
-                                <img src="{{ asset($p->image) }}" alt="{{ $p->title }}" class="post-preview__image">
+                                <img src="{{ asset($p->thumb) }}" alt="{{ $p->title }}" class="post-preview__image">
                                 <div class="post-preview__title">{{ $p->title }}</div>
                             </a>
                         </div>
@@ -117,7 +117,7 @@
                     <div class="posts-grid__item">
                         <div class="post-preview post-preview--tight">
                             <a href="{{ route('posts.show', $p) }}">
-                                <img src="{{ asset($p->image) }}" alt="{{ $p->title }}" class="post-preview__image">
+                                <img src="{{ asset($p->thumb) }}" alt="{{ $p->title }}" class="post-preview__image">
                                 <div class="post-preview__title">{{ $p->title }}</div>
                             </a>
                         </div>

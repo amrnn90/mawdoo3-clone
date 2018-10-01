@@ -24,3 +24,7 @@ Route::delete('/posts/{post}', 'PostsController@destroy')->name('posts.destroy')
 
 Route::get('/category/{category}', 'PostsController@indexForCategory')->name('posts.indexForCategory');
 Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
+
+Route::get('/uploads', 'UploadsController@load')->name('uploads.load');
+Route::post('/uploads', 'UploadsController@store')->name('uploads.store');
+Route::delete('/uploads', 'UploadsController@revert')->name('uploads.revert');

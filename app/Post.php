@@ -4,22 +4,44 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
     use Sluggable;
     use Viewable;
+    use HasMediaTrait;
 
     protected $guarded = [];
     protected $slugField = 'title';
+    protected $tempMediaName;
 
     public static function boot()
     {
+
         parent::boot();
 
         static::creating(function ($post) {
             $post->user_id = $post->user_id ?? auth()->id();
             $post->category_id = $post->category_id ?? Category::first()->id;
+        });
+
+        static::saved(function ($post) {
+            if ($post->tempMediaName) {
+                $media = Media::where('name', $post->tempMediaName)->first();
+
+                if ($post->getMedia('image')->where('id', $media->id)->first()) {
+                    return;
+                }
+        
+                $media->move($post, 'image');
+
+                $post->tempMediaName = null;
+            } else {
+                $post->clearMediaCollection('image');
+            }
         });
     }
 
@@ -28,14 +50,29 @@ class Post extends Model
         return 'slug';
     }
 
-    public function setImageAttribute($image)
+    public function setImageAttribute($mediaName)
     {
-        if (is_string($image)) {
-            $this->attributes['image'] = $image;
-            return;
+        $this->tempMediaName = $mediaName;
+    }
+
+    public function getImageAttribute()
+    {
+        if ($media = $this->getFirstMedia('image')) {
+            return $media->getUrl();
         }
-        $path = $image->storeAs('public/posts', time() . '.' . $image->extension());
-        $this->attributes['image'] = Storage::url($path);
+    }
+
+    public function getThumbAttribute()
+    {
+        if ($media = $this->getFirstMedia('image')) {
+            return $media->getUrl('thumb');
+        }
+    }
+
+    public function getImageNameAttribute() {
+        if ($media = $this->getFirstMedia('image')) {
+            return $media->name;
+        }
     }
 
     public function author()
@@ -48,7 +85,7 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function subcategory() 
+    public function subcategory()
     {
         return $this->belongsTo(Category::class, 'subcategory_id');
     }
@@ -66,5 +103,20 @@ class Post extends Model
     {
         // should be with search maybe or tags
         return $this->visitorsAlsoRead($take);
+    }
+
+    public function registerMediaCollections()
+    {
+        $this
+            ->addMediaCollection('image')
+            ->singleFile();
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->width(215)
+            ->height(150)
+            ->nonQueued();
     }
 }

@@ -3,6 +3,12 @@
     $route = $post->exists ? route('posts.update', $post) : route('posts.store');
 @endphp
 
+@if($errors->any())
+    @foreach ($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
+@endif
+
 <form action="{{ $route }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
@@ -21,7 +27,7 @@
 
     <div class="form-group">
         <label for="image">Image</label>
-        <input type="file" name="image" id="image" class="form-control-file">
+        <input type="file" name="image" id="image" data-source="{{ old('image', $post->imageName) }}" class="form-control-file" >
     </div>
 
     <div class="form-group">
