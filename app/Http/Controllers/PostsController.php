@@ -59,7 +59,11 @@ class PostsController extends Controller
     public function store(PostForm $request)
     {
         // dd($request->all());
-        $post = Post::create($request->only(['title', 'content', 'category_id', 'image']));
+        $data = $request->only(['title', 'content', 'category_id', 'image']);
+        $data['content'] = clean($data['content']);
+        $data['image'] = $data['image'] ?? null;
+
+        $post = Post::create($data);
 
         session()->flash('success', 'Post created successfully.');
 
@@ -102,6 +106,7 @@ class PostsController extends Controller
         $this->authorize('edit', $post);
 
         $data = $request->only(['title', 'content', 'category_id', 'image']);
+        $data['content'] = clean($data['content']);
         $data['image'] = $data['image'] ?? null;
 
         $post->fill($data);

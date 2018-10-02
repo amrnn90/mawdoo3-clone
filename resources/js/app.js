@@ -19,7 +19,8 @@ $(function() {
         require('./toc').default,
         require('./addthis').default,
         require('./tabs-loader').default,
-        require('./filepond').default
+        require('./filepond').default,
+        require('./tinymce').default,
     ]);
 });
 

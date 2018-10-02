@@ -13942,7 +13942,7 @@ exports.default = Link;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(14);
-module.exports = __webpack_require__(83);
+module.exports = __webpack_require__(84);
 
 
 /***/ }),
@@ -13963,7 +13963,7 @@ __webpack_require__(37);
 var swup = __webpack_require__(39).default;
 
 $(function () {
-    swup.register([__webpack_require__(61).default, __webpack_require__(69).default, __webpack_require__(77).default, __webpack_require__(78).default, __webpack_require__(79).default]);
+    swup.register([__webpack_require__(61).default, __webpack_require__(69).default, __webpack_require__(77).default, __webpack_require__(78).default, __webpack_require__(79).default, __webpack_require__(83).default]);
 });
 
 /***/ }),
@@ -60546,6 +60546,30 @@ function signature:
 
 /***/ }),
 /* 83 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+    onEnter: function onEnter() {
+        tinymce.init({
+            selector: '.tinymce',
+            branding: false,
+            directionality: 'rtl',
+            language_url: '/js/tinymce/langs/ar.js',
+            plugins: 'paste anchor link code fullscreen',
+            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link",
+            paste_as_text: true,
+            height: 200
+        });
+    },
+    onLeave: function onLeave() {
+        tinymce.remove();
+    }
+});
+
+/***/ }),
+/* 84 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

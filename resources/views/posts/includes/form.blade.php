@@ -32,7 +32,7 @@
 
     <div class="form-group">
         <label for="content">Content</label>
-        <textarea name="content" rows="6" id="content" class="form-control">{{ old('content', $post->content) }}</textarea>
+        <textarea name="content" rows="6" id="content" class="tinymce form-control">{{ old('content', $post->content) }}</textarea>
     </div>
 
     <div class="form-group">
