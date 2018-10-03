@@ -60550,21 +60550,47 @@ function signature:
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var loadTinymce = function loadTinymce(callback) {
+    var script = document.createElement('script');
+    script.addEventListener('load', function () {
+        callback();
+    });
+    script.src = "https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkrstfxd975kjdemdcwwy4fh7du1qpoz51lk20i6p3h0lcmo";
+
+    document.head.appendChild(script);
+};
+
+var initTinymce = function initTinymce() {
+    window.tinymce.init({
+        selector: '.tinymce',
+        branding: false,
+        directionality: 'rtl',
+        language_url: '/js/tinymce/langs/ar.js',
+        plugins: 'paste anchor link code fullscreen',
+        toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link",
+        paste_as_text: true,
+        height: 200
+    });
+};
+
+var shouldLoadTinymce = function shouldLoadTinymce() {
+    if (!window.tinymce && document.querySelector('.tinymce')) return true;
+
+    return false;
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     onEnter: function onEnter() {
-        tinymce.init({
-            selector: '.tinymce',
-            branding: false,
-            directionality: 'rtl',
-            language_url: '/js/tinymce/langs/ar.js',
-            plugins: 'paste anchor link code fullscreen',
-            toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link",
-            paste_as_text: true,
-            height: 200
-        });
+        if (!window.tinymce) {
+            loadTinymce(initTinymce);
+        } else {
+            initTinymce();
+        }
     },
     onLeave: function onLeave() {
-        tinymce.remove();
+        if (window.tinymce) {
+            tinymce.remove();
+        }
     }
 });
 
