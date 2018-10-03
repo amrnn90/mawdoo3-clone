@@ -1,3 +1,5 @@
+const tinymceElClass = '.tinymce-el';
+
 const loadTinymce = (callback) => {
     var script = document.createElement('script');
     script.addEventListener('load', () => {
@@ -10,7 +12,7 @@ const loadTinymce = (callback) => {
 
 const initTinymce = () => {
     window.tinymce.init({
-        selector: '.tinymce',
+        selector: tinymceElClass,
         branding: false,
         directionality : 'rtl',
         language_url: '/js/tinymce/langs/ar.js',
@@ -22,7 +24,7 @@ const initTinymce = () => {
 };
 
 const shouldLoadTinymce = () => {
-    if (!window.tinymce && document.querySelector('.tinymce')) return true;
+    if (!window.tinymce && document.querySelector(tinymceElClass)) return true;
 
     return false;
 }

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\Image\Manipulations;
 
 class Post extends Model implements HasMedia
 {
@@ -115,8 +116,9 @@ class Post extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')
-            ->width(215)
-            ->height(150)
+            ->fit(Manipulations::FIT_CROP, 215, 150)
+            // ->width(215)
+            // ->height(150)
             ->nonQueued();
     }
 }

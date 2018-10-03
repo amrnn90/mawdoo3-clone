@@ -47,7 +47,7 @@
         <div class="post-form__group post-form__group--3">
             <div class="form-group">
                 <label for="content">المحتوى</label>
-                <textarea name="content" rows="6" id="content" class="tinymce form-control">{{ old('content', $post->content) }}</textarea>
+                <textarea name="content" rows="6" id="content" class="tinymce-el form-control">{{ old('content', $post->content) }}</textarea>
             </div>
         </div>
 

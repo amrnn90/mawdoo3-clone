@@ -30,6 +30,7 @@ $factory->define(App\Category::class, function (Faker $faker) {
     ];
 });
 
+
 $factory->define(App\Post::class, function (Faker $faker) {
     $users = App\User::limit(50)->get();
 
@@ -37,16 +38,27 @@ $factory->define(App\Post::class, function (Faker $faker) {
     // $image = Storage::url('public/posts/' . $image);
 
     $images = Storage::allFiles('public/posts');
-    // $image = Storage::path($images[rand(0, count($images)-1)]);
-    $image = $images[rand(0, count($images)-1)];
+    $image = Storage::path($images[rand(0, count($images)-1)]);
+    $imageName = App\UploadedMedia::add($image, true)->name;
 
     $categories = App\Category::getCategoriesWithSub();
     $category = $categories->random();
 
+    $content = "<h1>{$faker->realText(50)}</h1>"
+        . "<p>{$faker->realText(300)}</p>"
+        . "<img src='{$faker->imageUrl()}' />"
+        . "<p>{$faker->realText(300)}</p>"
+        . "<blockquote>{$faker->realText(100)}
+        </blockquote>"
+        . "<h2>{$faker->realText(50)}</h2>"
+        . "<p>{$faker->realText(300)}</p>"
+        . "<blockquote>{$faker->realText(100)}
+        </blockquote>";
+
     return [
         'title' => $faker->realText(50),
-        'content' => $faker->realText(300),
-        'image' => $image,
+        'content' => $content,
+        'image' => $imageName,
         'category_id' => $category->id,
         'subcategory_id' => $category->subcategories->count() ? $category->subcategories->random()->id : null,
         'user_id' => $users->random()->id,

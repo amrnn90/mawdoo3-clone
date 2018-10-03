@@ -60550,6 +60550,8 @@ function signature:
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var tinymceElClass = '.tinymce-el';
+
 var loadTinymce = function loadTinymce(callback) {
     var script = document.createElement('script');
     script.addEventListener('load', function () {
@@ -60562,7 +60564,7 @@ var loadTinymce = function loadTinymce(callback) {
 
 var initTinymce = function initTinymce() {
     window.tinymce.init({
-        selector: '.tinymce',
+        selector: tinymceElClass,
         branding: false,
         directionality: 'rtl',
         language_url: '/js/tinymce/langs/ar.js',
@@ -60574,7 +60576,7 @@ var initTinymce = function initTinymce() {
 };
 
 var shouldLoadTinymce = function shouldLoadTinymce() {
-    if (!window.tinymce && document.querySelector('.tinymce')) return true;
+    if (!window.tinymce && document.querySelector(tinymceElClass)) return true;
 
     return false;
 };
