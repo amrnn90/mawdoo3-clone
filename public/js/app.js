@@ -50993,7 +50993,7 @@ __WEBPACK_IMPORTED_MODULE_0_filepond__["setOptions"]({
             var pond = __WEBPACK_IMPORTED_MODULE_0_filepond__["create"](inputElement);
             pond.setOptions({
                 files: files,
-                imagePreviewHeight: 170,
+                // imagePreviewHeight: 170,
                 acceptedFileTypes: ['image/*']
             });
             // pond.registerPlugin(FilePondPluginImagePreview);

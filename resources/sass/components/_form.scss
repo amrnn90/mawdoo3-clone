@@ -1,8 +1,9 @@
 form {
   input, .form-control {
     font-size: 1.6rem;
-    min-height: 4rem;
-    // padding: 2rem;
+    height: 4.5rem;
+    padding: 1rem;
+    width: 100%;
   }
   [class*=filepond] {
     font-size: 1.6rem;
@@ -10,7 +11,19 @@ form {
   input[type=file] {
     display: none;
   }
+
+  label {
+    color: #666;
+    font-size: 1.8rem;
+    margin-bottom: .7rem;
+    display: block;
+  }
+
+  .form-group {
+    margin-bottom: 2rem;
+  }
 }
+
 
 /**
  * FilePond Custom Styles

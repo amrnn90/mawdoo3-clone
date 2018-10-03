@@ -34,7 +34,7 @@ export default {
             const pond = FilePond.create(inputElement);
             pond.setOptions({
                 files: files,
-                imagePreviewHeight: 170,
+                // imagePreviewHeight: 170,
                 acceptedFileTypes: ['image/*']
             });
             // pond.registerPlugin(FilePondPluginImagePreview);

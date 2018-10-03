@@ -1,0 +1,22 @@
+.post-form {
+    margin-top: 3rem;
+    &__header {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+
+    &__groups-wrapper {
+        position: relative;
+    }
+
+    &__group {
+        width: 60%;
+    }
+
+    &__group--2 {
+        position: absolute;
+        width: 30%;
+        top: 0;
+        left: 0;
+    }
+}

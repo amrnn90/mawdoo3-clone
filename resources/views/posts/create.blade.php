@@ -1,12 +1,9 @@
 @extends('layouts.app')
 
+@section('title', 'أكتب موضوعك - موضوع')
+
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>Create Post</h1>
-                @include('posts.includes.form')
-            </div>
-        </div>
+        @include('posts.includes.form')
     </div>
 @endsection
