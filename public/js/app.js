@@ -60567,7 +60567,7 @@ var initTinymce = function initTinymce() {
         branding: false,
         directionality: 'rtl',
         language_url: '/js/tinymce/langs/ar.js',
-        plugins: 'paste anchor link code fullscreen',
+        plugins: 'paste anchor link code fullscreen media',
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link",
         paste_as_text: true,
         height: 200
