@@ -44,7 +44,7 @@
                     {{ $posts->links() }}
                 </div>
             </div>
-            <a href="javascript:" class="btn btn--full btn--gray load-more {{!$posts->hasMorePages() ? 'no-more-items' : ''}}">عرض المزيد من المواضيع</a>
+            <a href="javascript:" class="btn btn--full btn--gray my-5 load-more {{!$posts->hasMorePages() ? 'no-more-items' : ''}}">عرض المزيد من المواضيع</a>
         </div>
 @endsection
 

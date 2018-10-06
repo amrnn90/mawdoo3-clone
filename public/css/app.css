@@ -5398,7 +5398,8 @@ img {
   max-width: 100%;
 }
 
-input {
+input,
+button {
   font-family: 'DroidArabicKufiRegular';
 }
 
@@ -5562,12 +5563,15 @@ body * {
 .common-link,
 .post-preview__title,
 .breadcrumb__item a,
+.auth-form a,
 .common-link:link,
 .post-preview__title:link,
 .breadcrumb__item a:link,
+.auth-form a:link,
 .common-link:visited,
 .post-preview__title:visited,
-.breadcrumb__item a:visited {
+.breadcrumb__item a:visited,
+.auth-form a:visited {
   color: #27b5bb;
   font-size: 1.6rem;
   -webkit-transition: opacity .3s ease;
@@ -5576,7 +5580,8 @@ body * {
 
 .common-link:hover,
 .post-preview__title:hover,
-.breadcrumb__item a:hover {
+.breadcrumb__item a:hover,
+.auth-form a:hover {
   opacity: .8;
 }
 
@@ -5592,15 +5597,24 @@ body * {
   text-align: center;
   -webkit-transition: opacity .4s ease;
   transition: opacity .4s ease;
+  border: none;
+  border-radius: 3px;
+  font-size: 1.6rem;
+  cursor: pointer;
 }
 
 .btn:hover {
   opacity: .8;
 }
 
+.btn--primary {
+  background: #27b5bb;
+  color: white;
+}
+
 .btn--full {
   display: block;
-  margin-top: 3rem;
+  width: 100%;
 }
 
 .btn--gray {
@@ -5613,26 +5627,96 @@ body * {
 }
 
 form input,
+form texarea,
 form .form-control {
   font-size: 1.6rem;
+  border: 1px solid #ccc;
+  background-color: white;
   height: 4.5rem;
   padding: 0 1rem;
   width: 100%;
+  display: block;
 }
 
-form [class*=filepond] {
-  font-size: 1.6rem;
+form textarea:focus,
+form input:focus {
+  outline: none;
+}
+
+form input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+
+form input[type=checkbox] {
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+
+form input[type=checkbox].form-check {
+  display: none;
+  vertical-align: middle;
+}
+
+form input[type=checkbox].form-check + .form-check-label .form-check-element {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 1px solid #bbb;
+  position: relative;
+  -webkit-transition: border .4s ease;
+  transition: border .4s ease;
+}
+
+form input[type=checkbox].form-check + .form-check-label .form-check-element:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+          transform: translate3d(-50%, -50%, 0) scale3d(0, 0, 0);
+  font-size: 15px;
+  font-family: FontAwesome;
+  content: "\F17B";
+  color: #1e8c91;
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+
+form input[type=checkbox].form-check:checked + .form-check-label .form-check-element {
+  background: white;
+  border: 1px solid #27b5bb;
+}
+
+form input[type=checkbox].form-check:checked + .form-check-label .form-check-element:before {
+  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
+          transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
+}
+
+form input[type=checkbox].form-check + .form-check-label .form-check-labeltext {
+  margin: 0 .7rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 form input[type=file] {
   display: none;
 }
 
+form [class*=filepond] {
+  font-size: 1.6rem;
+}
+
 form label {
   color: #666;
   font-size: 1.8rem;
   margin-bottom: .7rem;
-  display: block;
+  display: inline-block;
 }
 
 form .form-group {
@@ -7052,6 +7136,75 @@ form .form-group {
 
 .post-form .tinymce-el {
   display: none;
+}
+
+.auth-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  margin-bottom: 5rem;
+}
+
+.auth-form__header {
+  text-align: center;
+  font-size: 3rem;
+  color: #666;
+  margin-bottom: 6rem;
+}
+
+.auth-form .form-control {
+  background-color: #e6e6e6;
+  height: 64px;
+  padding: 0 2rem;
+  border: 2px solid #e6e6e6;
+  color: #114f52;
+  font-size: 2rem;
+  border-radius: 3px;
+  -webkit-transition: border .5s ease;
+  transition: border .5s ease;
+}
+
+.auth-form .form-control:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px #e6e6e6 inset;
+  -webkit-text-fill-color: #114f52 !important;
+}
+
+.auth-form .form-control::-webkit-input-placeholder {
+  color: rgba(17, 79, 82, 0.5);
+}
+
+.auth-form .form-control:-ms-input-placeholder {
+  color: rgba(17, 79, 82, 0.5);
+}
+
+.auth-form .form-control::-ms-input-placeholder {
+  color: rgba(17, 79, 82, 0.5);
+}
+
+.auth-form .form-control::placeholder {
+  color: rgba(17, 79, 82, 0.5);
+}
+
+.auth-form .form-control:focus {
+  border: 2px solid rgba(30, 140, 145, 0.5);
+}
+
+.auth-form .form-group-double {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.auth-form .form-group-double .form-group {
+  margin-bottom: 0;
+}
+
+.auth-form .submit-btn {
+  font-size: 2rem;
+  margin-top: 4rem;
 }
 
 .page-header {

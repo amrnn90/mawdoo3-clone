@@ -1,0 +1,59 @@
+.auth-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    margin-bottom: 5rem;
+
+    
+    &__header {
+        text-align: center;
+        font-size: 3rem;
+        color: #666;
+        margin-bottom: 6rem;
+    }
+
+    .form-control {
+        background-color:#e6e6e6;
+        height: 64px;
+        padding: 0 2rem;
+        border: 2px solid #e6e6e6;
+        color: darken($color-primary, 25%);
+        font-size: 2rem;
+        border-radius: 3px;
+        transition: border .5s ease;
+        // box-shadow: none;
+
+        &:-webkit-autofill {
+            // to remove autofill background in chrome
+            -webkit-box-shadow: 0 0 0 30px #e6e6e6 inset;
+            -webkit-text-fill-color: darken($color-primary, 25%) !important;
+        }
+        &::placeholder {
+            color: rgba(darken($color-primary, 25%), .5);
+        }
+
+        &:focus {
+            // box-shadow: none;
+            border: 2px solid rgba(darken($color-primary, 10%), .5);
+        }
+    }
+
+
+    .form-group-double {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        
+        .form-group {
+            margin-bottom: 0;
+        }
+    }
+
+    a {
+        @extend .common-link;
+    }
+
+    .submit-btn {
+        font-size: 2rem;
+        margin-top: 4rem;
+    }
+}

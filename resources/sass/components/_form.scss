@@ -1,22 +1,85 @@
 form {
-  input, .form-control {
+  input, texarea, .form-control {
     font-size: 1.6rem;
+    border: 1px solid #ccc;
+    background-color: white;
+
     height: 4.5rem;
     padding: 0 1rem;
     width: 100%;
+    display: block;
+  }
+  textarea:focus, input:focus{
+    outline: none;
+  }
+
+  input:-webkit-autofill {
+    // to remove autofill background in chrome
+    -webkit-box-shadow: 0 0 0 30px white inset;
+  }
+
+  // input[type=email] {
+  //   direction: ltr;
+  // }
+
+  input[type=checkbox] {
+    display: inline-block;
+    width: auto;
+    height: auto;
+  }
+  input[type=checkbox].form-check {
+    display: none;
+    vertical-align: middle;
+
+    & + .form-check-label .form-check-element {
+      display: inline-block;
+      vertical-align: middle;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border: 1px solid #bbb;
+      position: relative;
+      transition: border .4s ease;
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%,-50%, 0) scale3d(0,0,0);
+        font-size: 15px;
+        font-family: FontAwesome;
+        content:"\f17b";
+        color: darken($color-primary, 10%);
+        transition: transform .3s ease;
+      }
+    }
+
+    &:checked + .form-check-label .form-check-element {
+      background: white;
+      border: 1px solid $color-primary;
+      &:before {
+        transform: translate3d(-50%,-50%, 0) scale3d(1,1,1);
+      }
+    }
+
+    & + .form-check-label .form-check-labeltext {
+      margin: 0 .7rem;
+      user-select: none;
+    }
+  }
+
+  input[type=file] {
+    display: none;
   }
   [class*=filepond] {
     font-size: 1.6rem;
-  }
-  input[type=file] {
-    display: none;
   }
 
   label {
     color: #666;
     font-size: 1.8rem;
     margin-bottom: .7rem;
-    display: block;
+    display: inline-block;
   }
 
   .form-group {

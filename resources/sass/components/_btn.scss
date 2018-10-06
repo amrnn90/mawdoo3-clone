@@ -3,15 +3,24 @@
     padding: 1rem;
     text-align: center;
     transition: opacity .4s ease;
+    border: none;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    cursor: pointer;
   }
 
   &:hover {
     opacity: .8;
   }
 
+  &--primary {
+    background: $color-primary;
+    color: white;
+  }
+
   &--full {
     display: block;
-    margin-top: 3rem;
+    width: 100%;
   }
 
   &--gray {
