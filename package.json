@@ -30,6 +30,7 @@
         "filepond-plugin-file-validate-type": "^1.1.0",
         "filepond-plugin-image-preview": "^2.0.1",
         "jscroll": "^2.4.1",
+        "parsleyjs": "^2.8.1",
         "pjax": "^0.2.7",
         "sharer.js": "^0.3.3",
         "sticky-sidebar": "^3.3.1",

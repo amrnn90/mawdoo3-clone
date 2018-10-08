@@ -1,3 +1,5 @@
+import parsleyManager from './parsley';
+
 const tinymceElClass = '.tinymce-el';
 
 const loadTinymce = (callback) => {
@@ -20,7 +22,16 @@ const initTinymce = () => {
         toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link",
         paste_as_text: true,
         height: 200, 
+        init_instance_callback: function (editor) {
+            editor.on('Change', function (e) {
+              editor.save();
+              parsleyManager.validate();
+            });
+        }
     }); 
+
+    // needed because when parsley attaches before tinymce validation doesn't work well
+    parsleyManager.reset();
 };
 
 const shouldLoadTinymce = () => {

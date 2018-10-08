@@ -1,6 +1,8 @@
 import * as FilePond from 'filepond';
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import parsleyManager from './parsley';
+
 
 FilePond.registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateType);
 FilePond.setOptions({
@@ -36,7 +38,13 @@ export default {
                 files: files,
                 acceptedFileTypes: ['image/*']
             });
-            // pond.registerPlugin(FilePondPluginImagePreview);
+
+            pond.element.addEventListener('FilePond:addfile', () => {
+                parsleyManager.validate();
+            }); 
+            pond.element.addEventListener('FilePond:removefile', () => {
+                parsleyManager.validate();
+            }); 
         }
 
     }

@@ -5643,10 +5643,6 @@ form input:focus {
   outline: none;
 }
 
-form input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px white inset;
-}
-
 form input[type=checkbox] {
   display: inline-block;
   width: auto;
@@ -5702,10 +5698,6 @@ form input[type=checkbox].form-check + .form-check-label .form-check-labeltext {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-}
-
-form input[type=file] {
-  display: none;
 }
 
 form [class*=filepond] {
@@ -7163,11 +7155,6 @@ form .form-group {
   transition: border .5s ease;
 }
 
-.auth-form .form-control:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px #e6e6e6 inset;
-  -webkit-text-fill-color: #114f52 !important;
-}
-
 .auth-form .form-control::-webkit-input-placeholder {
   color: rgba(17, 79, 82, 0.5);
 }
@@ -7205,6 +7192,24 @@ form .form-group {
 .auth-form .submit-btn {
   font-size: 2rem;
   margin-top: 4rem;
+}
+
+.parsley-errors-list {
+  margin: 2px 0 3px;
+  padding: 0;
+  list-style-type: none;
+  font-size: 0.9em;
+  line-height: 0.9em;
+  opacity: 0;
+  color: #DC3545;
+  transition: all .3s ease-in;
+  -o-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  -webkit-transition: all .3s ease-in;
+}
+
+.parsley-errors-list.filled {
+  opacity: 1;
 }
 
 .page-header {

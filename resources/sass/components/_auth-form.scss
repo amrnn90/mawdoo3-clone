@@ -24,8 +24,8 @@
 
         &:-webkit-autofill {
             // to remove autofill background in chrome
-            -webkit-box-shadow: 0 0 0 30px #e6e6e6 inset;
-            -webkit-text-fill-color: darken($color-primary, 25%) !important;
+            // -webkit-box-shadow: 0 0 0 30px #e6e6e6 inset;
+            // -webkit-text-fill-color: darken($color-primary, 25%) !important;
         }
         &::placeholder {
             color: rgba(darken($color-primary, 25%), .5);
@@ -42,7 +42,7 @@
         display: flex;
         justify-content: space-between;
         margin-bottom: 2rem;
-        
+
         .form-group {
             margin-bottom: 0;
         }
