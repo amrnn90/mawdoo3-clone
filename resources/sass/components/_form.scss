@@ -15,7 +15,7 @@ form {
 
   input:-webkit-autofill {
     // to remove autofill background in chrome
-    -webkit-box-shadow: 0 0 0 30px white inset;
+    // -webkit-box-shadow: 0 0 0 30px white inset;
   }
 
   // input[type=email] {
@@ -68,9 +68,9 @@ form {
     }
   }
 
-  input[type=file] {
-    display: none;
-  }
+  // input[type=file] {
+  //   display: none;
+  // }
   [class*=filepond] {
     font-size: 1.6rem;
   }
