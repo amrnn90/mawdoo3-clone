@@ -31,3 +31,6 @@ Route::delete('/uploads', 'UploadsController@revert')->name('uploads.revert');
 
 
 Route::get('/available-email', 'Auth\RegisterController@availableEmail')->name('availableEmail');
+
+Route::get('/subcategories/{id}', 'CategoriesController@subcategories')->name('subcategories');
+Route::post('/subcategories', 'CategoriesController@storeSubcategory')->name('subcategories.store');

@@ -13,6 +13,8 @@ class Category extends Model
 
     protected $slugField = 'name';
 
+    protected $guarded = [];
+
     public function scopePopular($query, $take = 7)
     {
         return $query

@@ -23,4 +23,28 @@
     .tinymce-el {
         display: none;
     }
+
+    .category-inputs {
+        display: flex;
+        justify-content: space-between;
+        &__category, &__subcategory {
+            flex: 0 1 calc(50% - 10px);
+            // margin-left: 15px;
+            position: relative;
+            // height: 45px;
+        }
+
+        &__category:after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            width: 3px;
+            height: 50%;
+            left: -11px;
+            background: #ddd;
+            top: 50%;
+            font-family: 'serif';
+            transform: translateY(-50%) skewX(-20deg);
+        }
+    }
 }

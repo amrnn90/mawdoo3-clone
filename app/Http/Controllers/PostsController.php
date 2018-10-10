@@ -59,7 +59,7 @@ class PostsController extends Controller
     public function store(PostForm $request)
     {
         // dd($request->all());
-        $data = $request->only(['title', 'content', 'category_id', 'image']);
+        $data = $request->only(['title', 'content', 'category_id', 'subcategory_id', 'image']);
         $data['content'] = clean($data['content']);
         $data['image'] = $data['image'] ?? null;
 
@@ -105,7 +105,7 @@ class PostsController extends Controller
     {
         $this->authorize('edit', $post);
 
-        $data = $request->only(['title', 'content', 'category_id', 'image']);
+        $data = $request->only(['title', 'content', 'category_id', 'subcategory_id', 'image']);
         $data['content'] = clean($data['content']);
         $data['image'] = $data['image'] ?? null;
 

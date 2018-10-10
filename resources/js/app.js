@@ -22,6 +22,7 @@ $(function() {
         require('./filepond').default,
         require('./tinymce').default,
         require('./parsley').default,
+        require('./select2').default,
     ]);
 });
 

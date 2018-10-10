@@ -28,14 +28,29 @@
             </div>
         </div>
     
-        <div class="ppost-form__group post-form__group--2">
+        <div class="post-form__group post-form__group--2">
             <div class="form-group">
                 <label for="category_id">القسم</label>
-                <select name="category_id" id="category_id" class="form-control" required>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" {{ $category->id == old('category_id', $post->category_id)  ? 'selected' : '' }}>{{ $category->name }}</option>
-                    @endforeach
-                </select>
+                @php
+                    $selected_cat_id = old('category_id', $post->category_id);
+                    $selected_cat = $selected_cat_id ? $categories->where('id', $selected_cat_id)->first() : $categories->first();
+                @endphp
+                <div class="category-inputs">
+                    <div class="category-inputs__category">
+                        <select name="category_id" id="category_id" class="form-control" required>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == $selected_cat_id  ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="category-inputs__subcategory">
+                        <select name="subcategory_id" id="subcategory_id" class="form-control">
+                            @foreach ($selected_cat->subcategories as $category)
+                                <option value="{{ $category->id }}" {{ $category->id == old('subcategory_id', $post->subcategory_id)  ? 'selected' : '' }}>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label for="image">الصورة</label>
@@ -56,6 +71,6 @@
 
 
     <div class="form-group">
-        <button type="submit" class="btn btn-lg btn-success">{{ $post->exists ? 'اتمام التعديل' : 'انشر الموضوع' }} </button>
+        <button type="submit" class="btn btn--primary">{{ $post->exists ? 'اتمام التعديل' : 'انشر الموضوع' }} </button>
     </div>
 </form>

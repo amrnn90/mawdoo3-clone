@@ -40,6 +40,7 @@
         addthis_config.lang = 'ar'; //show in Spanish regardless of browser settings;
     </script>
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5b909d4eed106f4a"></script>
+
     {{-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkrstfxd975kjdemdcwwy4fh7du1qpoz51lk20i6p3h0lcmo"></script> --}}
 
     @yield('scripts')

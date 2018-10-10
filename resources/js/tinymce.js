@@ -7,7 +7,8 @@ const loadTinymce = (callback) => {
     script.addEventListener('load', () => {
         callback();
     });
-    script.src = "https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkrstfxd975kjdemdcwwy4fh7du1qpoz51lk20i6p3h0lcmo";
+    // script.src = "https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=xkrstfxd975kjdemdcwwy4fh7du1qpoz51lk20i6p3h0lcmo";
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.8.3/tinymce.min.js";
 
     document.head.appendChild(script);
 };

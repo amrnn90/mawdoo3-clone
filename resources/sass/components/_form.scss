@@ -18,6 +18,20 @@ form {
     // -webkit-box-shadow: 0 0 0 30px white inset;
   }
 
+  .select2-container .select2-selection {
+    height: 4.5rem;
+    padding: 0 1rem;
+    font-size: 1.6rem;
+    border: 1px solid #ccc;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    .select2-selection__arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
   // input[type=email] {
   //   direction: ltr;
   // }
