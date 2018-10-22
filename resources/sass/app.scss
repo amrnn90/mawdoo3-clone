@@ -2,7 +2,7 @@
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/grid";
+// @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/utilities";
 // @import "~bootstrap/scss/forms";
 
@@ -37,13 +37,13 @@
 @import "components/btn";
 @import "components/form";
 @import "components/composition";
-@import "components/feature-box";
 @import "components/story";
 @import "components/bg-video";
 @import "components/popup";
 @import "components/hero";
 @import "components/search-form";
 
+@import "components/container";
 @import "components/img-holder";
 @import "components/categories-grid";
 @import "components/posts-grid";
@@ -55,7 +55,7 @@
 @import "components/post-form";
 @import "components/auth-form";
 @import "components/parsley";
-
+@import "components/hamburgers";
 // @import "layout/grid";
 // @import "layout/navigation";
 @import "layout/header";

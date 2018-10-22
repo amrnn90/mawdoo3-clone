@@ -8,7 +8,7 @@
 require('./bootstrap');
 // const barba = require('./barba').default;
 require('./load-more-posts');
-
+require('./header');
 
 
 const swup = require('./swup').default;

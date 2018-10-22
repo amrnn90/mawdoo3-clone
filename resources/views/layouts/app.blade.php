@@ -24,9 +24,11 @@
 </head>
 <body>
     <div id="app">
-        @include('includes.header')
-        <div id="swup">
-            <div class="py-4 barba-container" data-namespace="page">
+        <div id="swup-header">
+            @include('includes.header')
+        </div>
+        <div id="swup-main">
+            <div class="py-4">
                 @yield('content')
             </div>
         </div>

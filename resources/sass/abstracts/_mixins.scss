@@ -45,6 +45,12 @@ $breakpoint argument choices:
   }
 }
 
+@mixin md-up($breakpoint) {
+  @media only screen and (min-width: $breakpoint) { @content };
+}
+@mixin md-down($breakpoint) {
+  @media only screen and (max-width: $breakpoint) { @content };
+}
 
 
 // MY OWN STUFF

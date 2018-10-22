@@ -6,6 +6,7 @@ const swup = new Swup({
     animateScroll: true,
     scrollFriction: .3,
     scrollAcceleration: .04,
+    elements: ['#swup-main', '#swup-header']
     // scroll: false
 });
 

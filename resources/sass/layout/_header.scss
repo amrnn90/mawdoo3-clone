@@ -1,5 +1,6 @@
 .page-header {
   padding: 2rem;
+  position: relative;
 
   &__nav {
     display: flex;
@@ -16,6 +17,10 @@
     *:not(:last-child) {
       margin-left: 1rem;
     }
+
+    @include md-down(650px) {
+      span { display: none; }
+    }
   }
 
   &__nav-item {
@@ -23,6 +28,7 @@
       color: $color-primary;
       text-decoration: none;
       transition: color .4s ease;
+      display: inline-block;
     }
 
     &:hover {
@@ -31,6 +37,86 @@
 
     &:not(:last-child) {
       margin-left: 1rem;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    margin-top: 10px;
+    .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+      background: $color-primary !important;
+    }
+  }
+
+  &--compact {
+    .page-header__nav-items {
+      display: none;
+    }
+
+    .page-header__toggle {
+      display: inline-block;
+    }
+
+    &.page-header--open {
+      .page-header__nav-items {
+        position: absolute;
+        top: 100%;
+        z-index: 100;
+        display: block;
+        background: $color-primary-dark;
+        left: 0;
+        right: 0;
+        padding: 1rem 2rem;
+      }
+  
+      .page-header__nav-item {
+        &:link, &:visited {
+          color: white;
+          transition: color .4s ease;
+        }
+    
+        &:hover {
+          color: #ddd;
+        }
+      }
+    }
+  }
+
+  @include md-down(600px) {
+    .page-header__nav-items {
+      display: none;
+    }
+
+    .page-header__toggle {
+      display: inline-block;
+    }
+
+    &.page-header--open {
+      .page-header__nav-items {
+        position: absolute;
+        top: 100%;
+        z-index: 100;
+        display: block;
+        background: $color-primary-dark;
+        left: 0;
+        right: 0;
+        padding: 3rem 2rem;
+      }
+  
+      .page-header__nav-item {
+        &:link, &:visited {
+          color: white;
+          transition: color .4s ease;
+          display: block;
+          text-align: center;
+          margin-bottom: 1rem;
+          padding: .6rem;
+        }
+    
+        &:hover {
+          color: #ddd;
+        }
+      }
     }
   }
 }

@@ -12,7 +12,7 @@ body {
 
 .common-link {
   &, &:link, &:visited {
-    color: $color-primary;
+    color: $color-primary-dark;
     font-size: 1.6rem;
     // font-weight: bold;
     transition: opacity .3s ease;
