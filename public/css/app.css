@@ -4751,7 +4751,7 @@ form .form-group {
 .hero__grid-container--right {
   position: absolute;
   height: 100%;
-  width: 573px;
+  width: 615px;
   top: 0;
 }
 
@@ -4991,7 +4991,7 @@ form .form-group {
 
 .img-holder {
   position: relative;
-  padding-bottom: 75%;
+  padding-bottom: 69.76744186%;
   background: silver;
   overflow: hidden;
 }

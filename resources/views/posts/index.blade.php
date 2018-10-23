@@ -30,12 +30,7 @@
                 <div class="posts-grid">            
                     @foreach ($posts as $post)
                         <div class="posts-grid__item">
-                            <div class="post-preview">
-                                <a href="{{ route('posts.show', $post) }}">
-                                    <img src="{{ asset($post->thumb) }}" alt="{{ $post->title }}" class="post-preview__image">
-                                    <div class="post-preview__title">{{ $post->title }}</div>
-                                </a>
-                            </div>
+                            @include('posts/includes/post-preview', ['post' => $post]);
                         </div>
                     @endforeach
                 </div>

@@ -78,12 +78,7 @@
                 <div class="posts-grid">
                     @foreach ($post->relatedPosts(6) as $p)
                         <div class="posts-grid__item">
-                            <div class="post-preview">
-                                <a href="{{ route('posts.show', $p) }}">
-                                    <img src="{{ asset($p->thumb) }}" alt="{{ $p->title }}" class="post-preview__image">
-                                    <div class="post-preview__title">{{ $p->title }}</div>
-                                </a>
-                            </div>
+                            @include('posts/includes/post-preview', ['post' => $p]);
                         </div>
                     @endforeach
                 </div>
@@ -98,12 +93,7 @@
             <div class="posts-grid posts-grid--tight">
                 @foreach ($visitorsReadPosts as $p)
                     <div class="posts-grid__item">
-                        <div class="post-preview post-preview--tight">
-                            <a href="{{ route('posts.show', $p) }}">
-                                <img src="{{ asset($p->thumb) }}" alt="{{ $p->title }}" class="post-preview__image">
-                                <div class="post-preview__title">{{ $p->title }}</div>
-                            </a>
-                        </div>
+                        @include('posts/includes/post-preview', ['post' => $p]);
                     </div>
                 @endforeach
             </div>
@@ -115,12 +105,7 @@
             <div class="posts-grid posts-grid--tight">
                 @foreach ($category->posts([$post->id])->limit(10)->get() as $p)
                     <div class="posts-grid__item">
-                        <div class="post-preview post-preview--tight">
-                            <a href="{{ route('posts.show', $p) }}">
-                                <img src="{{ asset($p->thumb) }}" alt="{{ $p->title }}" class="post-preview__image">
-                                <div class="post-preview__title">{{ $p->title }}</div>
-                            </a>
-                        </div>
+                        @include('posts/includes/post-preview', ['post' => $p]);
                     </div>
                 @endforeach
             </div>
