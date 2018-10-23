@@ -4846,11 +4846,15 @@ form .form-group {
 }
 
 .hero__grid-item img {
+  width: calc(100% + 2px) !important;
+  max-width: none;
   opacity: .5;
   -webkit-transition: opacity .2s ease, -webkit-transform 4s ease;
   transition: opacity .2s ease, -webkit-transform 4s ease;
   transition: opacity .2s ease, transform 4s ease;
   transition: opacity .2s ease, transform 4s ease, -webkit-transform 4s ease;
+  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
+          transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
 }
 
 .hero__grid-item:hover .hero__post-title {
@@ -4859,8 +4863,8 @@ form .form-group {
 
 .hero__grid-item:hover img {
   opacity: 1;
-  -webkit-transform: translate3d(-50%, -50%, 0) scale(1.3);
-          transform: translate3d(-50%, -50%, 0) scale(1.3);
+  -webkit-transform: translate3d(-50%, -50%, 0) scale3d(1.3, 1.3, 1);
+          transform: translate3d(-50%, -50%, 0) scale3d(1.3, 1.3, 1);
 }
 
 .hero__post-title {
