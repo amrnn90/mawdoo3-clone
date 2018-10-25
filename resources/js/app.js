@@ -6,7 +6,6 @@
  */
 
 require('./bootstrap');
-// const barba = require('./barba').default;
 require('./load-more-posts');
 require('./header');
 
@@ -18,7 +17,6 @@ $(function() {
         require('./vue').default,
         require('./toc').default,
         require('./addthis').default,
-        require('./tabs-loader').default,
         require('./filepond').default,
         require('./tinymce').default,
         require('./parsley').default,

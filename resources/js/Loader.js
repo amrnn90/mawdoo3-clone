@@ -27,6 +27,7 @@ class Loader {
       this.options.forEach(option => {
         if (e.target.matches(option.trigger)) {
           option.currentEl = e.target;
+          e.preventDefault();
           this.load(option);
         }
       })
@@ -76,6 +77,7 @@ class Loader {
           const state = Object.assign({}, history.state, {url: nextUrl});
           history.replaceState(state, '', nextUrl);
         }
+
 
         option.afterLoad({el: option.currentEl, url: nextUrl});
 
