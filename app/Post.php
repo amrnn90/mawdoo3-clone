@@ -51,6 +51,10 @@ class Post extends Model implements HasMedia
         return 'slug';
     }
 
+    public function setContentAttribute($content) {
+        $this->attributes['content'] = app()->make(PostContentPrepare::class)->prepare($content);
+    }
+
     public function setImageAttribute($mediaName)
     {
         $this->tempMediaName = $mediaName;

@@ -1,11 +1,23 @@
 .sidebar-section {
-    margin-bottom: 3rem;
     border-top: 2px solid transparent;
+    margin-bottom: 3rem;
+    margin-bottom: ri(30px, 20px);
+
+    @include md-down(1050px) {
+        margin-top: ri(30px, 20px);
+    }
+
+
     &__header {
         font-size: 2rem;
+        font-size: ri(20px, 17px);
         border-bottom: 1px solid #ccc;
         padding: .4rem 0;
         margin-bottom: 1rem;
+
+        @include md-down(1050px) {
+            font-size: ri(30px, 20px);
+        }
     }
 
     &__link {
@@ -13,8 +25,10 @@
             display: block;
             color: $color-primary;
             font-size: 1.6rem;
+            font-size: ri(16px, 14px);
             font-weight: bold;
             margin-bottom: 1.4rem;
+            margin-bottom: ri(14px, 12px);
             transition: all .3s ease;
         }
 

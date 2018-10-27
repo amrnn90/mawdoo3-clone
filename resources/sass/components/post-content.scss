@@ -1,0 +1,86 @@
+.post-content {
+    max-width: 570px;
+    margin: 0 auto;
+    color: #666;
+
+    h1, h2, h3, h4, h5, h6, p, blockquote, img, li, ul, ol {
+        margin-top: 1em;
+        margin-bottom: .8em;
+    }
+
+    .table-wrapper, img {
+        margin-top: 1.8em;
+        margin-bottom: 1.8em;
+    }
+
+    .table-wrapper {
+        h1, h2, h3, h4, h5, h6, p, blockquote, img, li, ul, ol {
+            margin-top: .3em;
+            margin-bottom: .3em;
+        }
+    }
+
+    & > *:first-child {
+        margin-top: 0;
+    }
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        // font-weight: normal;
+        color: #888;
+        margin-top: 2em;
+    }
+
+    ul, ol {
+        padding-right: 20px;
+        padding-right: ri(20px, 17px);
+    }
+
+    img {
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        @include md-down(400px) {
+            max-width: 100%;
+        }
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        font-size: ri(35px, 23px);
+    }
+    h2 {
+        font-size: 2.8rem;
+        font-size: ri(28px, 20px);
+    }
+    h3, h4, h5, h6 {
+        font-size: 2rem;
+        font-size: ri(20px, 17px);
+    }
+
+    p, .table-wrapper * {
+        font-size: 1.7rem;
+        font-size: ri(17px, 15px);
+    }
+
+    blockquote {
+        font-size: 2.2rem;
+        font-size: ri(22px, 15px);
+        border-right: .4rem solid $color-primary;
+        padding: 1rem 1.8rem;
+        padding: ri(10px, 7px) ri(18px, 15px);
+        margin-right: 3rem;
+        // margin-right: ri(30px, 24px);
+        font-style: italic;
+        background: #fcfcfc;
+        background: lighten($color-primary, 55%);
+        @include md-down(600px) {
+            margin-right: 0;
+        }
+    }
+
+}

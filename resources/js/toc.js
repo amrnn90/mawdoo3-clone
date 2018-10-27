@@ -13,6 +13,10 @@ export default {
         if (document.querySelector('.tocbot')) {
             const content = document.querySelector('.post__content');
             const els = content.querySelectorAll('h1, h2, h3');
+            if (els.length < 3) {
+                document.querySelector('.post__toc').style.display = 'none';
+                return;
+            }
             Array.prototype.forEach.call(els, (el) => {
                 if (!el.id) {
                     let str = el.innerText.replace(/\s+/, '_');
@@ -44,19 +48,11 @@ export default {
             sidebar = new StickySidebar('.tocbot', {topSpacing: 100});
         }
     },
-    onEnterCompleted: function () {
-
-        // The Transition has just finished.
-
-    },
     onLeave: function () {
 
         // A new Transition toward a new page has just started.
         if (sidebar && sidebar.destroy) {
             sidebar.destroy();
         }
-    },
-    onLeaveCompleted: function () {
-        // The Container has just been removed from the DOM.
     }
 };

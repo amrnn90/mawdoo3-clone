@@ -36,7 +36,7 @@
                 </span>
             </div>
             <div class="post__image">
-                <div class="img-holder">
+                <div class="img-holder img-holder--post-image">
                     <img src="{{ asset($post->image) }}" alt="{{ $post->title }}">
                 </div>
             </div>
@@ -46,30 +46,32 @@
                     <div class="tocbot"></div>
                 </div>
                 <div class="post__content">
-                    <article>
+                    <article class="post-content">
                         {!! $post->content !!}
                     </article>
+
+                    <div class="post__social">
+                        <div class="post__social-share">
+                            <h4>
+                                <i class="fa fa-share"></i>
+                                شارك الموضوع 
+                            </h4>
+                            <!-- Go to www.addthis.com/dashboard to customize your tools --> 
+                            <div class="addthis_inline_share_toolbox_9jan"></div> 
+                        </div>
+                        <div class="post__social-viewcount">
+                            <div class="post__social-viewcount-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <span class="post__socil-viewcount-text">
+                                {{ $post->viewCount }} مشاهدة
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="post__social">
-                <div class="post__social-share">
-                    <h4>
-                        <i class="fa fa-share"></i>
-                        شارك الموضوع 
-                    </h4>
-                    <!-- Go to www.addthis.com/dashboard to customize your tools --> 
-                    <div class="addthis_inline_share_toolbox_9jan"></div> 
-                </div>
-                <div class="post__social-viewcount">
-                    <div class="post__social-viewcount-icon">
-                        <i class="fa fa-eye"></i>
-                    </div>
-                    <span class="post__socil-viewcount-text">
-                        {{ $post->viewCount }} مشاهدة
-                    </span>
-                </div>
-            </div>
+ 
 
         </div>
         <section>
@@ -78,7 +80,7 @@
                 <div class="posts-grid">
                     @foreach ($post->relatedPosts(6) as $p)
                         <div class="posts-grid__item">
-                            @include('posts/includes/post-preview', ['post' => $p]);
+                            @include('posts/includes/post-preview', ['post' => $p])
                         </div>
                     @endforeach
                 </div>
@@ -93,7 +95,7 @@
             <div class="posts-grid posts-grid--tight">
                 @foreach ($visitorsReadPosts as $p)
                     <div class="posts-grid__item">
-                        @include('posts/includes/post-preview', ['post' => $p]);
+                        @include('posts/includes/post-preview', ['post' => $p])
                     </div>
                 @endforeach
             </div>
@@ -105,7 +107,7 @@
             <div class="posts-grid posts-grid--tight">
                 @foreach ($category->posts([$post->id])->limit(10)->get() as $p)
                     <div class="posts-grid__item">
-                        @include('posts/includes/post-preview', ['post' => $p]);
+                        @include('posts/includes/post-preview', ['post' => $p])
                     </div>
                 @endforeach
             </div>

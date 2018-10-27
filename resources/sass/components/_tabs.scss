@@ -2,10 +2,13 @@
     display: flex;
     border-bottom: 1px solid #ccc;
     margin-bottom: 5rem;
+    margin-bottom: ri(50px, 40px);
+
     &__tab {
         position: relative;
         top: 1px;
         font-size: 2rem;
+        font-size: ri(20px, 17px);
         color: #777;
         font-weight: bold;
         padding: .4rem 1rem;

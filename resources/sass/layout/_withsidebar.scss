@@ -1,18 +1,28 @@
 .withsidebar {
     display: flex;
     padding: 5rem 0;
+    padding: ri(50px, 40px) 0;
+
     &__main {
         // background: darkgray;
-        flex: 1 1 75%;
+        flex: 1 1 72%;
         padding-left: 6rem;
+        padding-left: ri(40px, 30px);
         // padding: 4rem;
     }
 
     &__sidebar {
         // background: silver;
-        flex: 1 1 25%;
+        flex: 1 1 28%;
         // padding-right: 8rem;
         // padding: 4rem;
+    }
+
+    @include md-down(1050px) {
+        display: block;
+        &__main {
+            padding-left: 0;
+        }
     }
 
 }

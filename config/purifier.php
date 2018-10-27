@@ -24,11 +24,11 @@ return [
     'settings'      => [
         'default' => [
             'HTML.Doctype'             => 'HTML 4.01 Transitional',
-            'HTML.Allowed'             => 'div,b,strong,i,em,u,a[href|title],ul,ol,li,p[style],br,span[style],img[width|height|alt|src],h1,h2,h3,h4,h5,h6,iframe[src|width|height]',
+            'HTML.Allowed'             => 'b,strong,i,em,u,a[href|title],ul,ol,li,p[style],blockquote,br,span[style],img[width|height|alt|src],h1,h2,h3,h4,h5,h6,iframe[src|width|height],table,thead,tbody,tr,th,td',
             "HTML.SafeIframe"      => 'true',
             "URI.SafeIframeRegexp" => "%^(http://|https://|//)(www.youtube.com/embed/|player.vimeo.com/video/|w.soundcloud.com/player/)%",
             'CSS.AllowedProperties'    => 'font,font-size,font-weight,font-style,font-family,text-decoration,padding-left,color,background-color,text-align',
-            'AutoFormat.AutoParagraph' => true,
+            'AutoFormat.AutoParagraph' => false,
             // 'AutoFormat.RemoveEmpty'   => true,
         ],
         'test'    => [

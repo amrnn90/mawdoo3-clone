@@ -13,7 +13,7 @@
         <div class="posts-grid">            
             @foreach ($posts as $post)
                 <div class="posts-grid__item">
-                    @include('posts/includes/post-preview', ['post' => $post]);
+                    @include('posts/includes/post-preview', ['post' => $post])
                 </div>
             @endforeach
         </div>

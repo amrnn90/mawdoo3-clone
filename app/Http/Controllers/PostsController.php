@@ -60,7 +60,7 @@ class PostsController extends Controller
     {
         // dd($request->all());
         $data = $request->only(['title', 'content', 'category_id', 'subcategory_id', 'image']);
-        $data['content'] = clean($data['content']);
+        // $data['content'] = clean($data['content']);
         $data['image'] = $data['image'] ?? null;
 
         $post = Post::create($data);
@@ -106,7 +106,7 @@ class PostsController extends Controller
         $this->authorize('edit', $post);
 
         $data = $request->only(['title', 'content', 'category_id', 'subcategory_id', 'image']);
-        $data['content'] = clean($data['content']);
+        // $data['content'] = clean($data['content']);
         $data['image'] = $data['image'] ?? null;
 
         $post->fill($data);

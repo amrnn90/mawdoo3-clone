@@ -1,14 +1,21 @@
 .posts-grid {    
-    @include flex-grid(800px 40px 40px);
+    @include flex-grid(0px 4% 4%);
     &__item {
-        @include flex-grid-item(800px 40px 1/3);
+        @include flex-grid-item(
+            0px 4% 1/2,
+            450px 4% 1/3,
+            700px 4% 1/4,
+            1051px 4% 1/3
+        );
     }
 
     &--tight {
-        @include flex-grid(800px 10px 10px);
+        // @include flex-grid(
+        //     0px 4% 4%
+        // );
 
         .posts-grid__item {
-            @include flex-grid-item(800px 10px 1/2);
+            @include flex-grid-item(1051px 4% 1/2);
         }
     }
 }

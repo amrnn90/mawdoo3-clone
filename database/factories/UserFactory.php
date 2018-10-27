@@ -2,6 +2,7 @@
 
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Storage;
+use FactoryHelpers\PostContentGenerator;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,16 +45,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
     $categories = App\Category::getCategoriesWithSub();
     $category = $categories->random();
 
-    $content = "<h1>{$faker->realText(50)}</h1>"
-        . "<p>{$faker->realText(300)}</p>"
-        . "<img src='{$faker->imageUrl()}' />"
-        . "<p>{$faker->realText(300)}</p>"
-        . "<blockquote>{$faker->realText(100)}
-        </blockquote>"
-        . "<h2>{$faker->realText(50)}</h2>"
-        . "<p>{$faker->realText(300)}</p>"
-        . "<blockquote>{$faker->realText(100)}
-        </blockquote>";
+    $content = app()->make(PostContentGenerator::class)->generate();
 
     return [
         'title' => $faker->realText(50),
