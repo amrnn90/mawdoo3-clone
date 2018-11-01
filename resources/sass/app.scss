@@ -1,10 +1,8 @@
-// Required
+// // Required
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
-// @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/utilities";
-// @import "~bootstrap/scss/forms";
 
 @import '~tocbot/src/scss/tocbot-core';
 @import '~tocbot/src/scss/tocbot-default-theme';
@@ -14,9 +12,7 @@
 
 @import '~select2/dist/css/select2.min.css';
 
-// Fonts
-// @import url('https://fonts.googleapis.com/css?family=Nunito');
-// @import url('https://fontlibrary.org/face/droid-arabic-kufi');
+
 @font-face {
   font-family: 'DroidArabicKufiRegular';
   src: url('/fonts/DroidArabicKufiRegular.ttf')  format('truetype'), /* Safari, Android, iOS */
@@ -30,22 +26,22 @@
 @import "spritesheets/catsprite";
 
 @import "base/base";
-@import "base/animations";
-@import "base/utilities";
+// @import "base/animations";
+// @import "base/utilities";
 @import "base/typography";
 
 @import "components/btn";
 @import "components/form";
 @import "components/table";
-@import "components/composition";
-@import "components/story";
-@import "components/bg-video";
-@import "components/popup";
-@import "components/hero";
+// @import "components/composition";
+// @import "components/story";
+// @import "components/bg-video";
+// @import "components/popup";
 @import "components/search-form";
 
 @import "components/container";
 @import "components/img-holder";
+@import "components/hero";
 @import "components/categories-grid";
 @import "components/posts-grid";
 @import "components/post-preview";
@@ -58,8 +54,7 @@
 @import "components/auth-form";
 @import "components/parsley";
 @import "components/hamburgers";
-// @import "layout/grid";
-// @import "layout/navigation";
+
 @import "layout/header";
 @import "layout/footer";
 @import "layout/withsidebar";

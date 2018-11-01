@@ -4,6 +4,9 @@
     background: rgb(235, 235, 235);
     overflow: hidden;
 
+    /* Prevents chrome bug that causes upscaling images to snap at beginning of transition that happens when using dir="rtl" */
+    direction: ltr;
+
     img {
         position: absolute;
         // width: 100%;
