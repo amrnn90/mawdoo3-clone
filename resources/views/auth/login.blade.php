@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="auth-form">
-        <h2 class="auth-form__header">تسجيل الدخول</h2>
+        <h2 class="page-title">تسجيل الدخول</h2>
 
         <form method="POST" class="auth-form__form parsley" action="{{ route('login') }}">
             @csrf

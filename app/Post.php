@@ -8,12 +8,14 @@ use Spatie\MediaLibrary\Models\Media;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\Image\Manipulations;
+use Laravel\Scout\Searchable;
 
 class Post extends Model implements HasMedia
 {
     use Sluggable;
     use Viewable;
     use HasMediaTrait;
+    use Searchable;
 
     protected $guarded = [];
     protected $slugField = 'title';
@@ -124,5 +126,28 @@ class Post extends Model implements HasMedia
             // ->width(215)
             // ->height(150)
             ->nonQueued();
+    }
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return array_only($array, ['title', 'content']);
+    }
+    
+    public static function searchE($searchText) {
+        return static::search($searchText, function (\Elasticsearch\Client $client, $query, $params) {
+            $params['body']['query'] = [
+                'multi_match' => [
+                    'query' => $query,
+                    'fuzziness' => 'AUTO',
+                    'fields' => ['title^3', 'content'],
+                ],
+            ];
+    
+            return $client->search($params);
+        });
     }
 }

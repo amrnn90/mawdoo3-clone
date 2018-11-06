@@ -19,8 +19,8 @@ const initTinymce = () => {
         branding: false,
         directionality : 'rtl',
         language_url: '/js/tinymce/langs/ar.js',
-        plugins: 'paste anchor link code fullscreen media table', 
-        toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link",
+        plugins: 'paste anchor link code fullscreen media table emoticons', 
+        toolbar: "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | fullscreen link | emoticons",
         paste_as_text: true,
         height: 200, 
         init_instance_callback: function (editor) {

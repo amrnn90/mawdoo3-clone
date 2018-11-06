@@ -14,7 +14,7 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['indexForCategory', 'index', 'show']);
+        $this->middleware('auth')->except(['indexForCategory', 'index', 'show', 'search']);
     }
 
     /**
@@ -38,6 +38,13 @@ class PostsController extends Controller
         $posts = $category->posts()->latest()->paginate(12);
 
         return view('posts.indexForCategory')->with(compact('posts', 'category'));
+    }
+
+    public function search(Request $request) 
+    {
+        $posts = Post::searchE($request->get('q'))->paginate(12)->appends($request->except(['page', '_token']));
+
+        return view('posts.search')->with(compact('posts'));
     }
 
     /**

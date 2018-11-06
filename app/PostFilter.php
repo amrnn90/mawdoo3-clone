@@ -3,7 +3,7 @@
 namespace App;
 
 class PostFilter {
-    static protected $fields = ['latest', 'mostViewed'];
+    static protected $fields = ['latest', 'mostViewed', 'search'];
 
     static public function filter($params, $builder = null) 
     {

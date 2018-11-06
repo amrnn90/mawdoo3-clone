@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Elasticsearch\ClientBuilder as ElasticBuilder;
 use App\Category;
 
 class AppServiceProvider extends ServiceProvider
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
         setlocale(LC_TIME, 'ar_AE.utf8');
         \Carbon\Carbon::setLocale(config('app.locale'));
 
-        view()->composer('*', function($view) {
+        view()->composer('*', function ($view) {
             $categories = Category::getCategoriesWithSub();
             $popularCategories = Category::popular()->take(7)->get();
 
@@ -32,6 +33,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton(\Elasticsearch\Client::class, function () {
+            return ElasticBuilder::create()
+                    ->setHosts(config('scout.elasticsearch.hosts'))
+                    ->build();
+        });
     }
 }

@@ -6,7 +6,7 @@
 
 <div class="container">
     <div class="auth-form">
-        <h2 class="auth-form__header">إنشاء حساب جديد</h2>
+        <h2 class="page-title">إنشاء حساب جديد</h2>
 
         <form method="POST" class="auth-form__form parsley" action="{{ route('register') }}">
             @csrf
