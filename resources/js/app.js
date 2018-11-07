@@ -21,6 +21,7 @@ $(function() {
         require('./tinymce').default,
         require('./parsley').default,
         require('./select2').default,
+        require('./waypoints').default,
         // require('./tables').default,
     ]);
 });

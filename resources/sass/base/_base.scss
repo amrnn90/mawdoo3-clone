@@ -27,6 +27,11 @@ body {
   box-sizing: border-box;
 }
 
+.page-content {
+  padding-top: 70px;
+  padding-top: ri(70px, 65px);
+}
+
 ::selection {
   background-color: $color-primary;
   color: $color-white;

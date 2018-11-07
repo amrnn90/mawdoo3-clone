@@ -25,7 +25,7 @@
         <div class="hero__center">
             <div class="hero__intro">
                 <h1 class="hero__heading">أهلاً بك في موضوع، أكبر موقع عربي بالعالم.</h1>
-                <div class="hero__search-form">
+                <div id="hero-search" class="hero__search-form">
                     @include('includes.search-form')
                 </div>
             </div>

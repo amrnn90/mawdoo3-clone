@@ -27,10 +27,8 @@
         <div id="swup-header">
             @include('includes.header')
         </div>
-        <div id="swup-main">
-            <div class="py-4">
-                @yield('content')
-            </div>
+        <div id="swup-main" class="page-content">
+            @yield('content')
         </div>
         @include('includes.footer')
     </div>

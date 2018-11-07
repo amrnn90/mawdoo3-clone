@@ -3,7 +3,7 @@
 @section('title', 'موضوع، أكبر موقع عربي بالعالم')
 
 @section('content')
-    <main class="homepage">
+    <main id="homepage" class="homepage">
         @include('includes.hero', ['posts' => $latestPosts])
     
         <div class="container">

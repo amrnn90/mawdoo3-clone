@@ -41,6 +41,15 @@
         }
     }
 
+    #hero-search {
+        // transition: visibility .01s .3s ease;
+        &.is-hidden {
+            visibility: hidden;
+            pointer-events: none;
+            // transition: visibility .01s 0s ease; 
+        }
+    }
+
     &__heading {
         font-size: ri(20px, 14px);
         color: white;
@@ -52,7 +61,7 @@
             position: absolute;
             height: 100%;
             // width: 600px;
-            width: 615px;
+            width: 616px;
             top: 0;
             // background: silver;
         }

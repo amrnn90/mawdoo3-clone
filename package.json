@@ -36,7 +36,7 @@
         "select2": "^4.0.6-rc.1",
         "sharer.js": "^0.3.3",
         "sticky-sidebar": "^3.3.1",
-        "swup": "^1.2.1",
+        "swup": "^1.7.9",
         "tocbot": "^4.4.0",
         "waypoints": "^4.0.1"
     }

@@ -70,7 +70,7 @@
 "use strict";
 
 
-var bind = __webpack_require__(7);
+var bind = __webpack_require__(8);
 var isBuffer = __webpack_require__(23);
 
 /*global toString:true*/
@@ -10801,10 +10801,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(9);
+    adapter = __webpack_require__(10);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(9);
+    adapter = __webpack_require__(10);
   }
   return adapter;
 }
@@ -10879,10 +10879,67 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9)))
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Link = function () {
+    function Link() {
+        _classCallCheck(this, Link);
+
+        this.link = document.createElement("a");
+    }
+
+    _createClass(Link, [{
+        key: 'setPath',
+        value: function setPath(href) {
+            this.link.href = href;
+        }
+    }, {
+        key: 'getPath',
+        value: function getPath() {
+            var path = this.link.pathname;
+            if (path[0] != '/') {
+                path = '/' + path;
+            }
+            return path;
+        }
+    }, {
+        key: 'getAddress',
+        value: function getAddress() {
+            var path = this.link.pathname + this.link.search;
+            if (path[0] != '/') {
+                path = '/' + path;
+            }
+            return path;
+        }
+    }, {
+        key: 'getHash',
+        value: function getHash() {
+            return this.link.hash;
+        }
+    }]);
+
+    return Link;
+}();
+
+exports.default = Link;
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10893,7 +10950,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_parsleyjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_parsleyjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_filepond__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__parsleyjs_i18n_ar__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__parsleyjs_i18n_ar__ = __webpack_require__(87);
 
 
 
@@ -10971,7 +11028,7 @@ function initParsley() {
 });
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -13512,7 +13569,7 @@ Popper.Defaults = Defaults;
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13530,7 +13587,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -13720,7 +13777,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13731,7 +13788,7 @@ var settle = __webpack_require__(26);
 var buildURL = __webpack_require__(28);
 var parseHeaders = __webpack_require__(29);
 var isURLSameOrigin = __webpack_require__(30);
-var createError = __webpack_require__(10);
+var createError = __webpack_require__(11);
 var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(31);
 
 module.exports = function xhrAdapter(config) {
@@ -13907,7 +13964,7 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13932,7 +13989,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13944,7 +14001,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13968,63 +14025,6 @@ Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
 
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Link = function () {
-    function Link() {
-        _classCallCheck(this, Link);
-
-        this.link = document.createElement("a");
-    }
-
-    _createClass(Link, [{
-        key: 'setPath',
-        value: function setPath(href) {
-            this.link.href = href;
-        }
-    }, {
-        key: 'getPath',
-        value: function getPath() {
-            var path = this.link.pathname;
-            if (path[0] != '/') {
-                path = '/' + path;
-            }
-            return path;
-        }
-    }, {
-        key: 'getAddress',
-        value: function getAddress() {
-            var path = this.link.pathname + this.link.search;
-            if (path[0] != '/') {
-                path = '/' + path;
-            }
-            return path;
-        }
-    }, {
-        key: 'getHash',
-        value: function getHash() {
-            return this.link.hash;
-        }
-    }]);
-
-    return Link;
-}();
-
-exports.default = Link;
 
 /***/ }),
 /* 14 */
@@ -24996,7 +24996,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(17);
-module.exports = __webpack_require__(89);
+module.exports = __webpack_require__(92);
 
 
 /***/ }),
@@ -25017,7 +25017,7 @@ __webpack_require__(42);
 var swup = __webpack_require__(43).default;
 
 $(function () {
-    swup.register([__webpack_require__(65).default, __webpack_require__(73).default, __webpack_require__(81).default, __webpack_require__(82).default, __webpack_require__(86).default, __webpack_require__(5).default, __webpack_require__(87).default]
+    swup.register([__webpack_require__(67).default, __webpack_require__(75).default, __webpack_require__(83).default, __webpack_require__(84).default, __webpack_require__(88).default, __webpack_require__(6).default, __webpack_require__(89).default, __webpack_require__(91).default]
     // require('./tables').default,
     );
 });
@@ -25028,7 +25028,7 @@ $(function () {
 
 
 window._ = __webpack_require__(19);
-window.Popper = __webpack_require__(6).default;
+window.Popper = __webpack_require__(7).default;
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -42244,7 +42244,7 @@ module.exports = function(module) {
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
   */
 (function (global, factory) {
-   true ? factory(exports, __webpack_require__(2), __webpack_require__(6)) :
+   true ? factory(exports, __webpack_require__(2), __webpack_require__(7)) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery', 'popper.js'], factory) :
   (factory((global.bootstrap = {}),global.jQuery,global.Popper));
 }(this, (function (exports,$,Popper) { 'use strict';
@@ -46192,7 +46192,7 @@ module.exports = function(module) {
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(7);
+var bind = __webpack_require__(8);
 var Axios = __webpack_require__(24);
 var defaults = __webpack_require__(4);
 
@@ -46227,9 +46227,9 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(12);
+axios.Cancel = __webpack_require__(13);
 axios.CancelToken = __webpack_require__(38);
-axios.isCancel = __webpack_require__(11);
+axios.isCancel = __webpack_require__(12);
 
 // Expose all/spread
 axios.all = function all(promises) {
@@ -46382,7 +46382,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 "use strict";
 
 
-var createError = __webpack_require__(10);
+var createError = __webpack_require__(11);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -46815,7 +46815,7 @@ module.exports = InterceptorManager;
 
 var utils = __webpack_require__(0);
 var transformData = __webpack_require__(35);
-var isCancel = __webpack_require__(11);
+var isCancel = __webpack_require__(12);
 var defaults = __webpack_require__(4);
 var isAbsoluteURL = __webpack_require__(36);
 var combineURLs = __webpack_require__(37);
@@ -46975,7 +46975,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 "use strict";
 
 
-var Cancel = __webpack_require__(12);
+var Cancel = __webpack_require__(13);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -47313,7 +47313,7 @@ var _Cache = __webpack_require__(47);
 
 var _Cache2 = _interopRequireDefault(_Cache);
 
-var _Link = __webpack_require__(13);
+var _Link = __webpack_require__(5);
 
 var _Link2 = _interopRequireDefault(_Link);
 
@@ -47337,51 +47337,59 @@ var _renderPage = __webpack_require__(52);
 
 var _renderPage2 = _interopRequireDefault(_renderPage);
 
-var _goBack = __webpack_require__(53);
-
-var _goBack2 = _interopRequireDefault(_goBack);
-
-var _createState = __webpack_require__(54);
+var _createState = __webpack_require__(53);
 
 var _createState2 = _interopRequireDefault(_createState);
 
-var _triggerEvent = __webpack_require__(55);
+var _triggerEvent = __webpack_require__(54);
 
 var _triggerEvent2 = _interopRequireDefault(_triggerEvent);
 
-var _getUrl = __webpack_require__(56);
+var _getUrl = __webpack_require__(55);
 
 var _getUrl2 = _interopRequireDefault(_getUrl);
 
-var _scrollTo = __webpack_require__(57);
+var _scrollTo = __webpack_require__(56);
 
 var _scrollTo2 = _interopRequireDefault(_scrollTo);
 
-var _classify = __webpack_require__(58);
+var _classify = __webpack_require__(57);
 
 var _classify2 = _interopRequireDefault(_classify);
 
-var _doScrolling = __webpack_require__(59);
+var _doScrolling = __webpack_require__(58);
 
 var _doScrolling2 = _interopRequireDefault(_doScrolling);
 
-var _markSwupElements = __webpack_require__(60);
+var _markSwupElements = __webpack_require__(59);
 
 var _markSwupElements2 = _interopRequireDefault(_markSwupElements);
 
-var _updateTransition = __webpack_require__(61);
+var _on = __webpack_require__(60);
+
+var _on2 = _interopRequireDefault(_on);
+
+var _off = __webpack_require__(61);
+
+var _off2 = _interopRequireDefault(_off);
+
+var _updateTransition = __webpack_require__(62);
 
 var _updateTransition2 = _interopRequireDefault(_updateTransition);
 
-var _preloadPages = __webpack_require__(62);
+var _preloadPage = __webpack_require__(63);
+
+var _preloadPage2 = _interopRequireDefault(_preloadPage);
+
+var _preloadPages = __webpack_require__(64);
 
 var _preloadPages2 = _interopRequireDefault(_preloadPages);
 
-var _usePlugin = __webpack_require__(63);
+var _usePlugin = __webpack_require__(65);
 
 var _usePlugin2 = _interopRequireDefault(_usePlugin);
 
-var _log = __webpack_require__(64);
+var _log = __webpack_require__(66);
 
 var _log2 = _interopRequireDefault(_log);
 
@@ -47417,6 +47425,7 @@ var Swup = function () {
                 }
                 return true;
             },
+            animateHistoryBrowsing: false,
 
             LINK_SELECTOR: 'a[href^="' + window.location.origin + '"]:not([data-no-swup]), a[href^="/"]:not([data-no-swup]), a[href^="#"]:not([data-no-swup])',
             FORM_SELECTOR: 'form[data-swup-form]'
@@ -47429,10 +47438,37 @@ var Swup = function () {
         var options = _extends({}, defaults, setOptions);
 
         /**
+         * handler arrays
+         */
+        this._handlers = {
+            animationInDone: [],
+            animationInStart: [],
+            animationOutDone: [],
+            animationOutStart: [],
+            animationSkipped: [],
+            clickLink: [],
+            contentReplaced: [],
+            disabled: [],
+            enabled: [],
+            hoverLink: [],
+            openPageInNewTab: [],
+            pageLoaded: [],
+            pagePreloaded: [],
+            pageRetrievedFromCache: [],
+            pageView: [],
+            popState: [],
+            samePage: [],
+            samePageWithHash: [],
+            scrollDone: [],
+            scrollStart: [],
+            serverError: [],
+            submitForm: [],
+            willReplaceContent: []
+        };
+
+        /**
          * helper variables
          */
-        // mobile detection variable
-        this.mobile = false;
         // id of element to scroll to after render
         this.scrollToElement = null;
         // promise used for preload, so no new loading of the same page starts while page is loading
@@ -47454,25 +47490,20 @@ var Swup = function () {
         this.scrollTo = _scrollTo2.default;
         this.loadPage = _loadPage2.default;
         this.renderPage = _renderPage2.default;
-        this.goBack = _goBack2.default;
         this.createState = _createState2.default;
         this.triggerEvent = _triggerEvent2.default;
         this.classify = _classify2.default;
         this.doScrolling = _doScrolling2.default;
         this.markSwupElements = _markSwupElements2.default;
+        this.on = _on2.default;
+        this.off = _off2.default;
         this.updateTransition = _updateTransition2.default;
+        this.preloadPage = _preloadPage2.default;
         this.preloadPages = _preloadPages2.default;
         this.usePlugin = _usePlugin2.default;
         this.log = _log2.default;
         this.enable = this.enable;
         this.destroy = this.destroy;
-
-        /**
-         * detect mobile devices
-         */
-        if (window.innerWidth <= 767) {
-            this.mobile = true;
-        }
 
         // attach instance to window in debug mode
         if (this.options.debugMode) {
@@ -47565,6 +47596,13 @@ var Swup = function () {
             }), document.title, window.location.href);
 
             /**
+             * Disable browser scroll control on popstates when animateHistoryBrowsing option is enabled
+             */
+            if (this.options.animateHistoryBrowsing) {
+                window.history.scrollRestoration = "manual";
+            }
+
+            /**
              * trigger enabled event
              */
             this.triggerEvent('enabled');
@@ -47598,6 +47636,9 @@ var Swup = function () {
                 delete element.dataset.swup;
             });
 
+            // remove handlers
+            this.off();
+
             this.triggerEvent('disabled');
             document.documentElement.classList.remove('swup-enabled');
         }
@@ -47606,45 +47647,57 @@ var Swup = function () {
         value: function linkClickHandler(event) {
             // no control key pressed
             if (!event.metaKey) {
-                this.triggerEvent('clickLink');
-                var link = new _Link2.default();
-                event.preventDefault();
-                link.setPath(event.delegateTarget.href);
-                if (link.getAddress() == this.currentUrl || link.getAddress() == '') {
-                    if (link.getHash() != '') {
-                        this.triggerEvent('samePageWithHash');
-                        var element = document.querySelector(link.getHash());
-                        if (element != null) {
-                            if (this.options.scroll) {
-                                var top = element.getBoundingClientRect().top + window.pageYOffset;
-                                this.scrollTo(document.body, top);
+                // index of pressed button needs to be checked because Firefox triggers click on all mouse buttons
+                if (event.button === 0) {
+                    this.triggerEvent('clickLink', event);
+                    var link = new _Link2.default();
+                    event.preventDefault();
+                    link.setPath(event.delegateTarget.href);
+
+                    if (link.getAddress() == this.currentUrl || link.getAddress() == '') {
+                        // link to the same URL
+                        if (link.getHash() != '') {
+                            // link to the same URL with hash
+                            this.triggerEvent('samePageWithHash', event);
+                            var element = document.querySelector(link.getHash());
+                            if (element != null) {
+                                // referenced element found
+                                if (this.options.scroll) {
+                                    var top = element.getBoundingClientRect().top + window.pageYOffset;
+                                    this.scrollTo(document.body, top);
+                                }
+                                history.replaceState({
+                                    url: link.getAddress() + link.getHash(),
+                                    random: Math.random(),
+                                    source: "swup"
+                                }, document.title, link.getAddress() + link.getHash());
+                            } else {
+                                // referenced element not found
+                                console.warn('Element for offset not found (' + link.getHash() + ')');
                             }
-                            history.replaceState(undefined, undefined, link.getHash());
                         } else {
-                            console.warn('Element for offset not found (' + link.getHash() + ')');
+                            // link to the same URL without hash
+                            this.triggerEvent('samePage', event);
+                            if (this.options.scroll) {
+                                this.scrollTo(document.body, 0, 1);
+                            }
                         }
                     } else {
-                        this.triggerEvent('samePage');
-                        if (this.options.scroll) {
-                            this.scrollTo(document.body, 0, 1);
+                        // link to different url
+                        if (link.getHash() != '') {
+                            this.scrollToElement = link.getHash();
                         }
+
+                        // get custom transition from data
+                        var customTransition = event.delegateTarget.dataset.swupTransition;
+
+                        // load page
+                        this.loadPage({ url: link.getAddress(), customTransition: customTransition }, false);
                     }
-                } else {
-                    if (link.getHash() != '') {
-                        this.scrollToElement = link.getHash();
-                    }
-                    // custom class fro dynamic pages
-                    var swupClass = event.delegateTarget.dataset.swupClass;
-                    if (swupClass != null) {
-                        this.updateTransition(window.location.pathname, link.getAddress(), event.delegateTarget.dataset.swupClass);
-                        document.documentElement.classList.add('to-' + swupClass);
-                    } else {
-                        this.updateTransition(window.location.pathname, link.getAddress());
-                    }
-                    this.loadPage({ url: link.getAddress() }, false);
                 }
             } else {
-                this.triggerEvent('openPageInNewTab');
+                // open in new tab (do nothing)
+                this.triggerEvent('openPageInNewTab', event);
             }
         }
     }, {
@@ -47652,7 +47705,7 @@ var Swup = function () {
         value: function linkMouseoverHandler(event) {
             var _this2 = this;
 
-            this.triggerEvent('hoverLink');
+            this.triggerEvent('hoverLink', event);
             if (this.options.preload) {
                 var link = new _Link2.default();
                 link.setPath(event.delegateTarget.href);
@@ -47660,16 +47713,16 @@ var Swup = function () {
                     this.preloadPromise = new Promise(function (resolve, reject) {
                         _this2.getPage({ url: link.getAddress() }, function (response, request) {
                             if (request.status === 500) {
-                                _this2.triggerEvent('serverError');
+                                _this2.triggerEvent('serverError', event);
                                 reject(link.getAddress());
                                 return;
                             } else {
                                 // get json data
-                                var page = _this2.getDataFromHtml(response);
+                                var page = _this2.getDataFromHtml(response, request);
                                 if (page != null) {
                                     page.url = link.getAddress();
                                     _this2.cache.cacheUrl(page, _this2.options.debugMode);
-                                    _this2.triggerEvent('pagePreloaded');
+                                    _this2.triggerEvent('pagePreloaded', event);
                                 } else {
                                     reject(link.getAddress());
                                     return;
@@ -47688,7 +47741,7 @@ var Swup = function () {
         value: function formSubmitHandler(event) {
             // no control key pressed
             if (!event.metaKey) {
-                this.triggerEvent('submitForm');
+                this.triggerEvent('submitForm', event);
                 event.preventDefault();
                 var form = event.target;
                 var formData = new FormData(form);
@@ -47713,7 +47766,7 @@ var Swup = function () {
                 } else {
                     // create base url
                     var url = link.getAddress() || window.location.href;
-                    var inputs = form.querySelectorAll('input');
+                    var inputs = form.querySelectorAll('input, select');
                     if (url.indexOf('?') == -1) {
                         url += "?";
                     } else {
@@ -47743,7 +47796,7 @@ var Swup = function () {
                     });
                 }
             } else {
-                this.triggerEvent('openFormSubmitInNewTab');
+                this.triggerEvent('openFormSubmitInNewTab', event);
             }
         }
     }, {
@@ -47757,7 +47810,7 @@ var Swup = function () {
             } else {
                 event.preventDefault();
             }
-            this.triggerEvent('popState');
+            this.triggerEvent('popState', event);
             this.loadPage({ url: link.getAddress() }, event);
         }
     }]);
@@ -48039,7 +48092,7 @@ module.exports = function (options) {
 "use strict";
 
 
-module.exports = function (html) {
+module.exports = function (html, request) {
     var _this = this;
 
     var content = html.replace('<body', '<div id="swupBody"').replace('</body>', '</div>');
@@ -48063,7 +48116,8 @@ module.exports = function (html) {
         title: fakeDom.querySelector('title').innerText,
         pageClass: fakeDom.querySelector('#swupBody').className,
         originalContent: html,
-        blocks: blocks
+        blocks: blocks,
+        responseURL: request != null ? request.responseURL : window.location.href
     };
     return json;
 };
@@ -48081,20 +48135,31 @@ var forEach = Array.prototype.forEach;
 module.exports = function (data, popstate) {
     var _this = this;
 
-    var finalPage = null;
-
     // scrolling
     if (this.options.doScrollingRightAway && !this.scrollToElement) {
         this.doScrolling(popstate);
     }
 
+    // create array for storing animation promises
     var animationPromises = [];
 
-    if (!popstate) {
+    // set transition object
+    if (data.customTransition != null) {
+        this.updateTransition(window.location.pathname, data.url, data.customTransition);
+        document.documentElement.classList.add('to-' + this.classify(data.customTransition));
+    } else {
+        this.updateTransition(window.location.pathname, data.url);
+    }
+
+    if (!popstate || this.options.animateHistoryBrowsing) {
         // start animation
+        this.triggerEvent('animationOutStart');
         document.documentElement.classList.add('is-changing');
         document.documentElement.classList.add('is-leaving');
         document.documentElement.classList.add('is-animating');
+        if (popstate) {
+            document.documentElement.classList.add('is-popstate');
+        }
         document.documentElement.classList.add('to-' + this.classify(data.url));
 
         // detect animation end
@@ -48120,7 +48185,7 @@ module.exports = function (data, popstate) {
         } else {
             var pop = data.url;
         }
-        this.createState(pop);
+        if (!popstate) this.createState(pop);
     } else {
         // proceed without animating
         this.triggerEvent('animationSkipped');
@@ -48141,7 +48206,7 @@ module.exports = function (data, popstate) {
                         return;
                     } else {
                         // get json data
-                        var page = _this.getDataFromHtml(response);
+                        var page = _this.getDataFromHtml(response, request);
                         if (page != null) {
                             page.url = data.url;
                         } else {
@@ -48161,8 +48226,8 @@ module.exports = function (data, popstate) {
     }
 
     Promise.all(animationPromises.concat([xhrPromise])).then(function () {
-        finalPage = _this.cache.getPage(data.url);
-        _this.renderPage(finalPage, popstate);
+        // render page
+        _this.renderPage(_this.cache.getPage(data.url), popstate);
         _this.preloadPromise = null;
     }).catch(function (errorUrl) {
         // rewrite the skipPopStateHandling function to redirect manually when the history.go is processed
@@ -48183,6 +48248,12 @@ module.exports = function (data, popstate) {
 "use strict";
 
 
+var _Link = __webpack_require__(5);
+
+var _Link2 = _interopRequireDefault(_Link);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var forEach = Array.prototype.forEach;
 
 
@@ -48191,8 +48262,20 @@ module.exports = function (page, popstate) {
 
     document.documentElement.classList.remove('is-leaving');
 
+    // replace state in case the url was redirected
+    var link = new _Link2.default();
+    link.setPath(page.responseURL);
+
+    if (window.location.pathname !== link.getPath()) {
+        window.history.replaceState({
+            url: link.getPath(),
+            random: Math.random(),
+            source: "swup"
+        }, document.title, link.getPath());
+    }
+
     // only add for non-popstate transitions
-    if (!popstate) {
+    if (!popstate || this.options.animateHistoryBrowsing) {
         document.documentElement.classList.add('is-rendering');
     }
 
@@ -48206,16 +48289,8 @@ module.exports = function (page, popstate) {
     // set title
     document.title = page.title;
 
-    this.triggerEvent('contentReplaced');
-    this.triggerEvent('pageView');
-    if (!this.options.cache) {
-        this.cache.empty(this.options.debugMode);
-    }
-    setTimeout(function () {
-        document.documentElement.classList.remove('is-animating');
-    }, 10);
-
     // handle classes after render
+    // remove
     if (this.options.pageClassPrefix !== false) {
         document.body.className.split(' ').forEach(function (className) {
             // empty string for page class
@@ -48224,8 +48299,7 @@ module.exports = function (page, popstate) {
             }
         });
     }
-
-    // empty string for page class
+    // add
     if (page.pageClass != "") {
         page.pageClass.split(' ').forEach(function (className) {
             if (className != "" && className.includes(_this.options.pageClassPrefix)) {
@@ -48233,6 +48307,18 @@ module.exports = function (page, popstate) {
             }
         });
     }
+
+    this.triggerEvent('contentReplaced');
+    this.triggerEvent('pageView');
+    if (!this.options.cache) {
+        this.cache.empty(this.options.debugMode);
+    }
+    setTimeout(function () {
+        if (!popstate || _this.options.animateHistoryBrowsing) {
+            _this.triggerEvent('animationInStart');
+            document.documentElement.classList.remove('is-animating');
+        }
+    }, 10);
 
     // scrolling
     if (!this.options.doScrollingRightAway || this.scrollToElement) {
@@ -48256,36 +48342,26 @@ module.exports = function (page, popstate) {
     //preload pages if possible
     this.preloadPages();
 
-    Promise.all(promises).then(function () {
-        _this.triggerEvent('animationInDone');
-        // remove "to-{page}" classes
-        document.documentElement.className.split(' ').forEach(function (classItem) {
-            if (new RegExp("^to-").test(classItem) || classItem === "is-changing" || classItem === "is-rendering") {
-                document.documentElement.classList.remove(classItem);
-            }
+    if (!popstate || this.options.animateHistoryBrowsing) {
+        Promise.all(promises).then(function () {
+            _this.triggerEvent('animationInDone');
+            // remove "to-{page}" classes
+            document.documentElement.className.split(' ').forEach(function (classItem) {
+                if (new RegExp("^to-").test(classItem) || classItem === "is-changing" || classItem === "is-rendering" || classItem === "is-popstate") {
+                    document.documentElement.classList.remove(classItem);
+                }
+            });
         });
-    });
+    }
 
     // update current url
     this.getUrl();
+    // reset scroll-to element
+    this.scrollToElement = null;
 };
 
 /***/ }),
 /* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = function (page, popstate) {
-    setTimeout(function () {
-        document.body.classList.remove('is-changing');
-        history.back();
-    }, 100);
-};
-
-/***/ }),
-/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48300,22 +48376,33 @@ module.exports = function (url) {
 };
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = function (eventName) {
-    if (this.options.debugMode) {
+module.exports = function (eventName, originalEvent) {
+    if (this.options.debugMode && originalEvent) {
+        console.groupCollapsed('%cswup:' + '%c' + eventName, 'color: #343434', 'color: #009ACD');
+        console.log(originalEvent);
+        console.groupEnd();
+    } else if (this.options.debugMode) {
         console.log('%cswup:' + '%c' + eventName, 'color: #343434', 'color: #009ACD');
     }
+
+    // call saved handlers with "on" method and pass originalEvent object if available
+    this._handlers[eventName].forEach(function (handler) {
+        return handler(originalEvent);
+    });
+
+    // trigger event on document with prefix "swup:"
     var event = new CustomEvent('swup:' + eventName, { detail: eventName });
     document.dispatchEvent(event);
 };
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48326,7 +48413,7 @@ module.exports = function () {
 };
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48416,7 +48503,7 @@ module.exports = function (element, to) {
 };
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48435,25 +48522,23 @@ module.exports = function (text) {
 };
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 module.exports = function (popstate) {
-    if (this.options.scroll && !popstate) {
+    if (this.options.scroll && (!popstate || this.options.animateHistoryBrowsing)) {
         if (this.scrollToElement != null) {
-            var self = this;
-
-            var element = document.querySelector(self.scrollToElement);
+            var element = document.querySelector(this.scrollToElement);
             if (element != null) {
                 var top = element.getBoundingClientRect().top + window.pageYOffset;
-                self.scrollTo(document.body, top);
+                this.scrollTo(document.body, top);
             } else {
-                console.warn("Element for offset not found (" + self.scrollToElement + ")");
+                console.warn("Element for offset not found (" + this.scrollToElement + ")");
             }
-            self.scrollToElement = null;
+            this.scrollToElement = null;
         } else {
             this.scrollTo(document.body, 0);
         }
@@ -48461,7 +48546,7 @@ module.exports = function (popstate) {
 };
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48485,7 +48570,57 @@ module.exports = function (element) {
 };
 
 /***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function on(event, handler) {
+    if (this._handlers[event]) {
+        this._handlers[event].push(handler);
+    } else {
+        console.warn("Unsupported event " + event + ".");
+    }
+};
+
+/***/ }),
 /* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function off(event, handler) {
+    var _this = this;
+
+    if (event != null) {
+        if (handler != null) {
+            if (this._handlers[event] && this._handlers[event].filter(function (savedHandler) {
+                return savedHandler === handler;
+            }).length) {
+                var toRemove = this._handlers[event].filter(function (savedHandler) {
+                    return savedHandler === handler;
+                })[0];
+                var index = this._handlers[event].indexOf(toRemove);
+                if (index > -1) {
+                    this._handlers[event].splice(index, 1);
+                }
+            } else {
+                console.warn("Handler for event '" + event + "' no found.");
+            }
+        } else {
+            this._handlers[event] = [];
+        }
+    } else {
+        Object.keys(this._handlers).forEach(function (keys) {
+            _this._handlers[keys] = [];
+        });
+    }
+};
+
+/***/ }),
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48513,49 +48648,60 @@ module.exports = function (from, to, custom) {
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _Link = __webpack_require__(13);
+var _Link = __webpack_require__(5);
 
 var _Link2 = _interopRequireDefault(_Link);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = function (eventName) {
+module.exports = function (pathname) {
     var _this = this;
 
-    if (this.options.preload) {
-        var preload = function preload(pathname) {
-            var link = new _Link2.default();
-            link.setPath(pathname);
-            if (link.getAddress() != _this.currentUrl && !_this.cache.exists(link.getAddress()) && _this.preloadPromise == null) {
-                _this.getPage({ url: link.getAddress() }, function (response) {
-                    if (response === null) {
-                        console.warn('Server error.');
-                        _this.triggerEvent('serverError');
-                    } else {
-                        // get json data
-                        var page = _this.getDataFromHtml(response);
-                        page.url = link.getAddress();
-                        _this.cache.cacheUrl(page, _this.options.debugMode);
-                        _this.triggerEvent('pagePreloaded');
-                    }
-                });
+    var link = new _Link2.default();
+    link.setPath(pathname);
+    if (link.getAddress() != this.currentUrl && !this.cache.exists(link.getAddress()) && this.preloadPromise == null) {
+        this.getPage({ url: link.getAddress() }, function (response, request) {
+            if (request.status === 500) {
+                _this.triggerEvent('serverError');
+                return;
+            } else {
+                // get json data
+                var page = _this.getDataFromHtml(response, request);
+                if (page != null) {
+                    page.url = link.getAddress();
+                    _this.cache.cacheUrl(page, _this.options.debugMode);
+                    _this.triggerEvent('pagePreloaded');
+                }
             }
-        };
-
-        document.querySelectorAll('[data-swup-preload]').forEach(function (element) {
-            preload(element.href);
         });
     }
 };
 
 /***/ }),
-/* 63 */
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function () {
+    var _this = this;
+
+    if (this.options.preload) {
+        document.querySelectorAll('[data-swup-preload]').forEach(function (element) {
+            _this.preloadPage(element.href);
+        });
+    }
+};
+
+/***/ }),
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48581,7 +48727,7 @@ module.exports = function (plugin, options) {
 };
 
 /***/ }),
-/* 64 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -48594,12 +48740,12 @@ module.exports = function (str) {
 };
 
 /***/ }),
-/* 65 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-var Vue = __webpack_require__(66);
+var Vue = __webpack_require__(68);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -48607,7 +48753,7 @@ var Vue = __webpack_require__(66);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(69));
+Vue.component('example-component', __webpack_require__(71));
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     onEnter: function onEnter() {
@@ -48623,7 +48769,7 @@ Vue.component('example-component', __webpack_require__(69));
 });
 
 /***/ }),
-/* 66 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -59586,10 +59732,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(67).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(69).setImmediate))
 
 /***/ }),
-/* 67 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -59645,7 +59791,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(68);
+__webpack_require__(70);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -59659,7 +59805,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 68 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -59849,18 +59995,18 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(9)))
 
 /***/ }),
-/* 69 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(70)
+var normalizeComponent = __webpack_require__(72)
 /* script */
-var __vue_script__ = __webpack_require__(71)
+var __vue_script__ = __webpack_require__(73)
 /* template */
-var __vue_template__ = __webpack_require__(72)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -59899,7 +60045,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 70 */
+/* 72 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -60008,7 +60154,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 71 */
+/* 73 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60051,7 +60197,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 72 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -60098,16 +60244,16 @@ if (false) {
 }
 
 /***/ }),
-/* 73 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__resize_sensor___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__resize_sensor__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_tocbot___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_tocbot__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_sticky_sidebar__ = __webpack_require__(82);
 
 
 
@@ -60167,7 +60313,7 @@ var sidebar = void 0;
 });
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -60473,7 +60619,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -60503,14 +60649,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   'use strict'
 
   // Default options.
-  var defaultOptions = __webpack_require__(76)
+  var defaultOptions = __webpack_require__(78)
   // Object to store current options.
   var options = {}
   // Object for public APIs.
   var tocbot = {}
 
-  var BuildHtml = __webpack_require__(77)
-  var ParseContent = __webpack_require__(78)
+  var BuildHtml = __webpack_require__(79)
+  var ParseContent = __webpack_require__(80)
   // Keep these variables at top scope once options are passed in.
   var buildHtml
   var parseContent
@@ -60598,7 +60744,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     // Init smooth scroll if enabled (default).
     if (options.scrollSmooth) {
       options.duration = options.scrollSmoothDuration
-      tocbot.scrollSmooth = __webpack_require__(79).initSmoothScrolling(options)
+      tocbot.scrollSmooth = __webpack_require__(81).initSmoothScrolling(options)
     }
 
     // Pass options to these modules.
@@ -60671,7 +60817,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 76 */
+/* 78 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -60743,7 +60889,7 @@ module.exports = {
 
 
 /***/ }),
-/* 77 */
+/* 79 */
 /***/ (function(module, exports) {
 
 /**
@@ -61000,7 +61146,7 @@ module.exports = function (options) {
 
 
 /***/ }),
-/* 78 */
+/* 80 */
 /***/ (function(module, exports) {
 
 /**
@@ -61131,7 +61277,7 @@ module.exports = function parseContent (options) {
 
 
 /***/ }),
-/* 79 */
+/* 81 */
 /***/ (function(module, exports) {
 
 /* globals location, requestAnimationFrame */
@@ -61253,7 +61399,7 @@ function jump (target, options) {
 
 
 /***/ }),
-/* 80 */
+/* 82 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61959,7 +62105,7 @@ const StickySidebar = (() => {
   window.StickySidebar = StickySidebar;
 
 /***/ }),
-/* 81 */
+/* 83 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -61984,18 +62130,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_filepond__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_filepond___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_filepond__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_filepond_plugin_image_preview__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type__ = __webpack_require__(84);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_filepond_plugin_file_validate_type__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__parsley__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__parsley__ = __webpack_require__(6);
 
 
 
@@ -62047,7 +62193,7 @@ __WEBPACK_IMPORTED_MODULE_0_filepond__["setOptions"]({
 });
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -62930,7 +63076,7 @@ __WEBPACK_IMPORTED_MODULE_0_filepond__["setOptions"]({
 
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -63126,7 +63272,7 @@ __WEBPACK_IMPORTED_MODULE_0_filepond__["setOptions"]({
 
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -63163,12 +63309,12 @@ __WEBPACK_IMPORTED_MODULE_0_parsleyjs___default.a.addMessages('ar', {
 __WEBPACK_IMPORTED_MODULE_0_parsleyjs___default.a.setLocale('ar');
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parsley__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__parsley__ = __webpack_require__(6);
 
 
 var tinymceElClass = '.tinymce-el';
@@ -63228,14 +63374,14 @@ var shouldLoadTinymce = function shouldLoadTinymce() {
 });
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_select2__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_select2__ = __webpack_require__(90);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_select2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_select2__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
@@ -63321,7 +63467,7 @@ function initSubcategory($subcatEl) {
 });
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;var require;/*!
@@ -69177,10 +69323,831 @@ S2.define('jquery.select2',[
 
 
 /***/ }),
-/* 89 */
+/* 91 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_waypoints_lib_noframework_waypoints__ = __webpack_require__(100);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_waypoints_lib_noframework_waypoints___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_waypoints_lib_noframework_waypoints__);
+
+
+var homeHeaderSearch = null;
+var homeHeaderCompact = null;
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    onEnter: function onEnter() {
+        if (document.querySelector('#homepage')) {
+            var heroSearch = document.querySelector('#hero-search');
+            var header = document.querySelector('.page-header');
+
+            homeHeaderSearch = new Waypoint({
+                element: heroSearch,
+                handler: function handler(direction) {
+                    var method = direction == 'down' ? 'add' : 'remove';
+                    header.classList[method]('page-header--with-search');
+                    heroSearch.classList[method]('is-hidden');
+                },
+                offset: 170
+            });
+            var pageContent = document.querySelector('.page-content');
+            homeHeaderCompact = new Waypoint({
+                offset: -1,
+                element: pageContent,
+                handler: function handler(direction) {
+                    var method = direction == 'down' ? 'add' : 'remove';
+                    header.classList[method]('page-header--compact');
+                }
+            });
+        }
+    },
+    onLeave: function onLeave() {
+        if (homeHeaderSearch) {
+            homeHeaderSearch.destroy();
+            homeHeaderSearch = null;
+        }
+        if (homeHeaderCompact) {
+            homeHeaderCompact.destroy();
+            homeHeaderCompact = null;
+        }
+    }
+});
+
+/***/ }),
+/* 92 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */
+/***/ (function(module, exports) {
+
+/*!
+Waypoints - 4.0.1
+Copyright © 2011-2016 Caleb Troughton
+Licensed under the MIT license.
+https://github.com/imakewebthings/waypoints/blob/master/licenses.txt
+*/
+(function() {
+  'use strict'
+
+  var keyCounter = 0
+  var allWaypoints = {}
+
+  /* http://imakewebthings.com/waypoints/api/waypoint */
+  function Waypoint(options) {
+    if (!options) {
+      throw new Error('No options passed to Waypoint constructor')
+    }
+    if (!options.element) {
+      throw new Error('No element option passed to Waypoint constructor')
+    }
+    if (!options.handler) {
+      throw new Error('No handler option passed to Waypoint constructor')
+    }
+
+    this.key = 'waypoint-' + keyCounter
+    this.options = Waypoint.Adapter.extend({}, Waypoint.defaults, options)
+    this.element = this.options.element
+    this.adapter = new Waypoint.Adapter(this.element)
+    this.callback = options.handler
+    this.axis = this.options.horizontal ? 'horizontal' : 'vertical'
+    this.enabled = this.options.enabled
+    this.triggerPoint = null
+    this.group = Waypoint.Group.findOrCreate({
+      name: this.options.group,
+      axis: this.axis
+    })
+    this.context = Waypoint.Context.findOrCreateByElement(this.options.context)
+
+    if (Waypoint.offsetAliases[this.options.offset]) {
+      this.options.offset = Waypoint.offsetAliases[this.options.offset]
+    }
+    this.group.add(this)
+    this.context.add(this)
+    allWaypoints[this.key] = this
+    keyCounter += 1
+  }
+
+  /* Private */
+  Waypoint.prototype.queueTrigger = function(direction) {
+    this.group.queueTrigger(this, direction)
+  }
+
+  /* Private */
+  Waypoint.prototype.trigger = function(args) {
+    if (!this.enabled) {
+      return
+    }
+    if (this.callback) {
+      this.callback.apply(this, args)
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/destroy */
+  Waypoint.prototype.destroy = function() {
+    this.context.remove(this)
+    this.group.remove(this)
+    delete allWaypoints[this.key]
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/disable */
+  Waypoint.prototype.disable = function() {
+    this.enabled = false
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/enable */
+  Waypoint.prototype.enable = function() {
+    this.context.refresh()
+    this.enabled = true
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/next */
+  Waypoint.prototype.next = function() {
+    return this.group.next(this)
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/previous */
+  Waypoint.prototype.previous = function() {
+    return this.group.previous(this)
+  }
+
+  /* Private */
+  Waypoint.invokeAll = function(method) {
+    var allWaypointsArray = []
+    for (var waypointKey in allWaypoints) {
+      allWaypointsArray.push(allWaypoints[waypointKey])
+    }
+    for (var i = 0, end = allWaypointsArray.length; i < end; i++) {
+      allWaypointsArray[i][method]()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/destroy-all */
+  Waypoint.destroyAll = function() {
+    Waypoint.invokeAll('destroy')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/disable-all */
+  Waypoint.disableAll = function() {
+    Waypoint.invokeAll('disable')
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/enable-all */
+  Waypoint.enableAll = function() {
+    Waypoint.Context.refreshAll()
+    for (var waypointKey in allWaypoints) {
+      allWaypoints[waypointKey].enabled = true
+    }
+    return this
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/refresh-all */
+  Waypoint.refreshAll = function() {
+    Waypoint.Context.refreshAll()
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/viewport-height */
+  Waypoint.viewportHeight = function() {
+    return window.innerHeight || document.documentElement.clientHeight
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/viewport-width */
+  Waypoint.viewportWidth = function() {
+    return document.documentElement.clientWidth
+  }
+
+  Waypoint.adapters = []
+
+  Waypoint.defaults = {
+    context: window,
+    continuous: true,
+    enabled: true,
+    group: 'default',
+    horizontal: false,
+    offset: 0
+  }
+
+  Waypoint.offsetAliases = {
+    'bottom-in-view': function() {
+      return this.context.innerHeight() - this.adapter.outerHeight()
+    },
+    'right-in-view': function() {
+      return this.context.innerWidth() - this.adapter.outerWidth()
+    }
+  }
+
+  window.Waypoint = Waypoint
+}())
+;(function() {
+  'use strict'
+
+  function requestAnimationFrameShim(callback) {
+    window.setTimeout(callback, 1000 / 60)
+  }
+
+  var keyCounter = 0
+  var contexts = {}
+  var Waypoint = window.Waypoint
+  var oldWindowLoad = window.onload
+
+  /* http://imakewebthings.com/waypoints/api/context */
+  function Context(element) {
+    this.element = element
+    this.Adapter = Waypoint.Adapter
+    this.adapter = new this.Adapter(element)
+    this.key = 'waypoint-context-' + keyCounter
+    this.didScroll = false
+    this.didResize = false
+    this.oldScroll = {
+      x: this.adapter.scrollLeft(),
+      y: this.adapter.scrollTop()
+    }
+    this.waypoints = {
+      vertical: {},
+      horizontal: {}
+    }
+
+    element.waypointContextKey = this.key
+    contexts[element.waypointContextKey] = this
+    keyCounter += 1
+    if (!Waypoint.windowContext) {
+      Waypoint.windowContext = true
+      Waypoint.windowContext = new Context(window)
+    }
+
+    this.createThrottledScrollHandler()
+    this.createThrottledResizeHandler()
+  }
+
+  /* Private */
+  Context.prototype.add = function(waypoint) {
+    var axis = waypoint.options.horizontal ? 'horizontal' : 'vertical'
+    this.waypoints[axis][waypoint.key] = waypoint
+    this.refresh()
+  }
+
+  /* Private */
+  Context.prototype.checkEmpty = function() {
+    var horizontalEmpty = this.Adapter.isEmptyObject(this.waypoints.horizontal)
+    var verticalEmpty = this.Adapter.isEmptyObject(this.waypoints.vertical)
+    var isWindow = this.element == this.element.window
+    if (horizontalEmpty && verticalEmpty && !isWindow) {
+      this.adapter.off('.waypoints')
+      delete contexts[this.key]
+    }
+  }
+
+  /* Private */
+  Context.prototype.createThrottledResizeHandler = function() {
+    var self = this
+
+    function resizeHandler() {
+      self.handleResize()
+      self.didResize = false
+    }
+
+    this.adapter.on('resize.waypoints', function() {
+      if (!self.didResize) {
+        self.didResize = true
+        Waypoint.requestAnimationFrame(resizeHandler)
+      }
+    })
+  }
+
+  /* Private */
+  Context.prototype.createThrottledScrollHandler = function() {
+    var self = this
+    function scrollHandler() {
+      self.handleScroll()
+      self.didScroll = false
+    }
+
+    this.adapter.on('scroll.waypoints', function() {
+      if (!self.didScroll || Waypoint.isTouch) {
+        self.didScroll = true
+        Waypoint.requestAnimationFrame(scrollHandler)
+      }
+    })
+  }
+
+  /* Private */
+  Context.prototype.handleResize = function() {
+    Waypoint.Context.refreshAll()
+  }
+
+  /* Private */
+  Context.prototype.handleScroll = function() {
+    var triggeredGroups = {}
+    var axes = {
+      horizontal: {
+        newScroll: this.adapter.scrollLeft(),
+        oldScroll: this.oldScroll.x,
+        forward: 'right',
+        backward: 'left'
+      },
+      vertical: {
+        newScroll: this.adapter.scrollTop(),
+        oldScroll: this.oldScroll.y,
+        forward: 'down',
+        backward: 'up'
+      }
+    }
+
+    for (var axisKey in axes) {
+      var axis = axes[axisKey]
+      var isForward = axis.newScroll > axis.oldScroll
+      var direction = isForward ? axis.forward : axis.backward
+
+      for (var waypointKey in this.waypoints[axisKey]) {
+        var waypoint = this.waypoints[axisKey][waypointKey]
+        if (waypoint.triggerPoint === null) {
+          continue
+        }
+        var wasBeforeTriggerPoint = axis.oldScroll < waypoint.triggerPoint
+        var nowAfterTriggerPoint = axis.newScroll >= waypoint.triggerPoint
+        var crossedForward = wasBeforeTriggerPoint && nowAfterTriggerPoint
+        var crossedBackward = !wasBeforeTriggerPoint && !nowAfterTriggerPoint
+        if (crossedForward || crossedBackward) {
+          waypoint.queueTrigger(direction)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+      }
+    }
+
+    for (var groupKey in triggeredGroups) {
+      triggeredGroups[groupKey].flushTriggers()
+    }
+
+    this.oldScroll = {
+      x: axes.horizontal.newScroll,
+      y: axes.vertical.newScroll
+    }
+  }
+
+  /* Private */
+  Context.prototype.innerHeight = function() {
+    /*eslint-disable eqeqeq */
+    if (this.element == this.element.window) {
+      return Waypoint.viewportHeight()
+    }
+    /*eslint-enable eqeqeq */
+    return this.adapter.innerHeight()
+  }
+
+  /* Private */
+  Context.prototype.remove = function(waypoint) {
+    delete this.waypoints[waypoint.axis][waypoint.key]
+    this.checkEmpty()
+  }
+
+  /* Private */
+  Context.prototype.innerWidth = function() {
+    /*eslint-disable eqeqeq */
+    if (this.element == this.element.window) {
+      return Waypoint.viewportWidth()
+    }
+    /*eslint-enable eqeqeq */
+    return this.adapter.innerWidth()
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-destroy */
+  Context.prototype.destroy = function() {
+    var allWaypoints = []
+    for (var axis in this.waypoints) {
+      for (var waypointKey in this.waypoints[axis]) {
+        allWaypoints.push(this.waypoints[axis][waypointKey])
+      }
+    }
+    for (var i = 0, end = allWaypoints.length; i < end; i++) {
+      allWaypoints[i].destroy()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-refresh */
+  Context.prototype.refresh = function() {
+    /*eslint-disable eqeqeq */
+    var isWindow = this.element == this.element.window
+    /*eslint-enable eqeqeq */
+    var contextOffset = isWindow ? undefined : this.adapter.offset()
+    var triggeredGroups = {}
+    var axes
+
+    this.handleScroll()
+    axes = {
+      horizontal: {
+        contextOffset: isWindow ? 0 : contextOffset.left,
+        contextScroll: isWindow ? 0 : this.oldScroll.x,
+        contextDimension: this.innerWidth(),
+        oldScroll: this.oldScroll.x,
+        forward: 'right',
+        backward: 'left',
+        offsetProp: 'left'
+      },
+      vertical: {
+        contextOffset: isWindow ? 0 : contextOffset.top,
+        contextScroll: isWindow ? 0 : this.oldScroll.y,
+        contextDimension: this.innerHeight(),
+        oldScroll: this.oldScroll.y,
+        forward: 'down',
+        backward: 'up',
+        offsetProp: 'top'
+      }
+    }
+
+    for (var axisKey in axes) {
+      var axis = axes[axisKey]
+      for (var waypointKey in this.waypoints[axisKey]) {
+        var waypoint = this.waypoints[axisKey][waypointKey]
+        var adjustment = waypoint.options.offset
+        var oldTriggerPoint = waypoint.triggerPoint
+        var elementOffset = 0
+        var freshWaypoint = oldTriggerPoint == null
+        var contextModifier, wasBeforeScroll, nowAfterScroll
+        var triggeredBackward, triggeredForward
+
+        if (waypoint.element !== waypoint.element.window) {
+          elementOffset = waypoint.adapter.offset()[axis.offsetProp]
+        }
+
+        if (typeof adjustment === 'function') {
+          adjustment = adjustment.apply(waypoint)
+        }
+        else if (typeof adjustment === 'string') {
+          adjustment = parseFloat(adjustment)
+          if (waypoint.options.offset.indexOf('%') > - 1) {
+            adjustment = Math.ceil(axis.contextDimension * adjustment / 100)
+          }
+        }
+
+        contextModifier = axis.contextScroll - axis.contextOffset
+        waypoint.triggerPoint = Math.floor(elementOffset + contextModifier - adjustment)
+        wasBeforeScroll = oldTriggerPoint < axis.oldScroll
+        nowAfterScroll = waypoint.triggerPoint >= axis.oldScroll
+        triggeredBackward = wasBeforeScroll && nowAfterScroll
+        triggeredForward = !wasBeforeScroll && !nowAfterScroll
+
+        if (!freshWaypoint && triggeredBackward) {
+          waypoint.queueTrigger(axis.backward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+        else if (!freshWaypoint && triggeredForward) {
+          waypoint.queueTrigger(axis.forward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+        else if (freshWaypoint && axis.oldScroll >= waypoint.triggerPoint) {
+          waypoint.queueTrigger(axis.forward)
+          triggeredGroups[waypoint.group.id] = waypoint.group
+        }
+      }
+    }
+
+    Waypoint.requestAnimationFrame(function() {
+      for (var groupKey in triggeredGroups) {
+        triggeredGroups[groupKey].flushTriggers()
+      }
+    })
+
+    return this
+  }
+
+  /* Private */
+  Context.findOrCreateByElement = function(element) {
+    return Context.findByElement(element) || new Context(element)
+  }
+
+  /* Private */
+  Context.refreshAll = function() {
+    for (var contextId in contexts) {
+      contexts[contextId].refresh()
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/context-find-by-element */
+  Context.findByElement = function(element) {
+    return contexts[element.waypointContextKey]
+  }
+
+  window.onload = function() {
+    if (oldWindowLoad) {
+      oldWindowLoad()
+    }
+    Context.refreshAll()
+  }
+
+
+  Waypoint.requestAnimationFrame = function(callback) {
+    var requestFn = window.requestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      requestAnimationFrameShim
+    requestFn.call(window, callback)
+  }
+  Waypoint.Context = Context
+}())
+;(function() {
+  'use strict'
+
+  function byTriggerPoint(a, b) {
+    return a.triggerPoint - b.triggerPoint
+  }
+
+  function byReverseTriggerPoint(a, b) {
+    return b.triggerPoint - a.triggerPoint
+  }
+
+  var groups = {
+    vertical: {},
+    horizontal: {}
+  }
+  var Waypoint = window.Waypoint
+
+  /* http://imakewebthings.com/waypoints/api/group */
+  function Group(options) {
+    this.name = options.name
+    this.axis = options.axis
+    this.id = this.name + '-' + this.axis
+    this.waypoints = []
+    this.clearTriggerQueues()
+    groups[this.axis][this.name] = this
+  }
+
+  /* Private */
+  Group.prototype.add = function(waypoint) {
+    this.waypoints.push(waypoint)
+  }
+
+  /* Private */
+  Group.prototype.clearTriggerQueues = function() {
+    this.triggerQueues = {
+      up: [],
+      down: [],
+      left: [],
+      right: []
+    }
+  }
+
+  /* Private */
+  Group.prototype.flushTriggers = function() {
+    for (var direction in this.triggerQueues) {
+      var waypoints = this.triggerQueues[direction]
+      var reverse = direction === 'up' || direction === 'left'
+      waypoints.sort(reverse ? byReverseTriggerPoint : byTriggerPoint)
+      for (var i = 0, end = waypoints.length; i < end; i += 1) {
+        var waypoint = waypoints[i]
+        if (waypoint.options.continuous || i === waypoints.length - 1) {
+          waypoint.trigger([direction])
+        }
+      }
+    }
+    this.clearTriggerQueues()
+  }
+
+  /* Private */
+  Group.prototype.next = function(waypoint) {
+    this.waypoints.sort(byTriggerPoint)
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    var isLast = index === this.waypoints.length - 1
+    return isLast ? null : this.waypoints[index + 1]
+  }
+
+  /* Private */
+  Group.prototype.previous = function(waypoint) {
+    this.waypoints.sort(byTriggerPoint)
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    return index ? this.waypoints[index - 1] : null
+  }
+
+  /* Private */
+  Group.prototype.queueTrigger = function(waypoint, direction) {
+    this.triggerQueues[direction].push(waypoint)
+  }
+
+  /* Private */
+  Group.prototype.remove = function(waypoint) {
+    var index = Waypoint.Adapter.inArray(waypoint, this.waypoints)
+    if (index > -1) {
+      this.waypoints.splice(index, 1)
+    }
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/first */
+  Group.prototype.first = function() {
+    return this.waypoints[0]
+  }
+
+  /* Public */
+  /* http://imakewebthings.com/waypoints/api/last */
+  Group.prototype.last = function() {
+    return this.waypoints[this.waypoints.length - 1]
+  }
+
+  /* Private */
+  Group.findOrCreate = function(options) {
+    return groups[options.axis][options.name] || new Group(options)
+  }
+
+  Waypoint.Group = Group
+}())
+;(function() {
+  'use strict'
+
+  var Waypoint = window.Waypoint
+
+  function isWindow(element) {
+    return element === element.window
+  }
+
+  function getWindow(element) {
+    if (isWindow(element)) {
+      return element
+    }
+    return element.defaultView
+  }
+
+  function NoFrameworkAdapter(element) {
+    this.element = element
+    this.handlers = {}
+  }
+
+  NoFrameworkAdapter.prototype.innerHeight = function() {
+    var isWin = isWindow(this.element)
+    return isWin ? this.element.innerHeight : this.element.clientHeight
+  }
+
+  NoFrameworkAdapter.prototype.innerWidth = function() {
+    var isWin = isWindow(this.element)
+    return isWin ? this.element.innerWidth : this.element.clientWidth
+  }
+
+  NoFrameworkAdapter.prototype.off = function(event, handler) {
+    function removeListeners(element, listeners, handler) {
+      for (var i = 0, end = listeners.length - 1; i < end; i++) {
+        var listener = listeners[i]
+        if (!handler || handler === listener) {
+          element.removeEventListener(listener)
+        }
+      }
+    }
+
+    var eventParts = event.split('.')
+    var eventType = eventParts[0]
+    var namespace = eventParts[1]
+    var element = this.element
+
+    if (namespace && this.handlers[namespace] && eventType) {
+      removeListeners(element, this.handlers[namespace][eventType], handler)
+      this.handlers[namespace][eventType] = []
+    }
+    else if (eventType) {
+      for (var ns in this.handlers) {
+        removeListeners(element, this.handlers[ns][eventType] || [], handler)
+        this.handlers[ns][eventType] = []
+      }
+    }
+    else if (namespace && this.handlers[namespace]) {
+      for (var type in this.handlers[namespace]) {
+        removeListeners(element, this.handlers[namespace][type], handler)
+      }
+      this.handlers[namespace] = {}
+    }
+  }
+
+  /* Adapted from jQuery 1.x offset() */
+  NoFrameworkAdapter.prototype.offset = function() {
+    if (!this.element.ownerDocument) {
+      return null
+    }
+
+    var documentElement = this.element.ownerDocument.documentElement
+    var win = getWindow(this.element.ownerDocument)
+    var rect = {
+      top: 0,
+      left: 0
+    }
+
+    if (this.element.getBoundingClientRect) {
+      rect = this.element.getBoundingClientRect()
+    }
+
+    return {
+      top: rect.top + win.pageYOffset - documentElement.clientTop,
+      left: rect.left + win.pageXOffset - documentElement.clientLeft
+    }
+  }
+
+  NoFrameworkAdapter.prototype.on = function(event, handler) {
+    var eventParts = event.split('.')
+    var eventType = eventParts[0]
+    var namespace = eventParts[1] || '__default'
+    var nsHandlers = this.handlers[namespace] = this.handlers[namespace] || {}
+    var nsTypeList = nsHandlers[eventType] = nsHandlers[eventType] || []
+
+    nsTypeList.push(handler)
+    this.element.addEventListener(eventType, handler)
+  }
+
+  NoFrameworkAdapter.prototype.outerHeight = function(includeMargin) {
+    var height = this.innerHeight()
+    var computedStyle
+
+    if (includeMargin && !isWindow(this.element)) {
+      computedStyle = window.getComputedStyle(this.element)
+      height += parseInt(computedStyle.marginTop, 10)
+      height += parseInt(computedStyle.marginBottom, 10)
+    }
+
+    return height
+  }
+
+  NoFrameworkAdapter.prototype.outerWidth = function(includeMargin) {
+    var width = this.innerWidth()
+    var computedStyle
+
+    if (includeMargin && !isWindow(this.element)) {
+      computedStyle = window.getComputedStyle(this.element)
+      width += parseInt(computedStyle.marginLeft, 10)
+      width += parseInt(computedStyle.marginRight, 10)
+    }
+
+    return width
+  }
+
+  NoFrameworkAdapter.prototype.scrollLeft = function() {
+    var win = getWindow(this.element)
+    return win ? win.pageXOffset : this.element.scrollLeft
+  }
+
+  NoFrameworkAdapter.prototype.scrollTop = function() {
+    var win = getWindow(this.element)
+    return win ? win.pageYOffset : this.element.scrollTop
+  }
+
+  NoFrameworkAdapter.extend = function() {
+    var args = Array.prototype.slice.call(arguments)
+
+    function merge(target, obj) {
+      if (typeof target === 'object' && typeof obj === 'object') {
+        for (var key in obj) {
+          if (obj.hasOwnProperty(key)) {
+            target[key] = obj[key]
+          }
+        }
+      }
+
+      return target
+    }
+
+    for (var i = 1, end = args.length; i < end; i++) {
+      merge(args[0], args[i])
+    }
+    return args[0]
+  }
+
+  NoFrameworkAdapter.inArray = function(element, array, i) {
+    return array == null ? -1 : array.indexOf(element, i)
+  }
+
+  NoFrameworkAdapter.isEmptyObject = function(obj) {
+    /* eslint no-unused-vars: 0 */
+    for (var name in obj) {
+      return false
+    }
+    return true
+  }
+
+  Waypoint.adapters.push({
+    name: 'noframework',
+    Adapter: NoFrameworkAdapter
+  })
+  Waypoint.Adapter = NoFrameworkAdapter
+}())
+;
 
 /***/ })
 /******/ ]);

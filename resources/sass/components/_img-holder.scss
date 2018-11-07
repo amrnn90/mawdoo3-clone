@@ -7,7 +7,7 @@
     /* Prevents chrome bug that causes upscaling images to snap at beginning of transition that happens when using dir="rtl" */
     direction: ltr;
 
-    img {
+    img, .img {
         position: absolute;
         // width: 100%;
         // height: 100%;
@@ -24,8 +24,12 @@
         padding-bottom: percentage(150 / 215);
     }
 
+    &--logo {
+        padding-bottom: percentage(36 / 113);
+    }
+
     &--fill {
-        img {
+        img, .img {
             width: 100%;
             height: 100%;
         }
