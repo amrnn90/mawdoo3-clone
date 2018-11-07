@@ -12,7 +12,7 @@
 
 <form action="{{ $route }}" class="post-form parsley" method="POST" enctype="multipart/form-data" data-parsley-focus="none">
     @csrf
-    <h1 class="post-form__header">
+    <h1 class="page-title">
         @if ($post->exists)
             تعديل: {{$post->title }} 
         @else 
@@ -70,7 +70,7 @@
     </div>
 
 
-    <div class="form-group">
+    <div class="post-form__group">
         <button type="submit" class="btn btn--primary">{{ $post->exists ? 'اتمام التعديل' : 'انشر الموضوع' }} </button>
     </div>
 </form>
