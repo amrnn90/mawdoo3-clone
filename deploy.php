@@ -26,7 +26,7 @@ add('writable_dirs', []);
 
 host('167.71.233.27')
     ->user('deployer')
-    ->set('deploy_path', '/var/www/example.com');    
+    ->set('deploy_path', '/var/www/mawdoo3-clone');    
     
 // Tasks
 
