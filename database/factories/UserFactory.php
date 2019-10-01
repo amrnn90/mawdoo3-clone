@@ -35,11 +35,18 @@ $factory->define(App\Category::class, function (Faker $faker) {
 $factory->define(App\Post::class, function (Faker $faker) {
     $users = App\User::limit(50)->get();
 
-    // $image = $faker->image(Storage::path('public/posts'), 640, 480, null, false);
-    // $image = Storage::url('public/posts/' . $image);
+    if (!Storage::exists('public/posts')) {
+        Storage::makeDirectory('public/posts');
+    }
 
+    if (count(Storage::allFiles('public/posts')) < 10) {
+        for ($i = 0; $i < 10; $i++) {
+            $faker->image(Storage::path('public/posts'), 640, 480, null, false);
+        }
+    }
+    
     $images = Storage::allFiles('public/posts');
-    $image = Storage::path($images[rand(0, count($images)-1)]);
+    $image = Storage::path($images[rand(0, count($images) - 1)]);
     $imageName = App\UploadedMedia::add($image, true)->name;
 
     $categories = App\Category::getCategoriesWithSub();
@@ -56,4 +63,3 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'user_id' => $users->random()->id,
     ];
 });
-
