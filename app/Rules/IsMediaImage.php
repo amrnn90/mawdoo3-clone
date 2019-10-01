@@ -3,6 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\File\File as FileInfo;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -32,8 +33,14 @@ class IsMediaImage implements Rule
         $media = Media::where('name', $value)->first();
         
         if ($media) {
-            $storageRelPath = str_replace(Storage::disk($media->disk)->getAdapter()->getPathPrefix(), '', $media->getPath());
+            // $storageRelPath = str_replace(Storage::disk($media->disk)->getAdapter()->getPathPrefix(), '', $media->getPath());
 
+            $storageRelPath = implode('/', array_slice(explode('/', $media->getPath()), -2));
+
+            Log::info('mediaDisk: ' .$media->disk);
+            Log::info('adapterPathPrefix: ' . Storage::disk($media->disk)->getAdapter()->getPathPrefix());
+            Log::info('mediaPath: ' . $media->getPath());
+            Log::info('storageRelPath: ' . $storageRelPath);
             // $file = new File($media->getPath());
             $fileContent = Storage::disk($media->disk)->get($storageRelPath);
 
