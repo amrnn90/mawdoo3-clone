@@ -37,11 +37,6 @@ class IsMediaImage implements Rule
 
             $storageRelPath = implode('/', array_slice(explode('/', $media->getPath()), -2));
 
-            Log::info('mediaDisk: ' .$media->disk);
-            Log::info('adapterPathPrefix: ' . Storage::disk($media->disk)->getAdapter()->getPathPrefix());
-            Log::info('mediaPath: ' . $media->getPath());
-            Log::info('storageRelPath: ' . $storageRelPath);
-            // $file = new File($media->getPath());
             $fileContent = Storage::disk($media->disk)->get($storageRelPath);
 
             $tempFileName = tempnam(sys_get_temp_dir(), 'MyFileName');

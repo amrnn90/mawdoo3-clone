@@ -12,17 +12,19 @@
         {{ Breadcrumbs::render('post', $post) }}
 
         <div class="post">
-            <h1 class="post__title">
-                {{ $post->title }}
+            <div>
                 @can('edit', $post)
-                    <small>[<a href="{{ route('posts.edit', $post) }}">edit</a>]</small>
+                    <small>[<a href="{{ route('posts.edit', $post) }}">تعديل</a>]</small>
                 @endcan
                 @can('destroy', $post)
                     <form action="{{ route('posts.destroy', $post) }}" method="POST" style="display: inline">
                         @csrf @method('DELETE')
-                        [<a href="javascript:" class="text-danger" onclick="this.parentNode.submit()"><small>delete</small></a>]
+                        [<a href="javascript:" class="text-danger" onclick="this.parentNode.submit()"><small>حذف</small></a>]
                     </form>
                 @endcan
+            </div>
+            <h1 class="post__title">
+                {{ $post->title }}
             </h1>
             <div class="post__meta">
                 بواسطة
